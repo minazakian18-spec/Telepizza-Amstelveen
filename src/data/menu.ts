@@ -24,10 +24,10 @@ export const menu: Section[] = [
       {
         "name": "Carpaccio",
         "price": 11.95,
-        "description": "Rauwe ossenhaas met Parmezaane kaas en pijnboompitten"
+        "description": "Rauwe ossenhaas met Parmezaanse kaas en pijnboompitten"
       },
       {
-        "name": "Garnalen Cocktail",
+        "name": "Garnalencocktail",
         "price": 14.95,
         "description": "Hollandse garnalen"
       },
@@ -47,7 +47,7 @@ export const menu: Section[] = [
         "description": "verse groentesoep"
       },
       {
-        "name": "Zuppe di Pomodore",
+        "name": "Zuppa di Pomodoro",
         "price": 6.95,
         "description": "verse tomatensoep met geraspte kaas"
       }
@@ -64,52 +64,27 @@ export const menu: Section[] = [
       {
         "name": "Griekse Salade",
         "price": 8.95,
-        "description": "Gemende salade, feta, olijven, rode ui, tomaten en komkommer"
+        "description": "Gemengde salade, feta, olijven, rode ui, tomaten en komkommer"
       },
       {
         "name": "Tonijn Salade",
         "price": 8.95,
-        "description": "Gemende salade, tonijn, ui, tomaten en komkommer"
+        "description": "Gemengde salade, tonijn, ui, tomaten en komkommer"
       },
       {
         "name": "Kip Salade",
         "price": 9.95,
-        "description": "Gemende salade, kip, ui, tomaten en komkommer"
+        "description": "Gemengde salade, kip, ui, tomaten en komkommer"
       },
       {
         "name": "Garnalen Salade",
         "price": 12.45,
-        "description": "Gemende salade, garnalen, ui, tomaten en komkommer"
+        "description": "Gemengde salade, garnalen, ui, tomaten en komkommer"
       },
       {
         "name": "Carpaccio Salade",
         "price": 11.95,
         "description": "met gerookte zalm"
-      }
-    ]
-  },
-  {
-    "name": "Extra toppings",
-    "items": [
-      {
-        "name": "Groenten (per topping)",
-        "price": 1.75,
-        "description": "Gegrilde aubergine, courgette, verse tomaat, cherrytomaat, ananas, kappertjes, brocoli, rucola, erwten, Spaanse pepper, mais, pijnboompitten, paprika, rode uien, champignons, olijven, artisjok, spinazie"
-      },
-      {
-        "name": "Kaas (per topping)",
-        "price": 2.0,
-        "description": "Geraspte kaas, Parmezaanse kaas, geiten kaas, mozzarella, gorgonzola"
-      },
-      {
-        "name": "Vlees (per topping)",
-        "price": 2.5,
-        "description": "Ham, salami, peperoni, kipfilet, Parmaham, bacon, bolognese, shoarma"
-      },
-      {
-        "name": "Vis (per topping)",
-        "price": 2.75,
-        "description": "Tonijn, ansjovis, zalm, garnalen, zeevruchten"
       }
     ]
   },
@@ -127,12 +102,12 @@ export const menu: Section[] = [
         "description": "Met basilicum pesto, roomkaas, pijnboompitten en Parmezaanse kaas"
       },
       {
-        "name": "Pasta Arrabiata",
+        "name": "Pasta Arrabbiata",
         "price": 11.95,
         "description": "Met tomatensaus, knoflook, pikante Spaanse pepers, cherrytomaten en Parmezaanse kaas"
       },
       {
-        "name": "Pasta Putanesca",
+        "name": "Pasta Puttanesca",
         "price": 13.95,
         "description": "Met tomatensaus, olijven, kappertjes, knoflook, ansjovis en Parmezaanse kaas"
       },
@@ -177,9 +152,9 @@ export const menu: Section[] = [
         "description": "Met tonijn en ansjovis in tomatensaus en rucola"
       },
       {
-        "name": "Pasta Gambereoni",
+        "name": "Pasta Gamberoni",
         "price": 14.45,
-        "description": "Met garnalen, rosesaus, knoflook, rode uien, bleekseldererij, rucola en Parmezaanse kaas"
+        "description": "Met garnalen, rosesaus, knoflook, rode uien, bleekselderij, rucola en Parmezaanse kaas"
       },
       {
         "name": "Pasta Salmone",
@@ -197,7 +172,7 @@ export const menu: Section[] = [
         "description": "Deegkussentjes gevuld met wilde spinazie, ricotta kaas, champignons in tomaten roomsaus"
       },
       {
-        "name": "Tortellini Bolognesi",
+        "name": "Tortellini Bolognese",
         "price": 12.95,
         "description": "Deegkussentjes gevuld met rundergehakt, champignons, tomaten roomsaus en Parmezaanse kaas"
       },
@@ -283,7 +258,7 @@ export const menu: Section[] = [
         "description": "Tomatensaus, kaas en ham"
       },
       {
-        "name": "Pizza Hawai",
+        "name": "Pizza Hawaii",
         "price": 12.95,
         "description": "Tomatensaus, kaas, ham en ananas"
       },
@@ -360,6 +335,51 @@ export const menu: Section[] = [
     ]
   },
   {
+    "name": "Speciale Pizza’s",
+    "items": [
+      {
+        "name": "Tele Pizza",
+        "price": 13.95,
+        "description": "Tomatensaus, kaas, ham, salami, champignons, paprika, ui, artisjokken en spinazie"
+      },
+      {
+        "name": "Specialiteit van de Chef",
+        "price": 14.45,
+        "description": "Tomatensaus, kaas, verse tomaten, prosciutto di Parmaham, rucola, pijnboompitten en Parmezaanse kaas"
+      },
+      {
+        "name": "Pizza Pancetta Bianca",
+        "price": 14.45,
+        "description": "Met bacon, kaas, champignons, gekarameliseerde uien, zongedroogde tomaten en peterselie"
+      },
+      {
+        "name": "Pizza BBQ Chicken",
+        "price": 13.95,
+        "description": "BBQ-saus, kaas, kip, mais en paprika"
+      },
+      {
+        "name": "Pizza Truffel Prosciutto",
+        "price": 14.45,
+        "description": "Truffel mascarpone, scheutjes tomatensaus, Parmaham, gegrilde courgette, rucola en Parmezaanse kaas"
+      },
+      {
+        "name": "Pizza Carpaccio",
+        "price": 13.95,
+        "description": "Scheutjes tomatensaus, runder carpaccio, basilicum pesto, pijnboompitten, basilicum, rucola en Parmezaanse kaas"
+      },
+      {
+        "name": "Pizza Popeye Speciale",
+        "price": 14.45,
+        "description": "Scheutjes tomatensaus, spinazie, geitenkaas, gekarameliseerde uien, zongedroogde tomaten, gegrilde courgette getopped met honing"
+      },
+      {
+        "name": "Pizza Nutella",
+        "price": 12.45,
+        "description": "Luchtige bodem met romige Nutella bestrooid met poedersuiker en aardbei"
+      }
+    ]
+  },
+  {
     "name": "Calzone’s",
     "items": [
       {
@@ -380,47 +400,27 @@ export const menu: Section[] = [
     ]
   },
   {
-    "name": "Speciale Pizza’s",
+    "name": "Extra toppings",
     "items": [
       {
-        "name": "Tele Pizza",
-        "price": 13.95,
-        "description": "Tomatensaus, kaas, ham, salami, champignons, paprika, ui, artisjokken en spinazie"
+        "name": "Groenten (per topping)",
+        "price": 1.75,
+        "description": "Gegrilde aubergine, courgette, verse tomaat, cherrytomaat, ananas, kappertjes, broccoli, rucola, erwten, Spaanse pepper, mais, pijnboompitten, paprika, rode uien, champignons, olijven, artisjok, spinazie"
       },
       {
-        "name": "Specialiteit van de Chef",
-        "price": 14.45,
-        "description": "Tomatensaus, kaas, verse tomaten, prosciutto di Parmaham, rucola, pijnboompitten en Parmazaanse kaas"
+        "name": "Kaas (per topping)",
+        "price": 2.0,
+        "description": "Geraspte kaas, Parmezaanse kaas, geiten kaas, mozzarella, gorgonzola"
       },
       {
-        "name": "Pizza Pancetta Bianca",
-        "price": 14.45,
-        "description": "Met becon, kaas, champignons, gekarameliseerde uien, zongedroogde tomaten en peterselie"
+        "name": "Vlees (per topping)",
+        "price": 2.5,
+        "description": "Ham, salami, peperoni, kipfilet, Parmaham, bacon, bolognese, shoarma"
       },
       {
-        "name": "Pizza BBQ Chicken",
-        "price": 13.95,
-        "description": "BBQ-saus, kaas, kip, mais en paprika"
-      },
-      {
-        "name": "Pizza Truffel Prosciutto",
-        "price": 14.45,
-        "description": "Truffel mascarpone, scheutjes tomatensaus, Parmaham, gegrilde courgette, rucola en Parmerzaanse kaas"
-      },
-      {
-        "name": "Pizza Carpaccio",
-        "price": 13.95,
-        "description": "Scheutjes tomatensaus, runder carpaccio, basilicum pesto, pijnboompitten, basilicum, rucola en Parmezaanse kaas"
-      },
-      {
-        "name": "Pizza Popeye Speciale",
-        "price": 14.45,
-        "description": "Scheutjes tomatensaus, spinazie, geitenkaas, gekarameliseerde uien, zongedroogde tomaten, gegrilde courgette getopped met honing"
-      },
-      {
-        "name": "Pizza Nutella",
-        "price": 12.45,
-        "description": "Luchtige bodem met romige Nutella bestrooid met poedersuiker en aardbei"
+        "name": "Vis (per topping)",
+        "price": 2.75,
+        "description": "Tonijn, ansjovis, zalm, garnalen, zeevruchten"
       }
     ]
   },
@@ -438,7 +438,7 @@ export const menu: Section[] = [
         "description": "Biefstuk in peperroomsaus"
       },
       {
-        "name": "Entecote",
+        "name": "Entrecote",
         "price": 27.95,
         "description": "In champignon roomsaus of peperroomsaus"
       },
@@ -448,14 +448,14 @@ export const menu: Section[] = [
         "description": "In champignon roomsaus of peperroomsaus"
       },
       {
-        "name": "Ossenhaas Dello Chef",
+        "name": "Ossenhaas dello Chef",
         "price": 31.95,
         "description": "Haasbiefstuk in champignon roomsaus of peperroomsaus"
       },
       {
-        "name": "Scalloppina",
+        "name": "Scaloppina",
         "price": 24.95,
-        "description": "Schnizel in champignon roomsaus of peperroomsaus"
+        "description": "Schnitzel in champignon roomsaus of peperroomsaus"
       },
       {
         "name": "Varkenshaas",
@@ -474,19 +474,19 @@ export const menu: Section[] = [
     "name": "Visgerechten",
     "items": [
       {
-        "name": "Scampi’s van de Grill",
+        "name": "Scampi’s van de grill",
         "price": 28.95,
-        "description": "Met gemengde salade, frites of aardappelschuifjes"
+        "description": "Met gemengde salade, frites of aardappelschijfjes"
       },
       {
         "name": "Calamari Fritti",
         "price": 21.95,
-        "description": "Gefrituurde inktvis met gemengde salade, frites of aardappelschuifjes"
+        "description": "Gefrituurde inktvis met gemengde salade, frites of aardappelschijfjes"
       },
       {
         "name": "Gegrilde Zalm",
         "price": 21.95,
-        "description": "Met gemengde salade, frites of aardappelschuifjes"
+        "description": "Met gemengde salade, frites of aardappelschijfjes"
       }
     ]
   },
@@ -550,7 +550,7 @@ export const menu: Section[] = [
         "description": "Met mosterd"
       },
       {
-        "name": "Kipbuggets",
+        "name": "Kipnuggets",
         "price": 5.95,
         "description": "Met chilisaus"
       },
@@ -592,19 +592,19 @@ export const menu: Section[] = [
     "name": "IJs & dessert",
     "items": [
       {
-        "name": "Ben & Jerry’s",
+        "name": "Ben & Jerry’s Strawberry Cheesecake",
         "price": 4.5,
         "priceText": "€ 4,50 / € 8,95",
-        "description": "Strawberry Cheesecake Aardbeiencheesecake-roomijs met aarbei & havermoutkoekjes chunks"
+        "description": "Aardbeiencheesecake-roomijs met aardbei & havermoutkoekjes chunks"
       },
       {
-        "name": "Ben & Jerry’s",
+        "name": "Ben & Jerry’s Chocolate Fudge Brownie",
         "price": 4.5,
         "priceText": "€ 4,50 / € 8,95",
-        "description": "Chocolate Fudge Brownie Chocoladeroomijs met chocolate fudge brownie chunks"
+        "description": "Chocoladeroomijs met chocolate fudge brownie chunks"
       },
       {
-        "name": "Caffe Glase",
+        "name": "Caffè Glacé",
         "price": 8.45,
         "description": "Vanille ijs met koffie en slagroom"
       },
