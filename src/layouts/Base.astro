@@ -19,6 +19,8 @@ const restaurant: any = {
 if (site.phone) restaurant.telephone = site.phone;
 if (site.email) restaurant.email = site.email;
 if (site.geo) restaurant.geo = { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng };
+if (site.foundingYear) restaurant.foundingDate = String(site.foundingYear);
+if (site.reserveUrl) restaurant.acceptsReservations = site.reserveUrl;
 if (site.sameAs.length) restaurant.sameAs = site.sameAs;
 if (site.hours.length) restaurant.openingHoursSpecification = site.hours.map(h => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.schema, opens: h.open, closes: h.close }));
 
@@ -108,13 +110,15 @@ footer .grid{margin-top:0}
 <footer><div class="wrap grid">
   <div>
     <strong>{site.name}</strong><br />{fullAddress}<br />
-    {site.phone ? <a href={'tel:' + site.phone}>{site.phoneDisplay}</a> : <span>Telefoon: volgt binnenkort</span>}
+    {site.phone && <a href={'tel:' + site.phone}>{site.phoneDisplay}</a>}<br />
+    {site.email && <a href={'mailto:' + site.email}>{site.email}</a>}<br />
+    <a href="https://www.instagram.com/telepizza_nl/" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@telepizza_nl" rel="noopener">TikTok</a>
   </div>
   <div>
     <strong>Pagina's</strong><br />
     <a href="/pizza-amstelveen/">Pizza</a> · <a href="/pasta-amstelveen/">Pasta</a> · <a href="/pizza-soorten/">Pizzasoorten</a> · <a href="/restaurant-amstelveen/">Restaurant</a> · <a href="/catering-bedrijven-amstelveen/">Catering bedrijven</a> · <a href="/veelgestelde-vragen/">Veelgestelde vragen</a>
   </div>
-  <div><strong>Openingstijden</strong><br />
+  <div><strong>Openingstijden</strong><br />Maandag: gesloten<br />
     {site.hours.length ? site.hours.map(h => <span>{h.day}: {h.open}–{h.close}<br /></span>) : <span>Zie Google Maps voor actuele tijden.</span>}
   </div>
 </div></footer>

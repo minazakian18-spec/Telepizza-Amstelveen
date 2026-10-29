@@ -1,6 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 const faq = [
+  ['Wat zijn de openingstijden?', 'Maandag zijn we gesloten. Dinsdag t/m donderdag en zondag van 15:00 tot 01:45, vrijdag en zaterdag van 15:00 tot 03:00.'],
+  ['Hoe kan ik online bestellen?', 'Via telepizza.sitedish.shop, of bel 020-6435287.'],
+  ['Kan ik reserveren?', 'Ja, online via TheFork (link op de website) of telefonisch via 020-6435287.'],
+  ['Hoe lang bestaat Telepizza Amstelveen al?', 'Sinds 1984.'],
   ['Waar zit Telepizza Amstelveen?', 'Op de Amsterdamseweg 452, 1181 BW Amstelveen.'],
   ['Kan ik bij jullie eten, afhalen en laten bezorgen?', 'Ja. Je kunt in het restaurant eten, je bestelling afhalen of laten bezorgen in Amstelveen.'],
   ['Hebben jullie alleen pizza?', 'Nee, we hebben ook pasta, shoarma en ijs.'],
@@ -14,6 +18,5 @@ const ld = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: f
 <div class="wrap">
 <h1>Veelgestelde vragen</h1>
 {faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
-<p class="todo">TODO eigenaar: vragen toevoegen over bezorgkosten, minimale bestelling en betaalmethoden.</p>
 </div>
 </Base>

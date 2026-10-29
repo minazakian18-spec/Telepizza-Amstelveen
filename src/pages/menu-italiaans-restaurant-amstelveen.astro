@@ -18,10 +18,12 @@ const eur = (p: number) => '€ ' + p.toFixed(2).replace('.', ',');
     {menu.map(s => (
       <section>
         <h2>{s.name}</h2>
-        {s.items.length === 0 ? <p class="todo">TODO eigenaar: gerechten en prijzen voor "{s.name}" invullen in src/data/menu.ts.</p> : (
+        {s.items.length > 0 && (
           <table><tbody>{s.items.map(i => <tr><td><strong>{i.name}</strong>{i.description && <><br /><span>{i.description}</span></>}</td><td>{i.price != null ? eur(i.price) : 'prijs volgt'}</td></tr>)}</tbody></table>
         )}
       </section>
     ))}
+    <h2>Het volledige menu</h2>
+    <p>Naast onze specialiteiten hebben we nog veel meer pizza’s, pasta’s, shoarma en ijs. Je ziet het complete menu met actuele prijzen in onze <a href={site.orderUrl!}>online bestelpagina</a>, of bel ons op <a href={'tel:' + site.phone}>{site.phoneDisplay}</a>.</p>
   </div>
 </Base>

@@ -1,11 +1,9 @@
-// TODO eigenaar: vul hier het echte menu in (naam, beschrijving, prijs in euro's, bijv. 9.5).
-// De oude site kon tijdens het bouwen niet worden uitgelezen, dus er zijn GEEN prijzen verzonnen.
-// Voorbeeld item: { name: 'Pizza Margherita', description: 'Tomatensaus, mozzarella', price: 9.5 }
+// Menu en prijzen. Prijs in euro's met een punt, bijv. 12.95.
+// Het volledige menu (uit de menu-PDF) kan hier per categorie worden aangevuld.
 export interface Item { name: string; description?: string; price: number | null }
 export const menu: { name: string; items: Item[] }[] = [
-  { name: 'Pizza', items: [] },
-  { name: 'Pasta', items: [] },
-  { name: 'Shoarma', items: [] },
-  { name: 'IJs & desserts', items: [] },
-  { name: 'Dranken', items: [] },
+  { name: 'Specialiteiten', items: [
+    { name: 'Klassieke Pepperoni Pizza', price: 12.95 },
+    { name: 'Romige Pasta Carbonara', price: 12.95 },
+  ] },
 ];

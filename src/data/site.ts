@@ -1,31 +1,37 @@
-// Centrale bedrijfsgegevens. Alles met TODO moet de eigenaar nog invullen/controleren.
+// Centrale bedrijfsgegevens. Pas deze waarden aan; de hele site werkt ze automatisch bij.
 // Er is bewust NIETS verzonnen: onbekende waarden staan op null en worden op de site
 // netjes weggelaten of als "volgt binnenkort" getoond.
 
 export const site = {
   name: 'Telepizza Amstelveen',
   url: 'https://telepizza-amstelveen.nl',
-  // Bron: gemeente Amstelveen (vergunningsbesluiten 2025). TODO: eigenaar bevestigen.
   street: 'Amsterdamseweg 452',
   postalCode: '1181 BW',
   city: 'Amstelveen',
   country: 'NL',
-  // TODO: telefoonnummer invullen, bijv. '+31201234567' en weergave '020 123 4567'
-  phone: null as string | null,
-  phoneDisplay: null as string | null,
-  // TODO: e-mailadres invullen
-  email: null as string | null,
-  // TODO: link naar online bestellen (eigen bestelsysteem of Thuisbezorgd)
-  orderUrl: null as string | null,
-  // TODO: link of manier om te reserveren
-  reserveUrl: null as string | null,
-  // TODO: Google Maps-link van het bedrijfsprofiel (plaats-URL)
+  phone: '+31206435287' as string | null,
+  phoneDisplay: '020-6435287' as string | null,
+  email: 'contact.telepizza@gmail.com' as string | null,
+  orderUrl: 'https://telepizza.sitedish.shop/' as string | null,
+  reserveUrl: 'https://widget.thefork.com/d10a03f4-2fab-4cc5-a1a6-ca3b826a931b' as string | null,
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Telepizza+Amsterdamseweg+452+Amstelveen',
-  // TODO: social media links
-  sameAs: [] as string[],
-  // TODO: openingstijden invullen, bijv. { day: 'Maandag', schema: 'Monday', open: '16:00', close: '22:00' }
-  hours: [] as { day: string; schema: string; open: string; close: string }[],
-  // TODO: coördinaten controleren in Google Maps
+  sameAs: ['https://www.instagram.com/telepizza_nl/', 'https://www.tiktok.com/@telepizza_nl'] as string[],
+    foundingYear: 1984,
+  // Maandag gesloten. Sluitingstijd na middernacht valt op de volgende dag.
+  hours: [
+    { day: 'Dinsdag', schema: 'Tuesday', open: '15:00', close: '01:45' },
+    { day: 'Woensdag', schema: 'Wednesday', open: '15:00', close: '01:45' },
+    { day: 'Donderdag', schema: 'Thursday', open: '15:00', close: '01:45' },
+    { day: 'Vrijdag', schema: 'Friday', open: '15:00', close: '03:00' },
+    { day: 'Zaterdag', schema: 'Saturday', open: '15:00', close: '03:00' },
+    { day: 'Zondag', schema: 'Sunday', open: '15:00', close: '01:45' },
+  ] as { day: string; schema: string; open: string; close: string }[],
+  rating: { label: 'Excellent', count: 934 },
+  reviews: [
+    { author: 'Ivan Alexeev', text: 'Very tasty food, perfect service!' },
+    { author: 'Ian', text: 'Thomas was amazing!!' },
+    { author: 'can olcer', text: 'It was great and our server Thomas was the best, service was very fast and the food was also delicious and prices are affordable as well.' },
+  ],
   geo: null as { lat: number; lng: number } | null,
 };
 
