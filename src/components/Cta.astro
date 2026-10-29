@@ -2,7 +2,6 @@
 import { site } from '../data/site';
 ---
 <div class="btns">
-  {site.orderUrl ? <a class="btn" href={site.orderUrl}>Online bestellen</a> : <a class="btn" href="/menu-italiaans-restaurant-amstelveen/">Bekijk het menu</a>}
-  {site.reserveUrl && <a class="btn alt" href={site.reserveUrl} rel="noopener">Reserveren</a>}
-  {site.phone ? <a class="btn alt" href={'tel:' + site.phone}>Bel {site.phoneDisplay}</a> : <a class="btn alt" href="/contact-route/">Contact &amp; route</a>}
+  <a class="btn" href={site.reserveUrl!} rel="noopener">Reserveren</a>
+  <a class="btn" href={site.orderUrl!} rel="noopener">Bestel Online</a>
 </div>
