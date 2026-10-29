@@ -1,8 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
-import Cta from '../components/Cta.astro';
 import { menu } from '../data/menu';
 import { site } from '../data/site';
+import { dishes } from '../data/dishes';
 const menuLd = {
   '@context': 'https://schema.org', '@type': 'Menu', name: 'Menu Telepizza Amstelveen', url: site.url + '/menu-italiaans-restaurant-amstelveen/', inLanguage: 'nl',
   hasMenuSection: menu.map(s => ({ '@type': 'MenuSection', name: s.name,
@@ -10,22 +10,55 @@ const menuLd = {
 };
 const slug = (n: string) => n.toLowerCase().normalize('NFD').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 const eur = (p: number) => '€ ' + p.toFixed(2).replace('.', ',');
+const norm = (n: string) => n.toLowerCase().replace(/^pizza |^pasta /, '').replace(/[^a-z]/g, '');
+// Foto bij een gerecht als we die hebben (zelfde naam, met of zonder "Pizza"/"Pasta").
+const photos = new Map(Object.values(dishes).map(d => [norm(d.name), d.img]));
+const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Speciale Pizza’s': 'pizza-truffel', 'Pizza’s met vlees': 'pizza-pepperoni', 'Vegetarische Pizza’s': 'pizza-margherita', 'Pizza’s met vis': 'pizza-gamberoni', 'Kapsalon': 'kapsalon', 'Schotels': 'shoarma-schotel', 'Vleesgerechten': 'spare-ribs', 'Burgers': 'bacon-burger', 'IJs & dessert': 'tiramisu', 'Salades': 'caprese', 'Soepen': 'tomatensoep', 'Calzone’s': 'calzone' };
 ---
-<Base title="Menu | Telepizza Amstelveen – pizza, pasta, shoarma & ijs" description="Bekijk het menu van Telepizza Amstelveen: pizza, pasta, shoarma en ijs. Eet in het restaurant, haal af of laat bezorgen in Amstelveen." crumbs={[{ name: 'Menu', path: '/menu-italiaans-restaurant-amstelveen/' }]} schema={[menuLd]}>
+<Base title="Menu Telepizza Amstelveen | Pizza, pasta, steak, kapsalon & prijzen" description="Het volledige menu van Telepizza Amstelveen met prijzen: ruim 35 pizza’s, pasta, steaks, kapsalon, shoarma, burgers en desserts. Halal vlees. Bestel online of reserveer." crumbs={[{ name: 'Menu', path: '/menu-italiaans-restaurant-amstelveen/' }]} schema={[menuLd]}>
+  <style>
+    .mh{padding:20px 0 40px}
+    .chips{position:sticky;top:72px;z-index:20;background:rgba(18,12,10,.95);backdrop-filter:blur(8px);border-block:1px solid var(--line)}
+    .chips ul{display:flex;gap:8px;overflow-x:auto;list-style:none;margin:0;padding:12px 0;scrollbar-width:none}
+    .chips a{display:inline-flex;align-items:center;min-height:40px;white-space:nowrap;padding:0 16px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:.9rem;font-weight:600}
+    .chips a:hover{background:var(--red);border-color:var(--red)}
+    .msec{padding:56px 0 8px;scroll-margin-top:140px}
+    .msec header{display:grid;gap:20px;align-items:end;margin-bottom:22px}
+    @media(min-width:800px){.msec header.ph{grid-template-columns:1fr 320px}}
+    .msec header img{width:100%;aspect-ratio:7/5;object-fit:cover;border-radius:var(--r);background:#f4ede3}
+    .msec h2{margin:0}
+    .items{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr))}
+    .it{display:flex;gap:14px;align-items:center;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:14px}
+    .it img{width:84px;height:64px;object-fit:cover;border-radius:10px;flex:none;background:#f4ede3}
+    .it div{flex:1;min-width:0}
+    .it h3{font-size:1.08rem;margin:0}
+    .it p{margin:2px 0 0;font-size:.88rem;line-height:1.45}
+    .it .price{white-space:nowrap;font-size:1.1rem}
+  </style>
+  <div class="wrap mh">
+    <p class="eyebrow">Menukaart met prijzen</p>
+    <h1>Ons menu</h1>
+    <p class="lead">Al onze gerechten worden met verse producten en veel zorg voor je bereid. Van pizza en pasta tot steaks van de grill, kapsalon en huisgemaakte tiramisu. Al ons vlees is halal.</p>
+    <div class="btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">Bestel online</a><a class="btn" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a></div>
+  </div>
+  <nav class="chips" aria-label="Menucategorieën"><div class="wrap"><ul>{menu.map(s => <li><a href={'#' + slug(s.name)}>{s.name}</a></li>)}</ul></div></nav>
   <div class="wrap">
-    <h1>Menu Telepizza Amstelveen</h1>
-    <p class="lead">Al onze gerechten worden met verse producten en veel zorg voor je bereid. Hieronder vind je ons hele menu met prijzen.</p>
-    <Cta />
-    <nav aria-label="Menucategorieën" style="margin-top:20px"><p>{menu.map((s, i) => <>{i > 0 && ' · '}<a href={'#' + slug(s.name)}>{s.name}</a></>)}</p></nav>
     {menu.map(s => (
-      <section>
-        <h2 id={slug(s.name)}>{s.name}</h2>
-        {s.note && <p><em>{s.note}</em></p>}
-        {s.items.length > 0 && (
-          <table><tbody>{s.items.map(i => <tr><td><strong>{i.name}</strong>{i.description && <><br /><span>{i.description}</span></>}</td><td style="white-space:nowrap;vertical-align:top">{i.priceText ?? (i.price != null ? eur(i.price) : '')}</td></tr>)}</tbody></table>
-        )}
+      <section class="msec" id={slug(s.name)}>
+        <header class:list={{ ph: !!sectionPhoto[s.name] }}>
+          <div><h2>{s.name}</h2>{s.note && <p>{s.note}</p>}</div>
+          {sectionPhoto[s.name] && <img src={`/images/menu/${sectionPhoto[s.name]}.webp`} alt={`${s.name} bij Telepizza Amstelveen`} width="630" height="450" loading="lazy" decoding="async" />}
+        </header>
+        <div class="items">
+          {s.items.map(i => { const img = photos.get(norm(i.name)); return (
+            <article class="it">
+              {img && <img src={`/images/menu/${img}.webp`} alt="" width="84" height="64" loading="lazy" decoding="async" />}
+              <div><h3>{i.name}</h3>{i.description && <p>{i.description}</p>}</div>
+              <span class="price">{i.priceText ?? (i.price != null ? eur(i.price) : '')}</span>
+            </article>); })}
+        </div>
       </section>
     ))}
-    <p>Liever thuis eten? <a href={site.orderUrl!}>Bestel online</a> of bel <a href={'tel:' + site.phone}>{site.phoneDisplay}</a>.</p>
+    <p style="margin-top:48px">Liever thuis eten? <a href={site.orderUrl!}>Bestel online</a> of bel <a href={'tel:' + site.phone}>{site.phoneDisplay}</a>. Prijzen kunnen afwijken in de online bestelwinkel.</p>
   </div>
 </Base>

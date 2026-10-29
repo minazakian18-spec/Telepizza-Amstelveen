@@ -26,12 +26,20 @@ export const site = {
     { day: 'Zaterdag', schema: 'Saturday', open: '15:00', close: '03:00' },
     { day: 'Zondag', schema: 'Sunday', open: '15:00', close: '01:45' },
   ] as { day: string; schema: string; open: string; close: string }[],
-  rating: { label: 'Excellent', count: 934 },
+  // Google-score zoals op de huidige site (Trustindex-widget). Werk bij als het aantal stijgt.
+  rating: { label: 'Excellent', value: 4.7, count: 934 },
+  googleReviewsUrl: 'https://www.google.com/maps/search/?api=1&query=Telepizza+Amsterdamseweg+452+Amstelveen',
+  // Echte Google-reviews, overgenomen van de huidige site.
   reviews: [
-    { author: 'Ivan Alexeev', text: 'Very tasty food, perfect service!' },
-    { author: 'Ian', text: 'Thomas was amazing!!' },
-    { author: 'can olcer', text: 'It was great and our server Thomas was the best, service was very fast and the food was also delicious and prices are affordable as well.' },
-  ],
+    { author: 'can olcer', lang: 'en', text: 'It was great and our server Thomas was the best, service was very fast and the food was also delicious and prices are affordable as well.' },
+    { author: 'Paul Hupe', lang: 'de', text: 'Gute Pizza und guter Service. Der Laden ist ein wenig klein, ist aber mekern auf höchstem Neveau. In großen und ganzen ein super Erlebniss. Kann ich nur weiter empfehlen.' },
+    { author: 'Ivan Alexeev', lang: 'en', text: 'Very tasty food, perfect service!' },
+    { author: 'Batman', lang: 'en', text: 'All went great, ate pizza and loved it, Thomas the waiter was very kind and easy to talk to.' },
+    { author: 'Maik Hupe', lang: 'de', text: 'Super gute Pizza und hervorragender Service. Wir sind durch the Fork auf die Pizzeria gestoßen und wurden wie immer nicht enttäuscht.' },
+    { author: 'Noah Silva', lang: 'en', text: 'Lovely place!' },
+    { author: 'Ian', lang: 'en', text: 'Thomas was amazing!!' },
+  ] as { author: string; lang: string; text: string }[],
+  halal: true,
   geo: null as { lat: number; lng: number } | null,
 };
 

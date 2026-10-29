@@ -1,0 +1,27 @@
+---
+import Landing from '../layouts/Landing.astro';
+import { pick } from '../data/dishes';
+---
+<Landing
+  path="/halal-restaurant-amstelveen/" crumb="Halal restaurant"
+  title="Halal restaurant Amstelveen | Halal pizza, shoarma & steak – Telepizza"
+  description="Halal eten in Amstelveen? Bij Telepizza is al het vlees halal: pizza, kapsalon, shoarma, burgers en steaks. Eet in het restaurant, haal af of laat bezorgen."
+  eyebrow="Al ons vlees is halal" h1="Halal restaurant <i>in Amstelveen</i>"
+  lead="Bij Telepizza Amstelveen is al het vlees halal. Geniet zorgeloos van pizza met vlees, kapsalon, shoarma, burgers en steaks van de grill."
+  img="/images/menu/pizza-shoarma.webp" imgAlt="Halal pizza shoarma van Telepizza Amstelveen"
+  dishesTitle="Halal favorieten"
+  dishes={pick('shoarmaPizza', 'kapsalon', 'bbq', 'kipSchotel', 'pepperoni', 'baconBurger')}
+  faq={[
+    ['Is al het vlees bij Telepizza halal?', 'Ja, al ons vlees is halal.'],
+    ['Is de pizza pepperoni halal?', 'Ja, ook de pepperoni en salami op onze pizza’s zijn halal.'],
+    ['Kan ik halal eten laten bezorgen in Amstelveen?', 'Ja, bestel online en we bezorgen in Amstelveen. Afhalen kan ook.'],
+  ]}>
+  <h2>Halal pizza in Amstelveen</h2>
+  <p>Een pizza met vlees die ook echt halal is, is niet overal te vinden. Bij Telepizza wel: van pizza salami, pepperoni en BBQ chicken tot pizza shoarma, kip shoarma en döner. Al onze pizza’s worden vers bereid met handgerekt deeg en huisgemaakte tomatensaus.</p>
+  <h2>Halal shoarma, kapsalon en burgers</h2>
+  <p>Ook onze <a href="/kapsalon-amstelveen/">kapsalon</a>, shoarmaschotels, burgers en snacks zijn met halal vlees. Combineer ze met friet en onze huisgemaakte sauzen.</p>
+  <h2>Halal steaks van de grill</h2>
+  <p>Voor een uitgebreid diner kies je een <a href="/steak-grill-amstelveen/">steak van de grill</a>: biefstuk, ribeye, entrecote of ossenhaas, geserveerd met salade en frites. Ideaal voor een etentje met familie of vrienden.</p>
+  <h2>Voor iedereen een plek aan tafel</h2>
+  <p>Telepizza is al sinds 1984 een vertrouwde plek in Amstelveen voor gezinnen, vrienden en collega’s. Kom gezellig eten in ons <a href="/restaurant-amstelveen/">restaurant</a>, of bestel voor thuis.</p>
+</Landing>

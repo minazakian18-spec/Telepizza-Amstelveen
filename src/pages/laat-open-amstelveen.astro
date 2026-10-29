@@ -1,0 +1,24 @@
+---
+import Landing from '../layouts/Landing.astro';
+import { pick } from '../data/dishes';
+---
+<Landing
+  path="/laat-open-amstelveen/" crumb="Laat open"
+  title="Laat open eten Amstelveen | Pizza tot 03:00 – Telepizza"
+  description="Nachtelijke trek in Amstelveen? Telepizza is open tot 01:45 en op vrijdag en zaterdag tot 03:00. Pizza, kapsalon en shoarma afhalen of laten bezorgen."
+  eyebrow="Open tot 03:00" h1="Laat open <i>in Amstelveen</i>"
+  lead="Trek na het werk, na het sporten of na het stappen? Telepizza is open tot 01:45, en op vrijdag en zaterdag zelfs tot 03:00."
+  img="/images/cocktail-neon.webp" imgAlt="Neon 'Hotter than your ex' in Telepizza Amstelveen 's avonds"
+  dishesTitle="Late-night favorieten"
+  dishes={pick('kapsalon', 'pepperoni', 'shoarmaPizza', 'burgerMenu')}
+  faq={[
+    ['Tot hoe laat is Telepizza open?', 'Dinsdag t/m donderdag en zondag van 15:00 tot 01:45, vrijdag en zaterdag van 15:00 tot 03:00. Maandag gesloten.'],
+    ['Bezorgen jullie ’s nachts?', 'Bestel online via onze bestelwinkel; daar zie je direct of bezorgen op dat moment mogelijk is. Afhalen kan altijd tijdens openingstijden.'],
+  ]}>
+  <h2>Pizza na middernacht</h2>
+  <p>De meeste keukens in Amstelveen zijn rond tien uur dicht. Bij Telepizza begint het dan pas gezellig te worden. Tot 01:45, en in het weekend tot 03:00, maken we vers pizza, pasta, kapsalon en shoarma.</p>
+  <h2>Openingstijden</h2>
+  <p>Dinsdag, woensdag, donderdag en zondag: 15:00 tot 01:45. Vrijdag en zaterdag: 15:00 tot 03:00. Op maandag zijn we gesloten.</p>
+  <h2>Afhalen of bezorgen</h2>
+  <p>Bestel online en haal je eten af aan de Amsterdamseweg 452, of kijk of we kunnen <a href="/bezorgen-amstelveen/">bezorgen in jouw wijk</a>. Halal en vers, ook laat op de avond.</p>
+</Landing>

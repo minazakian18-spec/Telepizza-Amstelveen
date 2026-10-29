@@ -1,17 +1,28 @@
 ---
-import Base from '../layouts/Base.astro';
-import Cta from '../components/Cta.astro';
+import Landing from '../layouts/Landing.astro';
+import { pick } from '../data/dishes';
 ---
-<Base title="Pizza Amstelveen | Vers bereide pizza bestellen – Telepizza" description="Zin in pizza in Amstelveen? Bestel een vers bereide pizza bij Telepizza aan de Amsterdamseweg. Afhalen, bezorgen of in het restaurant eten." crumbs={[{ name: 'Pizza', path: '/pizza-amstelveen/' }]}>
-<div class="wrap">
-<h1>Pizza in Amstelveen</h1>
-<p class="lead">Zin in pizza? Bij Telepizza Amstelveen maken we je pizza vers op het moment dat je bestelt.</p>
-<h2>Onze pizza&apos;s</h2>
-<p>Van een eenvoudige margherita tot een rijk belegde pizza met vlees of groenten: er is voor ieder wat wils. Bekijk alle <a href="/pizza-soorten/">pizzasoorten</a> of ga direct naar het <a href="/menu-italiaans-restaurant-amstelveen/">menu met prijzen</a>.</p>
-<h2>Aanrader: Klassieke Pepperoni Pizza</h2>
-<p>Onze specialiteit voor € 12,95.</p>
-<h2>Bestellen</h2>
-<p>Haal je pizza af aan de Amsterdamseweg 452, of laat hem <a href="/bezorgen-amstelveen/">bezorgen in Amstelveen</a>.</p>
-<Cta />
-</div>
-</Base>
+<Landing
+  path="/pizza-amstelveen/" crumb="Pizza"
+  title="Pizza Amstelveen | Verse pizza bestellen, afhalen & bezorgen – Telepizza"
+  description="De lekkerste pizza in Amstelveen? Ruim 35 pizza’s met handgerekt deeg, vanaf € 9,50. Halal vlees, open tot 03:00. Bestel online, haal af of eet in ons restaurant."
+  eyebrow="Sinds 1984 · vers uit de oven" h1="Pizza <i>in Amstelveen</i>"
+  lead="Handgerekt deeg, huisgemaakte tomatensaus en royale toppings. Van een klassieke margherita voor € 9,50 tot onze truffelpizza met Parmaham: bij Telepizza bak je pizza al sinds 1984."
+  img="/images/menu/pizza-truffel.webp" imgAlt="Pizza truffel prosciutto van Telepizza Amstelveen"
+  dishesTitle="Onze populairste pizza’s"
+  dishes={pick('telePizza', 'truffel', 'pepperoni', 'margherita', 'chef', 'carpaccioPizza', 'popeye', 'bbq', 'quattro', 'gamberoniPizza', 'shoarmaPizza', 'calzone')}
+  faq={[
+    ['Wat kost een pizza bij Telepizza?', 'Een pizza margherita kost € 9,50. De meeste pizza’s kosten tussen € 11,95 en € 14,45.'],
+    ['Hebben jullie vegetarische pizza’s?', 'Ja, onder andere margherita, funghi, quattro formaggi, parmigiana, vegetariana en de popeye speciale met geitenkaas.'],
+    ['Kan ik mijn eigen pizza samenstellen?', 'Ja, kies extra toppings: groente € 1,75, kaas € 2,00, vlees € 2,50 en vis € 2,75 per topping.'],
+    ['Is het vlees op de pizza halal?', 'Ja, al ons vlees is halal.'],
+  ]}>
+  <h2>Verse pizza, elke dag opnieuw</h2>
+  <p>Bij Telepizza Amstelveen maken we elke pizza op het moment dat je bestelt. Het deeg wordt met de hand uitgerekt, de tomatensaus is huisgemaakt en de toppings zijn vers. Daardoor krijg je een pizza met een luchtige, knapperige rand en een volle smaak.</p>
+  <h2>Ruim 35 pizza’s om uit te kiezen</h2>
+  <p>Ons pizzamenu heeft voor iedereen iets. Klassiekers zoals margherita, salami, pepperoni, Hawaii, quattro stagioni en capricciosa. Vegetarische pizza’s zoals funghi, quattro formaggi en parmigiana. Pizza’s met vis zoals tonno, salmone en frutti di mare. En onze speciale pizza’s: de Tele Pizza, de specialiteit van de chef met Parmaham en rucola, pizza truffel prosciutto, pizza carpaccio en de popeye speciale met geitenkaas en honing. Bekijk ze allemaal bij <a href="/pizza-soorten/">pizzasoorten</a>.</p>
+  <h2>Halal pizza met vlees</h2>
+  <p>Al het vlees op onze pizza’s is halal, van salami en pepperoni tot shoarma, kipshoarma en döner. Lees meer over <a href="/halal-restaurant-amstelveen/">halal eten bij Telepizza</a>.</p>
+  <h2>Pizza bestellen in Amstelveen</h2>
+  <p>Je kunt bij ons in het restaurant eten, je pizza afhalen aan de Amsterdamseweg 452 of hem laten <a href="/bezorgen-amstelveen/">bezorgen in Amstelveen</a>. We zijn open tot 01:45 en op vrijdag en zaterdag tot 03:00, dus ook voor een late pizza ben je bij ons aan het juiste adres.</p>
+</Landing>

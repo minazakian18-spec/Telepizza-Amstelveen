@@ -1,0 +1,27 @@
+---
+import Landing from '../layouts/Landing.astro';
+import { pick } from '../data/dishes';
+---
+<Landing
+  path="/steak-grill-amstelveen/" crumb="Steaks & grill"
+  title="Steak Amstelveen | Biefstuk, ribeye & spare ribs – Telepizza"
+  description="Steak eten in Amstelveen? Biefstuk, entrecote, ribeye, ossenhaas en spare ribs van de grill, met salade en frites. Halal vlees. Reserveer bij Telepizza."
+  eyebrow="Van de grill" h1="Steaks & grill <i>in Amstelveen</i>"
+  lead="Niet alleen pizza: bij Telepizza bestel je ook sappige biefstuk, ribeye, ossenhaas en spare ribs, met champignonroomsaus of peperroomsaus, gemengde salade en frites."
+  img="/images/menu/spare-ribs.webp" imgAlt="Spare ribs van de grill bij Telepizza Amstelveen"
+  dishesTitle="Populair van de grill"
+  dishes={pick('ribs', 'shoarmaSchotel', 'baconBurger', 'burgerMenu')}
+  faq={[
+    ['Welke steaks hebben jullie?', 'Bistecca ai funghi en al pepe verde (€ 24,95), entrecote (€ 27,95), ribeye (€ 24,95), ossenhaas dello chef (€ 31,95), scaloppina (€ 24,95) en varkenshaas (€ 23,95).'],
+    ['Wat zit erbij?', 'Alle vleesgerechten worden geserveerd met gemengde salade en frites of aardappelschijfjes, en champignonroomsaus of peperroomsaus.'],
+    ['Is het vlees halal?', 'Ja, al ons vlees is halal.'],
+  ]}>
+  <h2>Steak eten in Amstelveen</h2>
+  <p>Zin in een goed stuk vlees? Onze grillgerechten zijn een verrassing voor wie Telepizza alleen van pizza kent. Kies een malse biefstuk met champignonroomsaus (bistecca ai funghi) of peperroomsaus (bistecca al pepe verde), een stevige entrecote of ribeye, of ga voor de ossenhaas dello chef: onze mooiste haasbiefstuk.</p>
+  <h2>Spare ribs, schnitzel en varkenshaas</h2>
+  <p>De spare ribs zijn een publieksfavoriet: overgoten met een huisgemaakte marinade, sweet of hot. Daarnaast serveren we scaloppina (schnitzel) en varkenshaas in champignon- of peperroomsaus. Alles komt met gemengde salade en frites of aardappelschijfjes.</p>
+  <h2>Vis van de grill</h2>
+  <p>Liever vis? Bestel scampi’s van de grill, gegrilde zalm of calamari fritti. Bekijk alle prijzen op ons <a href="/menu-italiaans-restaurant-amstelveen/">menu</a>.</p>
+  <h2>Reserveren voor een diner</h2>
+  <p>Een steak smaakt het best in ons sfeervolle <a href="/restaurant-amstelveen/">restaurant in Amstelveen</a>, met een goed glas wijn erbij. Reserveer online via TheFork of bel ons. Natuurlijk kun je grillgerechten ook afhalen.</p>
+</Landing>

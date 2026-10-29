@@ -1,13 +1,27 @@
 ---
-import Base from '../layouts/Base.astro';
-import Cta from '../components/Cta.astro';
+import Landing from '../layouts/Landing.astro';
+import { pick } from '../data/dishes';
 ---
-<Base title="Pasta Amstelveen | Italiaanse pasta bestellen – Telepizza" description="Italiaanse pasta in Amstelveen bij Telepizza. Warm bereid, om af te halen, te laten bezorgen of in het restaurant te eten." crumbs={[{ name: 'Pasta', path: '/pasta-amstelveen/' }]}>
-<div class="wrap">
-<h1>Pasta in Amstelveen</h1>
-<p class="lead">Niet alleen pizza: bij Telepizza Amstelveen kun je ook terecht voor warme Italiaanse pasta.</p>
-<p>Pasta is een vullende maaltijd die je makkelijk combineert met een pizza om te delen. Bekijk alle pastagerechten en prijzen op het <a href="/menu-italiaans-restaurant-amstelveen/">menu</a>.</p>
-<h2>Aanrader: Romige Pasta Carbonara</h2><p>Onze romige carbonara (€ 12,95) is een van onze specialiteiten.</p>
-<Cta />
-</div>
-</Base>
+<Landing
+  path="/pasta-amstelveen/" crumb="Pasta"
+  title="Pasta Amstelveen | Carbonara, truffel & lasagna – Telepizza"
+  description="Pasta eten in Amstelveen: carbonara, bolognese, truffelpasta, frutti di mare en lasagna. Keuze uit spaghetti of penne, vanaf € 11,45. Bestel of reserveer bij Telepizza."
+  eyebrow="Italiaanse klassiekers" h1="Pasta <i>in Amstelveen</i>"
+  lead="Romige carbonara, huisgemaakte bolognese, truffelpasta en pasta met verse zeevruchten. Kies spaghetti of penne en geniet van echt Italiaans comfortfood."
+  img="/images/menu/pasta-carbonara.webp" imgAlt="Pasta carbonara van Telepizza Amstelveen"
+  dishesTitle="Onze populairste pasta’s"
+  dishes={pick('carbonara', 'tartufo', 'bolognese', 'salmone', 'gamberoniPasta', 'pollo', 'lasagna')}
+  faq={[
+    ['Welke pasta’s hebben jullie?', 'Onder andere napolitana, pesto, arrabbiata, puttanesca, bolognese, carbonara, quattro formaggi, pollo, tartufo zucchine, salmone, gamberoni en frutti di mare. Uit de oven: lasagna, cannelloni, ravioli en tortellini.'],
+    ['Kan ik kiezen tussen spaghetti en penne?', 'Ja, bij alle pasta’s kies je zelf spaghetti of penne.'],
+    ['Wat kost een pasta?', 'Onze pasta’s kosten van € 11,45 tot € 14,45.'],
+  ]}>
+  <h2>Echte Italiaanse pasta</h2>
+  <p>Onze pasta’s worden vers bereid met huisgemaakte sauzen. De bolognese maken we met rundergehakt en tomaat, de carbonara met spek, ei, room en Parmezaanse kaas, en onze tartufo zucchine combineert truffel met champignons en courgette.</p>
+  <h2>Pasta met vis en zeevruchten</h2>
+  <p>Visliefhebbers kiezen pasta salmone met zalm en mosterd-roomsaus, pasta gamberoni met garnalen in rosésaus, of pasta frutti di mare met zeevruchten en knoflook.</p>
+  <h2>Uit de oven</h2>
+  <p>Voor wie houdt van gegratineerd: lasagna al forno, cannelloni met spinazie en ricotta, ravioli en tortellini bolognese. Perfect voor een koude avond.</p>
+  <h2>Pasta bestellen of reserveren</h2>
+  <p>Eet je pasta in ons <a href="/restaurant-amstelveen/">restaurant in Amstelveen</a>, of bestel online voor afhalen en <a href="/bezorgen-amstelveen/">bezorgen</a>. Bekijk alle prijzen op het <a href="/menu-italiaans-restaurant-amstelveen/">menu</a>.</p>
+</Landing>

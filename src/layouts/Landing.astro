@@ -1,0 +1,54 @@
+---
+// Sjabloon voor SEO-landingspagina's: foto-hero, gerechten, uitgebreide tekst en FAQ.
+import Base from './Base.astro';
+import Dishes from '../components/Dishes.astro';
+import { site } from '../data/site';
+import type { Dish } from '../data/dishes';
+interface Props {
+  title: string; description: string; path: string; crumb: string;
+  eyebrow: string; h1: string; lead: string; img: string; imgAlt: string;
+  dishes: Dish[]; dishesTitle: string; faq?: [string, string][];
+}
+const p = Astro.props;
+const faq = p.faq ?? [];
+const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }] : [];
+---
+<Base title={p.title} description={p.description} crumbs={[{ name: p.crumb, path: p.path }]} schema={faqLd} image={p.img}>
+  <style>
+    .lh{display:grid;gap:36px;align-items:center;padding:24px 0 72px}
+    @media(min-width:900px){.lh{grid-template-columns:1.1fr 1fr}}
+    .lh img{width:100%;aspect-ratio:7/5;object-fit:cover;border-radius:24px;box-shadow:0 30px 60px rgba(0,0,0,.45);background:#f4ede3}
+    .lh h1 i{color:var(--red2)}
+    .body{display:grid;gap:48px}
+    @media(min-width:960px){.body{grid-template-columns:1.6fr 1fr}}
+    .aside{align-self:start;position:sticky;top:100px}
+    .aside ul{padding-left:18px;color:var(--muted)}
+  </style>
+  <div class="wrap lh">
+    <div>
+      <p class="eyebrow">{p.eyebrow}</p>
+      <h1 set:html={p.h1} />
+      <p class="lead">{p.lead}</p>
+      <div class="btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">Bestel online</a><a class="btn" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a></div>
+    </div>
+    <img src={p.img} alt={p.imgAlt} width="630" height="450" fetchpriority="high" />
+  </div>
+  <section class="sec alt"><div class="wrap">
+    <h2 style="margin-top:0">{p.dishesTitle}</h2>
+    <Dishes items={p.dishes} />
+    <div class="btns"><a class="btn" href="/menu-italiaans-restaurant-amstelveen/">Bekijk het volledige menu</a></div>
+  </div></section>
+  <section class="sec"><div class="wrap body">
+    <div class="prose"><slot /></div>
+    <aside class="card aside">
+      <h3>Telepizza Amstelveen</h3>
+      <p>{site.street}<br />{site.postalCode} {site.city}<br /><a href={'tel:' + site.phone}>{site.phoneDisplay}</a></p>
+      <ul>{site.hours.map(h => <li>{h.day}: {h.open}–{h.close}</li>)}<li>Maandag: gesloten</li></ul>
+      <a class="btn primary sm" href={site.orderUrl!} rel="noopener">Bestel online</a>
+    </aside>
+  </div></section>
+  {faq.length > 0 && <section class="sec alt"><div class="wrap" style="max-width:900px">
+    <h2 style="margin-top:0">Veelgestelde vragen</h2>
+    {faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
+  </div></section>}
+</Base>

@@ -512,6 +512,32 @@ export const menu: Section[] = [
     "note": "Met gemengde salade en frites of aardappelschijfjes"
   },
   {
+    "name": "Kapsalon",
+    "items": [
+      {
+        "name": "Kapsalon Shoarma",
+        "price": 11.95,
+        "description": "Friet, shoarma, gesmolten kaas, salade en saus"
+      },
+      {
+        "name": "Kapsalon Kip Shoarma",
+        "price": 11.95,
+        "description": "Friet, kipshoarma, gesmolten kaas, salade en saus"
+      },
+      {
+        "name": "Kapsalon Döner",
+        "price": 11.95,
+        "description": "Friet, döner, gesmolten kaas, salade en saus"
+      },
+      {
+        "name": "Schotel Falafel",
+        "price": 15.95,
+        "description": "Vegetarisch: friet, falafel, salade en 2 sauzen"
+      }
+    ],
+    "note": "Prijzen zoals in onze bestelwinkel. Al ons vlees is halal."
+  },
+  {
     "name": "Burgers",
     "items": [
       {
