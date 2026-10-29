@@ -1,0 +1,7 @@
+---
+import { site } from '../data/site';
+---
+<div class="btns">
+  {site.orderUrl ? <a class="btn" href={site.orderUrl}>Online bestellen</a> : <a class="btn" href="/menu-italiaans-restaurant-amstelveen/">Bekijk het menu</a>}
+  {site.phone ? <a class="btn alt" href={'tel:' + site.phone}>Bel {site.phoneDisplay}</a> : <a class="btn alt" href="/contact-route/">Contact &amp; route</a>}
+</div>

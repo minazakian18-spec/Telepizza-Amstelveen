@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { fullAddress, wijken } from '../data/site';
+---
+<Base title="Telepizza Amstelveen | Pizza bezorgen & afhalen in Amstelveen" description={`Verse pizza, pasta, shoarma en ijs in Amstelveen. Eet bij ons, haal af of laat bezorgen. Telepizza, ${fullAddress}.`}>
+  <section class="hero"><div class="wrap">
+    <h1>Pizza bezorgen en afhalen in Amstelveen</h1>
+    <p class="lead">Bij Telepizza Amstelveen eet je verse pizza, pasta, shoarma en ijs. Kom gezellig bij ons eten, haal je bestelling af aan de {fullAddress.split(',')[0]} of laat het thuis bezorgen.</p>
+    <Cta />
+  </div></section>
+  <div class="wrap">
+    <h2>Wat kun je bij ons eten?</h2>
+    <div class="grid">
+      <div class="card"><h3><a href="/pizza-amstelveen/">Pizza</a></h3><p>Klassiekers zoals margherita en salami, en royaal belegde specials. Bekijk ook onze <a href="/pizza-soorten/">pizzasoorten</a>.</p></div>
+      <div class="card"><h3><a href="/pasta-amstelveen/">Pasta</a></h3><p>Warme Italiaanse pastagerechten, lekker als maaltijd voor jezelf of om te delen.</p></div>
+      <div class="card"><h3><a href="/menu-italiaans-restaurant-amstelveen/">Shoarma &amp; meer</a></h3><p>Naast Italiaans eten hebben we ook shoarma en ijs als toetje.</p></div>
+    </div>
+    <h2>Drie manieren om te genieten</h2>
+    <div class="grid">
+      <div class="card"><h3><a href="/restaurant-amstelveen/">Eten in het restaurant</a></h3><p>Schuif aan in ons restaurant voor een ontspannen maaltijd.</p></div>
+      <div class="card"><h3><a href="/contact-route/">Afhalen</a></h3><p>Bestel vooruit en haal je eten warm op aan de Amsterdamseweg.</p></div>
+      <div class="card"><h3><a href="/bezorgen-amstelveen/">Bezorgen</a></h3><p>Wij bezorgen in Amstelveen. Kijk welke wijken we bedienen.</p></div>
+    </div>
+    <h2>Bezorging in jouw wijk</h2>
+    <p>{wijken.map((w, i) => <>{i > 0 && ' · '}<a href={`/bezorgen-amstelveen/${w.slug}/`}>{w.name}</a></>)}</p>
+    <h2>Catering voor feest of kantoor</h2>
+    <p>Een verjaardag, borrel of lunch op kantoor? Wij verzorgen <a href="/catering-italiaans-restaurant-amstelveen/">catering</a> met pizza's en pasta. Voor bedrijven hebben we een aparte pagina: <a href="/catering-bedrijven-amstelveen/">catering voor bedrijven</a>.</p>
+    <h2>Wat zeggen onze gasten?</h2>
+    <p class="todo">TODO eigenaar: plak hier 3 echte Google-reviews (naam, sterren, tekst). Er zijn bewust geen reviews verzonnen.</p>
+    <p>Vragen? Bekijk de <a href="/veelgestelde-vragen/">veelgestelde vragen</a>.</p>
+  </div>
+</Base>

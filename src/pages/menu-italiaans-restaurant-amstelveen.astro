@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { menu } from '../data/menu';
+import { site } from '../data/site';
+const menuLd = {
+  '@context': 'https://schema.org', '@type': 'Menu', name: 'Menu Telepizza Amstelveen', url: site.url + '/menu-italiaans-restaurant-amstelveen/', inLanguage: 'nl',
+  hasMenuSection: menu.map(s => ({ '@type': 'MenuSection', name: s.name,
+    hasMenuItem: s.items.map(i => ({ '@type': 'MenuItem', name: i.name, ...(i.description && { description: i.description }), ...(i.price != null && { offers: { '@type': 'Offer', price: i.price.toFixed(2), priceCurrency: 'EUR' } }) })) })),
+};
+const eur = (p: number) => '€ ' + p.toFixed(2).replace('.', ',');
+---
+<Base title="Menu | Telepizza Amstelveen – pizza, pasta, shoarma & ijs" description="Bekijk het menu van Telepizza Amstelveen: pizza, pasta, shoarma en ijs. Eet in het restaurant, haal af of laat bezorgen in Amstelveen." crumbs={[{ name: 'Menu', path: '/menu-italiaans-restaurant-amstelveen/' }]} schema={[menuLd]}>
+  <div class="wrap">
+    <h1>Menu Telepizza Amstelveen</h1>
+    <p class="lead">Pizza, pasta, shoarma en ijs: hier vind je ons hele menu.</p>
+    <Cta />
+    {menu.map(s => (
+      <section>
+        <h2>{s.name}</h2>
+        {s.items.length === 0 ? <p class="todo">TODO eigenaar: gerechten en prijzen voor "{s.name}" invullen in src/data/menu.ts.</p> : (
+          <table><tbody>{s.items.map(i => <tr><td><strong>{i.name}</strong>{i.description && <><br /><span>{i.description}</span></>}</td><td>{i.price != null ? eur(i.price) : 'prijs volgt'}</td></tr>)}</tbody></table>
+        )}
+      </section>
+    ))}
+  </div>
+</Base>

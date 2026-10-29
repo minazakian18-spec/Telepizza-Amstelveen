@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import { wijken } from '../../data/site';
+export function getStaticPaths() { return wijken.map(w => ({ params: { wijk: w.slug }, props: { w } })); }
+const { w } = Astro.props;
+const others = wijken.filter(o => o.slug !== w.slug);
+---
+<Base title={`Pizza bezorgen ${w.name} Amstelveen | Telepizza`} description={`Pizza, pasta of shoarma laten bezorgen of afhalen in ${w.name}, Amstelveen? Telepizza aan de Amsterdamseweg maakt het vers voor je.`} crumbs={[{ name: 'Bezorgen', path: '/bezorgen-amstelveen/' }, { name: w.name, path: `/bezorgen-amstelveen/${w.slug}/` }]}>
+<div class="wrap">
+<h1>Pizza bezorgen in {w.name}</h1>
+<p class="lead">{w.text}</p>
+<h2>Wat kun je bestellen?</h2>
+<p>Pizza, pasta, shoarma en ijs. Bekijk het volledige <a href="/menu-italiaans-restaurant-amstelveen/">menu</a> of lees meer over onze <a href="/pizza-soorten/">pizzasoorten</a>.</p>
+<h2>Bezorgen of afhalen</h2>
+<p>Laat je bestelling bezorgen in {w.name}, of haal hem zelf op bij Telepizza, Amsterdamseweg 452.</p>
+<Cta />
+<h2>Andere wijken</h2>
+<p>{others.map((o, i) => <>{i > 0 && ' · '}<a href={`/bezorgen-amstelveen/${o.slug}/`}>{o.name}</a></>)}</p>
+</div>
+</Base>
