@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+const faq = [
+  ['Wat zijn de openingstijden?', 'Maandag zijn we gesloten. Dinsdag t/m donderdag en zondag van 15:00 tot 01:45, vrijdag en zaterdag van 15:00 tot 03:00.'],
+  ['Hoe kan ik online bestellen?', 'Via telepizza.sitedish.shop, of bel 020-6435287.'],
+  ['Kan ik reserveren?', 'Ja, online via TheFork (link op de website) of telefonisch via 020-6435287.'],
+  ['Hoe lang bestaat Telepizza Amstelveen al?', 'Sinds 1984.'],
+  ['Waar zit Telepizza Amstelveen?', 'Op de Amsterdamseweg 452, 1181 BW Amstelveen.'],
+  ['Kan ik bij jullie eten, afhalen en laten bezorgen?', 'Ja. Je kunt in het restaurant eten, je bestelling afhalen of laten bezorgen in Amstelveen.'],
+  ['Hebben jullie alleen pizza?', 'Nee, we hebben ook pasta, shoarma en ijs.'],
+  ['In welke wijken bezorgen jullie?', 'Onder andere in Westwijk, Bankras-Kostverloren, Elsrijk, Middenhoven, Groenelaan, Waardhuizen, Stadshart, Keizer Karelpark en Randwijck.'],
+  ['Doen jullie ook catering?', 'Ja, voor feesten, verjaardagen en bedrijven. Neem contact op voor de mogelijkheden.'],
+  ['Hebben jullie vegetarische pizza’s?', 'Ja, er zijn pizza’s zonder vlees, zoals de margherita.'],
+];
+const ld = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+---
+<Base title="Veelgestelde vragen | Telepizza Amstelveen" description="Antwoorden op vragen over Telepizza Amstelveen: adres, bezorgen, afhalen, catering, vegetarisch en meer." crumbs={[{ name: 'Veelgestelde vragen', path: '/veelgestelde-vragen/' }]} schema={[ld]}>
+<div class="wrap">
+<h1>Veelgestelde vragen</h1>
+{faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
+</div>
+</Base>

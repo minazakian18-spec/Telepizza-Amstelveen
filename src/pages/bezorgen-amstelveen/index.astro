@@ -1,0 +1,16 @@
+---
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import { wijken } from '../../data/site';
+---
+<Base title="Pizza bezorgen in Amstelveen | Alle wijken – Telepizza" description="Telepizza bezorgt pizza, pasta en shoarma in Amstelveen: Westwijk, Elsrijk, Middenhoven, Stadshart, Randwijck en meer. Of haal zelf af." crumbs={[{ name: 'Bezorgen', path: '/bezorgen-amstelveen/' }]}>
+<div class="wrap">
+<h1>Pizza bezorgen in Amstelveen</h1>
+<p class="lead">Wij bezorgen vers bereide pizza, pasta en shoarma in Amstelveen. Kies je wijk voor meer informatie.</p>
+<div class="grid">{wijken.map(w => <div class="card"><h2 style="font-size:1.2rem;margin:0"><a href={`/bezorgen-amstelveen/${w.slug}/`}>{w.name}</a></h2></div>)}</div>
+<h2>Liever afhalen?</h2>
+<p>Haal je bestelling op aan de Amsterdamseweg 452. Zo ben je verzekerd van een gloeiend hete pizza.</p>
+<p>Bezorgkosten en het minimale bestelbedrag zie je direct bij het <a href="https://telepizza.sitedish.shop/" rel="noopener">online bestellen</a>. We bezorgen dinsdag t/m zondag vanaf 15:00, vrijdag en zaterdag tot laat in de nacht.</p>
+<Cta />
+</div>
+</Base>
