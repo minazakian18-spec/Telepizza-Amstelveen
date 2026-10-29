@@ -8,22 +8,24 @@ const menuLd = {
   hasMenuSection: menu.map(s => ({ '@type': 'MenuSection', name: s.name,
     hasMenuItem: s.items.map(i => ({ '@type': 'MenuItem', name: i.name, ...(i.description && { description: i.description }), ...(i.price != null && { offers: { '@type': 'Offer', price: i.price.toFixed(2), priceCurrency: 'EUR' } }) })) })),
 };
+const slug = (n: string) => n.toLowerCase().normalize('NFD').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 const eur = (p: number) => '€ ' + p.toFixed(2).replace('.', ',');
 ---
 <Base title="Menu | Telepizza Amstelveen – pizza, pasta, shoarma & ijs" description="Bekijk het menu van Telepizza Amstelveen: pizza, pasta, shoarma en ijs. Eet in het restaurant, haal af of laat bezorgen in Amstelveen." crumbs={[{ name: 'Menu', path: '/menu-italiaans-restaurant-amstelveen/' }]} schema={[menuLd]}>
   <div class="wrap">
     <h1>Menu Telepizza Amstelveen</h1>
-    <p class="lead">Pizza, pasta, shoarma en ijs: hier vind je ons hele menu.</p>
+    <p class="lead">Al onze gerechten worden met verse producten en veel zorg voor je bereid. Hieronder vind je ons hele menu met prijzen.</p>
     <Cta />
+    <nav aria-label="Menucategorieën" style="margin-top:20px"><p>{menu.map((s, i) => <>{i > 0 && ' · '}<a href={'#' + slug(s.name)}>{s.name}</a></>)}</p></nav>
     {menu.map(s => (
       <section>
-        <h2>{s.name}</h2>
+        <h2 id={slug(s.name)}>{s.name}</h2>
+        {s.note && <p><em>{s.note}</em></p>}
         {s.items.length > 0 && (
-          <table><tbody>{s.items.map(i => <tr><td><strong>{i.name}</strong>{i.description && <><br /><span>{i.description}</span></>}</td><td>{i.price != null ? eur(i.price) : 'prijs volgt'}</td></tr>)}</tbody></table>
+          <table><tbody>{s.items.map(i => <tr><td><strong>{i.name}</strong>{i.description && <><br /><span>{i.description}</span></>}</td><td style="white-space:nowrap;vertical-align:top">{i.priceText ?? (i.price != null ? eur(i.price) : '')}</td></tr>)}</tbody></table>
         )}
       </section>
     ))}
-    <h2>Het volledige menu</h2>
-    <p>Naast onze specialiteiten hebben we nog veel meer pizza’s, pasta’s, shoarma en ijs. Je ziet het complete menu met actuele prijzen in onze <a href={site.orderUrl!}>online bestelpagina</a>, of bel ons op <a href={'tel:' + site.phone}>{site.phoneDisplay}</a>.</p>
+    <p>Liever thuis eten? <a href={site.orderUrl!}>Bestel online</a> of bel <a href={'tel:' + site.phone}>{site.phoneDisplay}</a>.</p>
   </div>
 </Base>
