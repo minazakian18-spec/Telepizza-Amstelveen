@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import { menu } from '../../data/menu';
+import { site } from '../../data/site';
+import { dishes } from '../../data/dishes';
+import { foreign, ui, pathFor, type Lang } from '../../i18n/ui';
+import { menuPage } from '../../i18n/pages';
+import { sectionNames, sectionNotes, descEn } from '../../i18n/menu';
+export const getStaticPaths = () => foreign.map(lang => ({ params: { lang } }));
+const lang = Astro.params.lang as Exclude<Lang, 'nl'>;
+const t = ui[lang];
+const c = menuPage[lang];
+const sec = (n: string) => sectionNames[n]?.[lang] ?? n;
+const note = (n: string) => sectionNotes[n]?.[lang] ?? descEn[n] ?? n;
+const desc = (d: string) => descEn[d] ?? d;
+const path = pathFor(lang, 'menu');
+const menuLd = {
+  '@context': 'https://schema.org', '@type': 'Menu', name: 'Menu Telepizza Amstelveen', url: new URL(path, site.url).href, inLanguage: lang,
+  hasMenuSection: menu.map(s => ({ '@type': 'MenuSection', name: sec(s.name),
+    hasMenuItem: s.items.map(i => ({ '@type': 'MenuItem', name: i.name, ...(i.description && { description: desc(i.description) }), ...(i.price != null && { offers: { '@type': 'Offer', price: i.price.toFixed(2), priceCurrency: 'EUR' } }) })) })),
+};
+const slug = (n: string) => n.toLowerCase().normalize('NFD').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+const eur = (p: number) => '€ ' + p.toFixed(2).replace('.', ',');
+const norm = (n: string) => n.toLowerCase().replace(/^pizza |^pasta /, '').replace(/[^a-z]/g, '');
+const photos = new Map(Object.values(dishes).map(d => [norm(d.name), d.img]));
+const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Speciale Pizza’s': 'pizza-truffel', 'Pizza’s met vlees': 'pizza-pepperoni', 'Vegetarische Pizza’s': 'pizza-margherita', 'Pizza’s met vis': 'pizza-gamberoni', 'Kapsalon': 'kapsalon', 'Schotels': 'shoarma-schotel', 'Vleesgerechten': 'spare-ribs', 'Burgers': 'bacon-burger', 'IJs & dessert': 'tiramisu', 'Salades': 'caprese', 'Soepen': 'tomatensoep', 'Calzone’s': 'calzone' };
+---
+<Base lang={lang} page="menu" title={c.title} description={c.desc} crumbs={[{ name: t.nav.menu, path }]} schema={[menuLd]}>
+  <style>
+    .mh{padding:20px 0 40px}
+    .chips{position:sticky;top:72px;z-index:20;background:rgba(18,12,10,.95);backdrop-filter:blur(8px);border-block:1px solid var(--line)}
+    .chips ul{display:flex;gap:8px;overflow-x:auto;list-style:none;margin:0;padding:12px 0;scrollbar-width:none}
+    .chips a{display:inline-flex;align-items:center;min-height:40px;white-space:nowrap;padding:0 16px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:.9rem;font-weight:600}
+    .chips a:hover{background:var(--red);border-color:var(--red)}
+    .msec{padding:56px 0 8px;scroll-margin-top:140px}
+    .msec header{display:grid;gap:20px;align-items:end;margin-bottom:22px}
+    @media(min-width:800px){.msec header.ph{grid-template-columns:1fr 320px}}
+    .msec header img{width:100%;aspect-ratio:7/5;object-fit:cover;border-radius:var(--r);background:#f4ede3}
+    .msec h2{margin:0}
+    .items{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr))}
+    .it{display:flex;gap:14px;align-items:center;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:14px}
+    .it img{width:84px;height:64px;object-fit:cover;border-radius:10px;flex:none;background:#f4ede3}
+    .it div{flex:1;min-width:0}
+    .it h3{font-size:1.08rem;margin:0}
+    .it p{margin:2px 0 0;font-size:.88rem;line-height:1.45}
+    .it .price{white-space:nowrap;font-size:1.1rem}
+  </style>
+  <div class="wrap mh">
+    <p class="eyebrow">{c.eyebrow}</p>
+    <h1>{c.h1}</h1>
+    <p class="lead">{c.lead}</p>
+    {t.descNote && <p><em>{t.descNote}</em></p>}
+    <div class="btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">{t.order}</a><a class="btn" href={site.reserveUrl!} rel="noopener">{t.reserve}</a></div>
+  </div>
+  <nav class="chips" aria-label={t.nav.menu}><div class="wrap"><ul>{menu.map(s => <li><a href={'#' + slug(s.name)}>{sec(s.name)}</a></li>)}</ul></div></nav>
+  <div class="wrap">
+    {menu.map(s => (
+      <section class="msec" id={slug(s.name)}>
+        <header class:list={{ ph: !!sectionPhoto[s.name] }}>
+          <div><h2>{sec(s.name)}</h2>{s.note && <p>{note(s.note)}</p>}</div>
+          {sectionPhoto[s.name] && <img src={`/images/menu/${sectionPhoto[s.name]}.webp`} alt={sec(s.name)} width="630" height="450" loading="lazy" decoding="async" />}
+        </header>
+        <div class="items">
+          {s.items.map(i => { const img = photos.get(norm(i.name)); return (
+            <article class="it">
+              {img && <img src={`/images/menu/${img}.webp`} alt="" width="84" height="64" loading="lazy" decoding="async" />}
+              <div><h3>{i.name}</h3>{i.description && <p lang="en">{desc(i.description)}</p>}</div>
+              <span class="price" dir="ltr">{i.priceText ?? (i.price != null ? eur(i.price) : '')}</span>
+            </article>); })}
+        </div>
+      </section>
+    ))}
+    <p style="margin-top:48px">{c.outro} <a href={'tel:' + site.phone} dir="ltr">{site.phoneDisplay}</a></p>
+  </div>
+</Base>

@@ -1,0 +1,99 @@
+---
+import Base from '../../layouts/Base.astro';
+import Dishes from '../../components/Dishes.astro';
+import Reviews from '../../components/Reviews.astro';
+import { site } from '../../data/site';
+import { pick } from '../../data/dishes';
+import { media } from '../../lib/media';
+import { foreign, ui, pathFor, type Lang } from '../../i18n/ui';
+import { home } from '../../i18n/pages';
+import '../../styles/home.css';
+export const getStaticPaths = () => foreign.map(lang => ({ params: { lang } }));
+const lang = Astro.params.lang as Exclude<Lang, 'nl'>;
+const t = ui[lang];
+const c = home[lang];
+const video = media('hero-video.mp4');
+const poster = '/images/restaurant-binnen.webp';
+const krant = media('krantenartikel.png');
+const catImgs = ['pizza-truffel', 'pasta-tartufo', 'kapsalon', 'spare-ribs', 'bacon-burger', 'tiramisu'];
+const menu = pathFor(lang, 'menu');
+const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: c.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+---
+<Base overlay lang={lang} page="home" schema={[faqLd]} image={poster} title={c.title} description={c.desc}>
+  <link slot="head" rel="preload" as="image" href={poster} fetchpriority="high" />
+  <section class="hero">
+    <img class="poster" src={poster} alt="Telepizza Amstelveen" width="1600" height="1067" fetchpriority="high" />
+    {video && <video id="hv" muted loop playsinline preload="none" poster={poster} aria-hidden="true" data-src={video}></video>}
+    <div class="wrap in">
+      <a class="chip" href="#reviews"><span class="st" aria-hidden="true">★★★★★</span>{site.rating.value} · {site.rating.count} {t.reviewsBased}</a>
+      <h1 set:html={c.h1} />
+      <p class="lead">{c.lead}</p>
+      <div class="btns">
+        <a class="btn primary" href={site.orderUrl!} rel="noopener">{t.order}</a>
+        <a class="btn" href={site.reserveUrl!} rel="noopener">{t.reserve}</a>
+        <a class="btn" href={menu}>{t.viewMenu}</a>
+      </div>
+      <div class="facts">{c.facts.map(([b, s]) => <div><b>{b}</b><span>{s}</span></div>)}</div>
+    </div>
+  </section>
+
+  <section class="sec"><div class="wrap">
+    <div class="head"><div><p class="eyebrow">{c.menuEyebrow}</p><h2>{c.menuTitle}</h2></div><a class="btn" href={menu}>{t.fullMenu}</a></div>
+    <div class="cats">
+      {c.cats.map(([h, s], i) => <a class="cat" href={menu}><img src={`/images/menu/${catImgs[i]}.webp`} alt={h} width="630" height="450" loading="lazy" decoding="async" /><div><h3>{h}</h3><p>{s}</p></div></a>)}
+    </div>
+  </div></section>
+
+  <section class="sec alt"><div class="wrap">
+    <div class="head"><div><p class="eyebrow">{c.favEyebrow}</p><h2>{c.favTitle}</h2></div><a class="btn primary" href={site.orderUrl!} rel="noopener">{t.orderNow}</a></div>
+    <Dishes lang={lang} items={pick('telePizza', 'truffel', 'carbonara', 'kapsalon', 'pepperoni', 'tartufo', 'ribs', 'popeye')} />
+  </div></section>
+
+  <section class="sec"><div class="wrap split">
+    <div>
+      <p class="eyebrow">{c.storyEyebrow}</p>
+      <h2 set:html={c.storyTitle} />
+      {c.story.map(p => <p>{p}</p>)}
+      <div class="btns"><a class="btn primary" href={site.reserveUrl!} rel="noopener">{t.reserve}</a><a class="btn" href={pathFor(lang, 'about')}>{t.nav.about}</a></div>
+    </div>
+    <div class="collage">
+      <img class="a" src="/images/cocktail-neon.webp" alt="Telepizza neon" width="600" height="800" loading="lazy" decoding="async" />
+      <img class="b" src="/images/pepperoni-pizza.webp" alt="Pepperoni pizza" width="500" height="500" loading="lazy" decoding="async" />
+      <img class="c" src="/images/pizza-groente.webp" alt="Pizza" width="500" height="500" loading="lazy" decoding="async" />
+    </div>
+  </div></section>
+
+  <div id="reviews"><Reviews lang={lang} /></div>
+
+  <section class="sec light"><div class="wrap">
+    <div class="center"><h2>{c.waysTitle}</h2></div>
+    <div class="ways" style="margin-top:36px">
+      {c.ways.map(([h, p], i) => <div class="way"><span class="n">{i + 1}</span><h3>{h}</h3><p>{p}</p></div>)}
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap split press">
+    {krant && <img src={krant} alt="Telepizza Amstelveen" width="800" height="1000" loading="lazy" decoding="async" />}
+    <div>
+      <h2>{c.pressTitle}</h2>
+      <p>{c.press}</p>
+      <div class="btns"><a class="btn" href="https://www.tiktok.com/@telepizza_nl" rel="noopener">TikTok</a><a class="btn" href="https://www.instagram.com/telepizza_nl/" rel="noopener">Instagram</a></div>
+    </div>
+  </div></section>
+
+  <section class="sec alt"><div class="wrap">
+    <h2>{c.seoTitle}</h2>
+    <div class="seo prose" style="margin-top:28px">{c.seo.map(([h, p]) => <><h3>{h}</h3><p>{p}</p></>)}</div>
+  </div></section>
+
+  <section class="sec"><div class="wrap" style="max-width:900px">
+    <h2 class="center">FAQ</h2>
+    {c.faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
+  </div></section>
+
+  <script is:inline>
+    (function(){var v=document.getElementById('hv');if(!v)return;var c=navigator.connection;
+      if(!matchMedia('(min-width:768px)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches||(c&&c.saveData))return;
+      addEventListener('load',function(){setTimeout(function(){v.src=v.dataset.src;v.play().catch(function(){});},1200);});})();
+  </script>
+</Base>

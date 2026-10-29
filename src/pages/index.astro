@@ -5,6 +5,7 @@ import Reviews from '../components/Reviews.astro';
 import { site, fullAddress } from '../data/site';
 import { pick } from '../data/dishes';
 import { media } from '../lib/media';
+import '../styles/home.css';
 const video = media('hero-video.mp4');
 const poster = '/images/restaurant-binnen.webp';
 const krant = media('krantenartikel.png');
@@ -25,51 +26,8 @@ const faq = [
 ];
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 ---
-<Base overlay schema={[faqLd]} image="/images/restaurant-binnen.webp" title="Telepizza Amstelveen | Italiaans restaurant, pizza & grill – sinds 1984" description={`Italiaans restaurant in Amstelveen: pizza, pasta, steaks, kapsalon en burgers. Halal vlees, open tot 03:00. Reserveer, haal af of laat bezorgen. ★ ${site.rating.value} uit ${site.rating.count} Google-reviews.`}>
+<Base overlay page="home" schema={[faqLd]} image="/images/restaurant-binnen.webp" title="Telepizza Amstelveen | Italiaans restaurant, pizza & grill – sinds 1984" description={`Italiaans restaurant in Amstelveen: pizza, pasta, steaks, kapsalon en burgers. Halal vlees, open tot 03:00. Reserveer, haal af of laat bezorgen. ★ ${site.rating.value} uit ${site.rating.count} Google-reviews.`}>
   <link slot="head" rel="preload" as="image" href={poster} fetchpriority="high" />
-  <style>
-    .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#0b0706}
-    .hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,6,5,.35) 0%,rgba(10,6,5,.45) 45%,rgba(18,12,10,.97) 100%),radial-gradient(800px 500px at 15% 80%,rgba(217,48,42,.28),transparent)}
-    .hero .in{position:relative;z-index:1;padding:140px 0 56px;width:100%}
-    .hero h1{font-size:clamp(2.7rem,8vw,6.2rem);max-width:13ch;margin:14px 0 18px}
-    .hero h1 i{color:var(--red2)}
-    .hero .lead{max-width:56ch}
-    .chip{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(6px);padding:8px 16px;border-radius:999px;font-size:.92rem;font-weight:600;text-decoration:none}
-    .chip .st{color:var(--gold);letter-spacing:2px}
-    .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:44px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-    @media(min-width:800px){.facts{grid-template-columns:repeat(4,1fr)}}
-    .facts div{background:rgba(18,12,10,.8);padding:18px 20px}
-    .facts b{display:block;font:600 1.5rem/1.1 var(--serif);color:#fff}
-    .facts span{font-size:.88rem;color:var(--muted)}
-    .cats{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
-    .cat{position:relative;display:block;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;text-decoration:none;background:#f4ede3}
-    .cat img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-    .cat:hover img{transform:scale(1.06)}
-    .cat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(12,8,6,.88))}
-    .cat div{position:absolute;left:20px;right:20px;bottom:18px;z-index:1}
-    .cat h3{font-size:1.6rem;color:#fff;margin:0}
-    .cat p{margin:2px 0 0;color:#eadfd2;font-size:.95rem}
-    .head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:34px}
-    .head h2{margin:0}
-    .split{display:grid;gap:44px;align-items:center}
-    @media(min-width:900px){.split{grid-template-columns:1.05fr 1fr}}
-    .collage{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}
-    .collage img{width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
-    .collage .a{grid-row:span 2;aspect-ratio:3/4}
-    .collage .b,.collage .c{aspect-ratio:1}
-    .ways{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-    .way{padding:30px;border-radius:var(--r);background:#fff;box-shadow:0 10px 30px rgba(60,30,10,.06)}
-    .way .n{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--red);color:#fff;font:600 1.3rem/1 var(--serif);margin-bottom:16px}
-    .press img{width:100%;height:auto;border-radius:var(--r);box-shadow:0 30px 60px rgba(0,0,0,.4)}
-    .seo{columns:1;column-gap:48px}
-    @media(min-width:900px){.seo{columns:2}}
-    .seo h3{font-size:1.35rem;margin-top:0;break-after:avoid}
-    .seo p{break-inside:avoid-column}
-    .kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;list-style:none;padding:0}
-    .kw a{display:inline-block;padding:8px 14px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--muted)}
-    .kw a:hover{color:#fff;border-color:#fff}
-  </style>
 
   <section class="hero">
     <img class="poster" src={poster} alt="Sfeervol interieur van Telepizza Amstelveen met neon en groene wand" width="1600" height="1067" fetchpriority="high" />

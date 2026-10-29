@@ -1,0 +1,8 @@
+---
+import SimplePage from '../../components/SimplePage.astro';
+import { foreign, type Lang } from '../../i18n/ui';
+import { contact } from '../../i18n/pages';
+export const getStaticPaths = () => foreign.map(lang => ({ params: { lang } }));
+const lang = Astro.params.lang as Exclude<Lang, 'nl'>;
+---
+<SimplePage lang={lang} page="contact" copy={contact[lang]} img="/images/cocktail-neon.webp" />

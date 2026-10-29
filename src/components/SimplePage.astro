@@ -1,0 +1,30 @@
+---
+// Eenvoudige vertaalde pagina (catering, over ons, contact) met foto en tekstblokken.
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+import { ui, pathFor, type Lang, type PageKey } from '../i18n/ui';
+import type { SimpleCopy } from '../i18n/pages';
+interface Props { lang: Exclude<Lang, 'nl'>; page: PageKey; copy: SimpleCopy; img: string }
+const { lang, page, copy: c, img } = Astro.props;
+const t = ui[lang];
+---
+<Base lang={lang} page={page} title={c.title} description={c.desc} crumbs={[{ name: t.nav[page], path: pathFor(lang, page) }]} image={img}>
+  <style>
+    .lh{display:grid;gap:36px;align-items:center;padding:24px 0 72px}
+    @media(min-width:900px){.lh{grid-template-columns:1.1fr 1fr}}
+    .lh img{width:100%;aspect-ratio:7/5;object-fit:cover;border-radius:24px;box-shadow:0 30px 60px rgba(0,0,0,.45);background:#f4ede3}
+  </style>
+  <div class="wrap lh">
+    <div>
+      <p class="eyebrow">{t.tagline}</p>
+      <h1>{c.h1}</h1>
+      <p class="lead">{c.lead}</p>
+      <div class="btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">{t.order}</a><a class="btn" href={site.reserveUrl!} rel="noopener">{t.reserve}</a></div>
+    </div>
+    <img src={img} alt={c.h1} width="630" height="450" fetchpriority="high" />
+  </div>
+  <section class="sec alt"><div class="wrap grid">
+    {c.body.map(([h, p]) => <div class="card"><h2 style="font-size:1.6rem">{h}</h2><p>{p}</p></div>)}
+    {page === 'contact' && <div class="card"><h2 style="font-size:1.6rem">{t.hours}</h2><p>{t.closedMon}<br />{site.hours.map(h => <span>{t.days[h.day as keyof typeof t.days]}: <span dir="ltr">{h.open}–{h.close}</span><br /></span>)}</p><div class="btns"><a class="btn sm" href={site.mapsUrl} rel="noopener">{t.route}</a><a class="btn primary sm" href={'tel:' + site.phone}>{t.call}</a></div></div>}
+  </div></section>
+</Base>

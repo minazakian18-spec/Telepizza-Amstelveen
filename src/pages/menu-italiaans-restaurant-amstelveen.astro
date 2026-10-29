@@ -15,7 +15,7 @@ const norm = (n: string) => n.toLowerCase().replace(/^pizza |^pasta /, '').repla
 const photos = new Map(Object.values(dishes).map(d => [norm(d.name), d.img]));
 const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Speciale Pizza’s': 'pizza-truffel', 'Pizza’s met vlees': 'pizza-pepperoni', 'Vegetarische Pizza’s': 'pizza-margherita', 'Pizza’s met vis': 'pizza-gamberoni', 'Kapsalon': 'kapsalon', 'Schotels': 'shoarma-schotel', 'Vleesgerechten': 'spare-ribs', 'Burgers': 'bacon-burger', 'IJs & dessert': 'tiramisu', 'Salades': 'caprese', 'Soepen': 'tomatensoep', 'Calzone’s': 'calzone' };
 ---
-<Base title="Menu Telepizza Amstelveen | Pizza, pasta, steak, kapsalon & prijzen" description="Het volledige menu van Telepizza Amstelveen met prijzen: ruim 35 pizza’s, pasta, steaks, kapsalon, shoarma, burgers en desserts. Halal vlees. Bestel online of reserveer." crumbs={[{ name: 'Menu', path: '/menu-italiaans-restaurant-amstelveen/' }]} schema={[menuLd]}>
+<Base page="menu" title="Menu Telepizza Amstelveen | Pizza, pasta, steak, kapsalon & prijzen" description="Het volledige menu van Telepizza Amstelveen met prijzen: ruim 35 pizza’s, pasta, steaks, kapsalon, shoarma, burgers en desserts. Halal vlees. Bestel online of reserveer." crumbs={[{ name: 'Menu', path: '/menu-italiaans-restaurant-amstelveen/' }]} schema={[menuLd]}>
   <style>
     .mh{padding:20px 0 40px}
     .chips{position:sticky;top:72px;z-index:20;background:rgba(18,12,10,.95);backdrop-filter:blur(8px);border-block:1px solid var(--line)}
