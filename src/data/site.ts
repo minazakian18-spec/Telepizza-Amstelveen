@@ -16,6 +16,14 @@ export const site = {
   reserveUrl: 'https://widget.thefork.com/d10a03f4-2fab-4cc5-a1a6-ca3b826a931b' as string | null,
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Telepizza+Amsterdamseweg+452+Amstelveen',
   sameAs: ['https://www.instagram.com/telepizza_nl/', 'https://www.tiktok.com/@telepizza_nl'] as string[],
+  // Socials met icoon op de site. Facebook verschijnt zodra hier een link staat.
+  social: {
+    instagram: 'https://www.instagram.com/telepizza_nl/',
+    tiktok: 'https://www.tiktok.com/@telepizza_nl',
+    facebook: null as string | null,
+  },
+  // Prijzen/vermeldingen die bovenaan de site getoond worden. Alleen invullen als ze echt zijn toegekend.
+  awards: [] as { label: string; by: string }[],
     foundingYear: 1984,
   // Maandag gesloten. Sluitingstijd na middernacht valt op de volgende dag.
   hours: [
@@ -26,11 +34,14 @@ export const site = {
     { day: 'Zaterdag', schema: 'Saturday', open: '15:00', close: '03:00' },
     { day: 'Zondag', schema: 'Sunday', open: '15:00', close: '01:45' },
   ] as { day: string; schema: string; open: string; close: string }[],
-  // Google-score zoals op de huidige site (Trustindex-widget). Werk bij als het aantal stijgt.
-  rating: { label: 'Excellent', value: 4.7, count: 934 },
-  googleReviewsUrl: 'https://www.google.com/maps/search/?api=1&query=Telepizza+Amsterdamseweg+452+Amstelveen',
-  // Echte Google-reviews, overgenomen van de huidige site.
+  // Google-score volgens Google Maps (30 oktober 2026). Werk bij als het aantal stijgt.
+  rating: { label: 'Excellent', value: 4.7, count: 1391 },
+  googleReviewsUrl: 'https://www.google.com/maps/place/Restaurant+Telepizza/@52.3169572,4.857271,17z',
+  // Echte Google-reviews (Google Maps en de huidige site), nieuwste eerst.
   reviews: [
+    { author: 'Georgin Forham', lang: 'nl', text: 'Wij hebben hier gegeten bij Telepizza en het was heerlijk. Zowel de pizza, pasta als de calzone waren van goede kwaliteit en smaakten erg vers. Wij hadden gereserveerd via hun eigen website en kwamen rond 18:00 aan in een volle zaak, wat altijd een goed teken is. Ondanks de drukte werden we vriendelijk ontvangen en snel geholpen.' },
+    { author: 'René Nobel', lang: 'nl', text: 'Vandaag gegeten bij Telepizza in Amstelveen. Echt een uitstekende ervaring. Het eten was heerlijk en goed bereid. Maar wat mij vooral opviel was de fantastische klantenservice. Een heus familie bedrijf waar je als een warm bad binnen komt.' },
+    { author: 'Sebastiaan van der Pal', lang: 'nl', text: 'Gerund door vader en zoon. Net opgeknapt en heeft een gezellige sfeer. Het zijn vriendelijke mensen en de pizza was dikke prima. Als ik hier in de buurt woonde zou dit een vaste plek worden.' },
     { author: 'can olcer', lang: 'en', text: 'It was great and our server Thomas was the best, service was very fast and the food was also delicious and prices are affordable as well.' },
     { author: 'Paul Hupe', lang: 'de', text: 'Gute Pizza und guter Service. Der Laden ist ein wenig klein, ist aber mekern auf höchstem Neveau. In großen und ganzen ein super Erlebniss. Kann ich nur weiter empfehlen.' },
     { author: 'Ivan Alexeev', lang: 'en', text: 'Very tasty food, perfect service!' },
@@ -40,7 +51,7 @@ export const site = {
     { author: 'Ian', lang: 'en', text: 'Thomas was amazing!!' },
   ] as { author: string; lang: string; text: string }[],
   halal: true,
-  geo: null as { lat: number; lng: number } | null,
+  geo: { lat: 52.3169572, lng: 4.857271 } as { lat: number; lng: number } | null,
 };
 
 export const fullAddress = `${site.street}, ${site.postalCode} ${site.city}`;

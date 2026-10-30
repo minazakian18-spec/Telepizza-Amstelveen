@@ -145,3 +145,13 @@ footer .legal{margin-top:56px;padding-top:20px;border-top:1px solid rgba(255,255
 .burger[open]~*{}
 .eyebrow,.journal small{color:#a81c13}
 .sec.green .eyebrow,.band .eyebrow,.hero .eyebrow{color:var(--gold)}
+
+/* menuknop: strepen precies in het midden */
+.burger summary{display:flex!important;align-items:center;justify-content:center;padding:0}
+.burger summary span{margin:0}
+/* klein bel-icoon in de header */
+.tel{display:grid;place-items:center;width:40px;height:40px;border:2px solid currentColor;color:inherit}
+.tel .ico{width:16px;height:16px}
+.tel:hover{background:var(--red);border-color:var(--red);color:#fff}
+footer ul.one{columns:1}
+footer ul.one a{text-transform:none;letter-spacing:0;font:600 .92rem/1.35 var(--sans)}

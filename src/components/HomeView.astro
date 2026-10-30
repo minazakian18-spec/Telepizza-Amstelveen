@@ -46,6 +46,13 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
     <p class="tagline">Ristorante · Pizzeria · Grill</p>
   </section>
 
+  <a class="trust" href="#reviews">
+    <span class="g"><b>★ {String(site.rating.value).replace('.', ',')}</b> {site.rating.count.toLocaleString('nl-NL')} {t.reviewsBased}</span>
+    {site.awards.map(a => <span><b>🏆 {a.label}</b> {a.by}</span>)}
+    <span><b>{L.since}</b></span>
+    <span><b>100% halal</b></span>
+  </a>
+
   <section class="wrap intro">
     <div>
       <h1 set:html={c.h1} />
@@ -85,7 +92,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   </div></section>
 
   <section class="welcome">
-    <img class="full" src={ph('neon')} srcset={ss('neon')} sizes="100vw" alt="" width="1400" height="933" loading="lazy" decoding="async" />
+    <video class="full" src="/images/hero-video.mp4" poster={ph('neon')} autoplay muted loop playsinline preload="none" aria-hidden="true"></video>
     <div class="card2">
       <p class="eyebrow">Benvenuti a Telepizza</p>
       <h2>{c.salaTitle}</h2>
@@ -112,7 +119,11 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   </div></section>}
 
   <section class="sec"><div class="wrap">
-    <div class="head"><div><p class="eyebrow">Instagram</p><h2>@telepizza_nl</h2></div><a class="btn" href="https://www.instagram.com/telepizza_nl/" rel="noopener">{L.follow}</a></div>
+    <div class="head"><div><p class="eyebrow">{L.follow}</p><h2>@telepizza_nl</h2></div><div class="btns" style="margin-top:0">
+        {site.social.instagram && <a class="btn sm" href={site.social.instagram} rel="noopener">Instagram</a>}
+        {site.social.tiktok && <a class="btn sm" href={site.social.tiktok} rel="noopener">TikTok</a>}
+        {site.social.facebook && <a class="btn sm" href={site.social.facebook} rel="noopener">Facebook</a>}
+      </div></div>
     <div class="insta">{['vrienden', 'slice', 'bar', 'pizza-rond', 'pasta-vork', 'zaal-planten'].map(n => <a href="https://www.instagram.com/telepizza_nl/" rel="noopener" aria-label="Instagram"><img src={ph(n + '-sm')} alt="" width="400" height="400" loading="lazy" decoding="async" /></a>)}</div>
     <p style="margin-top:28px">{c.press}</p>
   </div></section>

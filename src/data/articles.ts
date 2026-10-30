@@ -101,3 +101,7 @@ export const articles: Article[] = [
 <p>De kapsalon is bij uitstek een gerecht voor na een avond uit. Wij zijn <a href="/laat-open-amstelveen/">open tot 01:45</a>, op vrijdag en zaterdag tot 03:00. Lees meer over onze <a href="/kapsalon-amstelveen/">kapsalon in Amstelveen</a> of bekijk het <a href="/menu-italiaans-restaurant-amstelveen/#kapsalon">menu</a>.</p>`,
   },
 ];
+
+import { moreArticles } from './articles-more';
+articles.push(...moreArticles);
+articles.sort((a, b) => b.date.localeCompare(a.date));
