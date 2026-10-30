@@ -2,7 +2,6 @@
 import HomeView from '../components/HomeView.astro';
 import { site, fullAddress } from '../data/site';
 import type { HomeCopy } from '../i18n/pages';
-import { articles } from '../data/articles';
 
 const c: HomeCopy = {
   title: 'Telepizza Amstelveen | Italiaans restaurant & pizzeria sinds 1984',
@@ -45,9 +44,5 @@ const c: HomeCopy = {
 };
 ---
 <HomeView lang="nl" c={c}>
-  <div slot="links" class="journal">
-    <div class="head" style="margin-top:72px"><div><p class="eyebrow">Il diario</p><h2>Uit onze keuken</h2></div><a class="btn" href="/blog/">Alle artikelen</a></div>
-    <div class="trio">{articles.slice(0, 3).map(a => <a href={`/blog/${a.slug}/`} style="text-decoration:none"><figure><img src={a.img} alt={a.imgAlt} width="900" height="1125" loading="lazy" decoding="async" /><figcaption>{a.title}</figcaption></figure></a>)}</div>
-  </div>
   <p slot="faqmore" class="center" style="margin-top:24px"><a href="/veelgestelde-vragen/">Meer vragen en antwoorden</a></p>
 </HomeView>

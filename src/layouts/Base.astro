@@ -3,13 +3,11 @@ import { site, fullAddress } from '../data/site';
 import { langs, langInfo, ui, pathFor, type Lang, type PageKey } from '../i18n/ui';
 import '@fontsource/inter/latin-400.css';
 import '@fontsource/inter/latin-600.css';
-import '@fontsource/inter/latin-500.css';
-import '@fontsource/fraunces/latin-600.css';
-import '@fontsource/fraunces/latin-500-italic.css';
-
+import '@fontsource/archivo/latin-800.css';
+import '@fontsource/archivo/latin-900.css';
 import '../styles/theme.css';
 import f1 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
-import f2 from '@fontsource/fraunces/files/fraunces-latin-600-normal.woff2?url';
+import f2 from '@fontsource/archivo/files/archivo-latin-800-normal.woff2?url';
 const fonts = [f1, f2];
 interface Crumb { name: string; path: string }
 interface Props { title: string; description: string; crumbs?: Crumb[]; schema?: object[]; overlay?: boolean; image?: string; lang?: Lang; page?: PageKey }
@@ -150,7 +148,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
 </div></footer>
 <nav class="mbar" aria-label="Snelle acties">
   <a href={'tel:' + site.phone}><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={phoneIco}/></svg>{t.call}</a>
-  <a href={pathFor(lang, 'menu')}>{t.nav.menu}</a>
+  <a href={site.orderUrl!} rel="noopener">{t.orderShort}</a>
   <a class="o" href={site.reserveUrl!} rel="noopener">{t.reserve}</a>
 </nav>
 {overlay && <script is:inline>(function(){var h=document.getElementById('top');function f(){h.classList.toggle('solid',scrollY>40)}addEventListener('scroll',f,{passive:true});f();})();</script>}

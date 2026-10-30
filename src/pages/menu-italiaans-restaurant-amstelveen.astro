@@ -18,17 +18,17 @@ const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Sp
 <Base page="menu" title="Menu Telepizza Amstelveen | Pizza, pasta, steak, kapsalon & prijzen" description="Het volledige menu van Telepizza Amstelveen met prijzen: ruim 35 pizza’s, pasta, steaks, kapsalon, shoarma, burgers en desserts. Halal vlees. Bestel online of reserveer." crumbs={[{ name: 'Menu', path: '/menu-italiaans-restaurant-amstelveen/' }]} schema={[menuLd]}>
   <style>
     .mh{padding:20px 0 40px}
-    .chips{position:sticky;top:72px;z-index:20;background:rgba(18,12,10,.95);backdrop-filter:blur(8px);border-block:1px solid var(--line)}
+    .chips{position:sticky;top:78px;z-index:20;background:var(--bg);border-block:2px solid var(--ink)}
     .chips ul{display:flex;gap:8px;overflow-x:auto;list-style:none;margin:0;padding:12px 0;scrollbar-width:none}
-    .chips a{display:inline-flex;align-items:center;min-height:40px;white-space:nowrap;padding:0 16px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:.9rem;font-weight:600}
-    .chips a:hover{background:var(--red);border-color:var(--red)}
+    .chips a{display:inline-flex;align-items:center;min-height:40px;white-space:nowrap;padding:0 14px;border:2px solid var(--ink);text-decoration:none;font:800 .78rem/1 var(--head);letter-spacing:.06em;text-transform:uppercase}
+    .chips a:hover{background:var(--red);border-color:var(--red);color:#fff}
     .msec{padding:56px 0 8px;scroll-margin-top:140px}
     .msec header{display:grid;gap:20px;align-items:end;margin-bottom:22px}
     @media(min-width:800px){.msec header.ph{grid-template-columns:1fr 320px}}
     .msec header img{width:100%;aspect-ratio:7/5;object-fit:cover;border-radius:var(--r);background:#f4ede3}
     .msec h2{margin:0}
     .items{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr))}
-    .it{display:flex;gap:14px;align-items:center;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:14px}
+    .it{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:2px solid var(--ink)}
     .it img{width:84px;height:64px;object-fit:cover;border-radius:10px;flex:none;background:#f4ede3}
     .it div{flex:1;min-width:0}
     .it h3{font-size:1.08rem;margin:0}
@@ -39,7 +39,7 @@ const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Sp
     <p class="eyebrow">Menukaart met prijzen</p>
     <h1>Ons menu</h1>
     <p class="lead">Al onze gerechten worden met verse producten en veel zorg voor je bereid. Van pizza en pasta tot steaks van de grill, kapsalon en huisgemaakte tiramisu. Al ons vlees is halal.</p>
-    <div class="btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">Bestel online</a><a class="btn" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a></div>
+    <div class="btns"><a class="btn primary" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a><a class="btn" href={site.orderUrl!} rel="noopener">Bestel online</a></div>
   </div>
   <nav class="chips" aria-label="Menucategorieën"><div class="wrap"><ul>{menu.map(s => <li><a href={'#' + slug(s.name)}>{s.name}</a></li>)}</ul></div></nav>
   <div class="wrap">
