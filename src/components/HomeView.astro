@@ -39,9 +39,8 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
 <Base overlay lang={lang} page="home" schema={[faqLd]} image={ph('zaal')} title={c.title} description={c.desc}>
   <link slot="head" rel="preload" as="image" href={ph('zaal')} imagesrcset={ss('zaal')} imagesizes="100vw" fetchpriority="high" />
   <section class="hero" aria-label="Telepizza Amstelveen">
-    <img class="slide" src={ph('zaal')} srcset={ss('zaal')} sizes="100vw" alt="" width="1400" height="933" fetchpriority="high" />
-    <img class="slide" src={ph('proosten')} srcset={ss('proosten')} sizes="100vw" alt="" width="1400" height="933" loading="lazy" />
-    <img class="slide" src={ph('oven')} srcset={ss('oven')} sizes="100vw" alt="" width="1400" height="933" loading="lazy" />
+    <img class="poster" src={ph('zaal')} srcset={ss('zaal')} sizes="100vw" alt="" width="1400" height="933" fetchpriority="high" />
+    <video class="hv" src="/images/hero-video.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
     <p class="tagline">Ristorante · Pizzeria · Grill</p>
   </section>
 
