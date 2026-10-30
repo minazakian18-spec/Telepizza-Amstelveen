@@ -138,3 +138,10 @@ footer .legal{margin-top:56px;padding-top:20px;border-top:1px solid rgba(255,255
 .hero .poster,.hero video{border-radius:0}
 .lng,.burger{background:none;border:0;padding:0;margin:0;box-shadow:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.lng summary::after,.burger summary::after{content:none}
+@media(max-width:520px){.logo b{font-size:1.45rem}.logo small{font-size:.5rem;letter-spacing:.14em}.lng summary{padding:0 7px;min-height:36px}.lng summary .ico{display:none}.lng{inset-inline-start:12px}.top .wrap{padding:0 12px}}
+.panel .btn.primary{background:var(--ink);border-color:var(--ink)}
+.panel .btn:not(.primary){color:#fff}
+.burger[open]~*{}
+.eyebrow,.journal small{color:#a81c13}
+.sec.green .eyebrow,.band .eyebrow,.hero .eyebrow{color:var(--gold)}

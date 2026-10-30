@@ -15,20 +15,33 @@ const { lang, c } = Astro.props;
 const t = ui[lang];
 const menu = pathFor(lang, 'menu');
 const ph = (n: string) => `/images/ph/${n}.webp`;
-const words = ['Pizza', 'Pasta', 'Grill', 'Cocktails', 'Sinds 1984', 'Amstelveen'];
+const ss = (n: string) => `/images/ph/${n}-sm.webp 640w, /images/ph/${n}.webp 1200w`;
+// Teksten die alleen op de homepage staan, per taal.
+const local: Record<Lang, { since: string; team: string; roles: [string, string, string]; follow: string; stories: string; all: string }> = {
+  nl: { since: 'Sinds 1984', team: 'Het team van Telepizza', roles: ['Chef', 'Manager & bediening', 'Marketing & gastvrijheid'], follow: 'Volg ons', stories: 'Verhalen', all: 'Alle artikelen' },
+  en: { since: 'Since 1984', team: 'The Telepizza team', roles: ['Chef', 'Manager & service', 'Marketing & hospitality'], follow: 'Follow us', stories: 'Stories', all: 'All articles' },
+  de: { since: 'Seit 1984', team: 'Das Team von Telepizza', roles: ['Küchenchef', 'Manager & Service', 'Marketing & Gastfreundschaft'], follow: 'Folge uns', stories: 'Geschichten', all: 'Alle Artikel' },
+  tr: { since: '1984’ten beri', team: 'Telepizza ekibi', roles: ['Şef', 'Müdür & servis', 'Pazarlama & misafirperverlik'], follow: 'Bizi takip et', stories: 'Hikâyeler', all: 'Tüm yazılar' },
+  ar: { since: 'منذ 1984', team: 'فريق تيليبيتزا', roles: ['الشيف', 'المدير والخدمة', 'التسويق والضيافة'], follow: 'تابعنا', stories: 'قصص', all: 'كل المقالات' },
+  fr: { since: 'Depuis 1984', team: 'L’équipe Telepizza', roles: ['Chef', 'Manager & service', 'Marketing & accueil'], follow: 'Suivez-nous', stories: 'Histoires', all: 'Tous les articles' },
+  it: { since: 'Dal 1984', team: 'Il team di Telepizza', roles: ['Chef', 'Manager & sala', 'Marketing & accoglienza'], follow: 'Seguici', stories: 'Storie', all: 'Tutti gli articoli' },
+  es: { since: 'Desde 1984', team: 'El equipo de Telepizza', roles: ['Chef', 'Encargado & sala', 'Marketing & hospitalidad'], follow: 'Síguenos', stories: 'Historias', all: 'Todos los artículos' },
+};
+const L = local[lang];
+const words = ['Pizza', 'Pasta', 'Grill', 'Cocktails', L.since, 'Amstelveen'];
 const team = [
-  ['Mario', 'Chef', ph('team-deeg')],
-  ['Thomas', 'Manager & bediening', ph('team-oven')],
-  ['Mina', 'Marketing & gastvrijheid', ph('team-pizzas')],
+  ['Mario', L.roles[0], ph('team-deeg')],
+  ['Thomas', L.roles[1], ph('team-oven')],
+  ['Mina', L.roles[2], ph('team-pizzas')],
 ];
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: c.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]+>/g, '') } })) };
 ---
 <Base overlay lang={lang} page="home" schema={[faqLd]} image={ph('zaal')} title={c.title} description={c.desc}>
-  <link slot="head" rel="preload" as="image" href={ph('zaal')} fetchpriority="high" />
+  <link slot="head" rel="preload" as="image" href={ph('zaal')} imagesrcset={ss('zaal')} imagesizes="100vw" fetchpriority="high" />
   <section class="hero" aria-label="Telepizza Amstelveen">
-    <img class="slide" src={ph('zaal')} alt="" width="1400" height="933" fetchpriority="high" />
-    <img class="slide" src={ph('proosten')} alt="" width="1400" height="933" loading="lazy" />
-    <img class="slide" src={ph('oven')} alt="" width="1400" height="933" loading="lazy" />
+    <img class="slide" src={ph('zaal')} srcset={ss('zaal')} sizes="100vw" alt="" width="1400" height="933" fetchpriority="high" />
+    <img class="slide" src={ph('proosten')} srcset={ss('proosten')} sizes="100vw" alt="" width="1400" height="933" loading="lazy" />
+    <img class="slide" src={ph('oven')} srcset={ss('oven')} sizes="100vw" alt="" width="1400" height="933" loading="lazy" />
     <p class="tagline">Ristorante · Pizzeria · Grill</p>
   </section>
 
@@ -50,7 +63,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
     </div>
   </section>
 
-  <img class="full" src={ph('gasten')} alt="" width="1400" height="933" loading="lazy" decoding="async" />
+  <img class="full" src={ph('gasten')} srcset={ss('gasten')} sizes="100vw" alt="" width="1400" height="933" loading="lazy" decoding="async" />
 
   <section class="overlap"><div class="wrap"><div class="box">
     <h2 set:html={c.storyTitle} />
@@ -59,9 +72,9 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   </div></div></section>
 
   <section class="marq" aria-hidden="true">
-    <img src={ph('pizza-rozemarijn')} alt="" width="800" height="1000" loading="lazy" decoding="async" />
-    <img src={ph('pasta-penne')} alt="" width="800" height="1000" loading="lazy" decoding="async" />
-    <img src={ph('pizza-hand')} alt="" width="800" height="1000" loading="lazy" decoding="async" />
+    <img src={ph('pizza-rozemarijn')} srcset={ss('pizza-rozemarijn')} sizes="(min-width:700px) 33vw, 100vw" alt="" width="800" height="1000" loading="lazy" decoding="async" />
+    <img src={ph('pasta-penne')} srcset={ss('pasta-penne')} sizes="(min-width:700px) 33vw, 100vw" alt="" width="800" height="1000" loading="lazy" decoding="async" />
+    <img src={ph('pizza-hand')} srcset={ss('pizza-hand')} sizes="(min-width:700px) 33vw, 100vw" alt="" width="800" height="1000" loading="lazy" decoding="async" />
     <div class="words">{[...words, ...words].map(w => <span>{w} ·</span>)}</div>
   </section>
 
@@ -71,7 +84,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   </div></section>
 
   <section class="welcome">
-    <img class="full" src={ph('neon')} alt="" width="1400" height="933" loading="lazy" decoding="async" />
+    <img class="full" src={ph('neon')} srcset={ss('neon')} sizes="100vw" alt="" width="1400" height="933" loading="lazy" decoding="async" />
     <div class="card2">
       <p class="eyebrow">Benvenuti a Telepizza</p>
       <h2>{c.salaTitle}</h2>
@@ -88,18 +101,18 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   <div id="reviews"><Reviews lang={lang} /></div>
 
   <section class="sec"><div class="wrap">
-    <div class="head"><div><p class="eyebrow">La famiglia</p><h2>Het team van Telepizza</h2></div></div>
-    <div class="team">{team.map(([n, r, img]) => <figure><img src={img} alt="" width="800" height="1000" loading="lazy" decoding="async" /><figcaption><b>{n}</b><span>{r}</span></figcaption></figure>)}</div>
+    <div class="head"><div><p class="eyebrow">La famiglia</p><h2>{L.team}</h2></div></div>
+    <div class="team">{team.map(([n, r, img]) => <figure><img src={img} srcset={img.replace(".webp","-sm.webp") + " 640w, " + img + " 1200w"} sizes="(min-width:900px) 33vw, 100vw" alt="" width="800" height="1000" loading="lazy" decoding="async" /><figcaption><b>{n}</b><span>{r}</span></figcaption></figure>)}</div>
   </div></section>
 
   {lang === 'nl' && <section class="sec alt"><div class="wrap">
-    <div class="head"><div><p class="eyebrow">Uit de keuken</p><h2>Verhalen</h2></div><a class="btn" href="/blog/">Alle artikelen</a></div>
+    <div class="head"><div><p class="eyebrow">Uit de keuken</p><h2>{L.stories}</h2></div><a class="btn" href="/blog/">{L.all}</a></div>
     <div class="journal">{articles.slice(0, 3).map(a => <a href={`/blog/${a.slug}/`}><img src={a.img} alt={a.imgAlt} width="800" height="800" loading="lazy" decoding="async" /><small>Blog · {new Date(a.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</small><h3>{a.title}</h3></a>)}</div>
   </div></section>}
 
   <section class="sec"><div class="wrap">
-    <div class="head"><div><p class="eyebrow">Instagram</p><h2>@telepizza_nl</h2></div><a class="btn" href="https://www.instagram.com/telepizza_nl/" rel="noopener">Volg ons</a></div>
-    <div class="insta">{['vrienden', 'slice', 'bar', 'pizza-rond', 'pasta-vork', 'zaal-planten'].map(n => <a href="https://www.instagram.com/telepizza_nl/" rel="noopener" aria-label="Instagram"><img src={ph(n)} alt="" width="400" height="400" loading="lazy" decoding="async" /></a>)}</div>
+    <div class="head"><div><p class="eyebrow">Instagram</p><h2>@telepizza_nl</h2></div><a class="btn" href="https://www.instagram.com/telepizza_nl/" rel="noopener">{L.follow}</a></div>
+    <div class="insta">{['vrienden', 'slice', 'bar', 'pizza-rond', 'pasta-vork', 'zaal-planten'].map(n => <a href="https://www.instagram.com/telepizza_nl/" rel="noopener" aria-label="Instagram"><img src={ph(n + '-sm')} alt="" width="400" height="400" loading="lazy" decoding="async" /></a>)}</div>
     <p style="margin-top:28px">{c.press}</p>
   </div></section>
 
