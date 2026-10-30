@@ -1,0 +1,110 @@
+---
+// Homepage in klassieke trattoria-stijl; gedeeld door alle talen. Restaurant eerst, bestellen als bijzaak.
+import Base from '../layouts/Base.astro';
+import Dishes from './Dishes.astro';
+import Reviews from './Reviews.astro';
+import { site } from '../data/site';
+import { pick } from '../data/dishes';
+import { media } from '../lib/media';
+import { ui, pathFor, type Lang } from '../i18n/ui';
+import type { HomeCopy } from '../i18n/pages';
+import '../styles/home.css';
+interface Props { lang: Lang; c: HomeCopy }
+const { lang, c } = Astro.props;
+const t = ui[lang];
+const video = media('hero-video.mp4');
+const poster = '/images/restaurant-binnen.webp';
+const krant = media('krantenartikel.png');
+const menu = pathFor(lang, 'menu');
+const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: c.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+---
+<Base overlay lang={lang} page="home" schema={[faqLd]} image={poster} title={c.title} description={c.desc}>
+  <link slot="head" rel="preload" as="image" href={poster} fetchpriority="high" />
+  <section class="hero">
+    <img class="poster" src={poster} alt="" width="1600" height="1067" fetchpriority="high" />
+    {video && <video id="hv" muted loop playsinline preload="none" poster={poster} aria-hidden="true" data-src={video}></video>}
+    <div class="in">
+      <p class="brand">Telepizza · Ristorante & Pizzeria</p>
+      <h1 set:html={c.h1} />
+      <div class="flag" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="lead">{c.lead}</p>
+      <div class="btns" style="justify-content:center">
+        <a class="btn primary" href={site.reserveUrl!} rel="noopener">{t.reserve}</a>
+        <a class="btn" href={menu}>{t.viewMenu}</a>
+      </div>
+      <a class="rating" href="#reviews"><span class="st" aria-hidden="true">★★★★★</span><span dir="ltr">{site.rating.value}</span> · {site.rating.count} {t.reviewsBased}</a>
+    </div>
+  </section>
+
+  <section class="sec"><div class="wrap intro center">
+    <p class="eyebrow">Benvenuti</p>
+    <h2 set:html={c.storyTitle} />
+    <p>{c.story[0]}</p>
+    <span class="orn" aria-hidden="true"></span>
+  </div></section>
+
+  <section class="sec alt"><div class="wrap split">
+    <figure class="frame"><img src="/images/cocktail-neon.webp" alt="" width="1200" height="1600" loading="lazy" decoding="async" /></figure>
+    <div>
+      <p class="eyebrow">La sala</p>
+      <h2>{c.salaTitle}</h2>
+      <p>{c.story[1]}</p>
+      <ul class="facts-list">{c.facts.map(([b, s]) => <li><strong>{b}</strong> · {s}</li>)}</ul>
+      <div class="btns"><a class="btn primary" href={site.reserveUrl!} rel="noopener">{t.reserve}</a><a class="btn" href={pathFor(lang, 'about')}>{t.nav.about}</a></div>
+    </div>
+  </div></section>
+
+  <section class="sec green"><div class="wrap">
+    <div class="head"><div><p class="eyebrow">{c.favEyebrow}</p><h2>{c.favTitle}</h2></div><a class="btn" href={menu}>{t.fullMenu}</a></div>
+    <Dishes lang={lang} items={pick('telePizza', 'truffel', 'chef', 'carbonara', 'tartufo', 'salmone', 'ribs', 'lasagna', 'popeye', 'kapsalon')} />
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="trio">
+      <figure><img src="/images/pepperoni-pizza.webp" alt={c.cats[0][0]} width="900" height="1125" loading="lazy" decoding="async" /><figcaption>{c.cats[0][0]}<small>{c.cats[0][1]}</small></figcaption></figure>
+      <figure><img src="/images/pasta-carbonara.webp" alt={c.cats[1][0]} width="900" height="1125" loading="lazy" decoding="async" /><figcaption>{c.cats[1][0]}<small>{c.cats[1][1]}</small></figcaption></figure>
+      <figure><img src="/images/pizza-groente.webp" alt={c.cats[3][0]} width="900" height="1125" loading="lazy" decoding="async" /><figcaption>{c.cats[3][0]}<small>{c.cats[3][1]}</small></figcaption></figure>
+    </div>
+  </div></section>
+
+  <div id="reviews"><Reviews lang={lang} /></div>
+
+  <section class="sec"><div class="wrap">
+    <div class="center" style="margin-bottom:40px"><p class="eyebrow">Per ogni occasione</p><h2>{c.waysTitle}</h2></div>
+    <div class="occ">{c.ways.map(([h, p], i) => <div><span class="n">{['I', 'II', 'III', 'IV'][i]}</span><h3>{h}</h3><p>{p}</p></div>)}</div>
+    <p class="center" style="margin-top:36px"><a class="lnk" href={site.orderUrl!} rel="noopener">{t.order}</a></p>
+  </div></section>
+
+  <section class="sec alt"><div class="wrap split rev press">
+    {krant && <img src={krant} alt="" width="800" height="1000" loading="lazy" decoding="async" />}
+    <div>
+      <p class="eyebrow">Stampa & social</p>
+      <h2>{c.pressTitle}</h2>
+      <p>{c.press}</p>
+      <div class="btns"><a class="btn" href="https://www.instagram.com/telepizza_nl/" rel="noopener">Instagram</a><a class="btn" href="https://www.tiktok.com/@telepizza_nl" rel="noopener">TikTok</a></div>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>{c.seoTitle}</h2>
+    <div class="seo prose" style="margin-top:28px">{c.seo.map(([h, p]) => <><h3>{h}</h3><p set:html={p} /></>)}</div>
+    <slot name="links" />
+  </div></section>
+
+  <section class="sec alt"><div class="wrap" style="max-width:860px">
+    <div class="center"><p class="eyebrow">Domande</p><h2>FAQ</h2></div>
+    {c.faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
+    <slot name="faqmore" />
+  </div></section>
+
+  <script is:inline>
+    (function(){var v=document.getElementById('hv');if(!v)return;var c=navigator.connection;
+      if(!matchMedia('(min-width:768px)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches||(c&&c.saveData))return;
+      addEventListener('load',function(){setTimeout(function(){v.src=v.dataset.src;v.play().catch(function(){});},1200);});})();
+  </script>
+</Base>
+<style is:global>
+  .facts-list{list-style:none;padding:0;margin:24px 0 0;border-top:1px solid var(--line)}
+  .facts-list li{padding:12px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+  .facts-list strong{font:600 1.25rem/1 var(--serif);color:var(--ink)}
+</style>

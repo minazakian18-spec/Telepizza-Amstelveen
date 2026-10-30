@@ -1,135 +1,53 @@
 ---
-import Base from '../layouts/Base.astro';
-import Dishes from '../components/Dishes.astro';
-import Reviews from '../components/Reviews.astro';
+import HomeView from '../components/HomeView.astro';
 import { site, fullAddress } from '../data/site';
-import { pick } from '../data/dishes';
-import { media } from '../lib/media';
-import '../styles/home.css';
-const video = media('hero-video.mp4');
-const poster = '/images/restaurant-binnen.webp';
-const krant = media('krantenartikel.png');
-const cats = [
-  { t: 'Pizza', s: 'Ruim 35 soorten, vers uit de oven', img: 'pizza-truffel', h: '/pizza-amstelveen/' },
-  { t: 'Pasta', s: 'Carbonara, truffel, frutti di mare', img: 'pasta-tartufo', h: '/pasta-amstelveen/' },
-  { t: 'Kapsalon & shoarma', s: 'Halal, van de verse spies', img: 'kapsalon', h: '/kapsalon-amstelveen/' },
-  { t: 'Steaks & grill', s: 'Ossenhaas, ribeye, spare ribs', img: 'spare-ribs', h: '/steak-grill-amstelveen/' },
-  { t: 'Burgers', s: 'Bacon, cheese en burgermenu', img: 'bacon-burger', h: '/menu-italiaans-restaurant-amstelveen/#burgers' },
-  { t: 'Desserts', s: 'Tiramisu, dame blanche, Ben & Jerry’s', img: 'tiramisu', h: '/menu-italiaans-restaurant-amstelveen/#ijs-dessert' },
-];
-const faq = [
-  ['Waar kan ik goed pizza eten in Amstelveen?', `Bij Telepizza aan de ${fullAddress}. Sinds 1984 bakken we pizza’s met vers deeg en verse toppings. Je kunt bij ons in het restaurant eten, afhalen of laten bezorgen.`],
-  ['Is het vlees bij Telepizza halal?', 'Ja. Al ons vlees is halal, van de shoarma en kipshoarma tot de döner op pizza en kapsalon.'],
-  ['Tot hoe laat is Telepizza open?', 'Dinsdag tot en met donderdag en op zondag van 15:00 tot 01:45. Vrijdag en zaterdag zelfs tot 03:00. Op maandag zijn we gesloten.'],
-  ['Bezorgen jullie in heel Amstelveen?', 'We bezorgen in Amstelveen, waaronder Westwijk, Elsrijk, Middenhoven, Bankras-Kostverloren, Groenelaan, Waardhuizen, het Stadshart, Keizer Karelpark en Randwijck. Bestel online via onze bestelwinkel.'],
-  ['Kan ik bij jullie reserveren?', `Ja, reserveer online via TheFork of bel ${site.phoneDisplay}. Voor groepen en feestjes denken we graag mee.`],
-];
-const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+import type { HomeCopy } from '../i18n/pages';
+import { articles } from '../data/articles';
+
+const c: HomeCopy = {
+  title: 'Telepizza Amstelveen | Italiaans restaurant & pizzeria sinds 1984',
+  desc: `Italiaans restaurant in Amstelveen sinds 1984. Pizza uit de oven, verse pasta en steaks van de grill in een sfeervolle zaal. Halal vlees, open tot 03:00. ★ ${site.rating.value} uit ${site.rating.count} Google-reviews. Reserveer een tafel.`,
+  h1: 'Italiaans restaurant <i>in Amstelveen</i>',
+  lead: 'Al sinds 1984 aan de Amsterdamseweg. Schuif aan voor pizza uit de oven, verse pasta, steaks van de grill en een goed glas wijn.',
+  storyTitle: 'Een Italiaanse avond, <i>al ruim veertig jaar</i>',
+  story: [
+    'Telepizza is in 1984 begonnen aan de Amsterdamseweg en is uitgegroeid tot een sfeervol Italiaans restaurant. Hier eet je met familie, vrienden of collega’s aan gedekte tafels, met gerechten die we elke dag vers bereiden: van handgerekt pizzadeeg en huisgemaakte sauzen tot sappige steaks van de grill.',
+    'Een groene wand, warm licht, neon aan de muur en een bediening die je bij naam onthoudt. Onze gasten noemen vooral de gastvrijheid, de smaak en de eerlijke prijzen. Kom voor een etentje met twee, een verjaardag met de hele familie of een late avond met vrienden: de keuken is open tot 01:45, in het weekend tot 03:00.',
+  ],
+  salaTitle: 'Gedekte tafels, warm licht en echte gastvrijheid',
+  menuEyebrow: '', menuTitle: '',
+  facts: [['Sinds 1984', 'ruim veertig jaar in Amstelveen'], ['Halal', 'al ons vlees'], ['Tot 03:00', 'op vrijdag en zaterdag'], [`★ ${site.rating.value}`, `${site.rating.count} Google-reviews`]],
+  cats: [['Pizza uit de oven', 'Handgerekt deeg, huisgemaakte tomatensaus'], ['Verse pasta', 'Carbonara, tartufo, frutti di mare'], ['', ''], ['Specialità della casa', 'Onze speciale pizza’s met geitenkaas, truffel en Parmaham']],
+  favEyebrow: 'La nostra carta', favTitle: 'Specialiteiten van het huis',
+  waysTitle: 'Voor elke gelegenheid',
+  ways: [
+    ['Diner voor twee', 'Een romige pasta, een pizza om te delen en een fles wijn. Reserveer je tafel online via TheFork.'],
+    ['Familie & verjaardagen', 'Grote tafels, iets voor ieder wat wils en kinderen zijn welkom. Bel ons voor groepen.'],
+    ['Avond met vrienden', 'Cocktails, pizza en een keuken die open is tot 03:00 in het weekend.'],
+    ['Catering & bedrijven', 'Italiaanse catering voor feesten, kantoor en borrels in Amstelveen. <a href="/catering-italiaans-restaurant-amstelveen/">Meer over catering</a>.'],
+  ],
+  pressTitle: 'Bekend van de krant en social media',
+  press: 'De lokale krant schreef over onze vernieuwde zaak en hoe Telepizza uitgroeide tot een volwaardig restaurant. Video’s van onze gerechten en sfeer zijn op Instagram en TikTok samen al meer dan 300.000 keer bekeken.',
+  seoTitle: 'Uit eten in Amstelveen: pizza, pasta en grill',
+  seo: [
+    ['Pizza in Amstelveen', 'Onze <a href="/pizza-amstelveen/">pizza’s</a> maken we met handgerekt deeg, huisgemaakte tomatensaus en verse ingrediënten. Kies een klassieke margherita, de populaire Tele Pizza of een pizza met truffel en Parmaham. Ruim 35 soorten, ook <a href="/pizza-soorten/">vegetarisch en met vis</a>.'],
+    ['Pasta en steaks van de grill', 'Van carbonara en bolognese tot tartufo zucchine en frutti di mare: onze <a href="/pasta-amstelveen/">pasta’s</a> worden vers bereid. Liever vlees? Bestel <a href="/steak-grill-amstelveen/">biefstuk, ribeye, ossenhaas of spare ribs</a>, met salade en frites.'],
+    ['Halal en tot laat open', 'Al ons vlees is <a href="/halal-restaurant-amstelveen/">halal</a>. Naast Italiaanse gerechten staan ook burgers, shoarma en <a href="/kapsalon-amstelveen/">kapsalon</a> op de kaart. En wie laat trek heeft: we zijn <a href="/laat-open-amstelveen/">open tot 01:45</a>, in het weekend tot 03:00.'],
+    ['Thuis genieten', 'Kun je niet komen? Je kunt ook <a href="/bezorgen-amstelveen/">afhalen of laten bezorgen in Amstelveen</a>, of <a href="/catering-bedrijven-amstelveen/">catering voor je bedrijf</a> bestellen.'],
+  ],
+  faq: [
+    ['Kan ik bij Telepizza reserveren?', `Ja, reserveer online via TheFork of bel ${site.phoneDisplay}. Voor groepen en verjaardagen denken we graag mee.`],
+    ['Waar zit Telepizza Amstelveen?', `Aan de ${fullAddress}, in het noorden van Amstelveen, vlak bij Randwijck en de grens met Amsterdam.`],
+    ['Tot hoe laat is de keuken open?', 'Dinsdag tot en met donderdag en op zondag van 15:00 tot 01:45. Vrijdag en zaterdag tot 03:00. Op maandag zijn we gesloten.'],
+    ['Is het vlees halal?', 'Ja, al ons vlees is halal.'],
+    ['Kan ik ook afhalen of laten bezorgen?', 'Ja, via onze online bestelwinkel kun je afhalen of laten bezorgen in Amstelveen.'],
+  ],
+};
 ---
-<Base overlay page="home" schema={[faqLd]} image="/images/restaurant-binnen.webp" title="Telepizza Amstelveen | Italiaans restaurant, pizza & grill – sinds 1984" description={`Italiaans restaurant in Amstelveen: pizza, pasta, steaks, kapsalon en burgers. Halal vlees, open tot 03:00. Reserveer, haal af of laat bezorgen. ★ ${site.rating.value} uit ${site.rating.count} Google-reviews.`}>
-  <link slot="head" rel="preload" as="image" href={poster} fetchpriority="high" />
-
-  <section class="hero">
-    <img class="poster" src={poster} alt="Sfeervol interieur van Telepizza Amstelveen met neon en groene wand" width="1600" height="1067" fetchpriority="high" />
-    {video && <video id="hv" muted loop playsinline preload="none" poster={poster} aria-hidden="true" data-src={video}></video>}
-    <div class="wrap in">
-      <a class="chip" href="#reviews"><span class="st" aria-hidden="true">★★★★★</span>{String(site.rating.value).replace('.', ',')} · {site.rating.count} Google-reviews</a>
-      <h1>Pizza, pasta & grill <i>in Amstelveen</i></h1>
-      <p class="lead">Sinds 1984 hét Italiaanse restaurant aan de Amsterdamseweg. Vers deeg, eerlijke prijzen, halal vlees en een keuken die open is tot diep in de nacht. Eet bij ons, haal af of laat bezorgen.</p>
-      <div class="btns">
-        <a class="btn primary" href={site.orderUrl!} rel="noopener">Bestel online</a>
-        <a class="btn" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a>
-        <a class="btn" href="/menu-italiaans-restaurant-amstelveen/">Bekijk het menu</a>
-      </div>
-      <div class="facts">
-        <div><b>Sinds 1984</b><span>ruim 40 jaar Amstelveen</span></div>
-        <div><b>100% halal</b><span>al ons vlees</span></div>
-        <div><b>Tot 03:00</b><span>vrijdag & zaterdag</span></div>
-        <div><b>3 manieren</b><span>eten, afhalen, bezorgen</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec"><div class="wrap">
-    <div class="head"><div><p class="eyebrow">Ons menu</p><h2>Waar heb je zin in?</h2></div><a class="btn" href="/menu-italiaans-restaurant-amstelveen/">Volledig menu met prijzen</a></div>
-    <div class="cats">
-      {cats.map(c => <a class="cat" href={c.h}><img src={`/images/menu/${c.img}.webp`} alt={`${c.t} bij Telepizza Amstelveen`} width="630" height="450" loading="lazy" decoding="async" /><div><h3>{c.t}</h3><p>{c.s}</p></div></a>)}
-    </div>
-  </div></section>
-
-  <section class="sec alt"><div class="wrap">
-    <div class="head"><div><p class="eyebrow">Meest besteld</p><h2>De favorieten van Amstelveen</h2></div><a class="btn primary" href={site.orderUrl!} rel="noopener">Direct bestellen</a></div>
-    <Dishes items={pick('telePizza', 'truffel', 'carbonara', 'kapsalon', 'pepperoni', 'tartufo', 'ribs', 'popeye')} />
-  </div></section>
-
-  <section class="sec"><div class="wrap split">
-    <div>
-      <p class="eyebrow">Not your average restaurant</p>
-      <h2>Van afhaalpizzeria tot <em class="hl">dé avond uit</em> van Amstelveen</h2>
-      <p>Telepizza begon in 1984 als pizzeria aan de Amsterdamseweg. Inmiddels zijn we uitgegroeid tot een sfeervol Italiaans restaurant met een groene wand, neonlicht, goede cocktails en een keuken die alles vers bereidt. Van huisgemaakte pizzabodems en rijke sauzen tot sappige steaks van de grill.</p>
-      <p>Onze gasten komen terug voor de smaak, de betaalbare prijzen en de service. In de reviews lees je steeds weer hetzelfde: snel, vriendelijk en gewoon heel lekker. Of je nu komt voor een snelle pizza na het werk, een romige pasta met je date of een verjaardagsdiner met de hele familie: bij Telepizza zit je goed.</p>
-      <div class="btns"><a class="btn primary" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a><a class="btn" href="/over-ons-italiaans-restaurant-amstelveen/">Ons verhaal</a></div>
-    </div>
-    <div class="collage">
-      <img class="a" src="/images/cocktail-neon.webp" alt="Cocktail voor de neon 'Hotter than your ex' bij Telepizza" width="600" height="800" loading="lazy" decoding="async" />
-      <img class="b" src="/images/pepperoni-pizza.webp" alt="Verse pepperoni pizza op tafel" width="500" height="500" loading="lazy" decoding="async" />
-      <img class="c" src="/images/pizza-groente.webp" alt="Pizza met verse groenten en geitenkaas" width="500" height="500" loading="lazy" decoding="async" />
-    </div>
-  </div></section>
-
-  <div id="reviews"><Reviews /></div>
-
-  <section class="sec"><div class="wrap">
-    <div class="head"><div><p class="eyebrow">Meer dan pizza</p><h2>Grill, kapsalon & burgers</h2></div><a class="btn" href="/steak-grill-amstelveen/">Steaks & grill</a></div>
-    <Dishes items={pick('shoarmaSchotel', 'kipSchotel', 'baconBurger', 'lasagna')} />
-  </div></section>
-
-  <section class="sec light"><div class="wrap">
-    <div class="center"><p class="eyebrow">Zo werkt het</p><h2>Eten zoals jij wilt</h2></div>
-    <div class="ways" style="margin-top:36px">
-      <div class="way"><span class="n">1</span><h3>In het restaurant</h3><p>Schuif aan in ons sfeervolle restaurant aan de Amsterdamseweg 452. Reserveer online via TheFork of loop gewoon binnen.</p><a class="btn sm" href={site.reserveUrl!} rel="noopener">Reserveren</a></div>
-      <div class="way"><span class="n">2</span><h3>Afhalen</h3><p>Bestel online of bel {site.phoneDisplay} en haal je pizza warm en vers af. Handig op de route naar huis.</p><a class="btn sm" href={site.orderUrl!} rel="noopener">Bestel om af te halen</a></div>
-      <div class="way"><span class="n">3</span><h3>Bezorgen</h3><p>Wij bezorgen in heel Amstelveen, van Westwijk tot Randwijck. Spaar punten bij elke bestelling en krijg korting.</p><a class="btn sm" href="/bezorgen-amstelveen/">Bezorggebied</a></div>
-    </div>
-  </div></section>
-
-  <section class="sec"><div class="wrap split press">
-    {krant && <img src={krant} alt="Krantenartikel over de vernieuwde Telepizza in Amstelveen" width="800" height="1000" loading="lazy" decoding="async" />}
-    <div>
-      <p class="eyebrow">Bekend van social & de krant</p>
-      <h2>300.000+ views op TikTok en Instagram</h2>
-      <p>Onze pizza’s, cocktails en de sfeer gaan regelmatig viraal. Video’s van Telepizza zijn samen al meer dan 300.000 keer bekeken. Ook de lokale krant schreef over onze vernieuwde zaak en de stap van afhaalpizzeria naar volwaardig restaurant.</p>
-      <div class="btns"><a class="btn" href="https://www.tiktok.com/@telepizza_nl" rel="noopener">Volg ons op TikTok</a><a class="btn" href="https://www.instagram.com/telepizza_nl/" rel="noopener">Instagram</a></div>
-    </div>
-  </div></section>
-
-  <section class="sec alt"><div class="wrap">
-    <p class="eyebrow">Italiaans eten in Amstelveen</p>
-    <h2>Het restaurant voor pizza, pasta en grill in Amstelveen</h2>
-    <div class="seo prose" style="margin-top:28px">
-      <h3>Verse pizza in Amstelveen</h3>
-      <p>Op zoek naar de lekkerste pizza in Amstelveen? Onze pizza’s maken we met handgerekt deeg, huisgemaakte tomatensaus en royale toppings. Kies een klassieke <a href="/pizza-soorten/">margherita of pepperoni</a>, onze populaire Tele Pizza, een pizza met truffel en Parmaham, of stel je eigen pizza samen. Vegetarisch, met vis of met halal vlees: er zijn ruim 35 pizza’s om uit te kiezen.</p>
-      <h3>Pasta, steaks en grillgerechten</h3>
-      <p>Naast pizza serveren we <a href="/pasta-amstelveen/">pasta’s</a> zoals carbonara, bolognese, tartufo zucchine en frutti di mare, met keuze uit spaghetti of penne. Van de grill komen <a href="/steak-grill-amstelveen/">biefstuk, ribeye, entrecote, ossenhaas en spare ribs</a>, geserveerd met salade en frites. Liefhebbers van vis kiezen scampi’s van de grill of gegrilde zalm.</p>
-      <h3>Kapsalon, shoarma en burgers, 100% halal</h3>
-      <p>Bij Telepizza is al het vlees halal. Daarom komen veel gasten voor onze <a href="/kapsalon-amstelveen/">kapsalon</a> met shoarma, kipshoarma of döner, onze shoarmaschotels en de pizza shoarma. Ook burgers, kipnuggets, bitterballen en friet met huisgemaakte chilimayonaise staan op de kaart. Lees meer over <a href="/halal-restaurant-amstelveen/">halal eten in Amstelveen</a>.</p>
-      <h3>Laat open en bezorgen in Amstelveen</h3>
-      <p>Trek in eten na middernacht? Wij zijn <a href="/laat-open-amstelveen/">laat open</a>: tot 01:45, en op vrijdag en zaterdag tot 03:00. We <a href="/bezorgen-amstelveen/">bezorgen in heel Amstelveen</a> en verzorgen ook <a href="/catering-italiaans-restaurant-amstelveen/">catering</a> voor feesten, verjaardagen en <a href="/catering-bedrijven-amstelveen/">bedrijven</a>.</p>
-    </div>
-    <ul class="kw">
-      {[['/pizza-amstelveen/','Pizza Amstelveen'],['/pizza-soorten/','Pizzasoorten'],['/pasta-amstelveen/','Pasta Amstelveen'],['/kapsalon-amstelveen/','Kapsalon Amstelveen'],['/steak-grill-amstelveen/','Steak Amstelveen'],['/halal-restaurant-amstelveen/','Halal restaurant Amstelveen'],['/laat-open-amstelveen/','Laat open eten'],['/restaurant-amstelveen/','Restaurant Amstelveen'],['/bezorgen-amstelveen/','Pizza bezorgen Amstelveen'],['/catering-italiaans-restaurant-amstelveen/','Catering Amstelveen']].map(([h,t]) => <li><a href={h}>{t}</a></li>)}
-    </ul>
-  </div></section>
-
-  <section class="sec"><div class="wrap" style="max-width:900px">
-    <div class="center"><p class="eyebrow">Goed om te weten</p><h2>Veelgestelde vragen</h2></div>
-    {faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
-    <p class="center" style="margin-top:20px"><a href="/veelgestelde-vragen/">Meer vragen en antwoorden</a></p>
-  </div></section>
-
-  <script is:inline>
-    (function(){var v=document.getElementById('hv');if(!v)return;var c=navigator.connection;
-      if(!matchMedia('(min-width:768px)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches||(c&&c.saveData))return;
-      addEventListener('load',function(){setTimeout(function(){v.src=v.dataset.src;v.play().catch(function(){});},1200);});})();
-  </script>
-</Base>
+<HomeView lang="nl" c={c}>
+  <div slot="links" class="journal">
+    <div class="head" style="margin-top:72px"><div><p class="eyebrow">Il diario</p><h2>Uit onze keuken</h2></div><a class="btn" href="/blog/">Alle artikelen</a></div>
+    <div class="trio">{articles.slice(0, 3).map(a => <a href={`/blog/${a.slug}/`} style="text-decoration:none"><figure><img src={a.img} alt={a.imgAlt} width="900" height="1125" loading="lazy" decoding="async" /><figcaption>{a.title}</figcaption></figure></a>)}</div>
+  </div>
+  <p slot="faqmore" class="center" style="margin-top:24px"><a href="/veelgestelde-vragen/">Meer vragen en antwoorden</a></p>
+</HomeView>

@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import { articles } from '../../data/articles';
+const fmt = (d: string) => new Date(d).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base title="Blog | Telepizza Amstelveen – pizza, pasta en uit eten in Amstelveen" description="Verhalen en tips van Telepizza Amstelveen: over pizza, pasta, halal eten, kapsalon en uit eten in Amstelveen." crumbs={[{ name: 'Blog', path: '/blog/' }]}>
+  <style>
+    .bl{display:grid;gap:40px 32px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+    .bl a{text-decoration:none;display:block}
+    .bl img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--bg2)}
+    .bl time{display:block;margin-top:16px;font:500 .72rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+    .bl h2{font-size:1.9rem;margin:10px 0 8px}
+    .bl a:hover h2{text-decoration:underline;text-decoration-color:var(--gold)}
+  </style>
+  <div class="wrap" style="padding-top:24px">
+    <p class="eyebrow">Il diario</p>
+    <h1>Blog</h1>
+    <p class="lead">Verhalen uit onze keuken en tips voor uit eten in Amstelveen.</p>
+    <div class="bl" style="margin-top:48px">
+      {articles.map(a => <article><a href={`/blog/${a.slug}/`}><img src={a.img} alt={a.imgAlt} width="900" height="675" loading="lazy" decoding="async" /><time datetime={a.date}>{fmt(a.date)}</time><h2>{a.title}</h2><p>{a.intro}</p></a></article>)}
+    </div>
+  </div>
+</Base>

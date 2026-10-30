@@ -1,15 +1,26 @@
 ---
-import Base from '../layouts/Base.astro';
-import Cta from '../components/Cta.astro';
+import Landing from '../layouts/Landing.astro';
+import { sfeer } from '../data/gallery';
 ---
-<Base page="about" title="Over ons | Telepizza Amstelveen" description="Telepizza Amstelveen, sinds 1984: van afhaalzaak naar restaurant aan de Amsterdamseweg waar je kunt eten, afhalen of laten bezorgen." crumbs={[{ name: 'Over ons', path: '/over-ons-italiaans-restaurant-amstelveen/' }]}>
-<div class="wrap">
-<h1>Over Telepizza Amstelveen</h1>
-<p class="lead">Telepizza Amstelveen is een toegankelijke pizzeria aan de Amsterdamseweg 452. Je kunt bij ons eten, afhalen of laten bezorgen.</p>
-<p>Naast pizza maken we ook pasta, shoarma en serveren we ijs. Iedereen is welkom: gezinnen, studenten, collega’s en buren.</p>
-<h2>Sinds 1984</h2><p>Telepizza staat al sinds 1984 voor Amstelveen klaar. Wat begon als afhaalzaak is uitgegroeid tot een vernieuwd restaurant, waar de lokale krant ook over schreef.</p>
-<h2>Geliefd bij onze gasten</h2><p>Gasten beoordelen ons als “Excellent”, gebaseerd op 934 reviews. Ze noemen vooral het lekkere eten, de snelle en vriendelijke service en de betaalbare prijzen.</p>
-<h2>Volg ons</h2><p>Onze video’s zijn samen meer dan 300.000 keer bekeken. Volg ons op <a href="https://www.instagram.com/telepizza_nl/" rel="noopener">Instagram</a> en <a href="https://www.tiktok.com/@telepizza_nl" rel="noopener">TikTok</a>.</p>
-<Cta />
-</div>
-</Base>
+<Landing page="about"
+  path="/over-ons-italiaans-restaurant-amstelveen/" crumb="Over ons"
+  title="Over ons | Telepizza Amstelveen, familierestaurant sinds 1984"
+  description="Telepizza Amstelveen is een familiebedrijf en sinds 1984 een begrip aan de Amsterdamseweg. Lees ons verhaal en maak kennis met chef Mario en het team."
+  eyebrow="La nostra storia" h1="Over <i>Telepizza</i>"
+  lead="Een plek vol karakter waar goed eten, sfeer en gastvrijheid samenkomen. Al ruim veertig jaar aan de Amsterdamseweg in Amstelveen."
+  img="/images/cocktail-neon.webp" imgAlt="Neon 'Hotter than your ex' in het restaurant van Telepizza"
+  gallery={sfeer}>
+  <h2>Van pizzeria tot restaurant</h2>
+  <p>Telepizza is al decennia een begrip in Amstelveen. Wat ooit begon als een klassieke pizzeria, is uitgegroeid tot een levendig restaurant waar eten, drinken en beleving samenkomen. Ook de lokale krant schreef over de vernieuwing van onze zaak en de stap naar een volwaardig restaurant.</p>
+  <p>Vandaag de dag is Telepizza meer dan alleen pizza. We combineren Italiaanse klassiekers met gerechten van de grill en een uitgebreide cocktailkaart. Of je nu komt voor een diner, een drankje of een gezellige avond met vrienden: bij ons draait alles om sfeer en samenzijn.</p>
+  <h2>Onze missie</h2>
+  <p>Een plek creëren waar mensen niet alleen komen om te eten, maar om te genieten van hun avond. Daarom ligt de focus niet alleen op de kwaliteit van onze gerechten, maar op de totale ervaring: van warme service tot een ontspannen en energieke ambiance. We geloven dat de beste momenten ontstaan aan tafel, met goed eten, goede drankjes en goed gezelschap.</p>
+  <h2>Het team</h2>
+  <p><strong>Chef Mario</strong> is de man achter de keuken. Met jaren ervaring en pure passie zorgt hij voor de smaak die je blijft onthouden.</p>
+  <p><strong>Thomas</strong> is bediening, manager en de spil van de zaak. Hij houdt alles op de vloer strak en zorgt dat elke gast topservice krijgt. In onze Google-reviews wordt hij vaak bij naam genoemd.</p>
+  <p><strong>Mina</strong> werkt achter de schermen: van marketing tot klantenservice zorgt hij dat alles klopt, online én in het restaurant.</p>
+  <h2>Geliefd bij onze gasten</h2>
+  <p>Gasten geven ons een 4,7 op Google, op basis van 934 reviews. Ze noemen vooral het lekkere eten, de snelle en vriendelijke service en de betaalbare prijzen. Lees ze op onze <a href="/reviews/">reviewpagina</a>.</p>
+  <h2>Volg ons</h2>
+  <p>Onze video’s zijn samen meer dan 300.000 keer bekeken. Volg ons op <a href="https://www.instagram.com/telepizza_nl/" rel="noopener">Instagram</a> en <a href="https://www.tiktok.com/@telepizza_nl" rel="noopener">TikTok</a>.</p>
+</Landing>

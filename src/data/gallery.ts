@@ -1,0 +1,11 @@
+// Sfeerfoto's die op meerdere pagina's terugkomen. Vervang of vul aan met nieuwe restaurantfoto's.
+export const sfeer: [string, string][] = [
+  ['/images/restaurant-binnen.webp', 'Onze zaal aan de Amsterdamseweg'],
+  ['/images/cocktail-neon.webp', 'Cocktails onder de neon'],
+  ['/images/pepperoni-pizza.webp', 'Pizza, vers uit de oven'],
+];
+export const eten: [string, string][] = [
+  ['/images/pepperoni-pizza.webp', 'Pizza pepperoni aan tafel'],
+  ['/images/pasta-carbonara.webp', 'Romige pasta uit onze keuken'],
+  ['/images/pizza-groente.webp', 'Pizza met geitenkaas en groenten'],
+];

@@ -5,13 +5,14 @@ type Pair = [string, string];
 export interface HomeCopy {
   title: string; desc: string; h1: string; lead: string; facts: Pair[]; menuEyebrow: string; menuTitle: string;
   cats: Pair[]; favEyebrow: string; favTitle: string; storyEyebrow: string; storyTitle: string; story: string[];
-  waysTitle: string; ways: Pair[]; pressTitle: string; press: string; seoTitle: string; seo: Pair[]; faq: Pair[];
+  waysTitle: string; ways: Pair[]; salaTitle: string; pressTitle: string; press: string; seoTitle: string; seo: Pair[]; faq: Pair[];
 }
 export interface SimpleCopy { title: string; desc: string; h1: string; lead: string; body: Pair[] }
 
 // Categorieën op de homepage, in dezelfde volgorde als de foto's.
 export const home: Record<F, HomeCopy> = {
   en: {
+    salaTitle: "A table full of atmosphere",
     title: 'Telepizza Amstelveen | Italian restaurant, pizza & grill – since 1984',
     desc: 'Italian restaurant in Amstelveen: pizza, pasta, steaks, kapsalon and burgers. Halal meat, open until 3 am. Book a table, take away or get it delivered.',
     h1: 'Pizza, pasta & grill <i>in Amstelveen</i>',
@@ -29,6 +30,7 @@ export const home: Record<F, HomeCopy> = {
     faq: [['Where can I get good pizza in Amstelveen?', 'At Telepizza, Amsterdamseweg 452, 1181 BW Amstelveen. We have been making fresh pizza since 1984. Dine in, take away or have it delivered.'], ['Is the meat halal?', 'Yes. All our meat is halal, including the shawarma, chicken shawarma and döner.'], ['What are your opening hours?', 'Tuesday to Thursday and Sunday from 3 pm to 1:45 am, Friday and Saturday until 3 am. Closed on Mondays.'], ['Do you deliver in Amstelveen?', 'Yes, we deliver across Amstelveen. Order online via our ordering page.'], ['Can I book a table?', 'Yes, book online via TheFork or call 020-6435287.']],
   },
   de: {
+    salaTitle: "Ein Tisch voller Atmosphäre",
     title: 'Telepizza Amstelveen | Italienisches Restaurant, Pizza & Grill – seit 1984',
     desc: 'Italienisches Restaurant in Amstelveen: Pizza, Pasta, Steaks, Kapsalon und Burger. Halal-Fleisch, geöffnet bis 3 Uhr. Reservieren, abholen oder liefern lassen.',
     h1: 'Pizza, Pasta & Grill <i>in Amstelveen</i>',
@@ -46,6 +48,7 @@ export const home: Record<F, HomeCopy> = {
     faq: [['Wo gibt es gute Pizza in Amstelveen?', 'Bei Telepizza, Amsterdamseweg 452, 1181 BW Amstelveen. Seit 1984 backen wir frische Pizza. Im Restaurant, zum Abholen oder per Lieferung.'], ['Ist das Fleisch halal?', 'Ja, unser gesamtes Fleisch ist halal.'], ['Wie sind die Öffnungszeiten?', 'Dienstag bis Donnerstag und Sonntag 15:00–01:45 Uhr, Freitag und Samstag bis 03:00 Uhr. Montag Ruhetag.'], ['Liefern Sie in Amstelveen?', 'Ja, wir liefern in ganz Amstelveen. Bestellen Sie online.'], ['Kann ich einen Tisch reservieren?', 'Ja, online über TheFork oder telefonisch unter 020-6435287.']],
   },
   tr: {
+    salaTitle: "Atmosferi bol bir masa",
     title: 'Telepizza Amstelveen | İtalyan restoranı, pizza ve ızgara – 1984’ten beri',
     desc: 'Amstelveen’de İtalyan restoranı: pizza, makarna, biftek, kapsalon ve burger. Helal et, gece 03:00’e kadar açık. Rezervasyon, gel-al veya eve teslimat.',
     h1: 'Pizza, makarna ve ızgara <i>Amstelveen’de</i>',
@@ -63,6 +66,7 @@ export const home: Record<F, HomeCopy> = {
     faq: [['Amstelveen’de nerede iyi pizza yenir?', 'Telepizza, Amsterdamseweg 452, 1181 BW Amstelveen. 1984’ten beri taze pizza yapıyoruz.'], ['Etler helal mi?', 'Evet, tüm etlerimiz helaldir.'], ['Çalışma saatleri nedir?', 'Salı–Perşembe ve Pazar 15:00–01:45, Cuma ve Cumartesi 03:00’e kadar. Pazartesi kapalı.'], ['Amstelveen’e teslimat var mı?', 'Evet, tüm Amstelveen’e teslimat yapıyoruz. Online sipariş verin.'], ['Rezervasyon yapabilir miyim?', 'Evet, TheFork üzerinden veya 020-6435287 numarasını arayarak.']],
   },
   ar: {
+    salaTitle: "طاولة مليئة بالأجواء",
     title: 'تيليبيتزا أمستلفين | مطعم إيطالي وبيتزا ومشويات – منذ 1984',
     desc: 'مطعم إيطالي في أمستلفين: بيتزا، معكرونة، ستيك، كابسالون وبرغر. لحوم حلال، مفتوح حتى الساعة 3 فجرًا. احجز، استلم أو اطلب التوصيل.',
     h1: 'بيتزا ومعكرونة ومشويات <i>في أمستلفين</i>',
@@ -80,6 +84,7 @@ export const home: Record<F, HomeCopy> = {
     faq: [['أين أجد بيتزا جيدة في أمستلفين؟', 'في تيليبيتزا، Amsterdamseweg 452، 1181 BW Amstelveen. نصنع البيتزا الطازجة منذ 1984.'], ['هل اللحم حلال؟', 'نعم، جميع اللحوم لدينا حلال.'], ['ما هي ساعات العمل؟', 'من الثلاثاء إلى الخميس والأحد من 15:00 حتى 01:45، الجمعة والسبت حتى 03:00. مغلق يوم الاثنين.'], ['هل توصلون في أمستلفين؟', 'نعم، نوصّل إلى جميع أنحاء أمستلفين. اطلب أونلاين.'], ['هل يمكنني حجز طاولة؟', 'نعم، عبر TheFork أو بالاتصال على 020-6435287.']],
   },
   fr: {
+    salaTitle: "Une table pleine d’ambiance",
     title: 'Telepizza Amstelveen | Restaurant italien, pizza & grill – depuis 1984',
     desc: 'Restaurant italien à Amstelveen : pizza, pâtes, steaks, kapsalon et burgers. Viande halal, ouvert jusqu’à 3 h. Réservez, emportez ou faites-vous livrer.',
     h1: 'Pizza, pâtes & grill <i>à Amstelveen</i>',
@@ -97,6 +102,7 @@ export const home: Record<F, HomeCopy> = {
     faq: [['Où manger une bonne pizza à Amstelveen ?', 'Chez Telepizza, Amsterdamseweg 452, 1181 BW Amstelveen, depuis 1984.'], ['La viande est-elle halal ?', 'Oui, toute notre viande est halal.'], ['Quels sont vos horaires ?', 'Du mardi au jeudi et le dimanche de 15 h à 1 h 45, vendredi et samedi jusqu’à 3 h. Fermé le lundi.'], ['Livrez-vous à Amstelveen ?', 'Oui, partout à Amstelveen. Commandez en ligne.'], ['Puis-je réserver une table ?', 'Oui, via TheFork ou au 020-6435287.']],
   },
   it: {
+    salaTitle: "Una tavola piena di atmosfera",
     title: 'Telepizza Amstelveen | Ristorante italiano, pizza & grill – dal 1984',
     desc: 'Ristorante italiano ad Amstelveen: pizza, pasta, bistecche, kapsalon e hamburger. Carne halal, aperto fino alle 3. Prenota, ritira o ordina a domicilio.',
     h1: 'Pizza, pasta & grill <i>ad Amstelveen</i>',
@@ -114,6 +120,7 @@ export const home: Record<F, HomeCopy> = {
     faq: [['Dove mangiare una buona pizza ad Amstelveen?', 'Da Telepizza, Amsterdamseweg 452, 1181 BW Amstelveen, dal 1984.'], ['La carne è halal?', 'Sì, tutta la nostra carne è halal.'], ['Quali sono gli orari?', 'Da martedì a giovedì e domenica dalle 15:00 all’1:45, venerdì e sabato fino alle 3:00. Chiuso il lunedì.'], ['Consegnate ad Amstelveen?', 'Sì, in tutta Amstelveen. Ordina online.'], ['Posso prenotare un tavolo?', 'Sì, su TheFork o al numero 020-6435287.']],
   },
   es: {
+    salaTitle: "Una mesa llena de ambiente",
     title: 'Telepizza Amstelveen | Restaurante italiano, pizza y parrilla – desde 1984',
     desc: 'Restaurante italiano en Amstelveen: pizza, pasta, filetes, kapsalon y hamburguesas. Carne halal, abierto hasta las 3. Reserva, recoge o pide a domicilio.',
     h1: 'Pizza, pasta y parrilla <i>en Amstelveen</i>',

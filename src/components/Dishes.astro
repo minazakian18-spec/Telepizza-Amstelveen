@@ -1,11 +1,9 @@
 ---
-import { site } from '../data/site';
+// Gerechten als regels op een gedrukte menukaart: naam, stippellijn, prijs en omschrijving.
 import { eur, type Dish } from '../data/dishes';
-import { ui, type Lang } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
 interface Props { items: Dish[]; lang?: Lang }
 const { items, lang = 'nl' } = Astro.props;
-const t = ui[lang];
-// Labels op de foto's per taal.
 const tags: Record<string, Partial<Record<Lang, string>>> = {
   Huisspecialiteit: { en: 'House special', de: 'Spezialität', tr: 'Özel', ar: 'طبق البيت', fr: 'Spécialité', it: 'Specialità', es: 'Especialidad' },
   Favoriet: { en: 'Favourite', de: 'Favorit', tr: 'Favori', ar: 'المفضّل', fr: 'Favori', it: 'Preferito', es: 'Favorito' },
@@ -15,16 +13,11 @@ const tags: Record<string, Partial<Record<Lang, string>>> = {
 };
 const tag = (x: string) => (lang === 'nl' ? x : tags[x]?.[lang] ?? x);
 ---
-<div class="dishes">
+<div class="carta">
   {items.map(d => (
-    <article class="dish">
-      {d.tag && <span class="tag">{tag(d.tag)}</span>}
-      <div class="im"><img src={`/images/menu/${d.img}.webp`} alt={`${d.name} – Telepizza Amstelveen`} width="630" height="450" loading="lazy" decoding="async" /></div>
-      <div class="tx">
-        <h3>{d.name}</h3>
-        <p lang={lang === 'nl' ? undefined : 'en'}>{lang === 'nl' ? d.text : d.en ?? d.text}</p>
-        <div class="row"><span class="price">{eur(d.price)}</span><a class="btn primary sm" href={site.orderUrl!} rel="noopener" aria-label={`${d.name}: ${t.orderShort}`}>{t.orderShort}</a></div>
-      </div>
+    <article class="ci">
+      <div class="hd"><h3>{d.name}{d.tag && <span class="tag">{tag(d.tag)}</span>}</h3><span class="dots" aria-hidden="true"></span><span class="price" dir="ltr">{eur(d.price)}</span></div>
+      <p lang={lang === 'nl' ? undefined : 'en'}>{lang === 'nl' ? d.text : d.en ?? d.text}</p>
     </article>
   ))}
 </div>

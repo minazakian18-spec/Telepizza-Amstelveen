@@ -1,17 +1,33 @@
 ---
-import Base from '../layouts/Base.astro';
-import Cta from '../components/Cta.astro';
+import Landing from '../layouts/Landing.astro';
+import { pick } from '../data/dishes';
+import { eten } from '../data/gallery';
 ---
-<Base page="catering" title="Catering Amstelveen | Pizza & pasta catering – Telepizza" description="Pizza- en pastacatering in Amstelveen voor verjaardagen, feesten en kantoor. Vraag vrijblijvend een offerte aan bij Telepizza Amstelveen." crumbs={[{ name: 'Catering', path: '/catering-italiaans-restaurant-amstelveen/' }]}>
-<div class="wrap">
-<h1>Italiaanse catering in Amstelveen</h1>
-<p class="lead">Geef je een feest, verjaardag of borrel? Wij zorgen voor het eten, zodat jij kunt genieten van je gasten.</p>
-<h2>Waarom pizza als catering?</h2>
-<p>Pizza en pasta vallen bij bijna iedereen in de smaak, van kinderen tot opa en oma. Het is makkelijk te delen, je kunt kiezen uit vegetarische en vleesopties, en het is snel klaar.</p>
-<h2>Hoe werkt het?</h2>
-<ol><li>Neem contact met ons op en vertel voor hoeveel personen en op welke datum.</li><li>Samen kiezen we de gerechten.</li><li>Je haalt de bestelling af of wij bezorgen in Amstelveen.</li></ol>
-<p>Vraag een offerte aan via <a href="tel:+31206435287">020-6435287</a> of <a href="mailto:contact.telepizza@gmail.com">contact.telepizza@gmail.com</a>.</p>
-<p>Voor bedrijven: zie <a href="/catering-bedrijven-amstelveen/">catering voor bedrijven in Amstelveen</a>.</p>
-<Cta />
-</div>
-</Base>
+<Landing page="catering"
+  path="/catering-italiaans-restaurant-amstelveen/" crumb="Catering"
+  title="Catering Amstelveen | Italiaanse catering & mobiele bar – Telepizza"
+  description="Italiaanse catering in Amstelveen voor feesten, verjaardagen, bedrijven en borrels: pizza, pasta, salades, fingerfood en desserts, met mobiele barservice. Vraag een offerte aan."
+  eyebrow="Catering & eventi" h1="Italiaanse catering <i>in Amstelveen</i>"
+  lead="Laat ons jouw volgende feest, borrel of bedrijfsevent verzorgen. Warme en koude Italiaanse gerechten, vers bereid, en desgewenst een complete bar met personeel."
+  img="/images/pizza-groente.webp" imgAlt="Pizza met verse groenten en geitenkaas voor catering"
+  dishesTitle="Populair op feesten en borrels" dishes={pick('telePizza', 'margherita', 'popeye', 'lasagna', 'caprese', 'tiramisu')}
+  gallery={eten}
+  faq={[
+    ['Hoe vraag ik catering aan?', 'Bel 020-6435287 of mail contact.telepizza@gmail.com met de datum, het aantal gasten en de locatie. We sturen een voorstel op maat.'],
+    ['Voor hoeveel personen verzorgen jullie catering?', 'Van een verjaardag thuis tot een groot bedrijfsfeest. Vertel ons het aantal gasten, dan stemmen we de hoeveelheden af.'],
+    ['Kunnen jullie ook drankjes verzorgen?', 'Ja, met onze mobiele barservice: cocktails, mocktails, speciaalbier en frisdrank, met ervaren personeel.'],
+    ['Is er rekening te houden met dieetwensen?', 'Ja. We hebben vegetarische gerechten en al ons vlees is halal. Geef allergieën vooraf door.'],
+  ]}>
+  <h2>Authentieke smaak, vers uit de oven</h2>
+  <p>Bij Telepizza Amstelveen bieden we veel meer dan alleen pizza. Ons cateringmenu bestaat uit warme en koude gerechten: pizza’s, pasta’s en lasagne, salades, fingerfood en desserts zoals tiramisu. Alles wordt vers bereid met aandacht voor smaak en presentatie, zodat het past bij elke gelegenheid en elk type gast.</p>
+  <h2>Onze bar maakt je event compleet</h2>
+  <p>Maak je feest af met onze mobiele barservice. Of het nu gaat om cocktails, mocktails, speciaalbier of frisdrank: wij zorgen voor een stijlvolle bar met ervaren personeel. Een ideale aanvulling op een borrel, receptie, bruiloft of feestavond.</p>
+  <h2>Catering voor bedrijven</h2>
+  <p>Een lunchmeeting, vrijdagmiddagborrel, productlancering of teamuitje? Wij leveren Italiaanse catering op kantoor in Amstelveen, Amsterdam-Zuid en omgeving. Lees meer over <a href="/catering-bedrijven-amstelveen/">catering voor bedrijven</a>.</p>
+  <h2>Een familiebedrijf dat meedenkt</h2>
+  <p>Als familiebedrijf hechten we veel waarde aan persoonlijk contact. We denken mee over het menu, zijn flexibel en betrouwbaar. Van planning tot uitvoering zorgen we dat alles soepel verloopt en dat jouw gasten tevreden naar huis gaan.</p>
+  <h2>Liever bij ons vieren?</h2>
+  <p>Je kunt je feest ook in ons <a href="/restaurant-amstelveen/">restaurant aan de Amsterdamseweg</a> vieren. Gratis parkeren in de buurt, gezellige zaal en een keuken die tot laat open is.</p>
+  <h2>Zo werkt het</h2>
+  <ol><li>Neem contact op via <a href="tel:+31206435287">020-6435287</a> of <a href="mailto:contact.telepizza@gmail.com">contact.telepizza@gmail.com</a> en vertel ons datum, aantal gasten en locatie.</li><li>Samen kiezen we de gerechten en eventueel de barservice.</li><li>We leveren alles vers op de afgesproken tijd, of je haalt het op bij ons restaurant.</li></ol>
+</Landing>

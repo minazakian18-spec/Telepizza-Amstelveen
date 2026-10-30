@@ -1,54 +1,67 @@
 ---
-// Sjabloon voor SEO-landingspagina's: foto-hero, gerechten, uitgebreide tekst en FAQ.
+// Sjabloon voor uitgebreide SEO-pagina's: foto-hero, optioneel gerechten en foto's, lange tekst en FAQ.
 import Base from './Base.astro';
 import Dishes from '../components/Dishes.astro';
 import { site } from '../data/site';
 import type { Dish } from '../data/dishes';
+import type { PageKey } from '../i18n/ui';
 interface Props {
   title: string; description: string; path: string; crumb: string;
   eyebrow: string; h1: string; lead: string; img: string; imgAlt: string;
-  dishes: Dish[]; dishesTitle: string; faq?: [string, string][];
+  dishes?: Dish[]; dishesTitle?: string; faq?: [string, string][];
+  gallery?: [string, string][]; page?: PageKey; schema?: object[];
 }
 const p = Astro.props;
 const faq = p.faq ?? [];
 const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }] : [];
 ---
-<Base title={p.title} description={p.description} crumbs={[{ name: p.crumb, path: p.path }]} schema={faqLd} image={p.img}>
+<Base title={p.title} description={p.description} crumbs={[{ name: p.crumb, path: p.path }]} schema={[...faqLd, ...(p.schema ?? [])]} image={p.img} page={p.page}>
   <style>
-    .lh{display:grid;gap:36px;align-items:center;padding:24px 0 72px}
-    @media(min-width:900px){.lh{grid-template-columns:1.1fr 1fr}}
-    .lh img{width:100%;aspect-ratio:7/5;object-fit:cover;border-radius:24px;box-shadow:0 30px 60px rgba(0,0,0,.45);background:#f4ede3}
-    .lh h1 i{color:var(--red2)}
-    .body{display:grid;gap:48px}
-    @media(min-width:960px){.body{grid-template-columns:1.6fr 1fr}}
-    .aside{align-self:start;position:sticky;top:100px}
-    .aside ul{padding-left:18px;color:var(--muted)}
+    .lh{display:grid;gap:48px;align-items:center;padding:32px 0 88px}
+    @media(min-width:900px){.lh{grid-template-columns:1fr 1fr}}
+    .lh figure{position:relative;margin:0}
+    .lh img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--bg2)}
+    .lh figure::after{content:"";position:absolute;inset:16px;border:1px solid rgba(246,240,228,.6);pointer-events:none}
+    .body{display:grid;gap:56px}
+    @media(min-width:960px){.body{grid-template-columns:1.7fr 1fr}}
+    .aside{align-self:start;position:sticky;top:110px}
+    .aside ul{padding-inline-start:18px;color:var(--muted)}
+    .gal{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+    .gal figure{margin:0}
+    .gal img{width:100%;aspect-ratio:4/5;object-fit:cover}
+    .gal figcaption{padding-top:10px;font:italic 500 1.15rem/1.3 var(--serif);color:var(--muted)}
+    .prose h2:first-child{margin-top:0}
   </style>
   <div class="wrap lh">
     <div>
       <p class="eyebrow">{p.eyebrow}</p>
       <h1 set:html={p.h1} />
       <p class="lead">{p.lead}</p>
-      <div class="btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">Bestel online</a><a class="btn" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a></div>
+      <div class="btns"><a class="btn primary" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a><a class="btn" href="/menu-italiaans-restaurant-amstelveen/">Bekijk de kaart</a></div>
+      <p style="margin-top:18px"><a class="lnk" href={site.orderUrl!} rel="noopener">Liever thuis? Bestel online</a></p>
     </div>
-    <img src={p.img} alt={p.imgAlt} width="630" height="450" fetchpriority="high" />
+    <figure><img src={p.img} alt={p.imgAlt} width="900" height="1125" fetchpriority="high" /></figure>
   </div>
-  <section class="sec alt"><div class="wrap">
-    <h2 style="margin-top:0">{p.dishesTitle}</h2>
+  {p.dishes && p.dishes.length > 0 && <section class="sec green"><div class="wrap">
+    <p class="eyebrow">La nostra carta</p>
+    <h2>{p.dishesTitle}</h2>
     <Dishes items={p.dishes} />
-    <div class="btns"><a class="btn" href="/menu-italiaans-restaurant-amstelveen/">Bekijk het volledige menu</a></div>
-  </div></section>
+    <div class="btns"><a class="btn" href="/menu-italiaans-restaurant-amstelveen/">Bekijk de hele kaart</a></div>
+  </div></section>}
   <section class="sec"><div class="wrap body">
     <div class="prose"><slot /></div>
     <aside class="card aside">
       <h3>Telepizza Amstelveen</h3>
       <p>{site.street}<br />{site.postalCode} {site.city}<br /><a href={'tel:' + site.phone}>{site.phoneDisplay}</a></p>
       <ul>{site.hours.map(h => <li>{h.day}: {h.open}–{h.close}</li>)}<li>Maandag: gesloten</li></ul>
-      <a class="btn primary sm" href={site.orderUrl!} rel="noopener">Bestel online</a>
+      <a class="btn primary sm" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a>
     </aside>
   </div></section>
-  {faq.length > 0 && <section class="sec alt"><div class="wrap" style="max-width:900px">
-    <h2 style="margin-top:0">Veelgestelde vragen</h2>
+  {p.gallery && <section class="sec alt"><div class="wrap gal">
+    {p.gallery.map(([src, cap]) => <figure><img src={src} alt={cap} width="900" height="1125" loading="lazy" decoding="async" /><figcaption>{cap}</figcaption></figure>)}
+  </div></section>}
+  {faq.length > 0 && <section class="sec"><div class="wrap" style="max-width:860px">
+    <div class="center"><p class="eyebrow">Domande</p><h2>Veelgestelde vragen</h2></div>
     {faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
   </div></section>}
 </Base>
