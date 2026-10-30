@@ -36,11 +36,13 @@ const team = [
 ];
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: c.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]+>/g, '') } })) };
 ---
-<Base overlay lang={lang} page="home" schema={[faqLd]} image={ph('zaal')} title={c.title} description={c.desc}>
-  <link slot="head" rel="preload" as="image" href={ph('zaal')} imagesrcset={ss('zaal')} imagesizes="100vw" fetchpriority="high" />
+<Base overlay lang={lang} page="home" schema={[faqLd]} image={ph('zaal-neon')} title={c.title} description={c.desc}>
+  <link slot="head" rel="preload" as="image" href={ph('zaal-neon')} imagesrcset={ss('zaal-neon')} imagesizes="100vw" fetchpriority="high" />
   <section class="hero" aria-label="Telepizza Amstelveen">
-    <img class="poster" src={ph('zaal')} srcset={ss('zaal')} sizes="100vw" alt="" width="1400" height="933" fetchpriority="high" />
-    <video class="hv" src="/images/hero-video.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+    <img class="slide" src={ph('zaal-neon')} srcset={ss('zaal-neon')} sizes="100vw" alt="" width="1600" height="1042" fetchpriority="high" />
+    <img class="slide" src={ph('proosten')} srcset={ss('proosten')} sizes="100vw" alt="" width="1600" height="1042" loading="lazy" />
+    <img class="slide" src={ph('oven')} srcset={ss('oven')} sizes="100vw" alt="" width="1600" height="1042" loading="lazy" />
+    <img class="slide" src={ph('gasten')} srcset={ss('gasten')} sizes="100vw" alt="" width="1600" height="1042" loading="lazy" />
     <p class="tagline">Ristorante · Pizzeria · Grill</p>
   </section>
 
