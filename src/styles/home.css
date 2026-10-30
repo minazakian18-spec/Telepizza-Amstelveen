@@ -1,28 +1,28 @@
 /* Homepage (alle talen) */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#1a130e;color:#f6f0e4}
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#3a2519;color:#fff3e3}
 .hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(20,14,10,.45),rgba(20,14,10,.78))}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(60,28,12,.35),rgba(60,28,12,.62) 60%,rgba(60,28,12,.8))}
 .hero .in{position:relative;z-index:1;padding:130px 16px 90px;max-width:900px}
-.hero .brand{font:500 italic clamp(1.6rem,3vw,2.2rem)/1 var(--serif);letter-spacing:.02em;margin:0 0 6px;color:#e3c27a}
+.hero .brand{font:500 italic clamp(1.6rem,3vw,2.2rem)/1 var(--serif);letter-spacing:.02em;margin:0 0 6px;color:#ffd28a}
 .hero h1{font-size:clamp(2.9rem,8vw,6.2rem);margin:10px 0 14px}
-.hero h1 i{color:#f6f0e4}
+.hero h1 i{color:#fff3e3}
 .hero .flag{margin:18px auto}
-.hero .lead{color:#efe6d5;max-width:46ch;margin:0 auto}
-.hero .eyebrow{color:#e3c27a}
-.hero .btn:not(.primary){color:#f6f0e4}
-.hero .btn:not(.primary):hover{background:#f6f0e4;color:var(--ink)}
-.rating{display:inline-flex;align-items:center;gap:10px;margin-top:34px;font:500 .78rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#efe6d5;text-decoration:none}
-.rating .st{color:#e3c27a;letter-spacing:3px;font-size:.95rem}
+.hero .lead{color:#f6dcc6;max-width:46ch;margin:0 auto}
+.hero .eyebrow{color:#ffd28a}
+.hero .btn:not(.primary){color:#fff3e3}
+.hero .btn:not(.primary):hover{background:#fff3e3;color:var(--ink)}
+.rating{display:inline-flex;align-items:center;gap:10px;margin-top:34px;font:500 .78rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#f6dcc6;text-decoration:none}
+.rating .st{color:#ffd28a;letter-spacing:3px;font-size:.95rem}
 .intro{max-width:780px}
 .intro p{font-size:1.15rem}
 .split{display:grid;gap:56px;align-items:center}
 @media(min-width:900px){.split{grid-template-columns:1fr 1fr}.split.rev>:first-child{order:2}}
 .frame{position:relative;margin:0}
 .frame img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.frame::after{content:"";position:absolute;inset:16px 16px auto;height:calc(100% - 32px);border:1px solid rgba(246,240,228,.55);pointer-events:none}
+.frame img{border-radius:var(--r);box-shadow:0 24px 50px rgba(74,46,30,.22)}
 .head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:40px}
 .head h2{margin:0}
-.sec.green .eyebrow{color:#e3c27a}
+.sec.green .eyebrow{color:#ffd28a}
 .sec.green .btn{color:#f3ead8}
 .sec.green .btn:hover{background:#f3ead8;color:var(--green)}
 .trio{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
@@ -30,10 +30,10 @@
 .trio img{width:100%;aspect-ratio:4/5;object-fit:cover}
 .trio figcaption{padding-top:14px;font:italic 500 1.3rem/1.3 var(--serif)}
 .trio figcaption small{display:block;font:400 .9rem/1.5 var(--sans);color:var(--muted);margin-top:4px}
-.occ{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border-top:1px solid var(--line)}
-.occ div{padding:32px 28px 32px 0;border-bottom:1px solid var(--line)}
-@media(min-width:900px){.occ div+div{padding-inline-start:28px;border-inline-start:1px solid var(--line)}}
-.occ .n{font:italic 500 1.1rem/1 var(--serif);color:var(--gold)}
+.occ{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.occ>div{padding:30px;background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+
+.occ .n{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--red);color:#fff;font:italic 600 1rem/1 var(--serif)}
 .occ h3{margin:10px 0 8px}
 .press img{width:100%;height:auto;box-shadow:0 24px 50px rgba(43,33,24,.25)}
 .seo{columns:1;column-gap:56px}

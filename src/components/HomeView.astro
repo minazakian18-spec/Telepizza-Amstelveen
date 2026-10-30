@@ -61,17 +61,19 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
 
   <section class="sec"><div class="wrap">
     <div class="trio">
-      <figure><img src="/images/pepperoni-pizza.webp" alt={c.cats[0][0]} width="900" height="1125" loading="lazy" decoding="async" /><figcaption>{c.cats[0][0]}<small>{c.cats[0][1]}</small></figcaption></figure>
+      <figure><img src="/images/pizza-groente.webp" alt={c.cats[0][0]} width="900" height="1125" loading="lazy" decoding="async" /><figcaption>{c.cats[0][0]}<small>{c.cats[0][1]}</small></figcaption></figure>
       <figure><img src="/images/pasta-carbonara.webp" alt={c.cats[1][0]} width="900" height="1125" loading="lazy" decoding="async" /><figcaption>{c.cats[1][0]}<small>{c.cats[1][1]}</small></figcaption></figure>
-      <figure><img src="/images/pizza-groente.webp" alt={c.cats[3][0]} width="900" height="1125" loading="lazy" decoding="async" /><figcaption>{c.cats[3][0]}<small>{c.cats[3][1]}</small></figcaption></figure>
+      <figure><img src="/images/pepperoni-pizza.webp" alt={c.salaTitle} width="900" height="1125" loading="lazy" decoding="async" /><figcaption>{c.waysTitle}<small>{c.ways[2][0]}</small></figcaption></figure>
     </div>
   </div></section>
 
+  <span class="gingham full" aria-hidden="true"></span>
   <div id="reviews"><Reviews lang={lang} /></div>
+  <span class="gingham full" aria-hidden="true"></span>
 
   <section class="sec"><div class="wrap">
     <div class="center" style="margin-bottom:40px"><p class="eyebrow">Per ogni occasione</p><h2>{c.waysTitle}</h2></div>
-    <div class="occ">{c.ways.map(([h, p], i) => <div><span class="n">{['I', 'II', 'III', 'IV'][i]}</span><h3>{h}</h3><p>{p}</p></div>)}</div>
+    <div class="occ">{c.ways.map(([h, p], i) => <div><span class="n">{['I', 'II', 'III', 'IV'][i]}</span><h3>{h}</h3><p set:html={p} /></div>)}</div>
     <p class="center" style="margin-top:36px"><a class="lnk" href={site.orderUrl!} rel="noopener">{t.order}</a></p>
   </div></section>
 

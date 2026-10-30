@@ -4,11 +4,12 @@ import { langs, langInfo, ui, pathFor, type Lang, type PageKey } from '../i18n/u
 import '@fontsource/inter/latin-400.css';
 import '@fontsource/inter/latin-600.css';
 import '@fontsource/inter/latin-500.css';
-import '@fontsource/cormorant-garamond/latin-500-italic.css';
-import '@fontsource/cormorant-garamond/latin-600.css';
+import '@fontsource/fraunces/latin-600.css';
+import '@fontsource/fraunces/latin-500-italic.css';
+
 import '../styles/theme.css';
 import f1 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
-import f2 from '@fontsource/cormorant-garamond/files/cormorant-garamond-latin-600-normal.woff2?url';
+import f2 from '@fontsource/fraunces/files/fraunces-latin-600-normal.woff2?url';
 const fonts = [f1, f2];
 interface Crumb { name: string; path: string }
 interface Props { title: string; description: string; crumbs?: Crumb[]; schema?: object[]; overlay?: boolean; image?: string; lang?: Lang; page?: PageKey }
@@ -63,7 +64,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
-<meta name="theme-color" content="#f6f0e4" />
+<meta name="theme-color" content="#fbf3e6" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 {fonts.map(f => <link rel="preload" as="font" type="font/woff2" href={f} crossorigin />)}
 <meta property="og:type" content="website" />

@@ -6,7 +6,7 @@ export const articles: Article[] = [
     slug: 'beste-pizza-amstelveen',
     title: 'De beste pizza in Amstelveen: waar let je op?',
     desc: 'Waar vind je de lekkerste pizza in Amstelveen? Zo herken je een goede pizza: het deeg, de saus, de kaas en de oven. Met tips van Telepizza, sinds 1984 aan de Amsterdamseweg.',
-    date: '2026-10-30', img: '/images/pepperoni-pizza.webp', imgAlt: 'Pizza pepperoni van Telepizza Amstelveen',
+    date: '2026-10-30', img: '/images/pizza-groente.webp', imgAlt: 'Pizza met verse groenten en geitenkaas van Telepizza Amstelveen',
     intro: 'Iedereen heeft een mening over pizza. Toch zijn er een paar dingen waaraan je een echt goede pizza herkent. Na ruim veertig jaar pizza bakken in Amstelveen zetten we ze voor je op een rij.',
     body: `
 <h2>1. Het deeg maakt het verschil</h2>
