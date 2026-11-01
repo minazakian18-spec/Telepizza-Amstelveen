@@ -4,6 +4,7 @@
 import Base from '../layouts/Base.astro';
 import Dishes from './Dishes.astro';
 import Reviews from './Reviews.astro';
+import ReviewBadges from './ReviewBadges.astro';
 import { site } from '../data/site';
 import { pick } from '../data/dishes';
 import { articles } from '../data/articles';
@@ -28,6 +29,18 @@ const local: Record<Lang, { since: string; team: string; roles: [string, string,
   es: { since: 'Desde 1984', team: 'El equipo de Telepizza', roles: ['Chef', 'Encargado & sala', 'Marketing & hospitalidad'], follow: 'Síguenos', stories: 'Historias', all: 'Todos los artículos' },
 };
 const L = local[lang];
+const hello: Record<Lang, { t: string; p: string; sign: string; ex: string }> = {
+  nl: { t: 'Welkom bij ons thuis', p: 'Sinds 1984 openen wij elke middag onze deuren aan de Amsterdamseweg. Bij ons ben je geen klantnummer: we onthouden je favoriete pizza, schuiven tafels aan elkaar voor je verjaardag en blijven open tot je klaar bent met kletsen. Of je nu uit Amstelveen komt of uit de andere kant van de wereld: schuif aan, je bent welkom.', sign: 'Het Telepizza-team', ex: 'Hotter than your ex' },
+  en: { t: 'Welcome to our home', p: 'Since 1984 we have opened our doors every afternoon on the Amsterdamseweg. Here you are not a number: we remember your favourite pizza, push tables together for your birthday and stay open until you are done talking. Whether you live around the corner or came from the other side of the world: pull up a chair, you are welcome.', sign: 'The Telepizza team', ex: 'Hotter than your ex' },
+  de: { t: 'Willkommen bei uns', p: 'Seit 1984 öffnen wir jeden Nachmittag unsere Türen an der Amsterdamseweg. Bei uns sind Sie keine Nummer: Wir kennen Ihre Lieblingspizza, stellen Tische für Ihren Geburtstag zusammen und haben offen, bis Sie fertig erzählt haben. Ob aus Amstelveen oder vom anderen Ende der Welt: Setzen Sie sich, Sie sind willkommen.', sign: 'Das Telepizza-Team', ex: 'Hotter than your ex' },
+  tr: { t: 'Evimize hoş geldin', p: '1984’ten beri her öğleden sonra Amsterdamseweg’de kapılarımızı açıyoruz. Burada bir numara değilsin: en sevdiğin pizzayı hatırlarız, doğum günün için masaları birleştiririz ve sohbetin bitene kadar açık kalırız. İster Amstelveen’den ister dünyanın öbür ucundan gel: buyur otur, hoş geldin.', sign: 'Telepizza ekibi', ex: 'Hotter than your ex' },
+  ar: { t: 'أهلاً بك في بيتنا', p: 'منذ عام 1984 نفتح أبوابنا كل ظهيرة في شارع Amsterdamseweg. هنا لست مجرد رقم: نتذكر البيتزا المفضلة لديك، ونجمع الطاولات لعيد ميلادك ونبقى مفتوحين حتى تنتهي من الحديث. سواء كنت من أمستلفين أو من الطرف الآخر من العالم: تفضل بالجلوس، أنت مرحب بك.', sign: 'فريق تيليبيتزا', ex: 'Hotter than your ex' },
+  fr: { t: 'Bienvenue chez nous', p: 'Depuis 1984, nous ouvrons nos portes chaque après-midi sur l’Amsterdamseweg. Ici, vous n’êtes pas un numéro : nous connaissons votre pizza préférée, rapprochons les tables pour votre anniversaire et restons ouverts tant que vous discutez. Que vous veniez d’Amstelveen ou de l’autre bout du monde : installez-vous, vous êtes les bienvenus.', sign: 'L’équipe Telepizza', ex: 'Hotter than your ex' },
+  it: { t: 'Benvenuti a casa nostra', p: 'Dal 1984 apriamo le porte ogni pomeriggio sull’Amsterdamseweg. Qui non sei un numero: ricordiamo la tua pizza preferita, uniamo i tavoli per il tuo compleanno e restiamo aperti finché hai voglia di chiacchierare. Che tu venga da Amstelveen o dall’altra parte del mondo: accomodati, sei il benvenuto.', sign: 'Il team di Telepizza', ex: 'Hotter than your ex' },
+  es: { t: 'Bienvenido a nuestra casa', p: 'Desde 1984 abrimos nuestras puertas cada tarde en la Amsterdamseweg. Aquí no eres un número: recordamos tu pizza favorita, juntamos mesas para tu cumpleaños y seguimos abiertos mientras sigas charlando. Vengas de Amstelveen o del otro lado del mundo: siéntate, eres bienvenido.', sign: 'El equipo de Telepizza', ex: 'Hotter than your ex' },
+};
+const H = hello[lang];
+
 const words = ['Pizza', 'Pasta', 'Grill', 'Cocktails', L.since, 'Amstelveen'];
 const team = [
   ['Mario', L.roles[0], ph('team-deeg')],
@@ -43,15 +56,13 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
     <img class="slide" src={ph('proosten')} srcset={ss('proosten')} sizes="100vw" alt="" width="1600" height="1042" loading="lazy" />
     <img class="slide" src={ph('oven')} srcset={ss('oven')} sizes="100vw" alt="" width="1600" height="1042" loading="lazy" />
     <img class="slide" src={ph('gasten')} srcset={ss('gasten')} sizes="100vw" alt="" width="1600" height="1042" loading="lazy" />
-    <p class="tagline">Ristorante · Pizzeria · Grill</p>
+    <p class="tagline"><span class="neon">{H.ex}</span>Ristorante · Pizzeria · Grill</p>
   </section>
 
-  <a class="trust" href="#reviews">
-    <span class="g"><b>★ {String(site.rating.value).replace('.', ',')}</b> {site.rating.count.toLocaleString('nl-NL')} {t.reviewsBased}</span>
-    {site.awards.map(a => <span><b>🏆 {a.label}</b> {a.by}</span>)}
-    <span><b>{L.since}</b></span>
-    <span><b>100% halal</b></span>
-  </a>
+  <section class="trust"><div class="wrap">
+    <ReviewBadges />
+    <p class="facts-line"><span>{L.since}</span><span>100% halal</span>{site.awards.map(a => <span>🏆 {a.label} · {a.by}</span>)}</p>
+  </div></section>
 
   <section class="wrap intro">
     <div>
@@ -70,6 +81,15 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
       {c.facts.map(([b, s]) => <div class="stamp"><span>{b}<small>{s}</small></span></div>)}
     </div>
   </section>
+
+  <section class="hello"><div class="wrap">
+    <div class="note">
+      <p class="script">{H.t}</p>
+      <p>{H.p}</p>
+      <p class="sign">— {H.sign}</p>
+    </div>
+    <figure class="pol"><img src={ph('zaal-neon-sm')} alt="" width="700" height="456" loading="lazy" decoding="async" /><figcaption>Amsterdamseweg 452</figcaption></figure>
+  </div></section>
 
   <img class="full" src={ph('gasten')} srcset={ss('gasten')} sizes="100vw" alt="" width="1400" height="933" loading="lazy" decoding="async" />
 
