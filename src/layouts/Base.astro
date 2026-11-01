@@ -152,7 +152,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
 </div></footer>
 <nav class="mbar" aria-label="Snelle acties">
   <a href={'tel:' + site.phone}><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={phoneIco}/></svg>{t.call}</a>
-  <a href={site.orderUrl!} rel="noopener">{t.orderShort}</a>
+  <a href={site.orderUrl!} rel="noopener">{t.order}</a>
   <a class="o" href={site.reserveUrl!} rel="noopener">{t.reserve}</a>
 </nav>
 {overlay && <script is:inline>(function(){var h=document.getElementById('top');function f(){h.classList.toggle('solid',scrollY>40)}addEventListener('scroll',f,{passive:true});f();})();</script>}
