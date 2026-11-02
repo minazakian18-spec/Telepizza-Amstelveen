@@ -183,3 +183,43 @@ main img,main video{border-radius:var(--r)}
 .consent{position:fixed;left:12px;right:12px;bottom:12px;z-index:80;max-width:520px;background:var(--card);color:var(--ink);padding:16px 18px;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.25)}
 .consent p{margin:0;font-size:.95rem}
 .consent[hidden]{display:none}
+
+/* ===== Logo: oven, vlaglijnen, woordmerk, olijftakje ===== */
+:root{--logo-green:#0B7A3B;--logo-red:var(--red);--logo-ink:var(--ink);--logo-cream:#fbf5ec}
+.logo .lg-top{display:flex;align-items:flex-end;justify-content:center;gap:6px}
+.logo .lg-line{display:block;width:26px;height:3px;border-radius:3px;margin-bottom:1px}
+.logo .lg-green{background:var(--logo-green);box-shadow:3px 0 0 var(--logo-cream)}
+.logo .lg-red{background:var(--logo-red);box-shadow:-3px 0 0 var(--logo-cream)}
+.logo .lg-oven{display:block;width:22px;height:15px}
+.lg-arch{stroke:var(--logo-ink)}
+.lg-arch-in{stroke:var(--logo-cream)}
+.lg-plate{fill:var(--logo-cream);stroke:var(--logo-ink);stroke-width:1.4}
+.lg-flame{fill:var(--logo-red)}
+.logo .lg-sprig{display:block;width:30px;height:9px;margin-top:3px;fill:var(--logo-green);stroke:var(--logo-green)}
+.logo b{margin-top:2px}
+.logo b i{color:var(--logo-red)}
+/* donkere achtergrond: header over de hero en de footer */
+.top.overlay:not(.solid) .lg-arch,footer .lg-arch{stroke:rgba(255,248,236,.85)}
+.top.overlay:not(.solid) .lg-plate,footer .lg-plate{stroke:rgba(255,248,236,.85)}
+.top.overlay:not(.solid) .lg-green,.top.overlay:not(.solid) .lg-red,footer .lg-green,footer .lg-red{box-shadow:none}
+/* compact in de header: zelfde hoogte als voorheen */
+.logo--header b{font-size:1.7rem}
+.logo--header small{margin-top:4px}
+@media(max-width:520px){.logo--header .lg-oven{width:18px;height:12px}.logo--header b{font-size:1.35rem}.logo--header .lg-line{width:18px}.logo--header .lg-sprig{width:24px;height:7px;margin-top:2px}}
+@media(max-width:400px){.logo--header .lg-line,.logo--header .lg-sprig{display:none}}
+/* volledig (footer, 404) */
+.logo--full{align-items:center}
+.logo--full .lg-oven{width:64px;height:44px}
+.logo--full .lg-line{width:64px;height:5px;margin-bottom:3px}
+.logo--full .lg-top{gap:10px}
+.logo--full b{font-size:2.6rem;margin-top:8px}
+.logo--full small{font-size:.72rem;margin-top:8px}
+.logo--full .lg-sprig{width:60px;height:18px;margin-top:10px}
+footer .logo.logo--full{align-items:center}
+/* header-logo max ~56px desktop / ~44px mobiel */
+.logo--header .lg-oven{width:18px;height:12px}
+.logo--header .lg-line{width:22px;height:2.5px}
+.logo--header b{font-size:1.55rem;margin-top:1px}
+.logo--header small{margin-top:3px}
+.logo--header .lg-sprig{width:26px;height:7px;margin-top:2px}
+@media(max-width:520px){.logo--header .lg-oven{width:15px;height:10px}.logo--header b{font-size:1.3rem}.logo--header .lg-sprig{width:20px;height:6px}}

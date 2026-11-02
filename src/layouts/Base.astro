@@ -2,6 +2,7 @@
 import { site, fullAddress } from '../data/site';
 import { langs, langInfo, ui, pathFor, type Lang, type PageKey } from '../i18n/ui';
 import { articles } from '../data/articles';
+import Logo from '../components/Logo.astro';
 import '@fontsource/inter/latin-400.css';
 import '@fontsource/inter/latin-600.css';
 import '@fontsource/archivo/latin-800.css';
@@ -89,6 +90,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
 </script>}
 <meta name="theme-color" content="#fbf3e6" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 {fonts.map(f => <link rel="preload" as="font" type="font/woff2" href={f} crossorigin />)}
 <meta property="og:type" content="website" />
 <meta property="og:locale" content={info.og} />
@@ -105,7 +107,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
 </head>
 <body>
 <header class:list={['top', { overlay }]} id="top"><div class="wrap">
-  <a class="logo" href={pathFor(lang, 'home')}><b>Tele<i>pizza</i></b><small>{t.since}</small></a>
+  <Logo variant="header" href={pathFor(lang, 'home')} since={t.since} />
   <nav class="menu" aria-label="Hoofdmenu"><ul>
     {nav.map(([h, label]) => <li><a href={h} aria-current={path === h ? 'page' : undefined}>{label}</a></li>)}
   </ul></nav>
@@ -147,7 +149,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
 </main>
 <footer><div class="wrap">
   <div class="fg">
-    <div><a class="logo" href={pathFor(lang, 'home')}><b>Tele<i>pizza</i></b><small>{t.since}</small></a>
+    <div><Logo variant="full" href={pathFor(lang, 'home')} since={t.since} />
       <p style="margin-top:16px">{t.footerAbout}</p></div>
     <div><h2>{t.addressContact}</h2><p>{fullAddress}<br />
       <a href={'tel:' + site.phone}>{site.phoneDisplay}</a><br />

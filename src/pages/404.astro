@@ -1,6 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
 ---
 <Base title="Pagina niet gevonden | Telepizza Amstelveen" description="Deze pagina bestaat niet. Ga naar de homepage of het menu van Telepizza Amstelveen.">
-<div class="wrap"><h1>Pagina niet gevonden</h1><p>Ga naar de <a href="/">homepage</a> of het <a href="/menu-italiaans-restaurant-amstelveen/">menu</a>.</p></div>
+<div class="wrap center" style="padding-top:48px;padding-bottom:72px">
+  <div style="display:flex;justify-content:center;margin-bottom:32px"><Logo variant="full" href="/" since="Amstelveen · sinds 1984" /></div>
+  <h1>Pagina niet gevonden</h1>
+  <p>Ga naar de <a href="/">homepage</a> of het <a href="/menu-italiaans-restaurant-amstelveen/">menu</a>.</p>
+</div>
 </Base>
