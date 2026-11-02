@@ -1,13 +1,9 @@
 /* Homepage (alle talen) */
 /* Hero: foto's die rustig in elkaar overlopen, over de hele breedte */
 .hero{position:relative;height:min(92svh,900px);min-height:520px;overflow:hidden;background:var(--ink)}
-.hero .slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:fade 24s infinite}
-.hero .slide:nth-child(1){opacity:1;animation-delay:0s}
-.hero .slide:nth-child(2){animation-delay:6s}
-.hero .slide:nth-child(3){animation-delay:12s}
-.hero .slide:nth-child(4){animation-delay:18s}
-@keyframes fade{0%{opacity:0}4%{opacity:1}25%{opacity:1}29%{opacity:0}100%{opacity:0}}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.35),transparent 30%,transparent 70%,rgba(0,0,0,.35))}
+.hero .slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.hero .slide:first-of-type{opacity:1}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.4),transparent 28%,rgba(0,0,0,.25) 52%,rgba(0,0,0,.78) 100%)}
 .hero .tagline{position:absolute;z-index:1;left:0;right:0;bottom:40px;text-align:center;color:#fff;font:900 clamp(1rem,2vw,1.3rem)/1 var(--head);letter-spacing:.2em;text-transform:uppercase}
 /* Intro met grote kop en stempels */
 .intro{display:grid;gap:40px;padding-top:90px;padding-bottom:110px}
@@ -75,7 +71,7 @@
 @media(min-width:900px){.split{grid-template-columns:1fr 1fr}}
 [dir=rtl] .marq .words{direction:ltr}
 @media(prefers-reduced-motion:reduce){.hero .slide{animation:none}.hero .slide:not(:first-child){display:none}.marq .words{animation:none}}
-.hero .slide:nth-child(1){object-position:22% center}
+
 
 /* vertrouwensbalk: Google-score en kernpunten bovenaan, vooral op mobiel */
 .trust{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;padding:16px 18px;background:var(--ink);color:#fff;text-decoration:none;font:700 .85rem/1.3 var(--sans)}
@@ -108,3 +104,6 @@ video.full{background:var(--ink)}
 .hero-btns{justify-content:center;margin-top:18px}
 .hero-btns .btn:not(.primary){color:#fff;border-color:#fff;background:rgba(0,0,0,.25)}
 @media(max-width:600px){.hero .tagline{bottom:28px}.hero-btns{gap:8px}.hero-btns .btn{min-height:44px;padding:10px 16px;font-size:.75rem}}
+
+/* kleine gevelfoto (± 400 px) op brede schermen niet uitrekken */
+@media(min-width:901px){.hero .slide.small{object-fit:contain;background:#141414}}

@@ -7,6 +7,7 @@ import Reviews from './Reviews.astro';
 import ReviewBadges from './ReviewBadges.astro';
 import { site } from '../data/site';
 import { pick } from '../data/dishes';
+import { media } from '../lib/media';
 import { articles } from '../data/articles';
 import { ui, pathFor, type Lang } from '../i18n/ui';
 import type { HomeCopy } from '../i18n/pages';
@@ -49,17 +50,43 @@ const alts: Record<string, { hall: string; front: string }> = {
   es: { hall: 'Comedor con neones y pared de plantas en Telepizza, Amstelveen', front: 'Fachada de Telepizza, restaurante italiano en Amsterdamseweg 452, Amstelveen' },
 };
 const A = alts[lang] ?? alts.en;
+// Hero-slides. Een slide verschijnt alleen als het bestand in public/images/hero/ bestaat.
+const heroAlt: Record<string, [string, string, string, string]> = {
+  nl: ['Restaurantzaal van Telepizza Amstelveen met neon "Hotter than your ex" en plantenwand', 'Volle restaurantzaal van Telepizza Amstelveen met gasten aan lange tafels', 'Gasten eten pizza en pasta aan een lange tafel bij Telepizza Amstelveen', 'Eigenaren van Telepizza voor het restaurant aan de Amsterdamseweg 452 in Amstelveen'],
+  en: ['Telepizza Amstelveen dining room with the neon "Hotter than your ex" and a plant wall', 'Busy dining room at Telepizza Amstelveen with guests at long tables', 'Guests eating pizza and pasta at a long table at Telepizza Amstelveen', 'Owners of Telepizza in front of the restaurant at Amsterdamseweg 452, Amstelveen'],
+};
+const HA = heroAlt[lang] ?? heroAlt.en;
+const heroAll = [
+  { n: 'zaal-neon', w: 1600, h: 1042, pos: '30% 40%', alt: HA[0] },
+  { n: 'volle-zaal', w: 1600, h: 1837, pos: '55% 55%', alt: HA[1], todo: 'AVG' }, // TODO-CONTROLEREN: toestemming gasten op deze foto (AVG)
+  { n: 'gasten-tafel', w: 1200, h: 1600, pos: '50% 45%', alt: HA[2], todo: 'AVG' }, // TODO-CONTROLEREN: toestemming gasten op deze foto (AVG)
+  { n: 'gevel-eigenaren', w: 401, h: 413, pos: '50% 35%', alt: HA[3], small: true }, // TODO-CONTROLEREN: gevelfoto in hogere resolutie (min. 1600 px breed) aanleveren
+].filter(x => media(`hero/${x.n}.webp`));
+const hp = (n: string) => `/images/hero/${n}.webp`;
+const hs = (n: string) => `/images/hero/${n}-sm.webp 640w, /images/hero/${n}.webp 1600w`;
+// Timing: elke slide 6 seconden, ongeacht het aantal slides.
+const slideSec = 6;
+const cycle = heroAll.length * slideSec;
+const showPct = (100 / heroAll.length).toFixed(2);
+const heroCss = heroAll.length > 1 ? `@keyframes heroFade{0%{opacity:0}4%{opacity:1}${showPct}%{opacity:1}${(+showPct + 4).toFixed(2)}%{opacity:0}100%{opacity:0}}
+.hero .slide{animation:heroFade ${cycle}s infinite}
+${heroAll.map((x, i) => `.hero .slide:nth-of-type(${i + 1}){animation-delay:${i * slideSec}s}`).join('\n')}` : '';
 
 const words = ['Pizza', 'Pasta', 'Grill', 'Cocktails', L.since, 'Amstelveen'];
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: c.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]+>/g, '') } })) };
 ---
-<Base overlay lang={lang} page="home" schema={[faqLd]} image={ph('zaal-neon')} title={c.title} description={c.desc}>
-  <link slot="head" rel="preload" as="image" href={ph('zaal-neon')} imagesrcset={ss('zaal-neon')} imagesizes="100vw" fetchpriority="high" />
+<Base overlay lang={lang} page="home" schema={[faqLd]} image={hp('zaal-neon')} title={c.title} description={c.desc}>
+  <link slot="head" rel="preload" as="image" href={hp('zaal-neon')} imagesrcset={hs('zaal-neon')} imagesizes="100vw" fetchpriority="high" />
+  {heroCss && <style slot="head" set:html={heroCss} />}
   <section class="hero" aria-label="Telepizza Amstelveen">
-    <img class="slide" src={ph('zaal-neon')} srcset={ss('zaal-neon')} sizes="100vw" alt={A.hall} width="1600" height="1042" fetchpriority="high" />
-        <img class="slide" data-src={ph('proosten')} data-srcset={ss('proosten')} sizes="100vw" alt="" width="1600" height="1067" />
-    <img class="slide" data-src={ph('oven')} data-srcset={ss('oven')} sizes="100vw" alt="" width="1600" height="1067" />
-    <img class="slide" data-src={ph('gasten')} data-srcset={ss('gasten')} sizes="100vw" alt="" width="1600" height="1067" />
+    {heroAll.map((x, i) => (
+      <>
+        {x.todo && <Fragment set:html="<!-- TODO-CONTROLEREN: toestemming gasten op deze foto (AVG) -->" />}
+        {x.small && <Fragment set:html="<!-- TODO-CONTROLEREN: gevelfoto in hogere resolutie (min. 1600 px breed) aanleveren -->" />}
+        <img class:list={['slide', { small: x.small }]} src={hp(x.n)} srcset={x.small ? undefined : hs(x.n)} sizes="100vw" alt={x.alt} width={x.w} height={x.h} style={`object-position:${x.pos}`}
+          {...(i === 0 ? { fetchpriority: 'high' } : { loading: 'lazy', decoding: 'async' })} />
+      </>
+    ))}
     <div class="tagline"><span class="neon">{H.ex}</span><span>Ristorante · Pizzeria · Grill</span>
       <div class="btns hero-btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">{t.order}</a><a class="btn" href={site.reserveUrl!} rel="noopener">{t.reserve}</a></div>
     </div>
@@ -157,7 +184,6 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   </div></section>
   <script is:inline>
     // Extra slides pas na het laden van de pagina; de video pas als hij in beeld komt. Zo laadt de hoofdfoto als eerste.
-    addEventListener('load', function () { setTimeout(function () { document.querySelectorAll('.hero .slide[data-src]').forEach(function (i) { i.srcset = i.dataset.srcset; i.src = i.dataset.src; }); }, 1500); });
     (function () { var v = document.querySelector('.welcome video'); if (!v || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { v.src = v.dataset.src; v.play().catch(function () {}); o.disconnect(); } }, { rootMargin: '200px' }).observe(v); })();
   </script>
