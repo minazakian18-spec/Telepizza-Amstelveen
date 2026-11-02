@@ -18,19 +18,19 @@ const ld = {
   <div class="wrap center">
     <p class="eyebrow">{t.reviewsEyebrow}</p>
     <h2 id="rv-t">{t.reviewsTitle}</h2>
-    <div class="score">
+    <a class="score" href={site.googleReviewsUrl} rel="noopener" target="_blank">
       <span class="g" aria-hidden="true"><svg viewBox="0 0 48 48" width="34" height="34"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8a10 10 0 0 1-4.4 6.6v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.1z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.4l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.6-3.9-12.3-9H4.4v5.7A22 22 0 0 0 24 46z"/><path fill="#FBBC05" d="M11.7 28.2a13.2 13.2 0 0 1 0-8.4v-5.7H4.4a22 22 0 0 0 0 19.8l7.3-5.7z"/><path fill="#EA4335" d="M24 10.8c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3A22 22 0 0 0 4.4 14.1l7.3 5.7c1.7-5.1 6.6-9 12.3-9z"/></svg></span>
       <strong>{String(site.rating.value).replace('.', ',')}</strong>
       <span class="st" aria-hidden="true">{stars}</span>
       <span><b>{site.rating.count} {t.reviewsBased}</b></span>
-    </div>
+    </a>
   </div>
   <div class="marquee" aria-label={t.reviewsTitle}>
     <ul class="track">
       {row.map((r, i) => (
         <li aria-hidden={i >= site.reviews.length ? 'true' : undefined}>
           <figure>
-            <div class="hd"><span class="av" aria-hidden="true">{r.author.charAt(0).toUpperCase()}</span><figcaption>{r.author}<small>{t.googleReview} · {flags[r.lang] ?? r.lang.toUpperCase()}</small></figcaption></div>
+            <div class="hd"><span class="av" aria-hidden="true">{r.author.charAt(0).toUpperCase()}</span><figcaption>{r.author}<small><a class="src" href={site.googleReviewsUrl} rel="noopener" target="_blank" tabindex={i >= site.reviews.length ? -1 : undefined}>{t.googleReview}</a> · {flags[r.lang] ?? r.lang.toUpperCase()}</small></figcaption></div>
             <span class="st" aria-label="5 van 5 sterren">{stars}</span>
             <blockquote lang={r.lang}>{r.text}</blockquote>
           </figure>
@@ -38,10 +38,12 @@ const ld = {
       ))}
     </ul>
   </div>
-  <div class="wrap center"><div class="btns"><a class="btn" href={site.googleReviewsUrl} rel="noopener">{t.reviewsAll}</a></div></div>
+  <div class="wrap center"><div class="btns"><a class="btn" href={site.googleReviewsUrl} rel="noopener" target="_blank">{t.reviewsAll}</a></div></div>
 </section>
 <style>
   .score{display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 14px;background:#fff;padding:14px 26px;border-radius:999px;box-shadow:0 10px 30px rgba(60,30,10,.08);color:var(--dark)}
+  .score{text-decoration:none;transition:transform .15s}.score:hover{transform:translateY(-2px)}
+  .src{color:inherit;text-decoration:underline;text-underline-offset:2px}.src:hover{color:var(--red)}
   .score strong{font:600 2rem/1 var(--serif)}
   .st{color:#c27c00;letter-spacing:2px;font-size:1.15rem}
   .marquee{direction:ltr;overflow:hidden;margin-top:40px;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
