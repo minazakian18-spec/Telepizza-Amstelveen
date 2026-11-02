@@ -13,6 +13,19 @@ export const site = {
   phoneDisplay: '020-6435287' as string | null,
   email: 'contact.telepizza@gmail.com' as string | null,
   orderUrl: 'https://telepizza.sitedish.shop/' as string | null,
+  // Meting. TODO-CONTROLEREN: vul het GA4-meet-ID (G-XXXXXXX) en eventueel het Google Ads-ID (AW-XXXXXXX) in.
+  // Zolang deze op null staan, wordt er niets gemeten en verschijnt er geen cookiebanner.
+  ga4Id: null as string | null,
+  adsId: null as string | null,
+  // Bezorging. TODO-CONTROLEREN: alleen invullen als het klopt; lege waarden worden niet getoond.
+  delivery: {
+    fee: null as string | null, // bijv. '€ 2,50'
+    minimum: null as string | null, // bijv. '€ 15,00'
+    time: null as string | null, // bijv. '30–45 minuten'
+    postcodes: '1181–1188 (Amstelveen) en 1081–1083 (Buitenveldert/Zuidas)', // TODO-CONTROLEREN tegen het bezorggebied in Sitedish
+  },
+  // TODO-CONTROLEREN: klopt "gratis parkeren in de buurt"?
+  parkingNote: 'Parkeren kan in de buurt van het restaurant.',
   reserveUrl: 'https://widget.thefork.com/d10a03f4-2fab-4cc5-a1a6-ca3b826a931b' as string | null,
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Telepizza+Amsterdamseweg+452+Amstelveen',
   sameAs: ['https://www.instagram.com/telepizza_nl/', 'https://www.tiktok.com/@telepizza_nl'] as string[],
@@ -24,7 +37,7 @@ export const site = {
   },
   // Scores op reviewplatforms (gecontroleerd 1 november 2026). Bijwerken als de cijfers veranderen.
   platforms: [
-    { id: 'google', name: 'Google', score: '4,7', max: '5', count: 1391, url: 'https://www.google.com/maps/place/Restaurant+Telepizza/@52.3169572,4.857271,17z' },
+    { id: 'google', name: 'Google', score: '4,7', max: '5', count: 1404, url: 'https://www.google.com/maps/place/Restaurant+Telepizza/@52.3169572,4.857271,17z' },
     { id: 'thefork', name: 'TheFork', score: '9', max: '10', count: 149, url: 'https://widget.thefork.com/d10a03f4-2fab-4cc5-a1a6-ca3b826a931b' },
     { id: 'tripadvisor', name: 'Tripadvisor', score: '4,2', max: '5', count: 48, url: 'https://www.tripadvisor.nl/Search?q=Telepizza%20Amstelveen' },
     { id: 'sitedish', name: 'Sitedish', score: '5', max: '5', count: 197, url: 'https://telepizza.sitedish.shop/' },
@@ -41,8 +54,9 @@ export const site = {
     { day: 'Zaterdag', schema: 'Saturday', open: '15:00', close: '03:00' },
     { day: 'Zondag', schema: 'Sunday', open: '15:00', close: '01:45' },
   ] as { day: string; schema: string; open: string; close: string }[],
-  // Google-score volgens Google Maps (30 oktober 2026). Werk bij als het aantal stijgt.
-  rating: { label: 'Excellent', value: 4.7, count: 1391 },
+  // Google-score volgens het Google Bedrijfsprofiel (1 november 2026: 4,7 uit 1.404).
+  // TODO-CONTROLEREN: actuele aantal reviews. Dit getal wordt overal op de site gebruikt.
+  rating: { label: 'Excellent', value: 4.7, count: 1404 },
   googleReviewsUrl: 'https://www.google.com/maps/place/Restaurant+Telepizza/@52.3169572,4.857271,17z',
   // Echte Google-reviews (Google Maps en de huidige site), nieuwste eerst.
   reviews: [
@@ -57,6 +71,8 @@ export const site = {
     { author: 'Noah Silva', lang: 'en', text: 'Lovely place!' },
     { author: 'Ian', lang: 'en', text: 'Thomas was amazing!!' },
   ] as { author: string; lang: string; text: string }[],
+  // TODO-CONTROLEREN: geldt halal echt voor ál het vlees (ook salami, pepperoni, spek, Parmaham)?
+  // Zo niet: "halal vlees beschikbaar" + aanduiding per gerecht. Zie het eindrapport voor alle pagina's.
   halal: true,
   geo: { lat: 52.3169572, lng: 4.857271 } as { lat: number; lng: number } | null,
 };
@@ -64,6 +80,10 @@ export const site = {
 export const fullAddress = `${site.street}, ${site.postalCode} ${site.city}`;
 
 export const wijken = [
+  { slug: 'buitenveldert', name: 'Buitenveldert', pc: '1081–1083', text: 'Buitenveldert ligt direct ten noorden van de Amsterdamseweg, op een paar minuten van ons restaurant. Na Amstelveen zelf is het ons grootste bezorggebied. Of je nu woont rond het Gelderlandplein, bij de VU en het Amsterdam UMC werkt of studeert, of een rondje door het Amstelpark hebt gemaakt: een pizza met handgerekt deeg, een romige pasta of een steak van de grill bestel je eenvoudig online. Liever zelf ophalen? Afhalen aan de Amsterdamseweg 452 is vanuit Buitenveldert vlakbij. Voor een avondje uit kom je natuurlijk ook gewoon bij ons eten.' },
+  { slug: 'zuidas', name: 'Zuidas', pc: '1082–1083', text: 'Op de Zuidas wonen en werken duizenden mensen in kantoren en appartementen. Na een lange werkdag of tijdens een overleg dat uitloopt, is een vers bereide pizza of pasta een makkelijke keuze. Bestel online voor thuis of op kantoor. Organiseer je een lunch, borrel of teamavond? Dan verzorgen wij Italiaanse catering met pizza, pasta, salades en desserts, desgewenst met een mobiele bar. Lees meer over <a href="/catering-italiaans-restaurant-amstelveen/#bedrijven">catering voor bedrijven</a>. En wie liever even de deur uit gaat: ons restaurant aan de Amsterdamseweg ligt op korte afstand.' },
+  { slug: 'oude-dorp', name: 'Oude Dorp', pc: '1181', todo: true, text: 'Het Oude Dorp is het historische hart van Amstelveen, met de Dorpsstraat, oude panden en gezellige straatjes. Vanuit het Oude Dorp ben je zo bij ons restaurant aan de Amsterdamseweg om af te halen of aan tafel te gaan. Liever thuis eten? Bestel je pizza, pasta of grillgerecht online. Ideaal na een wandeling langs de Amstel of een bezoek aan het Amsterdamse Bos: vers bereid eten, zonder zelf te hoeven koken.' },
+  { slug: 'bovenkerk', name: 'Bovenkerk', pc: '1187', todo: true, text: 'Bovenkerk is een dorp binnen Amstelveen, met een eigen karakter tussen de polders en de Poel. Ook vanuit Bovenkerk kun je bij Telepizza bestellen. Kies een klassieke margherita, een pizza met truffel en Parmaham of een romige pasta, en geniet er thuis van met het hele gezin. Zelf afhalen kan aan de Amsterdamseweg 452, en voor een etentje buiten de deur reserveer je eenvoudig een tafel in ons restaurant.' },
   { slug: 'westwijk', name: 'Westwijk', text: 'Westwijk ligt in het zuidwesten van Amstelveen, met veel gezinnen en rustige woonstraten rond het Westwijkplein. Na een lange dag even geen zin om te koken? Dan is een pizza bestellen de makkelijkste oplossing voor het hele gezin.' },
   { slug: 'bankras-kostverloren', name: 'Bankras-Kostverloren', text: 'Bankras-Kostverloren is een groene wijk met veel water en parken. Of je nu thuis eet of een avondje met vrienden plant: met een warme pizza of pasta maak je er snel een gezellige avond van.' },
   { slug: 'elsrijk', name: 'Elsrijk', text: 'Elsrijk ligt centraal, tussen het Stadshart en het Amsterdamse Bos. Voor bewoners van Elsrijk is afhalen bij ons extra makkelijk, en natuurlijk kun je ook laten bezorgen.' },

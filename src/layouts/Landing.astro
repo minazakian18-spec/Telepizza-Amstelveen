@@ -2,6 +2,7 @@
 // Sjabloon voor uitgebreide SEO-pagina's: foto-hero, optioneel gerechten en foto's, lange tekst en FAQ.
 import Base from './Base.astro';
 import Dishes from '../components/Dishes.astro';
+import Cta from '../components/Cta.astro';
 import { site } from '../data/site';
 import type { Dish } from '../data/dishes';
 import type { PageKey } from '../i18n/ui';
@@ -9,7 +10,7 @@ interface Props {
   title: string; description: string; path: string; crumb: string;
   eyebrow: string; h1: string; lead: string; img: string; imgAlt: string;
   dishes?: Dish[]; dishesTitle?: string; faq?: [string, string][];
-  gallery?: [string, string][]; page?: PageKey; schema?: object[];
+  gallery?: [string, string][]; page?: PageKey; schema?: object[]; first?: 'order' | 'reserve';
 }
 const p = Astro.props;
 const faq = p.faq ?? [];
@@ -17,7 +18,7 @@ const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPag
 ---
 <Base title={p.title} description={p.description} crumbs={[{ name: p.crumb, path: p.path }]} schema={[...faqLd, ...(p.schema ?? [])]} image={p.img} page={p.page}>
   <style>
-    .lh{display:grid;gap:48px;align-items:center;padding:32px 0 88px}
+    .lh{display:grid;gap:48px;align-items:center;padding-top:32px;padding-bottom:88px}
     @media(min-width:900px){.lh{grid-template-columns:1fr 1fr}}
     .lh figure{position:relative;margin:0}
     .lh img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--bg2)}
@@ -36,8 +37,8 @@ const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPag
       <p class="eyebrow">{p.eyebrow}</p>
       <h1 set:html={p.h1} />
       <p class="lead">{p.lead}</p>
-      <div class="btns"><a class="btn primary" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a><a class="btn" href="/menu-italiaans-restaurant-amstelveen/">Bekijk de kaart</a></div>
-      <p style="margin-top:18px"><a class="lnk" href={site.orderUrl!} rel="noopener">Liever thuis? Bestel online</a></p>
+      <Cta first={p.first ?? 'reserve'} />
+      <p style="margin-top:18px"><a class="lnk" href="/menu-italiaans-restaurant-amstelveen/">Bekijk de menukaart</a></p>
     </div>
     <figure><img src={p.img} alt={p.imgAlt} width="900" height="1125" fetchpriority="high" /></figure>
   </div>
@@ -53,7 +54,7 @@ const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPag
       <h3>Telepizza Amstelveen</h3>
       <p>{site.street}<br />{site.postalCode} {site.city}<br /><a href={'tel:' + site.phone}>{site.phoneDisplay}</a></p>
       <ul>{site.hours.map(h => <li>{h.day}: {h.open}–{h.close}</li>)}<li>Maandag: gesloten</li></ul>
-      <a class="btn primary sm" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a>
+      {p.first === 'order' ? <a class="btn primary sm" href={site.orderUrl!} rel="noopener">Bestel online</a> : <a class="btn primary sm" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a>}
     </aside>
   </div></section>
   {p.gallery && <section class="sec alt"><div class="wrap gal">

@@ -14,7 +14,7 @@ export const articles: Article[] = [
 <h2>2. Een eerlijke tomatensaus</h2>
 <p>De saus hoort de pizza te ondersteunen, niet te overheersen. Wij maken onze tomatensaus zelf, met tomaat, kruiden en een beetje knoflook. Niet te zoet en niet te dik, zodat de smaak van de toppings goed tot zijn recht komt.</p>
 <h2>3. Kaas en toppings in balans</h2>
-<p>Meer is niet altijd beter. Een pizza met te veel beleg wordt zwaar en de bodem wordt slap. Kijk liever naar de kwaliteit: goede mozzarella, echte Parmezaanse kaas, verse groenten en vlees van een betrouwbare leverancier. Onze <a href="/pizza-soorten/">speciale pizza’s</a> zoals de Truffel Prosciutto en de Popeye Speciale met geitenkaas en honing laten zien hoe een paar goede ingrediënten samen een heel gerecht maken.</p>
+<p>Meer is niet altijd beter. Een pizza met te veel beleg wordt zwaar en de bodem wordt slap. Kijk liever naar de kwaliteit: goede mozzarella, echte Parmezaanse kaas, verse groenten en vlees van een betrouwbare leverancier. Onze <a href="/menu-italiaans-restaurant-amstelveen/#pizza">speciale pizza’s</a> zoals de Truffel Prosciutto en de Popeye Speciale met geitenkaas en honing laten zien hoe een paar goede ingrediënten samen een heel gerecht maken.</p>
 <h2>4. Heet bakken</h2>
 <p>Een pizza moet kort en heet gebakken worden. Zo bakt de bodem knapperig af terwijl de kaas net smelt. Een pizza die lang op lage temperatuur in de oven staat, wordt droog. Bij ons gaat de pizza direct na het beleggen de oven in.</p>
 <h2>5. Vers is beter: eet hem aan tafel</h2>
@@ -46,7 +46,7 @@ export const articles: Article[] = [
     slug: 'verjaardag-vieren-restaurant-amstelveen',
     title: 'Je verjaardag vieren in een restaurant in Amstelveen',
     desc: 'Op zoek naar een restaurant in Amstelveen om je verjaardag te vieren? Tips voor een etentje met familie of vrienden, met grote tafels, pizza, pasta en desserts.',
-    date: '2026-10-24', img: '/images/restaurant-binnen.webp', imgAlt: 'De zaal van Telepizza Amstelveen',
+    date: '2026-10-24', img: '/images/ph/gasten.webp', imgAlt: 'Neon in de zaal van Telepizza Amstelveen',
     intro: 'Een verjaardag vier je het liefst samen, aan een lange tafel met goed eten. Italiaans eten is daarvoor ideaal: er is voor iedereen iets, van kinderen tot opa en oma. Zo organiseer je het.',
     body: `
 <h2>Waarom Italiaans werkt voor een feestje</h2>
@@ -68,7 +68,7 @@ export const articles: Article[] = [
     slug: 'pasta-carbonara-romeins-of-romig',
     title: 'Pasta carbonara: Romeins of romig?',
     desc: 'Hoort er room in carbonara? Over de Romeinse klassieker met ei, pecorino en guanciale, en waarom wij in Amstelveen kiezen voor een romige versie met spek en Parmezaanse kaas.',
-    date: '2026-10-20', img: '/images/pasta-carbonara.webp', imgAlt: 'Romige pasta van Telepizza Amstelveen',
+    date: '2026-10-20', img: '/images/ph/pasta-penne.webp', imgAlt: 'Pasta uit de keuken van Telepizza Amstelveen',
     intro: 'Weinig gerechten zorgen voor zoveel discussie als carbonara. Puristen zeggen: nooit room. Toch is de romige variant in Nederland enorm populair. Wat is het verschil, en hoe maken wij hem?',
     body: `
 <h2>De Romeinse carbonara</h2>

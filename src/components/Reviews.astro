@@ -5,7 +5,9 @@ const { lang = 'nl' } = Astro.props as { lang?: Lang };
 const t = ui[lang];
 const stars = '★★★★★';
 // Twee keer dezelfde rij achter elkaar zodat de band naadloos doorscrollt.
-const row = [...site.reviews, ...site.reviews];
+const flags: Record<string, string> = { nl: '🇳🇱 NL', en: '🇬🇧 EN', de: '🇩🇪 DE' };
+const ordered = lang === 'nl' ? site.reviews : [...site.reviews].sort((a, b) => Number(b.lang === lang || b.lang === 'en') - Number(a.lang === lang || a.lang === 'en'));
+const row = [...ordered, ...ordered];
 const ld = {
   '@context': 'https://schema.org', '@type': 'Restaurant', '@id': site.url + '/#restaurant',
   review: site.reviews.map(r => ({ '@type': 'Review', author: { '@type': 'Person', name: r.author }, reviewBody: r.text, reviewRating: { '@type': 'Rating', ratingValue: 5, bestRating: 5 } })),
@@ -28,7 +30,7 @@ const ld = {
       {row.map((r, i) => (
         <li aria-hidden={i >= site.reviews.length ? 'true' : undefined}>
           <figure>
-            <div class="hd"><span class="av" aria-hidden="true">{r.author.charAt(0).toUpperCase()}</span><figcaption>{r.author}<small>{t.googleReview}</small></figcaption></div>
+            <div class="hd"><span class="av" aria-hidden="true">{r.author.charAt(0).toUpperCase()}</span><figcaption>{r.author}<small>{t.googleReview} · {flags[r.lang] ?? r.lang.toUpperCase()}</small></figcaption></div>
             <span class="st" aria-label="5 van 5 sterren">{stars}</span>
             <blockquote lang={r.lang}>{r.text}</blockquote>
           </figure>

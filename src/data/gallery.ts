@@ -1,11 +1,11 @@
-// Sfeerfoto's die op meerdere pagina's terugkomen. Vervang of vul aan met nieuwe restaurantfoto's.
+// Eigen sfeer- en gerechtfoto's die op meerdere pagina's terugkomen.
 export const sfeer: [string, string][] = [
-  ['/images/restaurant-binnen.webp', 'Onze zaal aan de Amsterdamseweg'],
-  ['/images/cocktail-neon.webp', 'Cocktails onder de neon'],
-  ['/images/pepperoni-pizza.webp', 'Een volle zaal met gasten'],
+  ['/images/restaurant-binnen.webp', 'Restaurantzaal met neon en plantenwand aan de Amsterdamseweg'],
+  ['/images/ph/gasten.webp', 'Neon “Feed me steak and tell me I’m pretty” in de zaal'],
+  ['/images/ph/gevel.webp', 'Gevel van Telepizza, Amsterdamseweg 452 in Amstelveen'],
 ];
 export const eten: [string, string][] = [
-  ['/images/pepperoni-pizza.webp', 'Gezellig druk in onze zaal'],
-  ['/images/pasta-carbonara.webp', 'Romige pasta uit onze keuken'],
-  ['/images/pizza-groente.webp', 'Pizza met geitenkaas en groenten'],
+  ['/images/ph/pizza-rozemarijn.webp', 'Pizza vers uit de oven'],
+  ['/images/ph/pasta-vork.webp', 'Spaghetti bolognese uit onze keuken'],
+  ['/images/ph/pizza-hand.webp', 'Pizza BBQ chicken'],
 ];

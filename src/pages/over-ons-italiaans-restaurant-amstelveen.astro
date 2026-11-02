@@ -1,10 +1,11 @@
 ---
 import Landing from '../layouts/Landing.astro';
 import { sfeer } from '../data/gallery';
+import { site } from '../data/site';
 ---
 <Landing page="about"
   path="/over-ons-italiaans-restaurant-amstelveen/" crumb="Over ons"
-  title="Over ons | Telepizza Amstelveen, familierestaurant sinds 1984"
+  title="Over ons | Telepizza Amstelveen, sinds 1984"
   description="Telepizza Amstelveen is een familiebedrijf en sinds 1984 een begrip aan de Amsterdamseweg. Lees ons verhaal en maak kennis met chef Mario en het team."
   eyebrow="La nostra storia" h1="Over <i>Telepizza</i>"
   lead="Een plek vol karakter waar goed eten, sfeer en gastvrijheid samenkomen. Al ruim veertig jaar aan de Amsterdamseweg in Amstelveen."
@@ -20,7 +21,7 @@ import { sfeer } from '../data/gallery';
   <p><strong>Thomas</strong> is bediening, manager en de spil van de zaak. Hij houdt alles op de vloer strak en zorgt dat elke gast topservice krijgt. In onze Google-reviews wordt hij vaak bij naam genoemd.</p>
   <p><strong>Mina</strong> werkt achter de schermen: van marketing tot klantenservice zorgt hij dat alles klopt, online én in het restaurant.</p>
   <h2>Geliefd bij onze gasten</h2>
-  <p>Gasten geven ons een 4,7 op Google, op basis van 934 reviews. Ze noemen vooral het lekkere eten, de snelle en vriendelijke service en de betaalbare prijzen. Lees ze op onze <a href="/reviews/">reviewpagina</a>.</p>
+  <p>Gasten geven ons een 4,7 op Google, op basis van {site.rating.count.toLocaleString('nl-NL')} reviews. Ze noemen vooral het lekkere eten, de snelle en vriendelijke service en de betaalbare prijzen. Lees ze op onze <a href="/reviews/">reviewpagina</a>.</p>
   <h2>Volg ons</h2>
   <p>Onze video’s zijn samen meer dan 300.000 keer bekeken. Volg ons op <a href="https://www.instagram.com/telepizza_nl/" rel="noopener">Instagram</a> en <a href="https://www.tiktok.com/@telepizza_nl" rel="noopener">TikTok</a>.</p>
 </Landing>

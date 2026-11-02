@@ -17,7 +17,10 @@ const { title, description, crumbs = [], schema = [], overlay = false, image = '
 const t = ui[lang];
 const info = langInfo[lang];
 // Pagina's die in alle talen bestaan linken naar hun vertaling; andere pagina's naar de homepage van die taal.
-const alternates = langs.map(l => ({ l, href: pathFor(l, page ?? 'home') }));
+// Turks en Arabisch: nog niet door een moedertaalspreker gecontroleerd (TODO-CONTROLEREN), dus noindex en niet in de taalkeuze.
+const unreviewed: Lang[] = ['tr', 'ar'];
+const alternates = langs.filter(l => !unreviewed.includes(l)).map(l => ({ l, href: pathFor(l, page ?? 'home') }));
+const noindex = unreviewed.includes(lang);
 const canonical = new URL(Astro.url.pathname, site.url).href;
 
 const restaurant: any = {
@@ -31,7 +34,8 @@ const restaurant: any = {
   servesCuisine: ['Italiaans', 'Pizza', 'Pasta', 'Grill', 'Shoarma', 'Kapsalon', 'Burgers', 'Halal'],
   hasMenu: site.url + '/menu-italiaans-restaurant-amstelveen/',
   address: { '@type': 'PostalAddress', streetAddress: site.street, postalCode: site.postalCode, addressLocality: site.city, addressCountry: site.country },
-  areaServed: ['Amstelveen', 'Amsterdam-Zuid', 'Buitenveldert'],
+  areaServed: ['Amstelveen', 'Buitenveldert', 'Zuidas', 'Randwijck', 'Elsrijk', 'Westwijk', 'Bankras-Kostverloren', 'Middenhoven', 'Waardhuizen', 'Groenelaan', 'Keizer Karelpark', 'Stadshart', 'Oude Dorp', 'Bovenkerk'].map(n => ({ '@type': 'Place', name: n })),
+  menu: site.url + '/menu-italiaans-restaurant-amstelveen/',
   aggregateRating: { '@type': 'AggregateRating', ratingValue: site.rating.value, reviewCount: site.rating.count, bestRating: 5 },
   potentialAction: { '@type': 'OrderAction', target: site.orderUrl },
 };
@@ -40,7 +44,8 @@ if (site.email) restaurant.email = site.email;
 if (site.geo) restaurant.geo = { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng };
 if (site.foundingYear) restaurant.foundingDate = String(site.foundingYear);
 if (site.reserveUrl) restaurant.acceptsReservations = site.reserveUrl;
-if (site.sameAs.length) restaurant.sameAs = site.sameAs;
+restaurant.sameAs = [...site.sameAs, ...site.platforms.filter(p => p.id !== 'sitedish').map(p => p.url)];
+// TODO-CONTROLEREN: paymentAccepted en currenciesAccepted alleen toevoegen als bekend.
 if (site.hours.length) restaurant.openingHoursSpecification = site.hours.map(h => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.schema, opens: h.open, closes: h.close }));
 
 const all = [{ name: t.home, path: pathFor(lang, 'home') }, ...crumbs];
@@ -64,6 +69,24 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, follow" />}
+{site.ga4Id && <script is:inline define:vars={{ ga4: site.ga4Id, ads: site.adsId }}>
+  // Google consent mode v2: standaard alles geweigerd; gtag.js wordt pas geladen na toestemming.
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+  window.__tpLoadGa = function () {
+    if (window.__tpGa) return; window.__tpGa = 1;
+    gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' });
+    var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + ga4; document.head.appendChild(s);
+    gtag('js', new Date());
+    // TODO-CONTROLEREN: cross-domain werkt alleen als Sitedish/TheFork hetzelfde GA4-ID kunnen laden.
+    gtag('config', ga4, { linker: { domains: ['telepizza.sitedish.shop', 'widget.thefork.com'] } });
+    if (ads) gtag('config', ads);
+  };
+  try { if (localStorage.getItem('tp-consent') === 'yes') window.__tpLoadGa(); } catch (e) {}
+</script>}
 <meta name="theme-color" content="#fbf3e6" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 {fonts.map(f => <link rel="preload" as="font" type="font/woff2" href={f} crossorigin />)}
@@ -116,6 +139,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
     <p class="center">{t.bandText}</p>
     <div class="btns" style="justify-content:center">
       <a class="btn primary" href={site.reserveUrl!} rel="noopener">{t.reserve}</a>
+      <a class="btn" href={site.orderUrl!} rel="noopener">{t.order}</a>
       <a class="btn" href={'tel:' + site.phone}><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={phoneIco}/></svg>{site.phoneDisplay}</a>
     </div>
   </div>
@@ -134,7 +158,6 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
     <div><h2>{t.discover}</h2>{lang !== 'nl' ? <ul>{(['home', 'menu', 'catering', 'about', 'contact'] as PageKey[]).map(k => <li><a href={pathFor(lang, k)}>{t.nav[k]}</a></li>)}</ul> : <ul>
       <li><a href="/menu-italiaans-restaurant-amstelveen/">Menu</a></li>
       <li><a href="/pizza-amstelveen/">Pizza</a></li>
-      <li><a href="/pizza-soorten/">Pizzasoorten</a></li>
       <li><a href="/pasta-amstelveen/">Pasta</a></li>
       <li><a href="/kapsalon-amstelveen/">Kapsalon</a></li>
       <li><a href="/steak-grill-amstelveen/">Steaks & grill</a></li>
@@ -142,7 +165,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
       <li><a href="/laat-open-amstelveen/">Laat open</a></li>
       <li><a href="/restaurant-amstelveen/">Restaurant</a></li>
       <li><a href="/bezorgen-amstelveen/">Bezorgen</a></li>
-      <li><a href="/catering-bedrijven-amstelveen/">Catering</a></li>
+      <li><a href="/catering-italiaans-restaurant-amstelveen/">Catering</a></li>
       <li><a href="/reviews/">Reviews</a></li>
       <li><a href="/blog/">Blog</a></li>
       <li><a href="/veelgestelde-vragen/">FAQ</a></li>
@@ -150,11 +173,34 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
   </div>
   <p class="legal">© {new Date().getFullYear()} {site.name} · <a href={site.social.instagram} rel="noopener">Instagram</a> · <a href={site.social.tiktok} rel="noopener">TikTok</a>{site.social.facebook && <> · <a href={site.social.facebook} rel="noopener">Facebook</a></>}</p>
 </div></footer>
-<nav class="mbar" aria-label="Snelle acties">
+<nav class:list={['mbar', { late: overlay }]} aria-label="Snelle acties">
   <a href={'tel:' + site.phone}><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={phoneIco}/></svg>{t.call}</a>
   <a href={site.orderUrl!} rel="noopener">{t.order}</a>
   <a class="o" href={site.reserveUrl!} rel="noopener">{t.reserve}</a>
 </nav>
-{overlay && <script is:inline>(function(){var h=document.getElementById('top');function f(){h.classList.toggle('solid',scrollY>40)}addEventListener('scroll',f,{passive:true});f();})();</script>}
+{site.ga4Id && <div class="consent" id="consent" hidden>
+  <p>{lang === 'nl' ? 'We gebruiken cookies om te meten hoe onze website wordt gebruikt. Mag dat?' : 'We use cookies to measure how our website is used. Is that okay?'}</p>
+  <div class="btns" style="margin-top:10px"><button class="btn primary sm" data-consent="yes">{lang === 'nl' ? 'Akkoord' : 'Accept'}</button><button class="btn sm" data-consent="no">{lang === 'nl' ? 'Weigeren' : 'Decline'}</button></div>
+</div>}
+<script is:inline>
+  // Klikmeting: data-track op bestel-, reserveer-, bel- en routelinks (wordt bij het bouwen toegevoegd).
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-track]');
+    if (a && window.gtag && window.__tpGa) window.gtag('event', a.getAttribute('data-track'), { link_url: a.href, page_location: location.href });
+  });
+  (function () {
+    var c = document.getElementById('consent'); if (!c) return;
+    var v = null; try { v = localStorage.getItem('tp-consent'); } catch (e) {}
+    if (!v) c.hidden = false;
+    c.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-consent]'); if (!b) return;
+      var ok = b.getAttribute('data-consent') === 'yes';
+      try { localStorage.setItem('tp-consent', ok ? 'yes' : 'no'); } catch (err) {}
+      if (ok && window.__tpLoadGa) window.__tpLoadGa();
+      c.hidden = true;
+    });
+  })();
+</script>
+{overlay && <script is:inline>(function(){var h=document.getElementById('top');var m=document.querySelector('.mbar');function f(){h.classList.toggle('solid',scrollY>40);if(m)m.classList.toggle('show',scrollY>innerHeight*.7)}addEventListener('scroll',f,{passive:true});f();})();</script>}
 </body>
 </html>

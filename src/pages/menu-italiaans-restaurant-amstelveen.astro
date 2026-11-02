@@ -15,9 +15,9 @@ const norm = (n: string) => n.toLowerCase().replace(/^pizza |^pasta /, '').repla
 const photos = new Map(Object.values(dishes).map(d => [norm(d.name), d.img]));
 const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Speciale Pizza’s': 'pizza-truffel', 'Pizza’s met vlees': 'pizza-pepperoni', 'Vegetarische Pizza’s': 'pizza-margherita', 'Pizza’s met vis': 'pizza-gamberoni', 'Kapsalon': 'kapsalon', 'Schotels': 'shoarma-schotel', 'Vleesgerechten': 'spare-ribs', 'Burgers': 'bacon-burger', 'IJs & dessert': 'tiramisu', 'Salades': 'caprese', 'Soepen': 'tomatensoep', 'Calzone’s': 'calzone' };
 ---
-<Base page="menu" title="Menu Telepizza Amstelveen | Pizza, pasta, steak, kapsalon & prijzen" description="Het volledige menu van Telepizza Amstelveen met prijzen: ruim 35 pizza’s, pasta, steaks, kapsalon, shoarma, burgers en desserts. Halal vlees. Bestel online of reserveer." crumbs={[{ name: 'Menu', path: '/menu-italiaans-restaurant-amstelveen/' }]} schema={[menuLd]}>
+<Base page="menu" title="Menukaart & prijzen | Telepizza Amstelveen" description="Bekijk de volledige menukaart met prijzen: 35+ pizza's, verse pasta, steaks, burgers, kapsalon en desserts. Bestel online of reserveer een tafel." crumbs={[{ name: 'Menu', path: '/menu-italiaans-restaurant-amstelveen/' }]} schema={[menuLd]}>
   <style>
-    .mh{padding:20px 0 40px}
+    .mh{padding-top:20px;padding-bottom:40px}
     .chips{position:sticky;top:78px;z-index:20;background:var(--bg);border-block:2px solid var(--ink)}
     .chips ul{display:flex;gap:8px;overflow-x:auto;list-style:none;margin:0;padding:12px 0;scrollbar-width:none}
     .chips a{display:inline-flex;align-items:center;min-height:40px;white-space:nowrap;padding:0 14px;border:2px solid var(--ink);text-decoration:none;font:800 .78rem/1 var(--head);letter-spacing:.06em;text-transform:uppercase}
@@ -37,14 +37,15 @@ const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Sp
   </style>
   <div class="wrap mh">
     <p class="eyebrow">Menukaart met prijzen</p>
-    <h1>Ons menu</h1>
+    <h1>Menukaart Telepizza Amstelveen</h1>
     <p class="lead">Al onze gerechten worden met verse producten en veel zorg voor je bereid. Van pizza en pasta tot steaks van de grill, kapsalon en huisgemaakte tiramisu. Al ons vlees is halal.</p>
-    <div class="btns"><a class="btn primary" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a><a class="btn" href={site.orderUrl!} rel="noopener">Bestel online</a></div>
+    <div class="btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">Bestel online</a><a class="btn" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a></div>
   </div>
   <nav class="chips" aria-label="Menucategorieën"><div class="wrap"><ul>{menu.map(s => <li><a href={'#' + slug(s.name)}>{s.name}</a></li>)}</ul></div></nav>
   <div class="wrap">
     {menu.map(s => (
       <section class="msec" id={slug(s.name)}>
+        {s.name === 'Vegetarische Pizza’s' && <span id="pizza"></span>}
         <header class:list={{ ph: !!sectionPhoto[s.name] }}>
           <div><h2>{s.name}</h2>{s.note && <p>{s.note}</p>}</div>
           {sectionPhoto[s.name] && <img src={`/images/menu/${sectionPhoto[s.name]}.webp`} alt={`${s.name} bij Telepizza Amstelveen`} width="630" height="450" loading="lazy" decoding="async" />}

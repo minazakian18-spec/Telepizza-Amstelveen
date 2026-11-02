@@ -1,0 +1,32 @@
+---
+// Blok "Bezorgen en afhalen": bezorggebied, kosten (alleen als ingevuld in site.ts) en afhalen.
+import { site, wijken } from '../data/site';
+interface Props { heading?: string }
+const { heading = 'Bezorgen en afhalen' } = Astro.props;
+const d = site.delivery;
+const facts = [
+  d.fee && ['Bezorgkosten', d.fee],
+  d.minimum && ['Minimumbedrag', d.minimum],
+  d.time && ['Indicatieve levertijd', d.time],
+].filter(Boolean) as [string, string][];
+---
+<section class="delivery">
+  <h2>{heading}</h2>
+  <p><strong>Bestel direct bij ons:</strong> je bestelling gaat rechtstreeks naar onze keuken aan de Amsterdamseweg, zonder tussenkomst van een bezorgplatform.</p>
+  <h3>Bezorggebied</h3>
+  <p>We bezorgen in Amstelveen en Buitenveldert: postcodes {d.postcodes}.</p>
+  <ul class="wijken">{wijken.map(w => <li><a href={`/bezorgen-amstelveen/${w.slug}/`}>{w.name}</a>{w.pc && <span> ({w.pc})</span>}</li>)}</ul>
+  {facts.length > 0 && <dl class="dfacts">{facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>}
+  <p>Bezorgkosten, minimumbedrag en de verwachte levertijd zie je ook direct in onze <a href={site.orderUrl!} rel="noopener">online bestelwinkel</a>.</p>
+  <h3>Afhalen</h3>
+  <p>Afhalen aan de {site.street}, {site.postalCode} {site.city}. {site.parkingNote}</p>
+  <div class="btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">Bestel online</a><a class="btn" href={'tel:' + site.phone}>Bel {site.phoneDisplay}</a></div>
+</section>
+<style>
+  .wijken{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;padding:0;margin:12px 0 18px}
+  .wijken span{color:var(--muted);font-size:.9rem}
+  .dfacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:0 0 16px}
+  .dfacts div{background:var(--card);border-radius:12px;padding:12px 14px}
+  .dfacts dt{font-size:.8rem;color:var(--muted)}
+  .dfacts dd{margin:0;font-weight:700}
+</style>

@@ -2,31 +2,34 @@
 import Landing from '../layouts/Landing.astro';
 import { pick } from '../data/dishes';
 import { sfeer } from '../data/gallery';
+import { site } from '../data/site';
 ---
 <Landing
   path="/restaurant-amstelveen/" crumb="Restaurant"
-  title="Restaurant Amstelveen | Italiaans uit eten aan de Amsterdamseweg – Telepizza"
-  description="Op zoek naar een restaurant in Amstelveen? Telepizza is sinds 1984 het Italiaanse restaurant aan de Amsterdamseweg: pizza, pasta en grill in een sfeervolle zaal. Reserveer een tafel."
-  eyebrow="Ristorante dal 1984" h1="Restaurant <i>in Amstelveen</i>"
-  lead="Gezellig uit eten met Italiaanse gerechten, warme gastvrijheid en een ontspannen sfeer. Voor een diner met twee, een avond met vrienden of een verjaardag met de hele familie."
-  img="/images/restaurant-binnen.webp" imgAlt="De zaal van Telepizza Amstelveen met groene wand en sfeerverlichting"
+  title="Italiaans restaurant Amstelveen | Telepizza sinds 1984"
+  description="Uit eten in Amstelveen? Italiaans familierestaurant sinds 1984: pizza, verse pasta, grill en cocktails. ★ 4,7 op Google. Reserveer eenvoudig online via TheFork."
+  eyebrow="Ristorante dal 1984" h1="Italiaans restaurant <i>in Amstelveen</i>"
+  lead="Uit eten in Amstelveen, aan gedekte tafels onder de neon en de groene plantenwand. Voor een diner met z’n tweeën, een verjaardag met de familie of een avond met vrienden, vlak bij Amsterdam-Zuid en Buitenveldert."
+  img="/images/restaurant-binnen.webp" imgAlt="Restaurantzaal met neonverlichting en plantenwand, Telepizza aan de Amsterdamseweg"
   dishesTitle="Aanraders van de chef" dishes={pick('telePizza', 'chef', 'tartufo', 'carbonara', 'ribs', 'salmone')}
   gallery={sfeer}
   faq={[
     ['Moet ik reserveren?', 'Op vrijdag- en zaterdagavond raden we reserveren aan. Dat kan online via TheFork of telefonisch via 020-6435287. Doordeweeks kun je meestal gewoon binnenlopen.'],
-    ['Is er parkeergelegenheid?', 'Ja, in de buurt van het restaurant kun je gratis parkeren.'],
     ['Kunnen we met een grote groep komen?', 'Zeker. Bel ons vooraf, dan zetten we tafels voor je klaar en denken we mee over het menu.'],
     ['Zijn kinderen welkom?', 'Ja, Telepizza is een familierestaurant. Met pizza, pasta en desserts is er ook voor kinderen genoeg keuze.'],
+    ['Hoe kom ik bij het restaurant?', 'We zitten aan de Amsterdamseweg 452 in Amstelveen, vlak bij Randwijck en de grens met Amsterdam-Zuid. Plan je route via Google Maps.'],
   ]}>
-  <h2>Sfeervol restaurant in Amstelveen</h2>
-  <p>Telepizza is een restaurant in Amstelveen waar lekker eten, gastvrijheid en sfeer samenkomen. Wat in 1984 begon als pizzeria aan de Amsterdamseweg, is uitgegroeid tot een levendig restaurant met een groene wand, warm licht, neon aan de muur en een goed gevulde bar. Je eet hier aan gedekte tafels, met bediening die tijd voor je neemt.</p>
-  <p>Op de kaart vind je Italiaanse klassiekers zoals pizza en pasta, maar ook steaks en spare ribs van de grill, salades, visgerechten en huisgemaakte desserts. Zo is er voor iedereen iets passends, of je nu uitgebreid wilt dineren of gewoon zin hebt in een goede maaltijd.</p>
+  <h2>Uit eten bij het Italiaanse restaurant in Amstelveen</h2>
+  <p>Telepizza is al sinds 1984 een vertrouwd adres voor wie in Amstelveen Italiaans uit eten wil. Wat begon als pizzeria is uitgegroeid tot een sfeervol Italiaans restaurant met een groene plantenwand, warme lampen, neon aan de muur en een bar met cocktails en wijn. Je eet aan gedekte tafels, met bediening die tijd voor je neemt.</p>
+  {/* TODO-CONTROLEREN: aantal zitplaatsen in het restaurant (en of er een privé-eetzaal en terras zijn) */}
+  <h2>Een Italiaan voor elke gelegenheid</h2>
+  <p>Kom voor een romantisch diner, een avond met vrienden met cocktails en pizza, of vier je verjaardag met de hele familie. Grotere groepen zijn welkom; bel ons vooraf, dan zetten we tafels aan elkaar. Kinderen vinden hier altijd iets lekkers, en voor ouders staan er verse pasta’s, steaks van de grill en salades op de kaart.</p>
+  <h2>Op de kaart</h2>
+  <p>Ruim 35 pizza’s met handgerekt deeg, verse pasta zoals carbonara en tartufo, biefstuk, ribeye en spare ribs van de grill, salades en huisgemaakte desserts. Bekijk de volledige <a href="/menu-italiaans-restaurant-amstelveen/">menukaart met prijzen</a>.</p>
   <h2>Wat onze gasten waarderen</h2>
-  <p>Gasten beoordelen Telepizza met een 4,7 op Google, op basis van 934 reviews. Ze noemen vooral de ontspannen sfeer, de vriendelijke en snelle service en de constante kwaliteit. Veel gasten komen terug omdat ze weten wat ze kunnen verwachten: goed eten, een warme sfeer en eerlijke prijzen. Lees hun ervaringen op onze <a href="/reviews/">reviewpagina</a>.</p>
-  <h2>Een familiebedrijf</h2>
-  <p>Telepizza is een familiebedrijf. In de keuken staat chef Mario, op de vloer zorgt Thomas ervoor dat elke gast zich welkom voelt. Die persoonlijke aanpak merk je aan tafel: we onthouden je favoriete gerecht en denken mee als je iets te vieren hebt.</p>
-  <h2>Voor elke gelegenheid</h2>
-  <p>Kom voor een romantisch diner, een avond met vrienden met cocktails en pizza, of vier je verjaardag met de hele familie. Voor bedrijven en grotere feesten verzorgen we ook <a href="/catering-italiaans-restaurant-amstelveen/">catering</a>. En omdat de keuken open is tot 01:45, en in het weekend tot 03:00, kun je bij ons ook na een voorstelling of laat op de avond nog <a href="/laat-open-amstelveen/">uitgebreid eten</a>.</p>
-  <h2>Ligging en bereikbaarheid</h2>
-  <p>Ons restaurant ligt aan de Amsterdamseweg 452, in het noorden van Amstelveen, vlak bij Randwijck, Buitenveldert en de grens met Amsterdam. Je parkeert gratis in de buurt. Bekijk de route op de pagina <a href="/contact-route/">contact &amp; route</a>.</p>
+  <p>Gasten geven Telepizza een 4,7 op Google, op basis van {site.rating.count.toLocaleString('nl-NL')} reviews. Ze noemen vooral de gezellige sfeer, de vriendelijke en snelle bediening en de eerlijke prijzen. Lees hun ervaringen op de <a href="/reviews/">reviewpagina</a> of lees meer <a href="/over-ons-italiaans-restaurant-amstelveen/">over ons familiebedrijf</a>.</p>
+  <h2>Reserveren en bereikbaarheid</h2>
+  <p>Reserveer je tafel online via TheFork of bel 020-6435287. Het restaurant ligt aan de Amsterdamseweg 452, in het noorden van Amstelveen en op korte afstand van Buitenveldert en Amsterdam-Zuid. {site.parkingNote}</p>
+  {/* TODO-CONTROLEREN: openbaar vervoer (buslijnen/haltes) en parkeren */}
+  <p>Kun je niet komen? Je kunt ook <a href="/bezorgen-amstelveen/">laten bezorgen in Amstelveen en Buitenveldert</a>.</p>
 </Landing>

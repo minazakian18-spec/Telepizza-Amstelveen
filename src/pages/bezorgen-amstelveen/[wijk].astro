@@ -6,15 +6,17 @@ export function getStaticPaths() { return wijken.map(w => ({ params: { wijk: w.s
 const { w } = Astro.props;
 const others = wijken.filter(o => o.slug !== w.slug);
 ---
-<Base title={`Pizza bezorgen ${w.name} Amstelveen | Telepizza`} description={`Pizza, pasta of shoarma laten bezorgen of afhalen in ${w.name}, Amstelveen? Telepizza aan de Amsterdamseweg maakt het vers voor je.`} crumbs={[{ name: 'Bezorgen', path: '/bezorgen-amstelveen/' }, { name: w.name, path: `/bezorgen-amstelveen/${w.slug}/` }]}>
-<div class="wrap">
+<Base title={`Pizza bezorgen ${w.name} | Telepizza Amstelveen`} description={`Pizza bestellen in ${w.name}? Telepizza bezorgt vers bereide pizza, pasta en grill. Bestel online of haal af aan de Amsterdamseweg 452.`} crumbs={[{ name: 'Bezorgen', path: '/bezorgen-amstelveen/' }, { name: w.name, path: `/bezorgen-amstelveen/${w.slug}/` }]}>
+<div class="wrap" style="padding-top:24px">
+<p class="eyebrow">Bezorgen &amp; afhalen</p>
 <h1>Pizza bezorgen in {w.name}</h1>
-<p class="lead">{w.text}</p>
+{/* TODO-CONTROLEREN: valt deze wijk binnen het bezorggebied in Sitedish? (geldt voor Oude Dorp en Bovenkerk) */}
+<p class="lead" set:html={w.text} />
+<Cta first="order" />
 <h2>Wat kun je bestellen?</h2>
-<p>Pizza, pasta, shoarma en ijs. Bekijk het volledige <a href="/menu-italiaans-restaurant-amstelveen/">menu</a> of lees meer over onze <a href="/pizza-soorten/">pizzasoorten</a>.</p>
+<p>Ruim 35 <a href="/pizza-amstelveen/">pizza’s met handgerekt deeg</a>, verse pasta, steaks en spare ribs van de grill, salades en desserts. Bekijk de volledige <a href="/menu-italiaans-restaurant-amstelveen/">menukaart met prijzen</a>.</p>
 <h2>Bezorgen of afhalen</h2>
-<p>Laat je bestelling bezorgen in {w.name}, of haal hem zelf op bij Telepizza, Amsterdamseweg 452.</p>
-<Cta />
+<p>Laat je bestelling bezorgen in {w.name}{w.pc && ` (${w.pc})`}, of haal hem zelf op bij Telepizza, Amsterdamseweg 452. Bezorgkosten, minimumbedrag en levertijd zie je direct bij het online bestellen.</p>
 <h2>Andere wijken</h2>
 <p>{others.map((o, i) => <>{i > 0 && ' · '}<a href={`/bezorgen-amstelveen/${o.slug}/`}>{o.name}</a></>)}</p>
 </div>

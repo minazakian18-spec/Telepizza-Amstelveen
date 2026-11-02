@@ -6,7 +6,7 @@ export const moreArticles: Article[] = [
     slug: 'uit-eten-amstelveen-tips',
     title: 'Uit eten in Amstelveen: tips voor een gezellige avond',
     desc: 'Uit eten in Amstelveen? Tips voor een geslaagde avond: reserveren, wat bestellen en waarom een Italiaans restaurant ideaal is voor elk gezelschap.',
-    date: '2026-10-29', img: '/images/ph/zaal-neon.webp', imgAlt: 'Sfeervolle zaal van Telepizza Amstelveen',
+    date: '2026-10-29', img: '/images/restaurant-binnen.webp', imgAlt: 'Restaurantzaal met neon en plantenwand bij Telepizza Amstelveen',
     intro: 'Een avond uit eten begint met de juiste plek. Of je nu met z’n tweeën gaat, met vrienden of met de hele familie: met deze tips wordt het een avond om te onthouden.',
     body: `
 <h2>Kies een restaurant dat bij je gezelschap past</h2>
@@ -19,22 +19,6 @@ export const moreArticles: Article[] = [
 <p>Uit eten is meer dan alleen eten. Bestel een cocktail of een glas wijn, geniet van de sfeer en sluit af met een dessert zoals huisgemaakte tiramisu. Omdat onze keuken tot laat open is, hoef je je niet te haasten.</p>
 <h2>Plan je route</h2>
 <p>Telepizza ligt aan de Amsterdamseweg 452, in het noorden van Amstelveen en vlak bij Amsterdam. In de buurt kun je gratis parkeren. Bekijk de <a href="/contact-route/">route</a> of lees meer over ons <a href="/restaurant-amstelveen/">restaurant in Amstelveen</a>.</p>`,
-  },
-  {
-    slug: 'laat-eten-amstelveen',
-    title: 'Laat eten in Amstelveen: waar kun je ’s avonds laat nog terecht?',
-    desc: 'Honger na 22:00 in Amstelveen? Bij Telepizza is de keuken open tot 01:45, op vrijdag en zaterdag tot 03:00. Pizza, pasta, kapsalon en meer.',
-    date: '2026-10-27', img: '/images/ph/bar.webp', imgAlt: 'Bar van een restaurant in de avond',
-    intro: 'Na een late dienst, een voorstelling of een avond met vrienden heb je ineens trek. Veel keukens zijn dan al dicht. Gelukkig niet allemaal.',
-    body: `
-<h2>Waarom laat eten lastig is</h2>
-<p>De meeste restaurants in Amstelveen sluiten hun keuken rond 21:30 of 22:00 uur. Wie later honger heeft, belandt vaak bij een snackbar of moet naar Amsterdam. Juist daarom zijn plekken met een late keuken zo waardevol.</p>
-<h2>Telepizza: open tot diep in de nacht</h2>
-<p>Bij Telepizza aan de Amsterdamseweg is de keuken van dinsdag tot en met donderdag en op zondag open tot 01:45. Op vrijdag en zaterdag zelfs tot 03:00. Op maandag zijn we gesloten. Zo kun je ook laat nog aan tafel voor een volwaardige maaltijd.</p>
-<h2>Wat eet je ’s nachts?</h2>
-<p>Populair na middernacht zijn een pizza om te delen, een romige pasta of een kapsalon met friet, shoarma en gesmolten kaas. Al het vlees is halal. Lees meer over onze <a href="/kapsalon-amstelveen/">kapsalon</a> of bekijk het hele <a href="/menu-italiaans-restaurant-amstelveen/">menu</a>.</p>
-<h2>Liever thuis?</h2>
-<p>Ook laat op de avond kun je online bestellen om af te halen. Bekijk de openingstijden op onze pagina <a href="/laat-open-amstelveen/">laat open in Amstelveen</a>.</p>`,
   },
   {
     slug: 'vegetarisch-eten-amstelveen',
@@ -50,13 +34,13 @@ export const moreArticles: Article[] = [
 <h2>Salades, soepen en meer</h2>
 <p>Begin met een caprese salade met buffelmozzarella, een Griekse salade of een verse tomatensoep. Liever iets stevigers? Probeer de calzone caponata met gebakken groenten of de schotel falafel.</p>
 <h2>Bekijk de kaart</h2>
-<p>Alle gerechten en prijzen staan op ons <a href="/menu-italiaans-restaurant-amstelveen/">menu</a>. Meer over onze pizza’s lees je op <a href="/pizza-soorten/">pizzasoorten</a>.</p>`,
+<p>Alle gerechten en prijzen staan op ons <a href="/menu-italiaans-restaurant-amstelveen/">menu</a>. Meer over onze pizza’s lees je op <a href="/menu-italiaans-restaurant-amstelveen/#pizza">pizzasoorten</a>.</p>`,
   },
   {
     slug: 'zakelijk-dineren-amstelveen',
     title: 'Zakelijk lunchen of dineren in Amstelveen',
     desc: 'Een zakelijk diner, teamuitje of borrel in Amstelveen? Telepizza biedt ruimte voor groepen, Italiaanse gerechten en catering op kantoor.',
-    date: '2026-10-23', img: '/images/ph/gasten.webp', imgAlt: 'Collega’s samen aan tafel in een restaurant',
+    date: '2026-10-23', img: '/images/eigen/pasta-tafel.webp', imgAlt: 'Pasta, pizza en salade op tafel bij Telepizza Amstelveen',
     intro: 'Een teamdiner, een afscheid of een klant meenemen: zakelijk eten moet makkelijk geregeld zijn en iedereen moet iets lekkers vinden.',
     body: `
 <h2>Met het team aan tafel</h2>
@@ -64,7 +48,7 @@ export const moreArticles: Article[] = [
 <h2>Bereikbaar vanuit Amstelveen en Amsterdam-Zuid</h2>
 <p>Ons restaurant ligt aan de Amsterdamseweg, vlak bij de grens met Amsterdam. Dat is handig voor teams uit Amstelveen, Buitenveldert en de Zuidas. In de buurt kun je gratis parkeren.</p>
 <h2>Catering op kantoor</h2>
-<p>Geen tijd om weg te gaan? Wij leveren Italiaanse catering voor lunchmeetings, vrijdagmiddagborrels en bedrijfsfeesten, met desgewenst een mobiele bar. Lees meer over <a href="/catering-bedrijven-amstelveen/">catering voor bedrijven</a>.</p>
+<p>Geen tijd om weg te gaan? Wij leveren Italiaanse catering voor lunchmeetings, vrijdagmiddagborrels en bedrijfsfeesten, met desgewenst een mobiele bar. Lees meer over <a href="/catering-italiaans-restaurant-amstelveen/#bedrijven">catering voor bedrijven</a>.</p>
 <h2>Reserveren</h2>
 <p>Reserveer via TheFork of bel ons voor groepen. Bekijk ook ons <a href="/restaurant-amstelveen/">restaurant</a>.</p>`,
   },
@@ -80,13 +64,13 @@ export const moreArticles: Article[] = [
 <h2>Eenvoud is de kunst</h2>
 <p>Juist omdat een margherita zo weinig ingrediënten heeft, proef je meteen of het deeg en de saus goed zijn. Daarom is het voor veel pizzaliefhebbers de beste test van een pizzeria.</p>
 <h2>De margherita bij Telepizza</h2>
-<p>Bij ons maken we de margherita met handgerekt deeg, huisgemaakte tomatensaus en kaas. Hij kost € 9,50 en is daarmee ook de perfecte basis om zelf extra toppings toe te voegen. Bekijk alle <a href="/pizza-soorten/">pizzasoorten</a> of lees waar je <a href="/blog/beste-pizza-amstelveen/">een goede pizza aan herkent</a>.</p>`,
+<p>Bij ons maken we de margherita met handgerekt deeg, huisgemaakte tomatensaus en kaas. Hij kost € 9,50 en is daarmee ook de perfecte basis om zelf extra toppings toe te voegen. Bekijk alle <a href="/menu-italiaans-restaurant-amstelveen/#pizza">pizzasoorten</a> of lees waar je <a href="/blog/beste-pizza-amstelveen/">een goede pizza aan herkent</a>.</p>`,
   },
   {
     slug: 'verschil-pizza-calzone',
     title: 'Wat is het verschil tussen een pizza en een calzone?',
     desc: 'Pizza of calzone? Het verschil uitgelegd: dichtgevouwen deeg, vulling en bereiding. Plus welke calzones je bij Telepizza Amstelveen bestelt.',
-    date: '2026-10-19', img: '/images/menu/calzone.webp', imgAlt: 'Calzone van Telepizza Amstelveen',
+    date: '2026-10-19', img: '/images/eigen/calzone.webp', imgAlt: 'Calzone met saus bij Telepizza Amstelveen',
     intro: 'Op veel Italiaanse menukaarten staat naast pizza ook een calzone. Het lijkt op elkaar, maar er is een duidelijk verschil.',
     body: `
 <h2>Een dichtgevouwen pizza</h2>
@@ -100,7 +84,7 @@ export const moreArticles: Article[] = [
     slug: 'familiediner-kinderen-amstelveen',
     title: 'Met kinderen uit eten in Amstelveen',
     desc: 'Met het gezin uit eten in Amstelveen? Waarom een Italiaans restaurant ideaal is voor kinderen, en wat je bij Telepizza kunt bestellen.',
-    date: '2026-10-17', img: '/images/ph/vrienden.webp', imgAlt: 'Familie en vrienden eten samen pizza',
+    date: '2026-10-17', img: '/images/ph/pizza-rond.webp', imgAlt: 'Pizza met groenten en geitenkaas bij Telepizza Amstelveen',
     intro: 'Met kinderen uit eten moet ontspannen zijn. Een plek waar iedereen iets lekkers vindt en waar het niet erg is als het een beetje gezellig druk wordt.',
     body: `
 <h2>Pizza: altijd goed</h2>
@@ -116,7 +100,7 @@ export const moreArticles: Article[] = [
     slug: 'biefstuk-ribeye-ossenhaas-verschil',
     title: 'Biefstuk, ribeye of ossenhaas: welke steak kies je?',
     desc: 'Wat is het verschil tussen biefstuk, entrecote, ribeye en ossenhaas? Een korte gids, plus de steaks van de grill bij Telepizza Amstelveen.',
-    date: '2026-10-15', img: '/images/menu/spare-ribs.webp', imgAlt: 'Vlees van de grill bij Telepizza',
+    date: '2026-10-15', img: '/images/eigen/steak-grill.webp', imgAlt: 'Steak op de grill bij Telepizza Amstelveen',
     intro: 'Op de kaart staan verschillende steaks, maar wat is nu het verschil? Een korte uitleg, zodat je weet wat je bestelt.',
     body: `
 <h2>Biefstuk</h2>
@@ -132,7 +116,7 @@ export const moreArticles: Article[] = [
     slug: 'telepizza-amstelveen-sinds-1984',
     title: 'Telepizza: al ruim veertig jaar in Amstelveen',
     desc: 'Het verhaal van Telepizza Amstelveen: sinds 1984 aan de Amsterdamseweg, van pizzeria tot sfeervol familierestaurant.',
-    date: '2026-10-13', img: '/images/restaurant-binnen.webp', imgAlt: 'Neon en groene wand in Telepizza Amstelveen',
+    date: '2026-10-13', img: '/images/eigen/gevel-avond.webp', imgAlt: 'Gevel van Telepizza aan de Amsterdamseweg in Amstelveen',
     intro: 'Sommige plekken horen gewoon bij een stad. Telepizza staat al sinds 1984 aan de Amsterdamseweg in Amstelveen.',
     body: `
 <h2>Begonnen als pizzeria</h2>

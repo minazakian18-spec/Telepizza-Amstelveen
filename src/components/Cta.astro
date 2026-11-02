@@ -1,7 +1,13 @@
 ---
+// Bestel- en reserveerknop naast elkaar. first bepaalt welke de rode hoofdknop is.
 import { site } from '../data/site';
+interface Props { first?: 'order' | 'reserve' }
+const { first = 'reserve' } = Astro.props;
+const order = { href: site.orderUrl!, label: 'Bestel online' };
+const reserve = { href: site.reserveUrl!, label: 'Reserveer een tafel' };
+const [a, b] = first === 'order' ? [order, reserve] : [reserve, order];
 ---
 <div class="btns">
-  <a class="btn" href={site.reserveUrl!} rel="noopener">Reserveren</a>
-  <a class="btn" href={site.orderUrl!} rel="noopener">Bestel Online</a>
+  <a class="btn primary" href={a.href} rel="noopener">{a.label}</a>
+  <a class="btn" href={b.href} rel="noopener">{b.label}</a>
 </div>

@@ -4,10 +4,10 @@ import { site, fullAddress } from '../data/site';
 import type { HomeCopy } from '../i18n/pages';
 
 const c: HomeCopy = {
-  title: 'Pizza & Italiaans restaurant Amstelveen | Telepizza – pizzeria sinds 1984',
-  desc: `Pizzeria en Italiaans restaurant in Amstelveen sinds 1984: pizza uit de oven, verse pasta en steaks van de grill. ★ ${String(site.rating.value).replace(".", ",")} uit ${site.rating.count.toLocaleString("nl-NL")} Google-reviews, halal, open tot 03:00. Reserveer of bestel online.`,
+  title: 'Pizzeria & Italiaans restaurant Amstelveen | Telepizza',
+  desc: `Italiaans restaurant en pizzeria in Amstelveen sinds 1984. Vers handgerekt deeg, ★ 4,7 uit ${site.rating.count.toLocaleString('nl-NL')} reviews. Reserveer of bestel online.`,
   h1: 'Pizzeria & Italiaans restaurant <i>in Amstelveen</i>',
-  lead: 'De pizzeria van Amstelveen sinds 1984, aan de Amsterdamseweg. Schuif aan voor pizza uit de oven, verse pasta, steaks van de grill en een goed glas wijn, of bestel je pizza online om af te halen.',
+  lead: 'Sinds 1984 dé pizzeria van Amstelveen. Handgerekt deeg, verse pasta en steaks van de grill: eet bij ons aan de Amsterdamseweg, haal af of laat bezorgen in Amstelveen en Buitenveldert.',
   storyTitle: 'Een Italiaanse avond, <i>al ruim veertig jaar</i>',
   story: [
     'Telepizza is in 1984 begonnen aan de Amsterdamseweg en is uitgegroeid tot een sfeervol Italiaans restaurant. Hier eet je met familie, vrienden of collega’s aan gedekte tafels, met gerechten die we elke dag vers bereiden: van handgerekt pizzadeeg en huisgemaakte sauzen tot sappige steaks van de grill.',
@@ -15,7 +15,7 @@ const c: HomeCopy = {
   ],
   salaTitle: 'Gedekte tafels, warm licht en echte gastvrijheid',
   menuEyebrow: '', menuTitle: '',
-  facts: [['Sinds 1984', 'ruim veertig jaar in Amstelveen'], ['Halal', 'al ons vlees'], ['Tot 03:00', 'op vrijdag en zaterdag'], [`★ ${site.rating.value}`, `${site.rating.count} Google-reviews`]],
+  facts: [['Sinds 1984', 'familiebedrijf'], [`★ ${site.rating.value}`.replace('.', ','), `${site.rating.count.toLocaleString('nl-NL')} Google-reviews`], ['Halal', 'al ons vlees'], ['Bezorgen', '& afhalen']], // TODO-CONTROLEREN: halal
   cats: [['Pizza uit de oven', 'Handgerekt deeg, huisgemaakte tomatensaus'], ['Verse pasta', 'Carbonara, tartufo, frutti di mare'], ['', ''], ['Specialità della casa', 'Onze speciale pizza’s met geitenkaas, truffel en Parmaham']],
   favEyebrow: 'Onze kaart', favTitle: 'Specialiteiten van het huis',
   waysTitle: 'Voor elke gelegenheid',
@@ -29,10 +29,11 @@ const c: HomeCopy = {
   press: 'De lokale krant schreef over onze vernieuwde zaak en hoe Telepizza uitgroeide tot een volwaardig restaurant. Video’s van onze gerechten en sfeer zijn op Instagram en TikTok samen al meer dan 300.000 keer bekeken.',
   seoTitle: 'Uit eten in Amstelveen: pizza, pasta en grill',
   seo: [
-    ['Pizza in Amstelveen', 'Onze <a href="/pizza-amstelveen/">pizza’s</a> maken we met handgerekt deeg, huisgemaakte tomatensaus en verse ingrediënten. Kies een klassieke margherita, de populaire Tele Pizza of een pizza met truffel en Parmaham. Ruim 35 soorten, ook <a href="/pizza-soorten/">vegetarisch en met vis</a>.'],
+    ['Pizza in Amstelveen', 'Onze <a href="/pizza-amstelveen/">pizza’s</a> maken we met handgerekt deeg, huisgemaakte tomatensaus en verse ingrediënten. Kies een klassieke margherita, de populaire Tele Pizza of een pizza met truffel en Parmaham. Ruim 35 soorten, ook <a href="/menu-italiaans-restaurant-amstelveen/#pizza">vegetarisch en met vis</a>.'],
     ['Pasta en steaks van de grill', 'Van carbonara en bolognese tot tartufo zucchine en frutti di mare: onze <a href="/pasta-amstelveen/">pasta’s</a> worden vers bereid. Liever vlees? Bestel <a href="/steak-grill-amstelveen/">biefstuk, ribeye, ossenhaas of spare ribs</a>, met salade en frites.'],
     ['Halal en tot laat open', 'Al ons vlees is <a href="/halal-restaurant-amstelveen/">halal</a>. Naast Italiaanse gerechten staan ook burgers, shoarma en <a href="/kapsalon-amstelveen/">kapsalon</a> op de kaart. En wie laat trek heeft: we zijn <a href="/laat-open-amstelveen/">open tot 01:45</a>, in het weekend tot 03:00.'],
-    ['Thuis genieten', 'Kun je niet komen? Je kunt ook <a href="/bezorgen-amstelveen/">afhalen of laten bezorgen in Amstelveen</a>, of <a href="/catering-bedrijven-amstelveen/">catering voor je bedrijf</a> bestellen.'],
+    ['Thuis genieten', 'Kun je niet komen? Je kunt ook <a href="/bezorgen-amstelveen/">afhalen of laten bezorgen in Amstelveen en Buitenveldert</a>, of <a href="/catering-italiaans-restaurant-amstelveen/#bedrijven">catering voor je bedrijf</a> bestellen.'],
+    ['Living in Amstelveen?', 'Our menu and staff speak English. <a href="/en/">Order online or book a table</a>.'],
   ],
   faq: [
     ['Kan ik bij Telepizza reserveren?', `Ja, reserveer online via TheFork of bel ${site.phoneDisplay}. Voor groepen en verjaardagen denken we graag mee.`],

@@ -175,3 +175,11 @@ main img,main video{border-radius:var(--r)}
 .team figcaption b{font:400 2rem/1 var(--script);text-transform:none}
 .insta a:nth-child(even){transform:rotate(2deg)}
 .insta{gap:14px}
+
+/* zwevende balk op de homepage pas na de hero tonen, zodat hij de reviewlogo's niet bedekt */
+.mbar.late{opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .25s,transform .25s}
+.mbar.late.show{opacity:1;transform:none;pointer-events:auto}
+/* cookiebanner */
+.consent{position:fixed;left:12px;right:12px;bottom:12px;z-index:80;max-width:520px;background:var(--card);color:var(--ink);padding:16px 18px;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.consent p{margin:0;font-size:.95rem}
+.consent[hidden]{display:none}

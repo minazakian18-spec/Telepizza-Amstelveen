@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import { articles } from '../../data/articles';
 const fmt = (d: string) => new Date(d).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
-<Base title="Blog | Telepizza Amstelveen – pizza, pasta en uit eten in Amstelveen" description="Verhalen en tips van Telepizza Amstelveen: over pizza, pasta, halal eten, kapsalon en uit eten in Amstelveen." crumbs={[{ name: 'Blog', path: '/blog/' }]}>
+<Base title="Blog | Telepizza Amstelveen" description="Verhalen en tips van Telepizza Amstelveen: over pizza, pasta, halal eten, kapsalon en uit eten in Amstelveen." crumbs={[{ name: 'Blog', path: '/blog/' }]}>
   <style>
     .bl{display:grid;gap:40px 32px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
     .bl a{text-decoration:none;display:block}
