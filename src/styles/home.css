@@ -45,7 +45,7 @@
 .journal{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));border-top:2px solid var(--ink)}
 .journal a{display:block;padding:28px 28px 34px 0;text-decoration:none;border-bottom:2px solid var(--ink)}
 @media(min-width:960px){.journal a{padding:28px 28px 34px}.journal a+a{border-inline-start:2px solid var(--ink)}.journal a:first-child{padding-inline-start:0}}
-.journal img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.journal img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
 .journal small{display:block;margin-top:16px;font:800 .72rem/1 var(--head);letter-spacing:.1em;text-transform:uppercase;color:#a81c13}
 .journal h3{margin-top:10px;font-size:1.4rem}
 .journal a:hover h3{color:var(--red)}

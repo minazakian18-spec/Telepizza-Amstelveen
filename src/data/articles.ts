@@ -26,7 +26,7 @@ export const articles: Article[] = [
     slug: 'halal-uit-eten-amstelveen',
     title: 'Halal uit eten in Amstelveen: Italiaans, grill en meer',
     desc: 'Halal uit eten in Amstelveen? Bij Telepizza is al het vlees halal: pizza, pasta, steaks, shoarma en kapsalon. Lees wat je kunt verwachten en wat we serveren.',
-    date: '2026-10-28', img: '/images/menu/pizza-shoarma.webp', imgAlt: 'Halal pizza shoarma',
+    date: '2026-10-28', img: '/images/eigen/steak-grill.webp', imgAlt: 'Steak van de grill bij Telepizza Amstelveen',
     intro: 'Een restaurant vinden waar je zonder twijfel vlees kunt bestellen is niet altijd makkelijk. Bij Telepizza Amstelveen is al ons vlees halal. Zo kan iedereen aan tafel kiezen wat hij of zij wil.',
     body: `
 <h2>Al het vlees halal</h2>
