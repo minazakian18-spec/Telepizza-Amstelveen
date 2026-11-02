@@ -16,6 +16,17 @@ export const site = {
   // Meting. TODO-CONTROLEREN: vul het GA4-meet-ID (G-XXXXXXX) en eventueel het Google Ads-ID (AW-XXXXXXX) in.
   // Zolang deze op null staan, wordt er niets gemeten en verschijnt er geen cookiebanner.
   ga4Id: null as string | null,
+  // Nieuwsbrief via Brevo (double opt-in). Zonder formAction worden pop-up en inschrijfformulieren niet getoond.
+  // Voor een testbuild kan PUBLIC_BREVO_FORM als omgevingsvariabele worden meegegeven.
+  newsletter: {
+    formAction: (import.meta.env.PUBLIC_BREVO_FORM || null) as string | null, // TODO-CONTROLEREN: Brevo-formulier-URL (Brevo › Contacten › Formulieren › Delen › HTML-code › action="...")
+    discountPercent: 10,
+    delaySeconds: 15,
+    scrollPercent: 40,
+    hideDays: 30,
+  },
+  accountUrl: null as string | null, // TODO-CONTROLEREN: inlogpagina van de Sitedish-bestelwinkel (bijv. https://telepizza.sitedish.shop/...)
+  privacyUrl: '/privacy/',
   adsId: null as string | null,
   // Bezorging. TODO-CONTROLEREN: alleen invullen als het klopt; lege waarden worden niet getoond.
   delivery: {

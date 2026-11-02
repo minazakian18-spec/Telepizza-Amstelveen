@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+<Base title="Privacyverklaring | Telepizza Amstelveen" description="Hoe Telepizza Amstelveen omgaat met je gegevens: nieuwsbrief en kortingscode via Brevo, bewaartermijn, je rechten en cookies of Google Analytics."
+  crumbs={[{ name: 'Privacy', path: '/privacy/' }]} alternates={[{ l: 'nl', href: '/privacy/' }, { l: 'en', href: '/en/privacy/' }]}>
+<div class="wrap" style="padding-top:24px;padding-bottom:72px;max-width:760px">
+<h1>Privacyverklaring</h1>
+<p class="lead">Telepizza Amstelveen gaat zorgvuldig om met je gegevens. Hier lees je welke gegevens we verzamelen, waarom, en welke rechten je hebt.</p>
+
+<h2>Wie zijn wij?</h2>
+<p>{site.name}, {site.street}, {site.postalCode} {site.city}. E-mail: <a href={'mailto:' + site.email}>{site.email}</a>, telefoon: <a href={'tel:' + site.phone}>{site.phoneDisplay}</a>.</p>
+{/* TODO-CONTROLEREN: rechtsvorm en KvK-nummer van de onderneming toevoegen */}
+
+<h2>Welke gegevens verzamelen we?</h2>
+<p>Als je je inschrijft voor de nieuwsbrief, bewaren we je e-mailadres en, als je die invult, je voornaam. We vragen niet meer dan nodig is.</p>
+
+<h2>Waarvoor gebruiken we ze?</h2>
+<p>We gebruiken je gegevens alleen om je de nieuwsbrief te sturen, met acties en nieuwe gerechten, en om je eenmalig een welkomstkorting te sturen. Je meldt je aan met een dubbele bevestiging: je ontvangt eerst een e-mail waarin je je aanmelding bevestigt. Pas daarna sturen we je de kortingscode. De grondslag is je toestemming.</p>
+
+<h2>Wie verwerkt je gegevens?</h2>
+<p>Voor het versturen van de nieuwsbrief gebruiken we Brevo (Sendinblue SAS), een Europese e-maildienst die gegevens binnen de EU verwerkt. Met Brevo is een verwerkersovereenkomst van toepassing. We verkopen of delen je gegevens niet met anderen.</p>
+{/* TODO-CONTROLEREN: verwerkersovereenkomst met Brevo accepteren in het Brevo-account */}
+
+<h2>Hoe lang bewaren we ze?</h2>
+<p>Tot je je afmeldt. Daarna verwijderen we je gegevens uit de verzendlijst.</p>
+
+<h2>Je rechten</h2>
+<p>Je mag altijd vragen welke gegevens we van je hebben, ze laten aanpassen of laten verwijderen. Afmelden kan met de link onderaan elke nieuwsbrief. Voor andere vragen mail je naar <a href={'mailto:' + site.email}>{site.email}</a>. Ben je het niet eens met hoe we met je gegevens omgaan? Dan kun je een klacht indienen bij de Autoriteit Persoonsgegevens.</p>
+
+<h2>Bestellen en reserveren</h2>
+<p>Online bestellen gaat via onze bestelwinkel van Sitedish en reserveren via TheFork. Die diensten verwerken je bestel- en reserveringsgegevens onder hun eigen privacyverklaring.</p>
+
+<h2>Cookies en Google Analytics</h2>
+<p>We meten met Google Analytics hoe onze website wordt gebruikt, maar alleen als je daar in de cookiemelding toestemming voor geeft. Zonder toestemming plaatsen we geen analytische cookies. De nieuwsbrief-pop-up gebruikt alleen de opslag van je eigen browser om te onthouden dat je hem hebt gesloten; daarvoor worden geen gegevens naar ons verstuurd.</p>
+</div>
+</Base>

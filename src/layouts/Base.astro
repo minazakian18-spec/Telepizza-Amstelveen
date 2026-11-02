@@ -1,6 +1,7 @@
 ---
 import { site, fullAddress } from '../data/site';
-import { langs, langInfo, ui, pathFor, type Lang, type PageKey } from '../i18n/ui';
+import Newsletter from '../components/Newsletter.astro';
+import { langs, langInfo, ui, nlt, pathFor, type Lang, type PageKey } from '../i18n/ui';
 import { articles } from '../data/articles';
 import Logo from '../components/Logo.astro';
 import '@fontsource/inter/latin-400.css';
@@ -16,6 +17,13 @@ interface Crumb { name: string; path: string }
 interface Props { title: string; description: string; crumbs?: Crumb[]; schema?: object[]; overlay?: boolean; image?: string; lang?: Lang; page?: PageKey; alternates?: { l: Lang; href: string }[] }
 const { title, description, crumbs = [], schema = [], overlay = false, image = '/og.png', lang = 'nl', page } = Astro.props;
 const t = ui[lang];
+const nc = nlt(lang);
+// Nieuwsbrief-pop-up niet op catering-, contact- en privacypagina's.
+const noPopup = /catering|contact|privacy/.test(Astro.url.pathname);
+// TODO-CONTROLEREN: zolang site.accountUrl leeg is, linkt "Mijn account" naar de bestelwinkel.
+const accUrl = site.accountUrl ?? site.orderUrl!;
+const accLabel = site.accountUrl ? nc.account : nc.accountFallback;
+const userIco = 'M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v3h16v-3c0-2.8-3.6-5-8-5z';
 const info = langInfo[lang];
 // Pagina's die in alle talen bestaan linken naar hun vertaling; andere pagina's naar de homepage van die taal.
 // Turks en Arabisch: nog niet door een moedertaalspreker gecontroleerd (TODO-CONTROLEREN), dus noindex en niet in de taalkeuze.
@@ -116,12 +124,14 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
       <ul>{alternates.map(a => <li><a href={a.href} hreflang={a.l} lang={a.l} aria-current={a.l === lang ? 'true' : undefined}>{langInfo[a.l].name}</a></li>)}</ul>
     </details>
     <a class="tel" href={'tel:' + site.phone} aria-label={`${t.call} ${site.phoneDisplay}`}><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={phoneIco}/></svg></a>
+    <a class="tel acc" href={accUrl} rel="noopener" aria-label={accLabel} data-track="click_account"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={userIco}/></svg><span class="acc-l">{nc.account}</span></a>
     <a class="btn primary sm hide-s" href={site.reserveUrl!} rel="noopener">{t.reserve}</a>
     <details class="burger"><summary aria-label="Menu openen"><span></span></summary>
       <nav class="panel" aria-label="Mobiel menu">
         <a href={pathFor(lang, 'home')}>{t.nav.home}</a>
         {nav.map(([h, label]) => <a href={h}>{label}</a>)}
         {lang === 'nl' && <a href="/veelgestelde-vragen/">Veelgestelde vragen</a>}
+        <a href={accUrl} rel="noopener" data-track="click_account">{site.accountUrl ? nc.accountMenu : nc.accountFallback}</a>
         <div class="btns"><a class="btn primary" href={site.reserveUrl!} rel="noopener">{t.reserve}</a><a class="btn" href={site.orderUrl!} rel="noopener">{t.order}</a></div>
       </nav>
     </details>
@@ -173,8 +183,10 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
       <li><a href="/veelgestelde-vragen/">FAQ</a></li>
     </ul>}</div>
   </div>
-  <p class="legal">© {new Date().getFullYear()} {site.name} · <a href={site.social.instagram} rel="noopener">Instagram</a> · <a href={site.social.tiktok} rel="noopener">TikTok</a>{site.social.facebook && <> · <a href={site.social.facebook} rel="noopener">Facebook</a></>}</p>
+  <Newsletter lang={lang} variant="footer" />
+  <p class="legal">© {new Date().getFullYear()} {site.name} · <a href={site.social.instagram} rel="noopener">Instagram</a> · <a href={site.social.tiktok} rel="noopener">TikTok</a>{site.social.facebook && <> · <a href={site.social.facebook} rel="noopener">Facebook</a></>} · <a href={lang === 'nl' ? site.privacyUrl : '/en/privacy/'}>{lang === 'nl' ? 'Privacy' : lang === 'de' ? 'Datenschutz' : 'Privacy'}</a></p>
 </div></footer>
+{!noPopup && <Newsletter lang={lang} variant="popup" />}
 <nav class:list={['mbar', { late: overlay }]} aria-label="Snelle acties">
   <a href={'tel:' + site.phone}><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={phoneIco}/></svg>{t.call}</a>
   <a href={site.orderUrl!} rel="noopener">{t.order}</a>

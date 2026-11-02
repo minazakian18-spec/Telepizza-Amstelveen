@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../data/site';
+---
+<Base lang="en" title="Privacy statement | Telepizza Amstelveen" description="How Telepizza Amstelveen handles your data: newsletter and discount code via Brevo, retention, your rights, and cookies or Google Analytics."
+  crumbs={[{ name: 'Privacy', path: '/en/privacy/' }]} alternates={[{ l: 'nl', href: '/privacy/' }, { l: 'en', href: '/en/privacy/' }]}>
+<div class="wrap" style="padding-top:24px;padding-bottom:72px;max-width:760px">
+<h1>Privacy statement</h1>
+<p class="lead">Telepizza Amstelveen handles your data with care. Here you can read which data we collect, why, and what your rights are.</p>
+
+<h2>Who we are</h2>
+<p>{site.name}, {site.street}, {site.postalCode} {site.city}, the Netherlands. Email: <a href={'mailto:' + site.email}>{site.email}</a>, phone: <a href={'tel:' + site.phone}>{site.phoneDisplay}</a>.</p>
+{/* TODO-CONTROLEREN: legal form and Chamber of Commerce (KvK) number */}
+
+<h2>What data we collect</h2>
+<p>When you sign up for our newsletter, we store your email address and, if you provide it, your first name. We never ask for more than we need.</p>
+
+<h2>What we use it for</h2>
+<p>We only use your data to send you our newsletter, with offers and new dishes, and to send you a one-time welcome discount. Sign-up uses double opt-in: you first receive an email to confirm your subscription, and only then do we send your discount code. The legal basis is your consent.</p>
+
+<h2>Who processes your data</h2>
+<p>We send our newsletter with Brevo (Sendinblue SAS), a European email service that processes data within the EU under a data processing agreement. We never sell or share your data with others.</p>
+
+<h2>How long we keep it</h2>
+<p>Until you unsubscribe. After that we remove your details from the mailing list.</p>
+
+<h2>Your rights</h2>
+<p>You can always ask which data we hold about you, and have it corrected or deleted. You can unsubscribe with the link at the bottom of every newsletter. For other questions, email <a href={'mailto:' + site.email}>{site.email}</a>. You may also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).</p>
+
+<h2>Ordering and reservations</h2>
+<p>Online orders go through our Sitedish web shop and reservations through TheFork. These services process your order and booking details under their own privacy policies.</p>
+
+<h2>Cookies and Google Analytics</h2>
+<p>We use Google Analytics to measure how our website is used, but only if you give consent in the cookie notice. Without consent we do not set analytics cookies. The newsletter pop-up only uses your own browser storage to remember that you closed it; no data is sent to us for that.</p>
+</div>
+</Base>

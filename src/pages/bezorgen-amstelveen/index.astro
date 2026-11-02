@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Cta from '../../components/Cta.astro';
 import DeliveryInfo from '../../components/DeliveryInfo.astro';
+import NewsletterHint from '../../components/NewsletterHint.astro';
 import { site } from '../../data/site';
 const faq: [string, string][] = [
   ['In welke postcodes bezorgen jullie?', `We bezorgen in Amstelveen en Buitenveldert: postcodes ${site.delivery.postcodes}. Twijfel je of jouw adres erbij hoort? Vul je postcode in bij het online bestellen of bel ons.`],
@@ -19,6 +20,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity
 <h1>Pizza bezorgen in Amstelveen en Buitenveldert</h1>
 <p class="lead">Thuis genieten van een pizza met handgerekt deeg, een verse pasta of een steak van de grill? Telepizza bezorgt in heel Amstelveen en in Buitenveldert. Bestel online, dan gaat je bestelling direct naar onze keuken aan de Amsterdamseweg.</p>
 <Cta first="order" />
+<NewsletterHint />
 
 <h2>Waarom direct bij ons bestellen?</h2>
 <p>Via onze eigen bestelwinkel bestel je rechtstreeks bij het restaurant. Je bestelling komt zonder tussenstap in onze keuken terecht, en we zien meteen wat je wilt. Heb je een vraag of wil je iets aanpassen? Dan bel je gewoon met de mensen die je eten maken.</p>

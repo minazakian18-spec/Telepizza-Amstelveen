@@ -127,3 +127,48 @@ export const ui: Record<Lang, UI> = {
     halalNote: 'Toda nuestra carne es halal.', descNote: 'Descripciones de los platos en inglés.',
   },
 };
+
+// Teksten voor nieuwsbrief, account en privacy. NL, EN en DE volledig; andere talen vallen terug op EN.
+export interface NewsletterCopy {
+  title: string; text: string; email: string; first: string; consent: string; privacy: string; submit: string;
+  small: string; thanks: string; close: string; hint: string; footerTitle: string; account: string; accountMenu: string; accountFallback: string;
+}
+const nlCopy: Record<'nl' | 'en' | 'de', NewsletterCopy> = {
+  nl: {
+    title: '10% korting op je eerste bestelling',
+    text: 'Schrijf je in voor de nieuwsbrief van Telepizza en ontvang je kortingscode per e-mail. Plus als eerste onze acties en nieuwe gerechten.',
+    email: 'E-mailadres', first: 'Voornaam (optioneel)',
+    consent: 'Ja, ik wil de nieuwsbrief van Telepizza ontvangen. Afmelden kan altijd.', privacy: 'Privacy',
+    submit: 'Stuur mijn kortingscode',
+    small: 'Geldig op je eerste online bestelling via onze bestelwinkel. Niet geldig in combinatie met andere acties.',
+    thanks: 'Bijna klaar! Check je inbox en bevestig je aanmelding. Daarna ontvang je je kortingscode.',
+    close: 'Sluiten', hint: 'Nog geen account? Schrijf je in en krijg 10% korting op je eerste bestelling',
+    footerTitle: 'Nieuwsbrief: 10% korting op je eerste bestelling',
+    account: 'Mijn account', accountMenu: 'Inloggen / Mijn account', accountFallback: 'Inloggen via de bestelwinkel',
+  },
+  en: {
+    title: '10% off your first order',
+    text: 'Sign up for the Telepizza newsletter and receive your discount code by email. Plus be the first to hear about offers and new dishes.',
+    email: 'Email address', first: 'First name (optional)',
+    consent: 'Yes, I would like to receive the Telepizza newsletter. You can unsubscribe at any time.', privacy: 'Privacy',
+    submit: 'Send my discount code',
+    small: 'Valid on your first online order through our web shop. Cannot be combined with other offers.',
+    thanks: 'Almost done! Check your inbox and confirm your sign-up. You will then receive your discount code.',
+    close: 'Close', hint: 'No account yet? Sign up and get 10% off your first order',
+    footerTitle: 'Newsletter: 10% off your first order',
+    account: 'My account', accountMenu: 'Log in / My account', accountFallback: 'Log in via the web shop',
+  },
+  de: {
+    title: '10 % Rabatt auf Ihre erste Bestellung',
+    text: 'Melden Sie sich für den Telepizza-Newsletter an und erhalten Sie Ihren Rabattcode per E-Mail. Außerdem erfahren Sie als Erste von Aktionen und neuen Gerichten.',
+    email: 'E-Mail-Adresse', first: 'Vorname (optional)',
+    consent: 'Ja, ich möchte den Newsletter von Telepizza erhalten. Abmelden ist jederzeit möglich.', privacy: 'Datenschutz',
+    submit: 'Rabattcode zusenden',
+    small: 'Gültig für Ihre erste Online-Bestellung in unserem Webshop. Nicht mit anderen Aktionen kombinierbar.',
+    thanks: 'Fast geschafft! Prüfen Sie Ihr Postfach und bestätigen Sie Ihre Anmeldung. Danach erhalten Sie Ihren Rabattcode.',
+    close: 'Schließen', hint: 'Noch kein Konto? Melden Sie sich an und erhalten Sie 10 % Rabatt auf Ihre erste Bestellung',
+    footerTitle: 'Newsletter: 10 % Rabatt auf Ihre erste Bestellung',
+    account: 'Mein Konto', accountMenu: 'Anmelden / Mein Konto', accountFallback: 'Anmelden im Webshop',
+  },
+};
+export const nlt = (lang: Lang): NewsletterCopy => nlCopy[lang as 'nl' | 'en' | 'de'] ?? nlCopy.en;
