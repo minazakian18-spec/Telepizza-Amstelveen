@@ -1,0 +1,50 @@
+---
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import { site } from '../../data/site';
+import { pathFor } from '../../i18n/ui';
+const faq: [string, string][] = [
+  ['Do I need to book a table?', `We recommend booking on Friday and Saturday evenings. You can book online or call ${site.phoneDisplay}. On weekdays you can usually walk in.`],
+  ['Is the menu available in English?', 'Yes, our menu is available in English and our staff are happy to help you choose.'],
+  ['Can we come with a large group?', 'Of course. Call us in advance and we will set up tables for your group.'],
+  ['Are children welcome?', 'Yes, Telepizza is a family restaurant with plenty of choice for children.'],
+  ['Where are you located?', `We are at ${site.street}, ${site.postalCode} ${site.city}, in the north of Amstelveen near Buitenveldert and Amsterdam-Zuid.`],
+];
+const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+---
+<Base lang="en" title="Italian restaurant Amstelveen | Telepizza since 1984" description="Family-run Italian restaurant in Amstelveen since 1984: pizza, fresh pasta, grill and cocktails. Rated 4.7 on Google. Book a table online or order for delivery." crumbs={[{ name: 'Italian restaurant', path: '/en/italian-restaurant-amstelveen/' }]} schema={[faqLd]}
+  alternates={[{ l: 'nl', href: '/restaurant-amstelveen/' }, { l: 'en', href: '/en/italian-restaurant-amstelveen/' }]}>
+<div class="wrap" style="padding-top:24px;padding-bottom:72px;max-width:860px">
+<p class="eyebrow">Ristorante dal 1984</p>
+<h1>Italian restaurant in Amstelveen</h1>
+<p class="lead">Telepizza is a family-run Italian restaurant in Amstelveen, on the Amsterdamseweg close to Buitenveldert and Amsterdam-Zuid. Come for pizza with hand-stretched dough, fresh pasta, steaks from the grill and cocktails, in a warm and lively setting.</p>
+<Cta lang="en" />
+
+<h2>Since 1984</h2>
+<p>Telepizza opened its doors on the Amsterdamseweg in 1984. Over the years it grew from a neighbourhood pizzeria into a full Italian restaurant with a grill and a bar. Some guests have been coming for years and now bring their own children. As a family business, that bond with the neighbourhood matters most to us.</p>
+
+<h2>The atmosphere</h2>
+<p>After a recent renovation, the dining room has a green plant wall, warm lighting and our neon sign: <em>Hotter than your ex</em>. It is cosy and lively without being formal. You can drop in after work or come to celebrate something special. Our staff speak English and are happy to guide you through the menu.</p>
+
+<h2>On the menu</h2>
+<p>More than 35 pizzas, from a classic margherita to truffle prosciutto and the chef’s special with Parma ham and rocket. Fresh pasta such as carbonara, bolognese and pasta with seafood, with spaghetti or penne. From the grill: sirloin, ribeye and spare ribs with salad and fries. Starters like carpaccio and bruschetta, salads, and desserts such as tiramisu. See the full <a href={pathFor('en', 'menu')}>menu with prices</a>.</p>
+
+<h2>Cocktails, wine and the bar</h2>
+<p>At the bar we mix cocktails and mocktails, and serve wine, beer and soft drinks. Start your evening with an aperitivo, or end your dinner with a cocktail. It turns a simple meal into a proper night out.</p>
+
+<h2>For every occasion</h2>
+<p>A dinner for two, a birthday with family, an evening with friends or a team dinner: groups are welcome, just call us in advance. Children always find something they like. Would you rather we bring the food to your event? Have a look at our <a href={pathFor('en', 'catering')}>catering</a>.</p>
+
+<h2>Getting here</h2>
+<p>The restaurant is on the Amsterdamseweg in the north of Amstelveen, right on the border with Buitenveldert in Amsterdam. That makes it easy to reach from Amsterdam-Zuid, the Zuidas and the VU area, as well as from the rest of Amstelveen. Plan your route on Google Maps from our <a href={pathFor('en', 'contact')}>contact page</a>. Visiting Amstelveen for work or staying with friends nearby? We are a relaxed place for a good meal without the city-centre crowds.</p>
+
+<h2>What our guests say</h2>
+<p>Guests rate Telepizza 4.7 on Google, based on {site.rating.count.toLocaleString('en-GB')} reviews. They mention the friendly, fast service, the cosy atmosphere and fair prices. Read their experiences on our <a href="/reviews/">reviews page</a>.</p>
+
+<h2>Book a table or order</h2>
+<p>Book online or call {site.phoneDisplay}. We are open late from Tuesday to Sunday; see the opening hours on our <a href={pathFor('en', 'contact')}>contact page</a>. Staying in? Order <a href="/en/pizza-delivery-amstelveen/">pizza delivery in Amstelveen</a> instead.</p>
+
+<h2>Frequently asked questions</h2>
+{faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
+</div>
+</Base>

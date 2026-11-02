@@ -1,6 +1,7 @@
 ---
 import Landing from '../layouts/Landing.astro';
 import { pick } from '../data/dishes';
+import QuoteForm from '../components/QuoteForm.astro';
 ---
 <Landing page="catering"
   path="/catering-italiaans-restaurant-amstelveen/" crumb="Catering"
@@ -20,6 +21,18 @@ import { pick } from '../data/dishes';
   ]}>
   <h2>Authentieke smaak, vers uit de oven</h2>
   <p>Bij Telepizza Amstelveen bieden we veel meer dan alleen pizza. Ons cateringmenu bestaat uit warme en koude gerechten: pizza’s, pasta’s en lasagne, salades, fingerfood en desserts zoals tiramisu. Alles wordt vers bereid met aandacht voor smaak en presentatie, zodat het past bij elke gelegenheid en elk type gast.</p>
+  <h2>Wat staat er op het cateringmenu?</h2>
+  <p>We stellen het menu samen met jou, maar de meeste gasten kiezen uit deze onderdelen:</p>
+  <ul>
+    <li><strong>Pizza’s</strong> in punten gesneden, van margherita en salami tot de Tele Pizza en de popeye speciale.</li>
+    <li><strong>Pasta en ovengerechten</strong> zoals lasagna, pasta bolognese, carbonara en pasta pesto.</li>
+    <li><strong>Salades en koude gerechten</strong>, bijvoorbeeld caprese met tomaat en mozzarella of een frisse groene salade.</li>
+    <li><strong>Desserts</strong> zoals tiramisu.</li>
+    <li><strong>Dranken</strong>, eventueel met onze mobiele bar en personeel.</li>
+  </ul>
+  <p>Zo maak je een buffet dat warm en koud combineert, met keuze voor vleeseters, vegetariërs en kinderen.</p>
+  <h2>Voor welke gelegenheden?</h2>
+  <p>Een verjaardag thuis of in de tuin, een communiefeest, een jubileum, een open huis, een bruiloftsreceptie of een sportclubavond: Italiaans eten valt bij bijna iedereen in de smaak en is makkelijk te delen. Omdat we in Amstelveen zitten, kennen we de buurt en de locaties, van woonhuizen in Westwijk tot kantoren op de Zuidas.</p>
   <h2 id="bedrijven">Catering voor bedrijven (Zuidas, Amstelveen)</h2>
   <p>Een teamlunch, vrijdagmiddagborrel, productlancering of overwerkavond? Wij leveren Italiaanse catering op kantoor in Amstelveen, Buitenveldert, de Zuidas en Amstel III. Met pizza en pasta heb je snel en makkelijk eten voor de hele groep.</p>
   <ul><li>Eén aanspreekpunt en één bestelling voor de hele groep</li><li>Vegetarische opties en halal vlees</li><li>Vers bereid, warm geleverd of klaar om af te halen</li></ul>
@@ -29,6 +42,9 @@ import { pick } from '../data/dishes';
   <p>Als familiebedrijf hechten we veel waarde aan persoonlijk contact. We denken mee over het menu, zijn flexibel en betrouwbaar. Van planning tot uitvoering zorgen we dat alles soepel verloopt en dat jouw gasten tevreden naar huis gaan.</p>
   <h2>Liever bij ons vieren?</h2>
   <p>Je kunt je feest ook in ons <a href="/restaurant-amstelveen/">restaurant aan de Amsterdamseweg</a> vieren, met een gezellige zaal en een keuken die tot laat open is.</p>
+  <h2>Hoe ver vooruit moet ik boeken?</h2>
+  <p>Hoe eerder, hoe beter, zeker in het weekend en rond de feestdagen. Een kleine bestelling voor kantoor kan soms op korte termijn; voor een groot feest met barservice adviseren we een paar weken van tevoren contact op te nemen. Bel ons gerust om de mogelijkheden te bespreken.</p>
   <h2>Zo werkt het</h2>
   <ol><li>Neem contact op via <a href="tel:+31206435287">020-6435287</a> of <a href="mailto:contact.telepizza@gmail.com">contact.telepizza@gmail.com</a> en vertel ons datum, aantal gasten en locatie.</li><li>Samen kiezen we de gerechten en eventueel de barservice.</li><li>We leveren alles vers op de afgesproken tijd, of je haalt het op bij ons restaurant.</li></ol>
+  <QuoteForm />
 </Landing>

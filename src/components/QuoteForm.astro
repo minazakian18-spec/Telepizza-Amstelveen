@@ -1,0 +1,39 @@
+---
+// Offerteformulier catering. Statische site zonder server: het formulier opent een vooraf ingevulde e-mail.
+// TODO-CONTROLEREN: op Hostinger vervangen door een echte formulierverwerking (PHP-mail of formulierdienst) als gewenst.
+import { site } from '../data/site';
+const mail = 'contact.telepizza@gmail.com';
+---
+<form class="quote" id="offerte" action={`mailto:${mail}`} method="post" enctype="text/plain">
+  <h2>Offerte aanvragen</h2>
+  <p>Vul je gegevens in, dan nemen we contact met je op voor een voorstel op maat. Liever bellen? <a href={'tel:' + site.phone}>{site.phoneDisplay}</a>.</p>
+  <div class="grid">
+    <label>Naam<input name="naam" autocomplete="name" required /></label>
+    <label>E-mail<input name="email" type="email" autocomplete="email" required /></label>
+    <label>Telefoon<input name="telefoon" type="tel" autocomplete="tel" /></label>
+    <label>Datum<input name="datum" type="date" required /></label>
+    <label>Aantal gasten<input name="gasten" type="number" min="1" inputmode="numeric" required /></label>
+    <label>Soort event<select name="soort"><option>Verjaardag of feest</option><option>Bedrijfslunch of borrel</option><option>Bruiloft of receptie</option><option>Anders</option></select></label>
+    <label class="full">Locatie (plaats of adres)<input name="locatie" /></label>
+    <label class="full">Wensen (gerechten, dieetwensen, barservice)<textarea name="wensen" rows="4"></textarea></label>
+  </div>
+  <button class="btn primary" type="submit">Verstuur aanvraag</button>
+  <p class="note">Je e-mailprogramma opent met je aanvraag. We gebruiken je gegevens alleen om je offerte te maken.</p>
+</form>
+<script define:vars={{ mail }}>
+  document.getElementById('offerte').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = new FormData(e.target), body = [...f].map(([k, v]) => `${k}: ${v}`).join('\n');
+    location.href = `mailto:${mail}?subject=${encodeURIComponent('Offerte catering ' + (f.get('datum') || ''))}&body=${encodeURIComponent(body)}`;
+  });
+</script>
+<style>
+  .quote{background:var(--card,#fffaf2);border-radius:14px;padding:24px;margin:40px 0}
+  .quote h2{margin-top:0}
+  .grid{display:grid;gap:14px;grid-template-columns:1fr}
+  @media(min-width:640px){.grid{grid-template-columns:1fr 1fr}.full{grid-column:1/-1}}
+  .quote label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.9rem}
+  .quote input,.quote select,.quote textarea{font:inherit;font-weight:400;padding:10px 12px;border:2px solid var(--ink);border-radius:10px;background:#fff;color:var(--ink)}
+  .quote .btn{margin-top:18px}
+  .note{font-size:.85rem;color:var(--muted)}
+</style>

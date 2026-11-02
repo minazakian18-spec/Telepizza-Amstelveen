@@ -9,7 +9,7 @@ import { wijken } from '../data/site';
   title="Pizza Amstelveen – bestellen, afhalen & bezorgen | Telepizza"
   description="Pizza bestellen in Amstelveen? Ruim 35 pizza's met handgerekt deeg vanaf € 9,50. Bezorgd in Amstelveen en Buitenveldert, of afhalen aan de Amsterdamseweg 452."
   eyebrow="Sinds 1984 · vers uit de oven" h1="Pizza in Amstelveen: <i>bestellen, afhalen of hier eten</i>"
-  lead="Handgerekt deeg, huisgemaakte tomatensaus en royale toppings. Van een klassieke margherita voor € 9,50 tot onze pizza met truffel en Parmaham: bij Telepizza bakken we pizza al sinds 1984."
+  lead="Telepizza is al sinds 1984 de pizzeria in Amstelveen voor handgerekt deeg, huisgemaakte tomatensaus en royale toppings. Van een klassieke margherita voor € 9,50 tot onze pizza met truffel en Parmaham: bestel online, haal af of eet hier."
   img="/images/ph/pizza-rozemarijn.webp" imgAlt="Pizza met salami, champignons en paprika uit de oven bij Telepizza Amstelveen"
   dishesTitle="Onze populairste pizza’s"
   dishes={pick('telePizza', 'truffel', 'pepperoni', 'margherita', 'chef', 'carpaccioPizza', 'popeye', 'bbq', 'quattro', 'gamberoniPizza', 'shoarmaPizza', 'calzone')}
@@ -22,10 +22,25 @@ import { wijken } from '../data/site';
     ['Hebben jullie vegetarische pizza’s?', 'Ja, onder andere margherita, funghi, quattro formaggi, parmigiana, vegetariana en de popeye speciale met geitenkaas.'],
     ['Kan ik mijn eigen pizza samenstellen?', 'Ja, kies extra toppings: groente € 1,75, kaas € 2,00, vlees € 2,50 en vis € 2,75 per topping.'],
   ]}>
+  <h2>Pizzeria in Amstelveen sinds 1984</h2>
+  <p>In 1984 opende Telepizza de deuren aan de Amsterdamseweg. Wat begon als pizzeria in Amstelveen is uitgegroeid tot een Italiaans restaurant met grill en bar, maar de pizza is altijd het hart van de keuken gebleven. Veel gasten kennen ons al jaren: ze kwamen hier als kind en nemen nu hun eigen kinderen mee. Die band met de buurt is voor ons als familiebedrijf het belangrijkste wat er is.</p>
+  <p>Dat je bij een pizzeria Amstelveen zoekt en bij ons uitkomt, is geen toeval. We bakken elke dag pizza’s voor gasten in het restaurant, voor afhalers en voor bezorging. Door al die jaren ervaring weten we precies hoe lang het deeg moet rijzen, hoe heet de oven moet zijn en hoeveel topping een pizza nodig heeft zonder dat de bodem slap wordt.</p>
   <h2>Verse pizza, elke dag opnieuw</h2>
   <p>Bij Telepizza Amstelveen maken we elke pizza op het moment dat je bestelt. Het deeg wordt met de hand uitgerekt, de tomatensaus is huisgemaakt en de toppings zijn vers. Daardoor krijg je een pizza met een luchtige, knapperige rand en een volle smaak, of je hem nu bij ons in het restaurant eet of thuis laat bezorgen.</p>
   <h2>Ruim 35 pizza’s om uit te kiezen</h2>
   <p>Klassiekers zoals margherita, salami, pepperoni, Hawaii, quattro stagioni en capricciosa. Vegetarische pizza’s zoals funghi, quattro formaggi en parmigiana. Pizza’s met vis zoals tonno, salmone en frutti di mare. En onze speciale pizza’s: de Tele Pizza, de specialiteit van de chef met Parmaham en rucola, truffel prosciutto, carpaccio en de popeye speciale met geitenkaas en honing. Alle pizza’s en prijzen staan op de <a href="/menu-italiaans-restaurant-amstelveen/#pizza">menukaart</a>.</p>
+  <h2>Zo maken wij onze pizza</h2>
+  <p>Het geheim van een goede pizza zit in de basis. Ons deeg krijgt de tijd om te rijzen, zodat het licht verteerbaar is en in de oven mooi opbolt. We rekken elke bodem met de hand uit in plaats van hem uit te rollen; zo blijft er lucht in de rand en krijg je die typische knapperige korst met zachte binnenkant.</p>
+  <p>Daarna komt de tomatensaus, die we zelf maken van tomaten, knoflook, olijfolie en kruiden. Pas dan volgen de kaas en de toppings, van verse champignons en paprika tot salami, Parmaham en gamberoni. Na een paar minuten in de hete oven is je pizza klaar: goudbruin, licht geblakerd aan de rand en precies goed gesmolten.</p>
+  <h2>Welke pizza past bij jou?</h2>
+  <ul>
+    <li><strong>Liefhebber van klassiek:</strong> kies een margherita, salami of quattro stagioni.</li>
+    <li><strong>Vegetarisch:</strong> funghi, quattro formaggi, vegetariana of de popeye speciale met spinazie en geitenkaas.</li>
+    <li><strong>Iets bijzonders:</strong> de truffel prosciutto, de carpaccio-pizza of de specialiteit van de chef met Parmaham en rucola.</li>
+    <li><strong>Pittig:</strong> de pepperoni, of vraag om extra peper op je favoriete pizza.</li>
+    <li><strong>Voor de grote trek:</strong> een calzone, de dubbelgeslagen pizza die we vullen en dichtvouwen.</li>
+  </ul>
+  <p>Twijfel je? Vraag het onze bediening. We denken graag met je mee, ook als je iets wilt aanpassen of een topping wilt weglaten.</p>
   <DeliveryInfo />
   <h2>Pizza bezorgen in jouw wijk</h2>
   <p>{wijken.map((w, i) => <>{i > 0 && ' · '}<a href={`/bezorgen-amstelveen/${w.slug}/`}>Pizza bezorgen {w.name}</a></>)}</p>
@@ -33,5 +48,5 @@ import { wijken } from '../data/site';
   <h2>Halal pizza met vlees</h2>
   <p>Het vlees op onze pizza’s is halal, van salami en pepperoni tot shoarma, kipshoarma en döner. Lees meer over <a href="/halal-restaurant-amstelveen/">halal eten bij Telepizza</a>.</p>
   <h2>Liever aan tafel?</h2>
-  <p>Pizza smaakt het best vers uit de oven. Schuif aan in ons <a href="/restaurant-amstelveen/">Italiaanse restaurant in Amstelveen</a> en reserveer eenvoudig online. Op zoek naar tips? Lees <a href="/blog/beste-pizza-amstelveen/">waar je de beste pizza in Amstelveen aan herkent</a>.</p>
+  <p>Pizza smaakt het best vers uit de oven. Schuif aan in ons <a href="/restaurant-amstelveen/">Italiaanse restaurant in Amstelveen</a> en reserveer eenvoudig online. Op zoek naar tips? Lees <a href="/blog/beste-pizza-amstelveen/">waar je de beste pizza in Amstelveen aan herkent</a>. Als pizzeria in Amstelveen sinds 1984 zien we je graag aan tafel.</p>
 </Landing>

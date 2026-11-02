@@ -10,13 +10,13 @@ interface Props {
   title: string; description: string; path: string; crumb: string;
   eyebrow: string; h1: string; lead: string; img: string; imgAlt: string;
   dishes?: Dish[]; dishesTitle?: string; faq?: [string, string][];
-  gallery?: [string, string][]; page?: PageKey; schema?: object[]; first?: 'order' | 'reserve';
+  gallery?: [string, string][]; page?: PageKey; schema?: object[]; first?: 'order' | 'reserve'; alternates?: { l: 'nl' | 'en'; href: string }[];
 }
 const p = Astro.props;
 const faq = p.faq ?? [];
 const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }] : [];
 ---
-<Base title={p.title} description={p.description} crumbs={[{ name: p.crumb, path: p.path }]} schema={[...faqLd, ...(p.schema ?? [])]} image={p.img} page={p.page}>
+<Base title={p.title} description={p.description} crumbs={[{ name: p.crumb, path: p.path }]} schema={[...faqLd, ...(p.schema ?? [])]} image={p.img} page={p.page} alternates={p.alternates}>
   <style>
     .lh{display:grid;gap:48px;align-items:center;padding-top:32px;padding-bottom:88px}
     @media(min-width:900px){.lh{grid-template-columns:1fr 1fr}}

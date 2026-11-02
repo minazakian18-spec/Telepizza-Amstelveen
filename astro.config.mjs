@@ -28,5 +28,15 @@ export default defineConfig({
   trailingSlash: 'always',
   build: { format: 'directory', inlineStylesheets: 'always' },
   compressHTML: true,
+  // Vervallen of samengevoegde pagina's. Op GitHub Pages worden dit statische doorverwijspagina's;
+  // op Hostinger staan dezelfde regels als echte 301 in public/.htaccess.
+  redirects: {
+    '/pizza-soorten/': '/menu-italiaans-restaurant-amstelveen/#pizza',
+    '/catering-bedrijven-amstelveen/': '/catering-italiaans-restaurant-amstelveen/#bedrijven',
+    '/blog/laat-eten-amstelveen/': '/laat-open-amstelveen/',
+    '/bezorgen-amstelveen/middenhoven/': '/bezorgen-amstelveen/',
+    '/bezorgen-amstelveen/groenelaan/': '/bezorgen-amstelveen/',
+    '/bezorgen-amstelveen/waardhuizen/': '/bezorgen-amstelveen/',
+  },
   integrations: [sitemap({ filter: (p) => !p.includes('404') && !/\/(tr|ar)\//.test(p) }), track],
 });

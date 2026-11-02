@@ -13,14 +13,14 @@ import f1 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 import f2 from '@fontsource/archivo/files/archivo-latin-800-normal.woff2?url';
 const fonts = [f1, f2];
 interface Crumb { name: string; path: string }
-interface Props { title: string; description: string; crumbs?: Crumb[]; schema?: object[]; overlay?: boolean; image?: string; lang?: Lang; page?: PageKey }
+interface Props { title: string; description: string; crumbs?: Crumb[]; schema?: object[]; overlay?: boolean; image?: string; lang?: Lang; page?: PageKey; alternates?: { l: Lang; href: string }[] }
 const { title, description, crumbs = [], schema = [], overlay = false, image = '/og.png', lang = 'nl', page } = Astro.props;
 const t = ui[lang];
 const info = langInfo[lang];
 // Pagina's die in alle talen bestaan linken naar hun vertaling; andere pagina's naar de homepage van die taal.
 // Turks en Arabisch: nog niet door een moedertaalspreker gecontroleerd (TODO-CONTROLEREN), dus noindex en niet in de taalkeuze.
 const unreviewed: Lang[] = ['tr', 'ar'];
-const alternates = langs.filter(l => !unreviewed.includes(l)).map(l => ({ l, href: pathFor(l, page ?? 'home') }));
+const alternates = Astro.props.alternates ?? langs.filter(l => !unreviewed.includes(l)).map(l => ({ l, href: pathFor(l, page ?? 'home') }));
 const noindex = unreviewed.includes(lang);
 const canonical = new URL(Astro.url.pathname, site.url).href;
 
@@ -58,7 +58,7 @@ const ld = [restaurant, breadcrumb, ...schema].filter(Boolean);
 
 const nav: [string, string][] = lang === 'nl'
   ? [[pathFor('nl', 'menu'), t.nav.menu], [pathFor('nl', 'catering'), t.nav.catering], [pathFor('nl', 'about'), t.nav.about], ['/bezorgen-amstelveen/', t.nav.delivery], [pathFor('nl', 'contact'), t.nav.contact]]
-  : (['menu', 'catering', 'about', 'contact'] as PageKey[]).map(k => [pathFor(lang, k), t.nav[k]]);
+  : [...(['menu', 'catering', 'about', 'contact'] as PageKey[]).map(k => [pathFor(lang, k), t.nav[k]] as [string, string]), ...(lang === 'en' ? [['/en/italian-restaurant-amstelveen/', 'Restaurant'], ['/en/pizza-delivery-amstelveen/', t.nav.delivery]] as [string, string][] : [])];
 const path = Astro.url.pathname;
 const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z';
 ---
@@ -94,8 +94,8 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
 {fonts.map(f => <link rel="preload" as="font" type="font/woff2" href={f} crossorigin />)}
 <meta property="og:type" content="website" />
 <meta property="og:locale" content={info.og} />
-{page && alternates.map(a => <link rel="alternate" hreflang={a.l} href={new URL(a.href, site.url).href} />)}
-{page && <link rel="alternate" hreflang="x-default" href={new URL(pathFor('nl', page), site.url).href} />}
+{(page || Astro.props.alternates) && alternates.map(a => <link rel="alternate" hreflang={a.l} href={new URL(a.href, site.url).href} />)}
+{(page || Astro.props.alternates) && <link rel="alternate" hreflang="x-default" href={new URL(Astro.props.alternates ? Astro.props.alternates[0].href : pathFor('nl', page!), site.url).href} />}
 <meta property="og:site_name" content={site.name} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />

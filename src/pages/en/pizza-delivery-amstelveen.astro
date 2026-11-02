@@ -1,0 +1,50 @@
+---
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import { site, wijken } from '../../data/site';
+import { pathFor } from '../../i18n/ui';
+const faq: [string, string][] = [
+  ['Which areas do you deliver to?', `We deliver throughout Amstelveen and Buitenveldert (postcodes ${site.delivery.postcodes}), including the Zuidas business district.`],
+  ['How much does delivery cost?', 'The delivery fee, minimum order and expected delivery time are shown in our online shop before you pay.'],
+  ['Can I order in English?', `Yes. Our staff speak English, and you can also call us on ${site.phoneDisplay}.`],
+  ['Can I pick up my order?', `Yes. Choose pick-up when ordering online and collect your food at ${site.street}, ${site.city}.`],
+];
+const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+---
+<Base lang="en" title="Pizza delivery Amstelveen & Buitenveldert | Telepizza" description="Order pizza, pasta and grill dishes for delivery in Amstelveen, Buitenveldert and the Zuidas. Order directly from Telepizza, an Italian restaurant since 1984." crumbs={[{ name: 'Pizza delivery', path: '/en/pizza-delivery-amstelveen/' }]} schema={[faqLd]}
+  alternates={[{ l: 'nl', href: '/bezorgen-amstelveen/' }, { l: 'en', href: '/en/pizza-delivery-amstelveen/' }]}>
+<div class="wrap" style="padding-top:24px;padding-bottom:72px;max-width:860px">
+<p class="eyebrow">Delivery &amp; pick-up</p>
+<h1>Pizza delivery in Amstelveen</h1>
+<p class="lead">Craving a pizza with hand-stretched dough, a fresh pasta or a steak from the grill? Telepizza delivers across Amstelveen, Buitenveldert and the Zuidas. Order online and your order goes straight to our kitchen on the Amsterdamseweg.</p>
+<Cta first="order" lang="en" />
+
+<h2>Order directly from the restaurant</h2>
+<p>Telepizza has been part of Amstelveen since 1984. What started as a pizzeria is now a family-run Italian restaurant with a grill and a cocktail bar, but pizza is still at the heart of our kitchen. When you order through our own online shop, you order directly from us: no middleman, and if you have a question you speak to the people who actually cook your food.</p>
+
+<h2>What can you order?</h2>
+<p>More than 35 pizzas, from a classic margherita at € 9.50 to our Tele Pizza, truffle prosciutto and the chef’s special with Parma ham and rocket. There is also fresh pasta such as carbonara, bolognese and pasta with seafood, oven dishes like lasagna, steaks and spare ribs from the grill, the Dutch favourite kapsalon, salads and desserts like tiramisu. See the full <a href={pathFor('en', 'menu')}>menu with prices</a>.</p>
+
+<h2>How to order</h2>
+<ol>
+  <li>Open our <a href={site.orderUrl!} rel="noopener">online shop</a> and choose your dishes.</li>
+  <li>Enter your address and choose delivery or pick-up. You will see the delivery fee, minimum order and expected time straight away.</li>
+  <li>Pay online. We start cooking right away and bake your pizza fresh.</li>
+</ol>
+
+<h2>Delivery area</h2>
+<p>We deliver in Amstelveen and in Buitenveldert, postcodes {site.delivery.postcodes}. That includes neighbourhoods such as {wijken.map(w => w.name).join(', ')}, as well as Middenhoven, Groenelaan and Waardhuizen. Not sure if we deliver to you? Enter your postcode in the online shop or give us a call.</p>
+
+<h2>Living or working near the Zuidas?</h2>
+<p>Many international residents live in Amstelveen and Buitenveldert, and thousands of people work at the Zuidas. Working late or hosting a team lunch? Order a few pizzas for the office, or ask about our <a href={pathFor('en', 'catering')}>Italian catering</a> for meetings, drinks and parties.</p>
+
+<h2>Tips for the best pizza at home</h2>
+<p>Eat your pizza as soon as it arrives, when the crust is at its crispiest. If it has to wait, warm it for a few minutes in an oven preheated to 200 °C rather than in the microwave. Ordering for a group? Mix classics with something special, so everyone gets to try something new.</p>
+
+<h2>Prefer to eat in?</h2>
+<p>Pizza is best straight from the oven. Visit our <a href="/en/italian-restaurant-amstelveen/">Italian restaurant in Amstelveen</a> and book a table online. You can also pick up your order at {site.street}.</p>
+
+<h2>Frequently asked questions</h2>
+{faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
+</div>
+</Base>

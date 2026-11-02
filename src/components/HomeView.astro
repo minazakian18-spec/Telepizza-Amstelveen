@@ -81,8 +81,6 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   <section class="hero" aria-label="Telepizza Amstelveen">
     {heroAll.map((x, i) => (
       <>
-        {x.todo && <Fragment set:html="<!-- TODO-CONTROLEREN: toestemming gasten op deze foto (AVG) -->" />}
-        {x.small && <Fragment set:html="<!-- TODO-CONTROLEREN: gevelfoto in hogere resolutie (min. 1600 px breed) aanleveren -->" />}
         <img class:list={['slide', { small: x.small }]} src={hp(x.n)} srcset={x.small ? undefined : hs(x.n)} sizes="100vw" alt={x.alt} width={x.w} height={x.h} style={`object-position:${x.pos}`}
           {...(i === 0 ? { fetchpriority: 'high' } : { loading: 'lazy', decoding: 'async' })} />
       </>
