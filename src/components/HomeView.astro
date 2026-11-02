@@ -60,7 +60,7 @@ const heroAll = [
   { n: 'zaal-neon', w: 1600, h: 1042, pos: '30% 40%', alt: HA[0] },
   { n: 'volle-zaal', w: 1600, h: 1837, pos: '55% 55%', alt: HA[1], todo: 'AVG' }, // TODO-CONTROLEREN: toestemming gasten op deze foto (AVG)
   { n: 'gasten-tafel', w: 1200, h: 1600, pos: '50% 45%', alt: HA[2], todo: 'AVG' }, // TODO-CONTROLEREN: toestemming gasten op deze foto (AVG)
-  { n: 'gevel-eigenaren', w: 401, h: 413, pos: '50% 35%', alt: HA[3], small: true }, // TODO-CONTROLEREN: gevelfoto in hogere resolutie (min. 1600 px breed) aanleveren
+  { n: 'gevel-eigenaren', w: 1200, h: 630, pos: '45% 40%', alt: HA[3], small: true }, // TODO-CONTROLEREN: gevelfoto in hogere resolutie (min. 1600 px breed, mét logo) aanleveren
 ].filter(x => media(`hero/${x.n}.webp`));
 const hp = (n: string) => `/images/hero/${n}.webp`;
 const hs = (n: string) => `/images/hero/${n}-sm.webp 640w, /images/hero/${n}.webp 1600w`;
