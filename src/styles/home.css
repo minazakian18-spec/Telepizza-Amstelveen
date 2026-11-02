@@ -107,3 +107,5 @@ video.full{background:var(--ink)}
 
 /* kleine gevelfoto (± 400 px) op brede schermen niet uitrekken */
 @media(min-width:901px){.hero .slide.small{object-fit:contain;background:#141414}}
+/* mobiel: insta-polaroids vierkant en compacter i.p.v. smal en hoog */
+@media(max-width:899px){.insta{gap:10px}.insta a{padding:5px 5px 8px}.insta img{height:auto;aspect-ratio:1/1}}
