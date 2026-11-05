@@ -56,6 +56,12 @@ const heroAlt: Record<string, [string, string, string, string]> = {
   en: ['Telepizza Amstelveen dining room with the neon "Hotter than your ex" and a plant wall', 'Busy dining room at Telepizza Amstelveen with guests at long tables', 'Guests eating pizza and pasta at a long table at Telepizza Amstelveen', 'Owners of Telepizza in front of the restaurant at Amsterdamseweg 452, Amstelveen'],
 };
 const HA = heroAlt[lang] ?? heroAlt.en;
+// Alt-teksten voor de fotoband en de Instagram-tegels (SEO + toegankelijkheid).
+const photoAlt: Record<string, Record<string, string>> = {
+  nl: { 'pizza-rozemarijn': 'Pizza met rozemarijn vers uit de oven bij Telepizza Amstelveen', 'pasta-penne': 'Verse penne pasta uit de keuken van Telepizza Amstelveen', 'pizza-hand': 'Pizza BBQ chicken van Telepizza Amstelveen', neon: 'Neonverlichting in het restaurant van Telepizza Amstelveen', bar: 'Bar van Telepizza aan de Amsterdamseweg in Amstelveen', 'pizza-rond': 'Hele pizza van Telepizza, pizzeria in Amstelveen', 'pasta-vork': 'Spaghetti bolognese bij Telepizza Amstelveen', 'zaal-planten': 'Restaurantzaal met plantenwand bij Telepizza Amstelveen' },
+  en: { 'pizza-rozemarijn': 'Rosemary pizza fresh from the oven at Telepizza Amstelveen', 'pasta-penne': 'Fresh penne pasta from the Telepizza Amstelveen kitchen', 'pizza-hand': 'BBQ chicken pizza at Telepizza Amstelveen', neon: 'Neon lights in the Telepizza Amstelveen restaurant', bar: 'The bar at Telepizza on Amsterdamseweg, Amstelveen', 'pizza-rond': 'Whole pizza from Telepizza, pizzeria in Amstelveen', 'pasta-vork': 'Spaghetti bolognese at Telepizza Amstelveen', 'zaal-planten': 'Dining room with plant wall at Telepizza Amstelveen' },
+};
+const PA = photoAlt[lang] ?? photoAlt.en;
 const heroAll = [
   { n: 'zaal-neon', w: 1600, h: 1042, pos: '30% 40%', alt: HA[0] },
   { n: 'volle-zaal', w: 1600, h: 1837, pos: '55% 55%', alt: HA[1], todo: 'AVG' }, // TODO-CONTROLEREN: toestemming gasten op deze foto (AVG)
@@ -126,9 +132,9 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   </div></div></section>
 
   <section class="marq" aria-hidden="true">
-    <img src={ph('pizza-rozemarijn')} srcset={ss('pizza-rozemarijn')} sizes="(min-width:700px) 33vw, 100vw" alt="" width="800" height="1000" loading="lazy" decoding="async" />
-    <img src={ph('pasta-penne')} srcset={ss('pasta-penne')} sizes="(min-width:700px) 33vw, 100vw" alt="" width="800" height="1000" loading="lazy" decoding="async" />
-    <img src={ph('pizza-hand')} srcset={ss('pizza-hand')} sizes="(min-width:700px) 33vw, 100vw" alt="" width="800" height="1000" loading="lazy" decoding="async" />
+    <img src={ph('pizza-rozemarijn')} srcset={ss('pizza-rozemarijn')} sizes="(min-width:700px) 33vw, 100vw" alt={PA['pizza-rozemarijn']} width="800" height="1000" loading="lazy" decoding="async" />
+    <img src={ph('pasta-penne')} srcset={ss('pasta-penne')} sizes="(min-width:700px) 33vw, 100vw" alt={PA['pasta-penne']} width="800" height="1000" loading="lazy" decoding="async" />
+    <img src={ph('pizza-hand')} srcset={ss('pizza-hand')} sizes="(min-width:700px) 33vw, 100vw" alt={PA['pizza-hand']} width="800" height="1000" loading="lazy" decoding="async" />
     <div class="words">{[...words, ...words].map(w => <span>{w} ·</span>)}</div>
   </section>
 
@@ -165,7 +171,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
         {site.social.tiktok && <a class="btn sm" href={site.social.tiktok} rel="noopener">TikTok</a>}
         {site.social.facebook && <a class="btn sm" href={site.social.facebook} rel="noopener">Facebook</a>}
       </div></div>
-    <div class="insta">{['neon', 'pizza-rozemarijn', 'bar', 'pizza-rond', 'pasta-vork', 'zaal-planten'].map(n => <a href="https://www.instagram.com/telepizza_nl/" rel="noopener" aria-label="Instagram"><img src={ph(n + '-sm')} alt="" width="400" height="400" loading="lazy" decoding="async" /></a>)}</div>
+    <div class="insta">{['neon', 'pizza-rozemarijn', 'bar', 'pizza-rond', 'pasta-vork', 'zaal-planten'].map(n => <a href="https://www.instagram.com/telepizza_nl/" rel="noopener" aria-label="Instagram"><img src={ph(n + '-sm')} alt={PA[n]} width="400" height="400" loading="lazy" decoding="async" /></a>)}</div>
     {/* TODO-CONTROLEREN: bron/link voor "300.000 views" en het krantenartikel */}
     <p style="margin-top:28px">{c.press}</p>
   </div></section>
@@ -177,7 +183,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
 
   <section class="sec"><div class="wrap" style="max-width:900px">
     <h2>FAQ</h2>
-    {c.faq.map(([q, a]) => <details><summary>{q}</summary><p set:html={a} /></details>)}
+    {c.faq.map(([q, a]) => <details><summary><h3 class="faq-q">{q}</h3></summary><p set:html={a} /></details>)}
     <slot name="faqmore" />
   </div></section>
   <script is:inline>
