@@ -22,7 +22,6 @@ const nc = nlt(lang);
 const noPopup = /catering|contact|privacy/.test(Astro.url.pathname);
 // TODO-CONTROLEREN: zolang site.accountUrl leeg is, linkt "Mijn account" naar de bestelwinkel.
 const accUrl = site.accountUrl ?? site.orderUrl!;
-const accLabel = site.accountUrl ? nc.account : nc.accountFallback;
 const userIco = 'M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v3h16v-3c0-2.8-3.6-5-8-5z';
 const info = langInfo[lang];
 // Pagina's die in alle talen bestaan linken naar hun vertaling; andere pagina's naar de homepage van die taal.
@@ -124,14 +123,13 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
       <ul>{alternates.map(a => <li><a href={a.href} hreflang={a.l} lang={a.l} aria-current={a.l === lang ? 'true' : undefined}>{langInfo[a.l].name}</a></li>)}</ul>
     </details>
     <a class="tel" href={'tel:' + site.phone} aria-label={`${t.call} ${site.phoneDisplay}`}><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={phoneIco}/></svg></a>
-    <a class="tel acc" href={accUrl} rel="noopener" aria-label={accLabel} data-track="click_account"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={userIco}/></svg><span class="acc-l">{nc.account}</span></a>
+    <a class="tel acc" href={accUrl} rel="noopener" aria-label={nc.account} data-track="click_account"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={userIco}/></svg><span class="acc-l">{nc.account}</span></a>
     <a class="btn primary sm hide-s" href={site.reserveUrl!} rel="noopener">{t.reserve}</a>
     <details class="burger"><summary aria-label="Menu openen"><span></span></summary>
       <nav class="panel" aria-label="Mobiel menu">
         <a href={pathFor(lang, 'home')}>{t.nav.home}</a>
         {nav.map(([h, label]) => <a href={h}>{label}</a>)}
         {lang === 'nl' && <a href="/veelgestelde-vragen/">Veelgestelde vragen</a>}
-        <a href={accUrl} rel="noopener" data-track="click_account">{site.accountUrl ? nc.accountMenu : nc.accountFallback}</a>
         <div class="btns"><a class="btn primary" href={site.reserveUrl!} rel="noopener">{t.reserve}</a><a class="btn" href={site.orderUrl!} rel="noopener">{t.order}</a></div>
       </nav>
     </details>
@@ -215,6 +213,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
     });
   })();
 </script>
+<script is:inline>(function(){var m=document.querySelector('.mbar'),b=document.querySelector('.band');if(!b||!window.IntersectionObserver)return;new IntersectionObserver(function(e){m.classList.toggle('away',e[0].isIntersecting||e[0].boundingClientRect.top<0)}).observe(b)})();</script>
 {overlay && <script is:inline>(function(){var h=document.getElementById('top');var m=document.querySelector('.mbar');function f(){h.classList.toggle('solid',scrollY>40);if(m)m.classList.toggle('show',scrollY>innerHeight*.7)}addEventListener('scroll',f,{passive:true});f();})();</script>}
 </body>
 </html>

@@ -22,7 +22,7 @@ export const site = {
     formAction: (import.meta.env.PUBLIC_BREVO_FORM || null) as string | null, // TODO-CONTROLEREN: Brevo-formulier-URL (Brevo › Contacten › Formulieren › Delen › HTML-code › action="...")
     discountPercent: 10,
     delaySeconds: 15,
-    scrollPercent: 40,
+    scrollPercent: 50,
     hideDays: 30,
   },
   accountUrl: null as string | null, // TODO-CONTROLEREN: inlogpagina van de Sitedish-bestelwinkel (bijv. https://telepizza.sitedish.shop/...)

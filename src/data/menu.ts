@@ -338,7 +338,7 @@ export const menu: Section[] = [
     "name": "Speciale Pizza’s",
     "items": [
       {
-        "name": "Tele Pizza",
+        "name": "Telepizza",
         "price": 13.95,
         "description": "Tomatensaus, kaas, ham, salami, champignons, paprika, ui, artisjokken en spinazie"
       },

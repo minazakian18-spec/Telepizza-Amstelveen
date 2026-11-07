@@ -59,7 +59,7 @@ export const wijken: Wijk[] = [
     ],
     faq: [
       ['Bezorgen jullie in het Oude Dorp?', 'Het Oude Dorp ligt in Amstelveen; vul je postcode in bij het online bestellen om te zien of we bij je adres bezorgen en wat de levertijd is.'],
-      ['Wat is populair voor een avond met vrienden?', 'Een mix van pizza’s om te delen, zoals de Tele Pizza, truffel prosciutto en margherita, aangevuld met een pasta en tiramisu.'],
+      ['Wat is populair voor een avond met vrienden?', 'Een mix van pizza’s om te delen, zoals de Telepizza, truffel prosciutto en margherita, aangevuld met een pasta en tiramisu.'],
       ['Kan ik ook telefonisch bestellen?', 'Ja, bel 020-6435287 om te bestellen of te reserveren.'],
     ],
   },

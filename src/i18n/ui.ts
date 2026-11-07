@@ -131,7 +131,7 @@ export const ui: Record<Lang, UI> = {
 // Teksten voor nieuwsbrief, account en privacy. NL, EN en DE volledig; andere talen vallen terug op EN.
 export interface NewsletterCopy {
   title: string; text: string; email: string; first: string; consent: string; privacy: string; submit: string;
-  small: string; thanks: string; close: string; hint: string; footerTitle: string; account: string; accountMenu: string; accountFallback: string;
+  small: string; thanks: string; close: string; hint: string; footerTitle: string; account: string;
 }
 const nlCopy: Record<'nl' | 'en' | 'de', NewsletterCopy> = {
   nl: {
@@ -144,7 +144,7 @@ const nlCopy: Record<'nl' | 'en' | 'de', NewsletterCopy> = {
     thanks: 'Bijna klaar! Check je inbox en bevestig je aanmelding. Daarna ontvang je je kortingscode.',
     close: 'Sluiten', hint: 'Nog geen account? Schrijf je in en krijg 10% korting op je eerste bestelling',
     footerTitle: 'Nieuwsbrief: 10% korting op je eerste bestelling',
-    account: 'Mijn account', accountMenu: 'Inloggen / Mijn account', accountFallback: 'Inloggen via de bestelwinkel',
+    account: 'Mijn account',
   },
   en: {
     title: '10% off your first order',
@@ -156,7 +156,7 @@ const nlCopy: Record<'nl' | 'en' | 'de', NewsletterCopy> = {
     thanks: 'Almost done! Check your inbox and confirm your sign-up. You will then receive your discount code.',
     close: 'Close', hint: 'No account yet? Sign up and get 10% off your first order',
     footerTitle: 'Newsletter: 10% off your first order',
-    account: 'My account', accountMenu: 'Log in / My account', accountFallback: 'Log in via the web shop',
+    account: 'My account',
   },
   de: {
     title: '10 % Rabatt auf Ihre erste Bestellung',
@@ -168,7 +168,7 @@ const nlCopy: Record<'nl' | 'en' | 'de', NewsletterCopy> = {
     thanks: 'Fast geschafft! Prüfen Sie Ihr Postfach und bestätigen Sie Ihre Anmeldung. Danach erhalten Sie Ihren Rabattcode.',
     close: 'Schließen', hint: 'Noch kein Konto? Melden Sie sich an und erhalten Sie 10 % Rabatt auf Ihre erste Bestellung',
     footerTitle: 'Newsletter: 10 % Rabatt auf Ihre erste Bestellung',
-    account: 'Mein Konto', accountMenu: 'Anmelden / Mein Konto', accountFallback: 'Anmelden im Webshop',
+    account: 'Mein Konto',
   },
 };
 export const nlt = (lang: Lang): NewsletterCopy => nlCopy[lang as 'nl' | 'en' | 'de'] ?? nlCopy.en;

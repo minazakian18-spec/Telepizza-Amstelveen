@@ -2,7 +2,7 @@
 export interface Dish { name: string; img: string; price: number; text: string; tag?: string; en?: string }
 
 export const dishes: Record<string, Dish> = {
-  telePizza: { name: 'Tele Pizza', img: 'tele-pizza', price: 13.95, text: 'Ham, salami, champignons, paprika, ui, artisjok en spinazie.', tag: 'Huisspecialiteit', en: "Ham, salami, mushrooms, pepper, onion, artichoke and spinach." },
+  telePizza: { name: 'Telepizza', img: 'tele-pizza', price: 13.95, text: 'Ham, salami, champignons, paprika, ui, artisjok en spinazie.', tag: 'Huisspecialiteit', en: "Ham, salami, mushrooms, pepper, onion, artichoke and spinach." },
   truffel: { name: 'Pizza Truffel Prosciutto', img: 'pizza-truffel', price: 14.45, text: 'Truffelmascarpone, Parmaham, gegrilde courgette, rucola en Parmezaan.', tag: 'Favoriet', en: "Truffle mascarpone, Parma ham, grilled courgette, rocket and Parmesan." },
   pepperoni: { name: 'Pizza Pepperoni', img: 'pizza-pepperoni', price: 12.95, text: 'Tomatensaus, kaas en pepperoni op handgerekt deeg.', en: "Tomato sauce, cheese and pepperoni on hand-stretched dough." },
   margherita: { name: 'Pizza Margherita', img: 'pizza-margherita', price: 9.5, text: 'Tomatensaus en kaas. De klassieker.', en: "Tomato sauce and cheese. The classic." },

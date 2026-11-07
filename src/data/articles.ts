@@ -20,7 +20,7 @@ export const articles: Article[] = [
 <h2>5. Vers is beter: eet hem aan tafel</h2>
 <p>Pizza is op zijn best in de eerste minuten na de oven. Daarom proef je het verschil het meest als je in het restaurant eet. <a href="/restaurant-amstelveen/">Schuif aan in ons restaurant</a> aan de Amsterdamseweg, met een glas wijn erbij. Thuis eten kan natuurlijk ook: haal je pizza zelf af, dan is hij het snelst bij je op tafel.</p>
 <h2>Welke pizza moet je proberen?</h2>
-<p>Ben je voor het eerst bij Telepizza? Begin met een klassieker, zoals de margherita of de pepperoni, om het deeg en de saus te proeven. Durf je meer? Kies dan de Tele Pizza, onze huisspecialiteit met ham, salami, champignons, paprika, ui, artisjok en spinazie, of de Specialiteit van de Chef met Parmaham, rucola en pijnboompitten. Bekijk alle <a href="/pizza-amstelveen/">pizza’s in Amstelveen</a> of het volledige <a href="/menu-italiaans-restaurant-amstelveen/">menu</a>.</p>`,
+<p>Ben je voor het eerst bij Telepizza? Begin met een klassieker, zoals de margherita of de pepperoni, om het deeg en de saus te proeven. Durf je meer? Kies dan de Telepizza, onze huisspecialiteit met ham, salami, champignons, paprika, ui, artisjok en spinazie, of de Specialiteit van de Chef met Parmaham, rucola en pijnboompitten. Bekijk alle <a href="/pizza-amstelveen/">pizza’s in Amstelveen</a> of het volledige <a href="/menu-italiaans-restaurant-amstelveen/">menu</a>.</p>`,
   },
   {
     slug: 'halal-uit-eten-amstelveen',
