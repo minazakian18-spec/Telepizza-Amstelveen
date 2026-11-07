@@ -1,8 +1,0 @@
----
-// Regel onder de bestelknop die de nieuwsbrief-pop-up opent. Alleen zichtbaar als Brevo is ingesteld.
-import { site } from '../data/site';
-import { nlt, type Lang } from '../i18n/ui';
-const { lang = 'nl' } = Astro.props as { lang?: Lang };
----
-{site.newsletter.formAction && <p class="nl-hint"><a href="#nlpop" data-nl-open>{nlt(lang).hint}</a></p>}
-<style>.nl-hint{margin-top:12px;font-size:.9rem}.nl-hint a{font-weight:600}</style>

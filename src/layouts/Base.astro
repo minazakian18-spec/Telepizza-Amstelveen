@@ -20,8 +20,6 @@ const t = ui[lang];
 const nc = nlt(lang);
 // Nieuwsbrief-pop-up niet op catering-, contact- en privacypagina's.
 const noPopup = /catering|contact|privacy/.test(Astro.url.pathname);
-// TODO-CONTROLEREN: zolang site.accountUrl leeg is, linkt "Mijn account" naar de bestelwinkel.
-const accUrl = site.accountUrl ?? site.orderUrl!;
 const userIco = 'M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v3h16v-3c0-2.8-3.6-5-8-5z';
 const info = langInfo[lang];
 // Pagina's die in alle talen bestaan linken naar hun vertaling; andere pagina's naar de homepage van die taal.
@@ -52,7 +50,7 @@ if (site.email) restaurant.email = site.email;
 if (site.geo) restaurant.geo = { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng };
 if (site.foundingYear) restaurant.foundingDate = String(site.foundingYear);
 if (site.reserveUrl) restaurant.acceptsReservations = site.reserveUrl;
-restaurant.sameAs = [...site.sameAs, ...site.platforms.filter(p => p.id !== 'sitedish').map(p => p.url)];
+restaurant.sameAs = [...site.sameAs, ...site.platforms.map(p => p.url)];
 // TODO-CONTROLEREN: paymentAccepted en currenciesAccepted alleen toevoegen als bekend.
 if (site.hours.length) restaurant.openingHoursSpecification = site.hours.map(h => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.schema, opens: h.open, closes: h.close }));
 
@@ -123,7 +121,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
       <ul>{alternates.map(a => <li><a href={a.href} hreflang={a.l} lang={a.l} aria-current={a.l === lang ? 'true' : undefined}>{langInfo[a.l].name}</a></li>)}</ul>
     </details>
     <a class="tel" href={'tel:' + site.phone} aria-label={`${t.call} ${site.phoneDisplay}`}><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={phoneIco}/></svg></a>
-    <a class="tel acc" href={accUrl} rel="noopener" aria-label={nc.account} data-track="click_account"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={userIco}/></svg><span class="acc-l">{nc.account}</span></a>
+    {site.accountUrl && <a class="tel acc" href={site.accountUrl} rel="noopener" aria-label={nc.account} data-track="click_account"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={userIco}/></svg><span class="acc-l">{nc.account}</span></a>}
     <a class="btn primary sm hide-s" href={site.reserveUrl!} rel="noopener">{t.reserve}</a>
     <details class="burger"><summary aria-label="Menu openen"><span></span></summary>
       <nav class="panel" aria-label="Mobiel menu">

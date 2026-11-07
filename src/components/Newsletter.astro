@@ -1,5 +1,5 @@
 ---
-// Nieuwsbrief-inschrijving via Brevo (double opt-in). De kortingscode staat alleen in de welkomstmail, nooit op de site.
+// Nieuwsbrief-inschrijving via Brevo (double opt-in).
 // variant "popup": kaart rechtsonder (desktop) of kleine balk boven de actiebalk (mobiel); verschijnt na delaySeconds of scrollPercent.
 // variant "footer": vaste inschrijfbalk. Zonder JavaScript post het formulier gewoon naar Brevo.
 // TODO-CONTROLEREN: veldnamen EMAIL, FIRSTNAME, OPT_IN, email_address_check en locale vergelijken met de echte Brevo-HTML-code.
@@ -29,7 +29,6 @@ const privacy = lang === 'nl' ? site.privacyUrl : '/en/privacy/';
       <input type="hidden" name="locale" value={lang} />
       <label class="nl-ok"><input type="checkbox" name="OPT_IN" value="1" required /><span>{c.consent} <a href={privacy}>{c.privacy}</a></span></label>
       <button class="btn primary" type="submit">{c.submit}</button>
-      <p class="nl-s">{c.small}</p>
     </form>
     <p class="nl-done" hidden role="status">{c.thanks}</p>
   </div>
@@ -64,8 +63,6 @@ addEventListener('load', function () {
   p.querySelector('.nl-more').onclick = function () { p.classList.add('open'); p.querySelector('input[name=EMAIL]').focus(); };
   addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
   document.addEventListener('click', function (e) {
-    var o = e.target.closest && e.target.closest('[data-nl-open]');
-    if (o) { e.preventDefault(); show(true); return; }
     if (!p.hidden && !p.contains(e.target)) hide();
   });
   document.querySelectorAll('form[data-nl]').forEach(function (f) {

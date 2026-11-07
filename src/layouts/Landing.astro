@@ -3,7 +3,6 @@
 import Base from './Base.astro';
 import Dishes from '../components/Dishes.astro';
 import Cta from '../components/Cta.astro';
-import NewsletterHint from '../components/NewsletterHint.astro';
 import { site } from '../data/site';
 import type { Dish } from '../data/dishes';
 import type { PageKey } from '../i18n/ui';
@@ -11,7 +10,7 @@ interface Props {
   title: string; description: string; path: string; crumb: string;
   eyebrow: string; h1: string; lead: string; img: string; imgAlt: string;
   dishes?: Dish[]; dishesTitle?: string; faq?: [string, string][];
-  gallery?: [string, string][]; page?: PageKey; schema?: object[]; first?: 'order' | 'reserve'; nlHint?: boolean; alternates?: { l: 'nl' | 'en'; href: string }[];
+  gallery?: [string, string][]; page?: PageKey; schema?: object[]; first?: 'order' | 'reserve'; alternates?: { l: 'nl' | 'en'; href: string }[];
 }
 const p = Astro.props;
 const faq = p.faq ?? [];
@@ -39,7 +38,6 @@ const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPag
       <h1 set:html={p.h1} />
       <p class="lead">{p.lead}</p>
       <Cta first={p.first ?? 'reserve'} />
-      {p.nlHint && <NewsletterHint />}
       <p style="margin-top:18px"><a class="lnk" href="/menu-italiaans-restaurant-amstelveen/">Bekijk de menukaart</a></p>
     </div>
     <figure><img src={p.img} alt={p.imgAlt} width="900" height="1125" fetchpriority="high" /></figure>

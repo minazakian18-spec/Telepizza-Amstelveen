@@ -20,12 +20,11 @@ export const site = {
   // Voor een testbuild kan PUBLIC_BREVO_FORM als omgevingsvariabele worden meegegeven.
   newsletter: {
     formAction: (import.meta.env.PUBLIC_BREVO_FORM || null) as string | null, // TODO-CONTROLEREN: Brevo-formulier-URL (Brevo › Contacten › Formulieren › Delen › HTML-code › action="...")
-    discountPercent: 10,
     delaySeconds: 15,
     scrollPercent: 50,
     hideDays: 30,
   },
-  accountUrl: null as string | null, // TODO-CONTROLEREN: inlogpagina van de Sitedish-bestelwinkel (bijv. https://telepizza.sitedish.shop/...)
+  accountUrl: null as string | null, // Eigen accountpagina; zolang dit leeg is, wordt de accountknop niet getoond.
   privacyUrl: '/privacy/',
   adsId: null as string | null,
   // Bezorging. TODO-CONTROLEREN: alleen invullen als het klopt; lege waarden worden niet getoond.
@@ -50,8 +49,6 @@ export const site = {
   platforms: [
     { id: 'google', name: 'Google', score: '4,7', max: '5', count: 1404, url: 'https://www.google.com/maps/place/Restaurant+Telepizza/@52.3169572,4.857271,17z' },
     { id: 'thefork', name: 'TheFork', score: '9', max: '10', count: 149, url: 'https://widget.thefork.com/d10a03f4-2fab-4cc5-a1a6-ca3b826a931b' },
-    { id: 'tripadvisor', name: 'Tripadvisor', score: '4,2', max: '5', count: 48, url: 'https://www.tripadvisor.nl/Search?q=Telepizza%20Amstelveen' },
-    { id: 'sitedish', name: 'Sitedish', score: '5', max: '5', count: 197, url: 'https://telepizza.sitedish.shop/' },
   ],
   // Prijzen/vermeldingen die bovenaan de site getoond worden. Alleen invullen als ze echt zijn toegekend.
   awards: [] as { label: string; by: string }[],
