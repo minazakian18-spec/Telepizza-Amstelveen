@@ -229,3 +229,4 @@ footer .logo.logo--full{align-items:center}
 @media(min-width:1200px){.acc{width:auto;display:flex;gap:6px;padding:0 12px;font:800 .72rem/1 var(--head);letter-spacing:.06em;text-transform:uppercase}.acc .acc-l{position:static;width:auto;height:auto;clip:auto}}
 /* Actiebalk verdwijnt zodra dezelfde knoppen onderaan de pagina in beeld zijn */
 .mbar.away{opacity:0!important;visibility:hidden;pointer-events:none!important}
+.faq-q{display:inline;font:inherit;margin:0;color:inherit;letter-spacing:inherit;text-transform:inherit}
