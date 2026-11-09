@@ -96,12 +96,10 @@ video.full{background:var(--ink)}
 .note .script{font:400 clamp(2.2rem,5vw,3.2rem)/1.05 var(--script);color:var(--red);margin:0 0 16px}
 .note p{color:var(--ink);font-size:1.08rem}
 .note .sign{font:400 1.8rem/1 var(--script);color:var(--ink);margin-top:18px}
-.pol{background:#fff;padding:12px 12px 18px;margin:0;box-shadow:0 18px 40px rgba(74,46,30,.2);transform:rotate(3deg);border-radius:4px}
-.pol-show{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:2px;background:#141414}
-.pol-show img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s}
-.pol-show img.on{opacity:1}
-@media(prefers-reduced-motion:reduce){.pol-show img{transition:none}}
-.pol figcaption{font:400 1.6rem/1 var(--script);text-align:center;padding-top:12px;color:var(--ink)}
+.swipe{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0;padding-bottom:4px}
+.swipe::-webkit-scrollbar{display:none}
+.swipe img{flex:0 0 78%;aspect-ratio:4/5;height:auto;object-fit:cover;border-radius:14px;scroll-snap-align:start}
+@media(min-width:900px){.swipe img{flex-basis:72%}}
 
 .hero .tagline{display:flex;flex-direction:column;align-items:center;gap:6px}
 .hero-btns{justify-content:center;margin-top:18px}

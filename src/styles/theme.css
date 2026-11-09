@@ -192,15 +192,14 @@ main img,main video{border-radius:var(--r)}
 .logo .lg-red{background:var(--logo-red);box-shadow:-3px 0 0 var(--logo-cream)}
 .logo .lg-oven{display:block;width:22px;height:15px}
 .lg-arch{stroke:var(--logo-ink)}
-.lg-arch-in{stroke:var(--logo-cream)}
-.lg-plate{fill:var(--logo-cream);stroke:var(--logo-ink);stroke-width:1.4}
+.lg-plate{fill:var(--logo-ink)}
 .lg-flame{fill:var(--logo-red)}
 .logo .lg-sprig{display:block;width:30px;height:9px;margin-top:3px;fill:var(--logo-green);stroke:var(--logo-green)}
 .logo b{margin-top:2px}
-.logo b i{color:var(--logo-red)}
+.logo b{font-weight:800;letter-spacing:.09em}
 /* donkere achtergrond: header over de hero en de footer */
 .top.overlay:not(.solid) .lg-arch,footer .lg-arch{stroke:rgba(255,248,236,.85)}
-.top.overlay:not(.solid) .lg-plate,footer .lg-plate{stroke:rgba(255,248,236,.85)}
+.top.overlay:not(.solid) .lg-plate,footer .lg-plate{fill:rgba(255,248,236,.85)}
 .top.overlay:not(.solid) .lg-green,.top.overlay:not(.solid) .lg-red,footer .lg-green,footer .lg-red{box-shadow:none}
 /* compact in de header: zelfde hoogte als voorheen */
 .logo--header b{font-size:1.7rem}
