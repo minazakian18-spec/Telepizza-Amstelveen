@@ -3,13 +3,14 @@ import Landing from '../layouts/Landing.astro';
 import DeliveryInfo from '../components/DeliveryInfo.astro';
 import { pick } from '../data/dishes';
 import { wijken } from '../data/site';
+import HalalInfo from '../components/HalalInfo.astro';
 ---
 <Landing first="order"
   path="/pizza-amstelveen/" crumb="Pizza"
   title="Pizza Amstelveen – bestellen, afhalen & bezorgen | Telepizza"
   description="Pizza bestellen in Amstelveen? Ruim 30 pizza's met handgerekt deeg vanaf € 9,50. Bezorgd in Amstelveen en Buitenveldert of afhalen."
   eyebrow="Sinds 1984 · vers uit de oven" h1="Pizza Amstelveen: <i>bestellen, afhalen of hier eten</i>"
-  lead="Pizza in Amstelveen sinds 1984: handgerekt deeg, huisgemaakte tomatensaus en halal vlees, behalve gerechten met het label ‘Niet halal’. Onze pizzeria in Amstelveen is open tot 01:45, op vrijdag en zaterdag tot 03:00, en scoort een 4,7 op Google. Bestel online, haal af of eet hier."
+  lead="Pizza in Amstelveen sinds 1984: handgerekt deeg, huisgemaakte tomatensaus en halal vlees. Onze pizzeria in Amstelveen is open tot 01:45, op vrijdag en zaterdag tot 03:00, en scoort een 4,7 op Google. Bestel online, haal af of eet hier."
   img="/images/ph/pizza-salami-champignons-paprika.webp" imgAlt="Pizza met salami, champignons en paprika uit de oven bij Telepizza Amstelveen"
   dishesTitle="Onze populairste pizza’s"
   dishes={pick('telePizza', 'truffel', 'pepperoni', 'margherita', 'chef', 'carpaccioPizza', 'popeye', 'bbq', 'quattro', 'gamberoniPizza', 'shoarmaPizza', 'calzone')}
@@ -47,6 +48,7 @@ import { wijken } from '../data/site';
   <p>{wijken.map((w, i) => <>{i > 0 && ' · '}<a href={`/bezorgen-amstelveen/${w.slug}/`}>Pizza bezorgen {w.name}</a></>)}</p>
   {/* TODO-CONTROLEREN: halal-claim (geldt dit voor al het vlees, ook salami/pepperoni?) */}
   <h2>Halal pizza met vlees</h2>
+  <p><HalalInfo /></p>
   <p>Het vlees op onze pizza’s is halal, van salami en pepperoni tot shoarma en kipshoarma. Lees meer over <a href="/halal-restaurant-amstelveen/">halal eten bij Telepizza</a>.</p>
   <h2>Liever aan tafel?</h2>
   <p>Pizza smaakt het best vers uit de oven. Schuif aan in ons <a href="/restaurant-amstelveen/">Italiaanse restaurant in Amstelveen</a> en reserveer eenvoudig online. Op zoek naar tips? Lees <a href="/blog/beste-pizza-amstelveen/">waar je de beste pizza in Amstelveen aan herkent</a>. Als pizzeria in Amstelveen sinds 1984 zien we je graag aan tafel.</p>

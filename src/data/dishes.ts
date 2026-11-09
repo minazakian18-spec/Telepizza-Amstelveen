@@ -40,6 +40,11 @@ export const dishName: Record<string, Record<string, string>> = {
   'Kapsalon Shoarma': { en: 'Kapsalon Shawarma', de: 'Kapsalon Schawarma' },
   'Shoarma Schotel': { en: 'Shawarma Platter', de: 'Schawarma-Teller' },
   'Kip Shoarma Schotel': { en: 'Chicken Shawarma Platter', de: 'Hähnchen-Schawarma-Teller' },
+  'Vlees (per topping)': { en: 'Meat (per topping)', de: 'Fleisch (pro Belag)', fr: 'Viande (par garniture)', it: 'Carne (per condimento)', es: 'Carne (por ingrediente)', tr: 'Et (malzeme başına)', ar: 'لحم (لكل إضافة)' },
+  'Parmaham of bacon (per topping)': { en: 'Parma ham or bacon (per topping)', de: 'Parmaschinken oder Bacon (pro Belag)', fr: 'Jambon de Parme ou bacon (par garniture)', it: 'Prosciutto di Parma o bacon (per condimento)', es: 'Jamón de Parma o bacon (por ingrediente)', tr: 'Parma jambonu veya bacon (malzeme başına)', ar: 'لحم بارما أو بيكون (لكل إضافة)' },
+  'Groenten (per topping)': { en: 'Vegetables (per topping)', de: 'Gemüse (pro Belag)', fr: 'Légumes (par garniture)', it: 'Verdure (per condimento)', es: 'Verduras (por ingrediente)', tr: 'Sebze (malzeme başına)', ar: 'خضار (لكل إضافة)' },
+  'Kaas (per topping)': { en: 'Cheese (per topping)', de: 'Käse (pro Belag)', fr: 'Fromage (par garniture)', it: 'Formaggio (per condimento)', es: 'Queso (por ingrediente)', tr: 'Peynir (malzeme başına)', ar: 'جبن (لكل إضافة)' },
+  'Vis (per topping)': { en: 'Fish (per topping)', de: 'Fisch (pro Belag)', fr: 'Poisson (par garniture)', it: 'Pesce (per condimento)', es: 'Pescado (por ingrediente)', tr: 'Balık (malzeme başına)', ar: 'سمك (لكل إضافة)' },
   'Caprese Salade': { en: 'Caprese Salad', de: 'Caprese-Salat', fr: 'Salade Caprese', it: 'Insalata Caprese', es: 'Ensalada Caprese' },
 };
 

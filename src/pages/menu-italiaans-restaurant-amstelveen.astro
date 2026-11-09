@@ -1,5 +1,6 @@
 ---
 import { existsSync } from 'node:fs';
+import HalalInfo from '../components/HalalInfo.astro';
 import Base from '../layouts/Base.astro';
 import { menu } from '../data/menu';
 import { site } from '../data/site';
@@ -47,7 +48,8 @@ const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Sp
   <div class="wrap mh">
     <p class="eyebrow">Menukaart met prijzen</p>
     <h1>Menukaart Telepizza Amstelveen</h1>
-    <p class="lead">Al onze gerechten worden met verse producten en veel zorg voor je bereid. Van pizza en pasta tot steaks van de grill, kapsalon en huisgemaakte tiramisu. Al ons vlees is halal, behalve gerechten met het label ‘Niet halal’ (met varkensvlees). Alles over onze <a href="/pizza-amstelveen/">pizza in Amstelveen</a>, van deeg tot bezorging, lees je op de pizzapagina.</p>
+    <p class="lead">Al onze gerechten worden met verse producten en veel zorg voor je bereid. Van pizza en pasta tot steaks van de grill, kapsalon en huisgemaakte tiramisu. Ons vlees is halal. Alles over onze <a href="/pizza-amstelveen/">pizza in Amstelveen</a>, van deeg tot bezorging, lees je op de pizzapagina.</p>
+    <p class="menu-halal"><HalalInfo /> · gerechten met varkensvlees hebben het label ‘Niet halal’</p>
     <div class="btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">Bestel online</a><a class="btn" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a></div>
   </div>
   <nav class="chips" aria-label="Menucategorieën"><div class="wrap"><ul>{menu.map(s => <li><a href={'#' + slug(s.name)}>{s.name}</a></li>)}</ul></div></nav>

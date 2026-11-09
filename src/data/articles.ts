@@ -41,7 +41,7 @@ export const articles: Article[] = [
     title: 'Halal uit eten in Amstelveen: Italiaans, grill en meer',
     desc: 'Halal uit eten in Amstelveen? Bij Telepizza is het vlees halal, van lamsshoarma tot kalfsribs. Gerechten met varkensvlees staan duidelijk gemarkeerd.',
     date: '2026-10-28', img: '/images/eigen/steak-grill.webp', imgAlt: 'Steak van de grill bij Telepizza Amstelveen',
-    intro: 'Een restaurant vinden waar je zonder twijfel vlees kunt bestellen is niet altijd makkelijk. Bij Telepizza Amstelveen is al ons vlees halal. Zo kan iedereen aan tafel kiezen wat hij of zij wil.',
+    intro: 'Een restaurant vinden waar je zonder twijfel vlees kunt bestellen is niet altijd makkelijk. Bij Telepizza Amstelveen is het vlees halal. Zo kan iedereen aan tafel kiezen wat hij of zij wil.',
     body: `
 <h2>Halal vlees, duidelijk gemarkeerd</h2>
 <p>Bij Telepizza hoef je niet te vragen welke gerechten halal zijn: al het vlees dat we gebruiken is halal. Dat geldt voor de rundersalami en runderpepperoni op de pizza, de kalkoenham, de kipfilet in de pasta, de shoarma van de spies en de steaks van de grill.</p>
@@ -50,7 +50,7 @@ export const articles: Article[] = [
 <h2>Van de grill</h2>
 <p>Liever een stuk vlees? Kies een biefstuk met champignon- of peperroomsaus, een ribeye, entrecote of de ossenhaas dello chef. Ook de spare ribs, sweet of hot, zijn populair. Alles komt met gemengde salade en frites of aardappelschijfjes. Meer op de pagina <a href="/steak-grill-amstelveen/">steaks en grill</a>.</p>
 <h2>Shoarma, döner en kapsalon</h2>
-<p>Naast Italiaanse gerechten serveren we shoarmaschotels, pizza shoarma en natuurlijk de <a href="/kapsalon-amstelveen/">kapsalon</a> (ook met döner). Ook hier is het vlees halal, met huisgemaakte knoflooksaus en sambal.</p>
+<p>Naast Italiaanse gerechten serveren we shoarmaschotels, pizza shoarma en natuurlijk de <a href="/kapsalon-amstelveen/">kapsalon</a> (ook met döner). Ook hier is het vlees halal (de shoarma is lamsvlees), met huisgemaakte knoflooksaus en sambal.</p>
 <h2>Voor gezinnen en groepen</h2>
 <p>Telepizza is een familierestaurant. Grote tafels zijn geen probleem; bel ons vooraf, dan zetten we alles klaar. Ook voor <a href="/catering-italiaans-restaurant-amstelveen/">catering</a> bij feesten en bijeenkomsten kun je bij ons terecht.</p>
 <h2>Openingstijden</h2>
@@ -64,7 +64,7 @@ export const articles: Article[] = [
     intro: 'Een verjaardag vier je het liefst samen, aan een lange tafel met goed eten. Italiaans eten is daarvoor ideaal: er is voor iedereen iets, van kinderen tot opa en oma. Zo organiseer je het.',
     body: `
 <h2>Waarom Italiaans werkt voor een feestje</h2>
-<p>Pizza en pasta vallen bij bijna iedereen in de smaak. Je kunt delen, iedereen kiest zijn eigen favoriet en er zijn vegetarische opties en gerechten met vis of vlees. Bij Telepizza is bovendien al het vlees halal, dus ook dat hoef je niet apart te regelen.</p>
+<p>Pizza en pasta vallen bij bijna iedereen in de smaak. Je kunt delen, iedereen kiest zijn eigen favoriet en er zijn vegetarische opties en gerechten met vis of vlees. Bij Telepizza is bovendien het vlees halal.</p>
 <h2>Tip 1: reserveer op tijd</h2>
 <p>Vooral op vrijdag- en zaterdagavond is het druk. Reserveer daarom een paar dagen van tevoren via TheFork of bel ons op 020-6435287. Geef het aantal personen door en of er kinderen bij zijn, dan zetten we de tafels klaar.</p>
 <h2>Tip 2: begin met iets om te delen</h2>
@@ -90,7 +90,7 @@ export const articles: Article[] = [
 <h2>De romige variant</h2>
 <p>Buiten Italië wordt carbonara vaak met room gemaakt. Dat geeft een zachtere, vollere saus die minder snel schift. Veel van onze gasten kennen en waarderen juist die smaak.</p>
 <h2>Zo maken wij hem bij Telepizza</h2>
-<p>Onze pasta carbonara maken we met spek, ei, roomsaus en Parmezaanse kaas. Omdat al ons vlees halal is, gebruiken we geen varkensvlees. Je kiest zelf of je hem met spaghetti of penne wilt. Het resultaat is romig, hartig en vullend: niet de Romeinse versie, maar wel een gerecht waar gasten voor terugkomen.</p>
+<p>Onze pasta carbonara maken we met spek (varkensvlees), ei, roomsaus en Parmezaanse kaas. Daarom staat hij op de kaart met het label ‘Niet halal’. Je kiest zelf of je hem met spaghetti of penne wilt. Het resultaat is romig, hartig en vullend: niet de Romeinse versie, maar wel een gerecht waar gasten voor terugkomen.</p>
 <h2>Andere pasta’s om te proberen</h2>
 <p>Hou je van romig? Probeer dan ook de Pasta Tartufo Zucchine met truffel, champignons en courgette, of de Pasta Salmone met zalm en mosterd-roomsaus. Liever iets met tomaat? Kies arrabbiata, puttanesca of onze huisgemaakte bolognese. Alle opties staan op de pagina <a href="/pasta-amstelveen/">pasta in Amstelveen</a>.</p>
 <h2>Proef het zelf</h2>
@@ -108,7 +108,7 @@ export const articles: Article[] = [
 <h2>Wat zit erin?</h2>
 <p>Een kapsalon bestaat uit lagen. Onderin ligt friet, daarop shoarma of ander vlees, dan een laag kaas die in de oven smelt. Bovenop komt een frisse salade met sla, tomaat en komkommer, en daarover saus: meestal knoflooksaus en sambal.</p>
 <h2>De kapsalon bij Telepizza</h2>
-<p>Bij Telepizza kies je uit drie varianten: kapsalon shoarma, kapsalon kip shoarma en kapsalon döner, elk voor € 11,95. Al ons vlees is halal, behalve gerechten met het label ‘Niet halal’ (met varkensvlees) en onze knoflooksaus en sambal maken we zelf. Liever vegetarisch? Dan is de schotel falafel een goed alternatief.</p>
+<p>Bij Telepizza kies je uit drie varianten: kapsalon shoarma, kapsalon kip shoarma en kapsalon döner, elk voor € 11,95. Ons vlees is halal en onze knoflooksaus en sambal maken we zelf. Liever vegetarisch? Dan is de schotel falafel een goed alternatief.</p>
 <h2>Kapsalon en pizza aan één tafel</h2>
 <p>Het mooie aan Telepizza is dat iedereen aan tafel iets anders kan kiezen. De een neemt een pizza of pasta, de ander een kapsalon of shoarmaschotel. Zo is er altijd iets voor iedereen, zeker met een groep.</p>
 <h2>Laat op de avond</h2>

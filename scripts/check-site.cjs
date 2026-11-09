@@ -71,6 +71,16 @@ console.log('\nKlaar. Pagina\'s:', html.length);
     for (const [k, re] of [['Domande', /Domande/], ['Halalal', /Halalal/], ['Favoriet vast aan woord', /[a-z]Favoriet/], ['"9 /10"', /9 \/10/], ['undefined', /\bundefined\b/], ['varkenshaas', /varkenshaas/i], ['schnitzel', /schnitzel/i], ['Schweinefilet', /Schweinefilet/], ['100% halal', /100 ?% ?(halal|helal)|%100 helal|halal 100 ?%|حلال 100/i], ['1984familiebedrijf', /1984familie/], ['score vast aan aantal', /\d,\d\d?\.\d{3}/], ['Bezorgen&', /Bezorgen&/]]) if (re.test(glued)) addq('verboden: ' + k, rel);
     for (const k of ['<title>', 'name="description"', 'rel="canonical"', '<h1']) if (!h.includes(k)) addq('mist ' + k, rel);
     if (!h.includes('application/ld+json')) addq('geen JSON-LD', rel);
+    // Halalclaims: buiten de halalpagina en de FAQ alleen met het ⓘ-component; nooit een volledige claim in de meta.
+    const desc = (h.match(/name="description" content="([^"]*)"/) || [])[1] || '';
+    if (/al ons vlees|all our meat|100 ?%/i.test(desc) && /halal/i.test(desc)) addq('onvolledige halalclaim in meta', rel);
+    if (!/halal-restaurant-amstelveen/.test(rel)) {
+      const body = glued.replace(/[\s\S]*?(?=)/, '');
+      const outsideFaq = h.replace(/<details[\s\S]*?<\/details>/g, ' ').replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<span class="hi-pop"[\s\S]*?<\/span><\/span>/g, ' ');
+      const claim = /vlees is halal|meat is halal|Fleisch ist halal|viande est halal|carne (è|es) halal|etlerimiz helal|لحوم[^<]{0,12}حلال/i.test(outsideFaq.replace(/<[^>]+>/g, ' '));
+      if (claim && !h.includes('class="hi"')) addq('halalclaim zonder ⓘ-component', rel);
+      if (/behalve gerechten met het label|except dishes labelled|außer bei Gerichten/.test(outsideFaq.replace(/<[^>]+>/g, ' '))) addq('lange halalzin buiten FAQ', rel);
+    }
     // Gerechten met varkensvlees moeten het label "Niet halal" hebben en mogen nooit het label "Halal" dragen.
     for (const m of h.matchAll(/<article class="(?:it|ci)"[^>]*>([\s\S]*?)<\/article>/g)) {
       const body = m[1], name = ((body.match(/<h3[^>]*>([^<]*)/) || [])[1] || '').trim();

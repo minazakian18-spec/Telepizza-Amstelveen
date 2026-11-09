@@ -26,7 +26,7 @@ export const sectionNames: Record<string, Partial<Record<Lang, string>>> = {
 export const sectionNotes: Record<string, Partial<Record<Lang, string>>> = {
   'Keuze uit spaghetti of penne': { en: 'Choice of spaghetti or penne', de: 'Wahl zwischen Spaghetti oder Penne', tr: 'Spagetti veya penne seçeneği', ar: 'اختر سباغيتي أو بيني', fr: 'Au choix spaghetti ou penne', it: 'A scelta spaghetti o penne', es: 'A elegir espaguetis o penne' },
   'Met gemengde salade en frites of aardappelschijfjes': { en: 'With mixed salad and fries or potato slices', de: 'Mit gemischtem Salat und Pommes oder Kartoffelscheiben', tr: 'Karışık salata ve patates kızartması veya patates dilimleri ile', ar: 'مع سلطة مشكلة وبطاطس مقلية أو شرائح بطاطس', fr: 'Avec salade mixte et frites ou pommes de terre sautées', it: 'Con insalata mista e patatine o patate a fette', es: 'Con ensalada mixta y patatas fritas o patatas en rodajas' },
-  'Prijzen zoals in onze bestelwinkel. Al ons vlees is halal, behalve gerechten met het label ‘Niet halal’ (met varkensvlees).': { en: 'Prices as in our online shop. All our meat is halal, except dishes labelled ‘Not halal’ (with pork).', de: 'Preise wie in unserem Online-Shop. Unser Fleisch ist halal, außer bei Gerichten mit dem Hinweis ‘Nicht halal’ (mit Schweinefleisch).', tr: 'Fiyatlar online mağazamızdaki gibidir. Tüm etlerimiz helaldir (‘Helal değil’ etiketli, domuz eti içeren yemekler hariç).', ar: 'الأسعار كما في متجرنا الإلكتروني. جميع اللحوم لدينا حلال باستثناء الأطباق المميزة بعبارة ‘غير حلال’ (تحتوي على لحم الخنزير).', fr: 'Prix comme dans notre boutique en ligne. Toute notre viande est halal, sauf les plats marqués ‘Non halal’ (avec du porc).', it: 'Prezzi come nel nostro negozio online. Tutta la nostra carne è halal, tranne i piatti con l’etichetta ‘Non halal’ (con carne di maiale).', es: 'Precios como en nuestra tienda online. Toda nuestra carne es halal, salvo los platos marcados ‘No halal’ (con cerdo).' },
+  'Prijzen zoals in onze bestelwinkel.': { en: 'Prices as in our online shop.', de: 'Preise wie in unserem Online-Shop.', tr: 'Fiyatlar online mağazamızdaki gibidir.', ar: 'الأسعار كما في متجرنا الإلكتروني.', fr: 'Prix comme dans notre boutique en ligne.', it: 'Prezzi come nel nostro negozio online.', es: 'Precios como en nuestra tienda online.' },
 };
 
 // Engelse omschrijvingen; worden ook gebruikt voor de andere talen.
@@ -60,7 +60,8 @@ export const descEn: Record<string, string> = {
   'Geraspte kaas, Parmezaanse kaas, geitenkaas, mozzarella, gorgonzola': 'Grated cheese, Parmesan, goat’s cheese, mozzarella, gorgonzola',
   'Geroosterd Italiaans brood met verse tomaten en basilicumsaus': 'Toasted Italian bread with fresh tomatoes and basil sauce',
   'Haasbiefstuk in champignon roomsaus of peperroomsaus': 'Tenderloin steak in creamy mushroom or pepper sauce',
-  'Kalkoenham, rundersalami, runderpepperoni, kipfilet, lamsshoarma, bolognese; Parmaham en bacon zijn varkensvlees (niet halal)': 'Turkey ham, beef salami, beef pepperoni, chicken, lamb shawarma, bolognese; Parma ham and bacon are pork (not halal)',
+  'Kalkoenham, rundersalami, runderpepperoni, kipfilet, lamsshoarma, bolognese': 'Turkey ham, beef salami, beef pepperoni, chicken, lamb shawarma, bolognese',
+  'Parmaham of bacon (varkensvlees)': 'Parma ham or bacon (pork)',
   'Hollandse garnalen': 'Dutch shrimps',
   'In champignon roomsaus of peperroomsaus': 'In creamy mushroom or pepper sauce',
   'Italiaanse truffel': 'Italian tartufo ice cream',

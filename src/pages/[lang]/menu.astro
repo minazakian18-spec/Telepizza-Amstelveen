@@ -1,5 +1,6 @@
 ---
 import { existsSync } from 'node:fs';
+import HalalInfo from '../../components/HalalInfo.astro';
 import Base from '../../layouts/Base.astro';
 import { menu } from '../../data/menu';
 import { site } from '../../data/site';
@@ -59,6 +60,7 @@ const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Sp
     <p class="eyebrow">{c.eyebrow}</p>
     <h1>{c.h1}</h1>
     <p class="lead">{c.lead}</p>
+    <p class="menu-halal"><HalalInfo lang={lang} /></p>
     {t.descNote && <p><em>{t.descNote}</em></p>}
     <div class="btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">{t.order}</a><a class="btn" href={site.reserveUrl!} rel="noopener">{t.reserve}</a></div>
   </div>

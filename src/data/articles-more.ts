@@ -10,7 +10,7 @@ export const moreArticles: Article[] = [
     intro: 'Een avond uit eten begint met de juiste plek. Of je nu met z’n tweeën gaat, met vrienden of met de hele familie: met deze tips wordt het een avond om te onthouden.',
     body: `
 <h2>Kies een restaurant dat bij je gezelschap past</h2>
-<p>Met een groep is het fijn als iedereen iets lekkers kan vinden. Een Italiaans restaurant is daarom vaak een veilige keuze: pizza, pasta, salades, vlees en vis staan allemaal op de kaart. Bij Telepizza aan de Amsterdamseweg kies je uit ruim 30 pizza’s, verse pasta’s, steaks van de grill en desserts. Al het vlees is halal, behalve gerechten met het label ‘Niet halal’ (met varkensvlees), zodat niemand hoeft te twijfelen.</p>
+<p>Met een groep is het fijn als iedereen iets lekkers kan vinden. Een Italiaans restaurant is daarom vaak een veilige keuze: pizza, pasta, salades, vlees en vis staan allemaal op de kaart. Bij Telepizza aan de Amsterdamseweg kies je uit ruim 30 pizza’s, verse pasta’s, steaks van de grill en desserts. Het vlees is halal, zodat niemand hoeft te twijfelen.</p>
 <h2>Reserveer op tijd</h2>
 <p>Op vrijdag- en zaterdagavond zijn de leukste restaurants in Amstelveen snel vol. Reserveer daarom een paar dagen van tevoren. Bij Telepizza kan dat online via TheFork of telefonisch op 020-6435287.</p>
 <h2>Deel om te beginnen</h2>
@@ -90,7 +90,7 @@ export const moreArticles: Article[] = [
 <h2>Pizza: altijd goed</h2>
 <p>Bijna alle kinderen houden van pizza. Bij Telepizza kun je een kleine pizza van 26 cm bestellen of samen een grote pizza delen. Een margherita of pizza salami is vaak een schot in de roos.</p>
 <h2>Iets voor de ouders</h2>
-<p>Terwijl de kinderen genieten van hun pizza, kiezen ouders een romige pasta, een steak van de grill of een salade. Al het vlees is halal, behalve gerechten met het label ‘Niet halal’ (met varkensvlees).</p>
+<p>Terwijl de kinderen genieten van hun pizza, kiezen ouders een romige pasta, een steak van de grill of een salade. Het vlees is halal.</p>
 <h2>Een toetje als afsluiter</h2>
 <p>Sluit af met een coupe ijs, een dame blanche of Ben &amp; Jerry’s. Zo wordt het voor iedereen een feestje.</p>
 <h2>Praktisch</h2>
@@ -110,7 +110,7 @@ export const moreArticles: Article[] = [
 <h2>Ossenhaas</h2>
 <p>De ossenhaas is het malste stuk van het rund. Onze ossenhaas dello chef is een haasbiefstuk met champignon- of peperroomsaus.</p>
 <h2>Bij Telepizza</h2>
-<p>Al onze vleesgerechten komen met gemengde salade en frites of aardappelschijfjes, en al het vlees is halal, behalve gerechten met het label ‘Niet halal’ (met varkensvlees). Bekijk alle opties op <a href="/steak-grill-amstelveen/">steaks en grill</a>.</p>`,
+<p>Al onze vleesgerechten komen met gemengde salade en frites of aardappelschijfjes, en het vlees is halal. Bekijk alle opties op <a href="/steak-grill-amstelveen/">steaks en grill</a>.</p>`,
   },
   {
     slug: 'telepizza-amstelveen-sinds-1984',

@@ -418,9 +418,14 @@ export const menu: Section[] = [
       },
       {
         "name": "Vlees (per topping)",
+        "price": 2.5,
+        "description": "Kalkoenham, rundersalami, runderpepperoni, kipfilet, lamsshoarma, bolognese"
+      },
+      {
+        "name": "Parmaham of bacon (per topping)",
         "notHalal": true,
         "price": 2.5,
-        "description": "Kalkoenham, rundersalami, runderpepperoni, kipfilet, lamsshoarma, bolognese; Parmaham en bacon zijn varkensvlees (niet halal)"
+        "description": "Parmaham of bacon (varkensvlees)"
       },
       {
         "name": "Vis (per topping)",
@@ -530,7 +535,7 @@ export const menu: Section[] = [
         "description": "Vegetarisch: friet, falafel, salade en 2 sauzen"
       }
     ],
-    "note": "Prijzen zoals in onze bestelwinkel. Al ons vlees is halal, behalve gerechten met het label ‘Niet halal’ (met varkensvlees)."
+    "note": "Prijzen zoals in onze bestelwinkel."
   },
   {
     "name": "Burgers",

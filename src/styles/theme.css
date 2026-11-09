@@ -261,3 +261,9 @@ body:has(.burger[open]) .mbar,body:has(.burger[open]) #nlpop{display:none}
 .hero .open-today{color:#fff}
 /* Label "Niet halal" op gerechtkaarten: donker, goed te onderscheiden van de andere labels */
 .tag.nh{background:#141414;color:#fff;border-color:#141414}
+.menu-halal{margin-top:10px;font-size:.95rem;font-weight:600}
+/* Lange categoriekoppen op smalle telefoons laten afbreken in plaats van de pagina te verbreden */
+.msec header{grid-template-columns:minmax(0,1fr)}
+.msec header>*{min-width:0}
+.msec h2{overflow-wrap:break-word;hyphens:auto}
+@media(max-width:400px){.msec h2{font-size:clamp(1.9rem,10vw,2.6rem)}}

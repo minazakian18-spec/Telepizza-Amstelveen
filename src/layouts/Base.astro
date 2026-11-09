@@ -1,6 +1,7 @@
 ---
 import { site, fullAddress } from '../data/site';
 import Newsletter from '../components/Newsletter.astro';
+import HalalInfo from '../components/HalalInfo.astro';
 import { langs, langInfo, ui, nlt, pathFor, type Lang, type PageKey } from '../i18n/ui';
 import { articles } from '../data/articles';
 import Logo from '../components/Logo.astro';
@@ -165,7 +166,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
 <footer><div class="wrap">
   <div class="fg">
     <div><Logo variant="image" href={pathFor(lang, 'home')} />
-      <p style="margin-top:16px">{t.footerAbout}</p></div>
+      <p style="margin-top:16px">{t.footerAbout} <HalalInfo lang={lang} /></p></div>
     <div><h2>{t.addressContact}</h2><p>{fullAddress}<br />
       <a href={'tel:' + site.phone}>{site.phoneDisplay}</a><br />
       <a href={'mailto:' + site.email}>{site.email}</a><br />
@@ -221,5 +222,27 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
 </script>
 <script is:inline>(function(){var m=document.querySelector('.mbar'),b=document.querySelector('.band');if(!b||!window.IntersectionObserver)return;new IntersectionObserver(function(e){m.classList.toggle('away',e[0].isIntersecting||e[0].boundingClientRect.top<0)}).observe(b)})();</script>
 {overlay && <script is:inline>(function(){var h=document.getElementById('top');var m=document.querySelector('.mbar');function f(){h.classList.toggle('solid',scrollY>40);if(m)m.classList.toggle('show',scrollY>innerHeight*.7)}addEventListener('scroll',f,{passive:true});f();})();</script>}
+<script is:inline>
+  // ⓘ bij "Halal vlees": van link naar knop met popover. Sluit met Esc, klik buiten of nog een keer tikken; blijft binnen het scherm.
+  (function () {
+    var open = null;
+    function place(p, btn) { var vw = document.documentElement.clientWidth, vh = document.documentElement.clientHeight, m = 12, br = btn.getBoundingClientRect(), w = p.offsetWidth, h = p.offsetHeight; var left = Math.min(Math.max(br.left, m), vw - w - m); var top = br.bottom + 6 + h > vh - m && br.top - 6 - h > m ? br.top - 6 - h : br.bottom + 6; p.style.left = Math.max(m, left) + 'px'; p.style.top = top + 'px'; }
+    function close() { if (!open) return; open.b.setAttribute('aria-expanded', 'false'); open.p.hidden = true; open = null; }
+    function show(b, p) { if (open && open.b === b) return; close(); b.setAttribute('aria-expanded', 'true'); p.hidden = false; place(p, b); open = { b: b, p: p }; }
+    document.querySelectorAll('a.hi-btn').forEach(function (a) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'hi-btn'; b.innerHTML = a.innerHTML;
+      b.setAttribute('aria-label', a.getAttribute('aria-label')); b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', a.dataset.pop);
+      a.replaceWith(b); var p = document.getElementById(a.dataset.pop), w = b.parentNode, hoverable = matchMedia('(hover: hover) and (pointer: fine)').matches;
+      b.addEventListener('click', function (e) { e.stopPropagation(); if (open && open.b === b) close(); else show(b, p); });
+      b.addEventListener('focus', function () { if (hoverable) show(b, p); });
+      if (hoverable) { w.addEventListener('mouseenter', function () { show(b, p); }); w.addEventListener('mouseleave', function () { if (open && open.b === b && !w.contains(document.activeElement)) close(); }); }
+      p.addEventListener('click', function (e) { e.stopPropagation(); });
+    });
+    document.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) { var b = open.b; close(); b.focus(); } });
+    addEventListener('resize', function () { if (open) place(open.p, open.b); });
+    addEventListener('scroll', function () { if (open) place(open.p, open.b); }, { passive: true });
+  })();
+</script>
 </body>
 </html>
