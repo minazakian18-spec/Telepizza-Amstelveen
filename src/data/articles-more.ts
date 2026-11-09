@@ -16,7 +16,7 @@ export const moreArticles: Article[] = [
 <h2>Deel om te beginnen</h2>
 <p>Bestel een paar voorgerechten voor in het midden van de tafel, zoals bruschetta, focaccia of stokbrood met kruidenboter. Zo kom je meteen in de stemming en kan iedereen proeven.</p>
 <h2>Neem de tijd</h2>
-<p>Uit eten is meer dan alleen eten. Bestel een cocktail of een glas wijn, geniet van de sfeer en sluit af met een dessert zoals huisgemaakte tiramisu. Omdat onze keuken tot laat open is, hoef je je niet te haasten.</p>
+<p>Uit eten is meer dan alleen eten. Bestel een cocktail of een glas wijn, geniet van de sfeer en sluit af met een dessert zoals huisgemaakte tiramisu. Omdat we open zijn tot 01:45, op vrijdag en zaterdag tot 03:00, hoef je je niet te haasten.</p>
 <h2>Plan je route</h2>
 <p>Telepizza ligt aan de Amsterdamseweg 452, in het noorden van Amstelveen en vlak bij Amsterdam. In de buurt kun je gratis parkeren. Bekijk de <a href="/contact-route/">route</a> of lees meer over ons <a href="/restaurant-amstelveen/">restaurant in Amstelveen</a>.</p>`,
   },
@@ -140,7 +140,7 @@ export const moreArticles: Article[] = [
 <h2>Sfeer aan de bar</h2>
 <p>Bij Telepizza zit je onder de neon en de groene wand, met warme lampen en een levendige sfeer. Ideaal voor een date, een verjaardag of een avond met vrienden.</p>
 <h2>Tot laat</h2>
-<p>Omdat de keuken open is tot 01:45, en op vrijdag en zaterdag tot 03:00, kun je rustig blijven hangen. Liever geen alcohol? Er zijn ook frisdranken en alcoholvrij bier.</p>
+<p>Omdat we open zijn tot 01:45, en op vrijdag en zaterdag tot 03:00, kun je rustig blijven hangen. Liever geen alcohol? Er zijn ook frisdranken en alcoholvrij bier.</p>
 <h2>Reserveer je tafel</h2>
 <p>Op drukke avonden raden we reserveren aan. Lees meer over ons <a href="/restaurant-amstelveen/">restaurant</a> of plan een <a href="/blog/uit-eten-amstelveen-tips/">avond uit in Amstelveen</a>.</p>`,
   },

@@ -627,13 +627,13 @@ export const menu: Section[] = [
         "name": "Ben & Jerry’s Strawberry Cheesecake",
         "price": 4.5,
         "priceText": "100 ml € 4,50 / 465 ml € 8,95",
-        "description": "Aardbeiencheesecake-roomijs met aardbei & havermoutkoekjes chunks"
+        "description": "Aardbeiencheesecake-roomijs met stukjes aardbei en havermoutkoek"
       },
       {
         "name": "Ben & Jerry’s Chocolate Fudge Brownie",
         "price": 4.5,
         "priceText": "100 ml € 4,50 / 465 ml € 8,95",
-        "description": "Chocoladeroomijs met chocolate fudge brownie chunks"
+        "description": "Chocoladeroomijs met stukjes chocoladebrownie"
       },
       {
         "name": "Caffè Glacé",

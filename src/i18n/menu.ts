@@ -32,12 +32,12 @@ export const sectionNotes: Record<string, Partial<Record<Lang, string>>> = {
 // Engelse omschrijvingen; worden ook gebruikt voor de andere talen.
 export const descEn: Record<string, string> = {
   '6 stuks met chilisaus': '6 pieces with chilli sauce',
-  'Aardbeiencheesecake-roomijs met aardbei & havermoutkoekjes chunks': 'Strawberry cheesecake ice cream with strawberry and oat biscuit chunks',
+  'Aardbeiencheesecake-roomijs met stukjes aardbei en havermoutkoek': 'Strawberry cheesecake ice cream with strawberry and oat biscuit chunks',
   'BBQ-saus, kaas, kip, mais en paprika': 'BBQ sauce, cheese, chicken, sweetcorn and bell pepper',
   'Biefstuk in champignon roomsaus': 'Steak in creamy mushroom sauce',
   'Biefstuk in peperroomsaus': 'Steak in creamy pepper sauce',
   'Buffelkaas met verse tomaten en basilicumsaus': 'Buffalo mozzarella with fresh tomatoes and basil sauce',
-  'Chocoladeroomijs met chocolate fudge brownie chunks': 'Chocolate ice cream with chocolate fudge brownie chunks',
+  'Chocoladeroomijs met stukjes chocoladebrownie': 'Chocolate ice cream with chocolate fudge brownie chunks',
   'De beste stukken kippenborst': 'The best cuts of chicken breast',
   'Deeg rollen gevuld met wilde spinazie, ricotta kaas, tomatensaus uit de oven en getopped met rucola': 'Pasta rolls filled with wild spinach and ricotta, baked in tomato sauce and topped with rocket',
   'Deegkussentjes gevuld met rundergehakt, champignons, tomaten roomsaus en Parmezaanse kaas': 'Pasta parcels filled with minced beef, with mushrooms, creamy tomato sauce and Parmesan',
