@@ -68,9 +68,18 @@ console.log('\nKlaar. Pagina\'s:', html.length);
     const h = fs.readFileSync(f, 'utf8');
     if (h.includes('http-equiv="refresh"')) continue;
     const glued = dec(h.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, '').replace(/<[^>]+>/g, ''));
-    for (const [k, re] of [['Domande', /Domande/], ['Halalal', /Halalal/], ['Favoriet vast aan woord', /[a-z]Favoriet/], ['"9 /10"', /9 \/10/], ['undefined', /\bundefined\b/], ['varkenshaas', /varkenshaas/i], ['schnitzel', /schnitzel/i], ['Schweine', /Schweine/], ['1984familiebedrijf', /1984familie/], ['score vast aan aantal', /\d,\d\d?\.\d{3}/], ['Bezorgen&', /Bezorgen&/]]) if (re.test(glued)) addq('verboden: ' + k, rel);
+    for (const [k, re] of [['Domande', /Domande/], ['Halalal', /Halalal/], ['Favoriet vast aan woord', /[a-z]Favoriet/], ['"9 /10"', /9 \/10/], ['undefined', /\bundefined\b/], ['varkenshaas', /varkenshaas/i], ['schnitzel', /schnitzel/i], ['Schweinefilet', /Schweinefilet/], ['100% halal', /100 ?% ?(halal|helal)|%100 helal|halal 100 ?%|حلال 100/i], ['1984familiebedrijf', /1984familie/], ['score vast aan aantal', /\d,\d\d?\.\d{3}/], ['Bezorgen&', /Bezorgen&/]]) if (re.test(glued)) addq('verboden: ' + k, rel);
     for (const k of ['<title>', 'name="description"', 'rel="canonical"', '<h1']) if (!h.includes(k)) addq('mist ' + k, rel);
     if (!h.includes('application/ld+json')) addq('geen JSON-LD', rel);
+    // Gerechten met varkensvlees moeten het label "Niet halal" hebben en mogen nooit het label "Halal" dragen.
+    for (const m of h.matchAll(/<article class="(?:it|ci)"[^>]*>([\s\S]*?)<\/article>/g)) {
+      const body = m[1], name = ((body.match(/<h3[^>]*>([^<]*)/) || [])[1] || '').trim();
+      const pork = /parmaham|parma ham|prosciutto|pancetta|bacon|\bspek\b|varkensvlees|\bpork\b/i.test(body.replace(/<[^>]+>/g, ' ').replace(/Pizza Truffel Prosciutto|Truffle Prosciutto Pizza|Bacon Burger|Pancetta Bianca/g, ''))
+        || /^(Pizza Truffel Prosciutto|Specialiteit van de Chef|Pizza Pancetta Bianca|Bacon Burger|Pasta Carbonara)$/.test(name);
+      const label = /class="(?:tag )?nh"/.test(body);
+      if (pork && !label) addq('varkensvlees zonder label Niet halal', rel + ' :: ' + name);
+      if (label && />\s*(Halal|Helal)\s*</.test(body)) addq('Niet halal-gerecht met Halal-label', rel + ' :: ' + name);
+    }
     for (const m of h.matchAll(/srcset="([^"]+)"/g)) for (const part of m[1].split(',')) { const u = part.trim().split(' ')[0]; if (u.startsWith('/') && !exists(u)) addq('srcset kapot', rel + ' ' + u); }
     const alts = [...h.matchAll(/<img\b[^>]*\balt="([^"]+)"/g)].map(m => m[1]);
     const dupAlt = alts.filter((a, i) => alts.indexOf(a) !== i);

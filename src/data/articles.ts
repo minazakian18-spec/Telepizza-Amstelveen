@@ -39,12 +39,12 @@ export const articles: Article[] = [
   {
     slug: 'halal-uit-eten-amstelveen',
     title: 'Halal uit eten in Amstelveen: Italiaans, grill en meer',
-    desc: 'Halal uit eten in Amstelveen? Bij Telepizza is al het vlees halal: pizza, pasta, steaks, shoarma en kapsalon. Lees wat we serveren.',
+    desc: 'Halal uit eten in Amstelveen? Bij Telepizza is het vlees halal, van lamsshoarma tot kalfsribs. Gerechten met varkensvlees staan duidelijk gemarkeerd.',
     date: '2026-10-28', img: '/images/eigen/steak-grill.webp', imgAlt: 'Steak van de grill bij Telepizza Amstelveen',
     intro: 'Een restaurant vinden waar je zonder twijfel vlees kunt bestellen is niet altijd makkelijk. Bij Telepizza Amstelveen is al ons vlees halal. Zo kan iedereen aan tafel kiezen wat hij of zij wil.',
     body: `
-<h2>Al het vlees halal</h2>
-<p>Bij Telepizza hoef je niet te vragen welke gerechten halal zijn: al het vlees dat we gebruiken is halal. Dat geldt voor de salami en pepperoni op de pizza, de kipfilet in de pasta, de shoarma van de spies en de steaks van de grill.</p>
+<h2>Halal vlees, duidelijk gemarkeerd</h2>
+<p>Bij Telepizza hoef je niet te vragen welke gerechten halal zijn: al het vlees dat we gebruiken is halal. Dat geldt voor de rundersalami en runderpepperoni op de pizza, de kalkoenham, de kipfilet in de pasta, de shoarma van de spies en de steaks van de grill.</p>
 <h2>Italiaanse gerechten met halal vlees</h2>
 <p>Juist bij Italiaans eten is halal vlees niet vanzelfsprekend. Denk aan pizza salami, pizza pepperoni, pasta bolognese met rundergehakt of lasagne. Bij ons kun je die klassiekers gewoon bestellen. Kijk voor alle opties op onze pagina over <a href="/halal-restaurant-amstelveen/">halal eten in Amstelveen</a>.</p>
 <h2>Van de grill</h2>
@@ -108,7 +108,7 @@ export const articles: Article[] = [
 <h2>Wat zit erin?</h2>
 <p>Een kapsalon bestaat uit lagen. Onderin ligt friet, daarop shoarma of ander vlees, dan een laag kaas die in de oven smelt. Bovenop komt een frisse salade met sla, tomaat en komkommer, en daarover saus: meestal knoflooksaus en sambal.</p>
 <h2>De kapsalon bij Telepizza</h2>
-<p>Bij Telepizza kies je uit drie varianten: kapsalon shoarma, kapsalon kip shoarma en kapsalon döner, elk voor € 11,95. Al ons vlees is halal en onze knoflooksaus en sambal maken we zelf. Liever vegetarisch? Dan is de schotel falafel een goed alternatief.</p>
+<p>Bij Telepizza kies je uit drie varianten: kapsalon shoarma, kapsalon kip shoarma en kapsalon döner, elk voor € 11,95. Al ons vlees is halal, behalve gerechten met het label ‘Niet halal’ (met varkensvlees) en onze knoflooksaus en sambal maken we zelf. Liever vegetarisch? Dan is de schotel falafel een goed alternatief.</p>
 <h2>Kapsalon en pizza aan één tafel</h2>
 <p>Het mooie aan Telepizza is dat iedereen aan tafel iets anders kan kiezen. De een neemt een pizza of pasta, de ander een kapsalon of shoarmaschotel. Zo is er altijd iets voor iedereen, zeker met een groep.</p>
 <h2>Laat op de avond</h2>

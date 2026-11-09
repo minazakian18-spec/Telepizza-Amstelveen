@@ -1,6 +1,6 @@
 // Menu en prijzen, overgenomen uit de menu-PDF van Telepizza Amstelveen.
 // Prijs in euro's met een punt, bijv. 12.95. priceText = afwijkende weergave (bijv. klein/groot).
-export interface Item { name: string; description?: string; price: number | null; priceText?: string }
+export interface Item { name: string; notHalal?: boolean; description?: string; price: number | null; priceText?: string }
 export interface Section { name: string; note?: string; items: Item[] }
 export const menu: Section[] = [
   {
@@ -84,7 +84,7 @@ export const menu: Section[] = [
       {
         "name": "Carpaccio Salade",
         "price": 11.95,
-        "description": "met gerookte zalm"
+        "description": "met rundercarpaccio"
       }
     ]
   },
@@ -118,8 +118,9 @@ export const menu: Section[] = [
       },
       {
         "name": "Pasta Carbonara",
+        "notHalal": true,
         "price": 12.95,
-        "description": "Met spek, ei, roomsaus en Parmezaanse kaas"
+        "description": "Met spek (varkensvlees), ei, roomsaus en Parmezaanse kaas"
       },
       {
         "name": "Pasta Quattro Formaggi",
@@ -245,27 +246,27 @@ export const menu: Section[] = [
       {
         "name": "Pizza Salami",
         "price": 12.95,
-        "description": "Tomatensaus, kaas en salami"
+        "description": "Tomatensaus, kaas en rundersalami"
       },
       {
         "name": "Pizza Pepperoni",
         "price": 12.95,
-        "description": "Tomatensaus, kaas en pepperoni"
+        "description": "Tomatensaus, kaas en runderpepperoni"
       },
       {
         "name": "Pizza Borromea",
         "price": 12.95,
-        "description": "Tomatensaus, kaas en ham"
+        "description": "Tomatensaus, kaas en kalkoenham"
       },
       {
         "name": "Pizza Hawaii",
         "price": 12.95,
-        "description": "Tomatensaus, kaas, ham en ananas"
+        "description": "Tomatensaus, kaas, kalkoenham en ananas"
       },
       {
         "name": "Pizza Capricciosa",
         "price": 12.95,
-        "description": "Tomatensaus, kaas, ham champignons en artisjok"
+        "description": "Tomatensaus, kaas, kalkoenham, champignons en artisjok"
       },
       {
         "name": "Pizza Pollo",
@@ -275,22 +276,22 @@ export const menu: Section[] = [
       {
         "name": "Pizza Romana",
         "price": 13.95,
-        "description": "Tomatensaus, kaas, pepperoni, champignons, paprika, uien en olijven"
+        "description": "Tomatensaus, kaas, runderpepperoni, champignons, paprika, uien en olijven"
       },
       {
         "name": "Pizza Quattro Stagioni",
         "price": 13.45,
-        "description": "Tomatensaus, kaas, ham, salami, paprika en champignons"
+        "description": "Tomatensaus, kaas, kalkoenham, rundersalami, paprika en champignons"
       },
       {
         "name": "Pizza Contadina",
         "price": 13.95,
-        "description": "Tomatensaus, kaas, ham, ei, spinazie en knoflook"
+        "description": "Tomatensaus, kaas, kalkoenham, ei, spinazie en knoflook"
       },
       {
         "name": "Pizza Shoarma",
         "price": 13.95,
-        "description": "Tomatensaus, kaas, shoarma en twee sauzen"
+        "description": "Tomatensaus, kaas, lamsshoarma en twee sauzen"
       },
       {
         "name": "Pizza Kip Shoarma",
@@ -340,17 +341,19 @@ export const menu: Section[] = [
       {
         "name": "Telepizza",
         "price": 13.95,
-        "description": "Tomatensaus, kaas, ham, salami, champignons, paprika, ui, artisjokken en spinazie"
+        "description": "Tomatensaus, kaas, kalkoenham, rundersalami, champignons, paprika, ui, artisjokken en spinazie"
       },
       {
         "name": "Specialiteit van de Chef",
+        "notHalal": true,
         "price": 14.45,
-        "description": "Tomatensaus, kaas, verse tomaten, prosciutto di Parmaham, rucola, pijnboompitten en Parmezaanse kaas"
+        "description": "Tomatensaus, kaas, verse tomaten, Parmaham (varkensvlees), rucola, pijnboompitten en Parmezaanse kaas"
       },
       {
         "name": "Pizza Pancetta Bianca",
+        "notHalal": true,
         "price": 14.45,
-        "description": "Met bacon, kaas, champignons, gekarameliseerde uien, zongedroogde tomaten en peterselie"
+        "description": "Met bacon en pancetta (varkensvlees), kaas, champignons, gekarameliseerde uien, zongedroogde tomaten en peterselie"
       },
       {
         "name": "Pizza BBQ Chicken",
@@ -359,8 +362,9 @@ export const menu: Section[] = [
       },
       {
         "name": "Pizza Truffel Prosciutto",
+        "notHalal": true,
         "price": 14.45,
-        "description": "Truffel mascarpone, scheutjes tomatensaus, Parmaham, gegrilde courgette, rucola en Parmezaanse kaas"
+        "description": "Truffel mascarpone, scheutjes tomatensaus, Parmaham (varkensvlees), gegrilde courgette, rucola en Parmezaanse kaas"
       },
       {
         "name": "Pizza Carpaccio",
@@ -385,12 +389,12 @@ export const menu: Section[] = [
       {
         "name": "Calzone",
         "price": 13.45,
-        "description": "Dubbelgevouwen pizza met tomatensaus, kaas, ham, salami, champignons, paprika en uien"
+        "description": "Dubbelgevouwen pizza met tomatensaus, kaas, kalkoenham, rundersalami, champignons, paprika en uien"
       },
       {
         "name": "Calzone Shoarma",
         "price": 13.95,
-        "description": "Dubbelgevouwen pizza met kaas, shoarma en twee sauzen"
+        "description": "Dubbelgevouwen pizza met kaas, lamsshoarma en twee sauzen"
       },
       {
         "name": "Calzone Caponata Vegetarisch",
@@ -414,8 +418,9 @@ export const menu: Section[] = [
       },
       {
         "name": "Vlees (per topping)",
+        "notHalal": true,
         "price": 2.5,
-        "description": "Ham, salami, peperoni, kipfilet, Parmaham, bacon, bolognese, shoarma"
+        "description": "Kalkoenham, rundersalami, runderpepperoni, kipfilet, lamsshoarma, bolognese; Parmaham en bacon zijn varkensvlees (niet halal)"
       },
       {
         "name": "Vis (per topping)",
@@ -455,7 +460,7 @@ export const menu: Section[] = [
       {
         "name": "Spare Ribs",
         "price": 19.95,
-        "description": "Overgoten in een heerlijke marinade sweet of hot"
+        "description": "Halal kalfsribs in een huisgemaakte marinade, sweet of hot"
       }
     ],
     "note": "Met gemengde salade en frites of aardappelschijfjes"
@@ -486,12 +491,12 @@ export const menu: Section[] = [
       {
         "name": "Shoarma",
         "price": 16.95,
-        "description": "Verse shoarma van de spies"
+        "description": "Verse lamsshoarma van de spies"
       },
       {
         "name": "Shoarma Speciaal",
         "price": 17.95,
-        "description": "Met paprika, ui en champignons"
+        "description": "Lamsshoarma met paprika, ui en champignons"
       },
       {
         "name": "Kipfilet",
@@ -507,7 +512,7 @@ export const menu: Section[] = [
       {
         "name": "Kapsalon Shoarma",
         "price": 11.95,
-        "description": "Friet, shoarma, gesmolten kaas, salade en saus"
+        "description": "Friet, lamsshoarma, gesmolten kaas, salade en saus"
       },
       {
         "name": "Kapsalon Kip Shoarma",
@@ -525,7 +530,7 @@ export const menu: Section[] = [
         "description": "Vegetarisch: friet, falafel, salade en 2 sauzen"
       }
     ],
-    "note": "Prijzen zoals in onze bestelwinkel. Al ons vlees is halal."
+    "note": "Prijzen zoals in onze bestelwinkel. Al ons vlees is halal, behalve gerechten met het label ‘Niet halal’ (met varkensvlees)."
   },
   {
     "name": "Burgers",
@@ -542,8 +547,9 @@ export const menu: Section[] = [
       },
       {
         "name": "Bacon Burger",
+        "notHalal": true,
         "price": 12.95,
-        "description": "sla, zoet zure augurk, rode uien, crispy bacon, ketchup en tomaat"
+        "description": "sla, zoetzure augurk, rode uien, crispy bacon (varkensvlees), ketchup en tomaat"
       },
       {
         "name": "Hamburger Menu",

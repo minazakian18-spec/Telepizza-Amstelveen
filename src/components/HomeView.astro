@@ -130,7 +130,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
     </div>
     <ReviewBadges lang={lang} />
     {/* TODO-CONTROLEREN: halal-claim */}
-    <p class="facts-line">100% halal{site.awards.map(a => <span> · {a.label} ({a.by})</span>)}</p>
+    <p class="facts-line">{lang === 'nl' ? 'Halal vlees, behalve gerechten met het label ‘Niet halal’' : 'Halal meat, except dishes labelled ‘Not halal’'}{site.awards.map(a => <span> · {a.label} ({a.by})</span>)}</p>
   </div></section>
 
   <section class="wrap intro">

@@ -34,7 +34,25 @@ export const site = {
     fee: null as string | null, // bijv. '€ 2,50'
     minimum: null as string | null, // bijv. '€ 15,00'
     time: null as string | null, // bijv. '30–45 minuten'
-    postcodes: '1181–1188 (Amstelveen) en 1081–1083 (Buitenveldert/Zuidas)', // TODO-CONTROLEREN tegen het bezorggebied in Sitedish
+    postcodes: '1181–1188 (Amstelveen), 1081–1083 (Buitenveldert en Zuidas) en 1075–1076 (Willemspark en Stadionbuurt)',
+    // Bron: https://telepizza.sitedish.shop/informatie (november 2026). Actuele bedragen staan altijd in de bestelwinkel.
+    zones: [
+      ['1181', 'Elsrijk-West', '€ 14,95', '€ 2,25', 'zie bestelwinkel'],
+      ['1182', 'Karselaankwartier en Bos', '€ 14,95', '€ 2,25', 'zie bestelwinkel'],
+      ['1183', 'Bankras', '€ 14,95', '€ 2,50', '€ 30'],
+      ['1184', 'Over-Ouderkerk', '€ 24,99', '€ 2,75', '€ 30'],
+      ['1185', 'Keizer Karelpark-West', '€ 19,95', '€ 2,65', '€ 30'],
+      ['1186', 'Groenelaan', '€ 19,95', '€ 2,65', '€ 30'],
+      ['1187', 'Bovenkerk', '€ 24,95', '€ 3,50', '€ 35'],
+      ['1188', 'Bovenkerkerpolder', '€ 19,95', '€ 2,65', '€ 35'],
+      ['1081', 'Buitenveldert-West', '€ 14,95', '€ 2,50', '€ 30'],
+      ['1082', 'Zuidas', '€ 14,95', '€ 2,50', '€ 30'],
+      ['1083', 'Buitenveldert-Oost', '€ 19,95', '€ 2,50', '€ 30'],
+      ['1075', 'Willemspark', '€ 24,95', '€ 2,50', '€ 30'],
+      ['1076', 'Stadionbuurt', '€ 24,95', '€ 2,75', '€ 35'],
+    ] as [string, string, string, string, string][],
+    hours: 'Dinsdag t/m donderdag 16:00–21:00, vrijdag en zaterdag 16:00–21:30, zondag 16:00–20:30, maandag gesloten.',
+    payment: 'iDEAL | Wero',
   },
   // TODO-CONTROLEREN: klopt "gratis parkeren in de buurt"?
   parkingNote: 'Parkeren kan in de buurt van het restaurant.',

@@ -1,6 +1,6 @@
 ---
 // Gerechten als regels op een gedrukte menukaart: naam, stippellijn, prijs en omschrijving.
-import { eur, dishName, type Dish } from '../data/dishes';
+import { eur, dishName, notHalalLabel, type Dish } from '../data/dishes';
 import type { Lang } from '../i18n/ui';
 interface Props { items: Dish[]; lang?: Lang }
 const { items, lang = 'nl' } = Astro.props;
@@ -16,7 +16,7 @@ const tag = (x: string) => (lang === 'nl' ? x : tags[x]?.[lang] ?? x);
 <div class="carta">
   {items.map(d => (
     <article class="ci">
-      <div class="hd"><h3>{dishName[d.name]?.[lang] ?? d.name}{d.tag && <><span class="sr-only"> – </span><span class="tag">{tag(d.tag)}</span></>}</h3>{" "}<span class="dots" aria-hidden="true"></span><span class="sr-only"> – </span><span class="price" dir="ltr">{eur(d.price, lang)}</span></div>
+      <div class="hd"><h3>{dishName[d.name]?.[lang] ?? d.name}{d.tag && <><span class="sr-only"> – </span><span class="tag">{tag(d.tag)}</span></>}{d.notHalal && <><span class="sr-only"> – </span><span class="tag nh">{notHalalLabel[lang] ?? notHalalLabel.en}</span></>}</h3>{" "}<span class="dots" aria-hidden="true"></span><span class="sr-only"> – </span><span class="price" dir="ltr">{eur(d.price, lang)}</span></div>
       <p lang={lang === 'nl' ? undefined : 'en'}>{lang === 'nl' ? d.text : d.en ?? d.text}</p>
     </article>
   ))}

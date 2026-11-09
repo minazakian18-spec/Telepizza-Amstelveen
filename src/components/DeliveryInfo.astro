@@ -4,19 +4,22 @@ import { site, wijken } from '../data/site';
 interface Props { heading?: string }
 const { heading = 'Bezorgen en afhalen' } = Astro.props;
 const d = site.delivery;
-// TODO eigenaar invullen: bezorgkosten, minimumbedrag en levertijd in src/data/site.ts (delivery). Geen bedragen verzinnen.
-const shop = 'Zie de bestelwinkel';
-const facts: [string, string][] = [['Bezorgkosten', d.fee ?? shop], ['Minimumbedrag', d.minimum ?? shop], ['Levertijd', d.time ?? shop]];
+
 ---
 <section class="delivery">
   <h2>{heading}</h2>
   <p><strong>Bestel direct bij ons:</strong> je bestelling gaat rechtstreeks naar onze keuken aan de Amsterdamseweg, zonder tussenkomst van een bezorgplatform.</p>
   <h3>Bezorggebied</h3>
-  <p>We bezorgen in Amstelveen en Buitenveldert: postcodes {d.postcodes}.</p>
+  <p>We bezorgen op deze postcodes: {d.postcodes}.</p>
   <ul class="wijken">{wijken.map(w => <li><a href={`/bezorgen-amstelveen/${w.slug}/`}>{w.name}</a>{w.pc && <span> ({w.pc})</span>}</li>)}</ul>
-  {/* TODO eigenaar invullen: bezorgkosten, minimumbedrag en levertijd (src/data/site.ts) */}
-  {facts.length > 0 && <dl class="dfacts">{facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>}
-  <p>Bezorgkosten, minimumbedrag en de verwachte levertijd zie je ook direct in onze <a href={site.orderUrl!} rel="noopener">online bestelwinkel</a>.</p>
+  <div class="dz-wrap"><table class="dz">
+    <caption>Bezorgkosten en minimumbedrag per postcode</caption>
+    <thead><tr><th scope="col">Postcode</th><th scope="col">Gebied</th><th scope="col">Minimum</th><th scope="col">Bezorgkosten</th><th scope="col">Gratis vanaf</th></tr></thead>
+    <tbody>{d.zones.map(([pc, area, min, fee, free]) => <tr><td>{pc}</td><td>{area}</td><td>{min}</td><td>{fee}</td><td>{free}</td></tr>)}</tbody>
+  </table></div>
+  <p class="dz-note">Actuele bedragen zie je altijd in onze <a href={site.orderUrl!} rel="noopener">bestelwinkel</a>.</p>
+  <h3>Bezorgtijden</h3>
+  <p>{d.hours} Afhalen kan tijdens de openingstijden van het restaurant.</p>
   <h3>Afhalen</h3>
   <p>Afhalen aan de {site.street}, {site.postalCode} {site.city}. {site.parkingNote}</p>
   <div class="btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">Bestel online</a><a class="btn" href={'tel:' + site.phone}>Bel {site.phoneDisplay}</a></div>
@@ -28,4 +31,13 @@ const facts: [string, string][] = [['Bezorgkosten', d.fee ?? shop], ['Minimumbed
   .dfacts div{background:var(--card);border-radius:12px;padding:12px 14px}
   .dfacts dt{font-size:.8rem;color:var(--muted)}
   .dfacts dd{margin:0;font-weight:700}
+</style>
+<style>
+  .dz-wrap{overflow-x:auto;margin:6px 0 8px}
+  .dz{width:100%;border-collapse:collapse;font-size:.95rem;min-width:520px}
+  .dz caption{text-align:start;font-weight:700;margin-bottom:8px}
+  .dz th,.dz td{padding:10px 12px;text-align:start;border-bottom:1px solid #e6dccd}
+  .dz th{font:800 .72rem/1.2 var(--head);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .dz tbody tr:nth-child(odd){background:#fffaf2}
+  .dz-note{font-size:.9rem;color:var(--muted)}
 </style>

@@ -5,8 +5,9 @@ import DeliveryInfo from '../../components/DeliveryInfo.astro';
 import { site } from '../../data/site';
 const faq: [string, string][] = [
   ['In welke postcodes bezorgen jullie?', `We bezorgen in Amstelveen en Buitenveldert: postcodes ${site.delivery.postcodes}. Twijfel je of jouw adres erbij hoort? Vul je postcode in bij het online bestellen of bel ons.`],
-  ['Wat kost bezorgen?', 'De bezorgkosten en het minimumbedrag zie je direct in onze online bestelwinkel, voordat je afrekent.'],
-  ['Hoe lang duurt het voordat mijn bestelling er is?', 'Dat hangt af van de drukte en de afstand. Bij het online bestellen zie je de verwachte levertijd.'],
+  ['Wat kost bezorgen?', 'Dat hangt af van je postcode: de bezorgkosten liggen tussen € 2,25 en € 3,50 en het minimumbedrag tussen € 14,95 en € 24,99. In de tabel hierboven zie je het per postcode; de actuele bedragen staan altijd in de bestelwinkel.'],
+  ['Tot hoe laat bezorgen jullie?', 'Dinsdag t/m donderdag van 16:00 tot 21:00, vrijdag en zaterdag tot 21:30 en zondag tot 20:30. Op maandag zijn we gesloten. Afhalen kan tijdens de openingstijden van het restaurant.'],
+  ['Hoe kan ik online betalen?', 'In onze bestelwinkel betaal je online met iDEAL | Wero.'],
   ['Kan ik ook bestellen en zelf ophalen?', `Ja. Kies afhalen bij het online bestellen of bel ${site.phoneDisplay}. Je haalt je bestelling op aan de ${site.street}.`],
   ['Bezorgen jullie ook op kantoor?', 'Ja, ook bedrijven in Amstelveen, Buitenveldert en op de Zuidas kunnen bestellen. Voor grotere groepen bieden we catering aan.'],
 ];
@@ -17,7 +18,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity
 <div class="wrap" style="padding-top:24px;padding-bottom:72px;max-width:860px">
 <p class="eyebrow">Bezorgen &amp; afhalen</p>
 <h1>Pizza bezorgen in Amstelveen en Buitenveldert</h1>
-<p class="lead">Thuis genieten van een pizza met handgerekt deeg, een verse pasta of een steak van de grill? Telepizza bezorgt in Amstelveen (postcodes 1181–1188) en in Buitenveldert (1081–1083). Bestel online, dan gaat je bestelling direct naar onze keuken aan de Amsterdamseweg.</p>
+<p class="lead">Thuis genieten van een pizza met handgerekt deeg, een verse pasta of een steak van de grill? Telepizza bezorgt in Amstelveen (1181–1188), Buitenveldert en de Zuidas (1081–1083), en in Amsterdam ook in Willemspark (1075) en de Stadionbuurt (1076). Ook Over-Ouderkerk (1184) hoort bij ons bezorggebied. Bestel online, dan gaat je bestelling direct naar onze keuken aan de Amsterdamseweg.</p>
 <Cta first="order" />
 
 <h2>Waarom direct bij ons bestellen?</h2>

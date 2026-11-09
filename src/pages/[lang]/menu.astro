@@ -21,7 +21,7 @@ const menuLd = {
     hasMenuItem: s.items.map(i => ({ '@type': 'MenuItem', name: i.name, ...(i.description && { description: desc(i.description) }), ...(i.price != null && { offers: { '@type': 'Offer', price: i.price.toFixed(2), priceCurrency: 'EUR' } }) })) })),
 };
 const slug = (n: string) => n.toLowerCase().normalize('NFD').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-import { eur as eurL, dishName } from '../../data/dishes';
+import { eur as eurL, dishName, notHalalLabel } from '../../data/dishes';
 const eur = (p: number) => eurL(p, lang);
 // Foto alleen bij een exacte naam, zodat een pizza nooit de foto van de pasta met dezelfde naam krijgt (en andersom).
 const norm = (n: string) => n.toLowerCase().replace(/[^a-z]/g, '');
@@ -51,6 +51,7 @@ const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Sp
     .it img{width:84px;height:64px;object-fit:cover;border-radius:10px;flex:none;background:#f4ede3}
     .it div{flex:1;min-width:0}
     .it h3{font-size:1.08rem;margin:0}
+    .it .nh{display:inline-block;margin-inline-start:8px;padding:3px 8px;border-radius:999px;background:#141414;color:#fff;font:800 .62rem/1.2 var(--head);letter-spacing:.06em;text-transform:uppercase;vertical-align:middle}
     .it p{margin:2px 0 0;font-size:.88rem;line-height:1.45}
     .it .price{white-space:nowrap;font-size:1.1rem}
   </style>
@@ -73,7 +74,7 @@ const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Sp
           {s.items.map(i => { const img = photoOf(i.name); return (
             <article class="it">
               {img && <img src={`/images/menu/${img}.webp`} alt={`${i.name} bij Telepizza Amstelveen`} width="84" height="64" loading="lazy" decoding="async" />}
-              <div><h3>{dishName[i.name]?.[lang] ?? i.name}</h3>{i.description && <p lang="en">{desc(i.description)}</p>}</div>{" "}
+              <div><h3>{dishName[i.name]?.[lang] ?? i.name}{i.notHalal && <><span class="sr-only"> – </span><span class="nh">{notHalalLabel[lang] ?? notHalalLabel.en}</span></>}</h3>{i.description && <p lang="en">{desc(i.description)}</p>}</div>{" "}
               <span class="price" dir="ltr">{i.priceText ?? (i.price != null ? eur(i.price) : '')}</span>
             </article>); })}
         </div>

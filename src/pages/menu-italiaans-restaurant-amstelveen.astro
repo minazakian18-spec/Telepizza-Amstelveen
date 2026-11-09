@@ -3,7 +3,7 @@ import { existsSync } from 'node:fs';
 import Base from '../layouts/Base.astro';
 import { menu } from '../data/menu';
 import { site } from '../data/site';
-import { dishes } from '../data/dishes';
+import { dishes, notHalalLabel } from '../data/dishes';
 const menuLd = {
   '@context': 'https://schema.org', '@type': 'Menu', name: 'Menu Telepizza Amstelveen', url: site.url + '/menu-italiaans-restaurant-amstelveen/', inLanguage: 'nl',
   hasMenuSection: menu.map(s => ({ '@type': 'MenuSection', name: s.name,
@@ -40,13 +40,14 @@ const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Sp
     .it img{width:84px;height:64px;object-fit:cover;border-radius:10px;flex:none;background:#f4ede3}
     .it div{flex:1;min-width:0}
     .it h3{font-size:1.08rem;margin:0}
+    .it .nh{display:inline-block;margin-inline-start:8px;padding:3px 8px;border-radius:999px;background:#141414;color:#fff;font:800 .62rem/1.2 var(--head);letter-spacing:.06em;text-transform:uppercase;vertical-align:middle}
     .it p{margin:2px 0 0;font-size:.88rem;line-height:1.45}
     .it .price{white-space:nowrap;font-size:1.1rem}
   </style>
   <div class="wrap mh">
     <p class="eyebrow">Menukaart met prijzen</p>
     <h1>Menukaart Telepizza Amstelveen</h1>
-    <p class="lead">Al onze gerechten worden met verse producten en veel zorg voor je bereid. Van pizza en pasta tot steaks van de grill, kapsalon en huisgemaakte tiramisu. Al ons vlees is halal. Alles over onze <a href="/pizza-amstelveen/">pizza in Amstelveen</a>, van deeg tot bezorging, lees je op de pizzapagina.</p>
+    <p class="lead">Al onze gerechten worden met verse producten en veel zorg voor je bereid. Van pizza en pasta tot steaks van de grill, kapsalon en huisgemaakte tiramisu. Al ons vlees is halal, behalve gerechten met het label ‘Niet halal’ (met varkensvlees). Alles over onze <a href="/pizza-amstelveen/">pizza in Amstelveen</a>, van deeg tot bezorging, lees je op de pizzapagina.</p>
     <div class="btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">Bestel online</a><a class="btn" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a></div>
   </div>
   <nav class="chips" aria-label="Menucategorieën"><div class="wrap"><ul>{menu.map(s => <li><a href={'#' + slug(s.name)}>{s.name}</a></li>)}</ul></div></nav>
@@ -62,7 +63,7 @@ const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Sp
           {s.items.map(i => { const img = photoOf(i.name); return (
             <article class="it">
               {img && <img src={`/images/menu/${img}.webp`} alt={`${i.name} bij Telepizza Amstelveen`} width="84" height="64" loading="lazy" decoding="async" />}
-              <div><h3>{i.name}</h3>{i.description && <p>{i.description}</p>}</div>{" "}
+              <div><h3>{i.name}{i.notHalal && <><span class="sr-only"> – </span><span class="nh">{notHalalLabel['nl'] ?? notHalalLabel.en}</span></>}</h3>{i.description && <p>{i.description}</p>}</div>{" "}
               <span class="price">{i.priceText ?? (i.price != null ? eur(i.price) : '')}</span>
             </article>); })}
         </div>

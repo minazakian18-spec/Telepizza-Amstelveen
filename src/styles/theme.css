@@ -259,3 +259,5 @@ body:has(.burger[open]) .mbar,body:has(.burger[open]) #nlpop{display:none}
 @media(max-width:767px){.mbar{left:12px;right:12px;inset-inline-end:12px}.mbar a{flex:1;padding:0 10px}body{padding-bottom:78px}}
 @supports(bottom:env(safe-area-inset-bottom)){@media(max-width:767px){.mbar{bottom:calc(12px + env(safe-area-inset-bottom))}body{padding-bottom:calc(78px + env(safe-area-inset-bottom))}}}
 .hero .open-today{color:#fff}
+/* Label "Niet halal" op gerechtkaarten: donker, goed te onderscheiden van de andere labels */
+.tag.nh{background:#141414;color:#fff;border-color:#141414}

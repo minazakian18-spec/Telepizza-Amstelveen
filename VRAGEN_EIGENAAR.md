@@ -1,27 +1,23 @@
 # Vragen voor de eigenaar
 
-Op de site staat "al ons vlees is halal". Bij deze gerechten verwijst de naam of omschrijving naar varkensvlees, of is het onduidelijk. Per gerecht graag kiezen: **halal variant** (dan zetten we bijvoorbeeld "runderham" of "kalkoenham" in naam en omschrijving) of **verwijderen**.
+## 1. Openingstijden: website en bestelwinkel verschillen
 
-## Halal-namen per gerecht
+| Dag | Website | Bestelwinkel (Sitedish) |
+|---|---|---|
+| Dinsdag t/m donderdag | 15:00–01:45 | 14:45–02:00 |
+| Vrijdag en zaterdag | 15:00–03:00 | 14:45–03:30 |
+| Zondag | 15:00–01:45 | 14:45–02:30 |
+| Maandag | gesloten | gesloten |
 
-| Ingrediënt | Gerechten | Halal variant als … | Of verwijderen? |
-|---|---|---|---|
-| ham | Pizza Borromea, Hawaii, Capricciosa, Quattro Stagioni, Contadina, Calzone, Telepizza | runderham / kalkoenham: | |
-| salami | Pizza Salami, Quattro Stagioni, Calzone, Telepizza | rundersalami: | |
-| pepperoni | Pizza Pepperoni, Pizza Romana | runderpepperoni: | |
-| Parmaham / prosciutto | Specialiteit van de Chef, Pizza Truffel Prosciutto | bijvoorbeeld bresaola (gedroogd rundvlees): | |
-| pancetta / bacon | Pizza Pancetta Bianca, Bacon Burger | runderbacon / kalkoenbacon: | |
-| spek | Pasta Carbonara (ook in de blog over carbonara) | runderspek / kalkoenspek: | |
-| spare ribs | Spare Ribs | runderribben? | |
-| extra topping vlees | "ham, salami, Parmaham, bacon" | zelfde namen als hierboven | |
+Welke tijden kloppen? De website is nog niet aangepast. Google kijkt ook naar je Google Bedrijfsprofiel; zorg dat alle drie hetzelfde zeggen.
 
-Parmaham, prosciutto en pancetta zijn per definitie varkensvlees. Die namen kunnen niet blijven als het vlees halal is.
+## 2. Gratis bezorging in 1181 en 1182
 
-## Overige vragen
+De bestelwinkel toont voor 1181 (Elsrijk-West) en 1182 (Karselaankwartier en Bos) "gratis vanaf € 0,00". Is bezorgen daar altijd gratis, of is dit een instelling die niet klopt? Op de website staat nu "zie bestelwinkel".
 
-1. **Carpaccio Salade** staat beschreven met gerookte zalm. Klopt dat, of is het rundercarpaccio zoals het voorgerecht "Carpaccio"?
-2. **Bezorgkosten**: hoeveel?
-3. **Minimumbedrag** voor bezorgen: hoeveel?
-4. **Levertijd**: ongeveer hoe lang (bijvoorbeeld 30–45 minuten)?
+## Afgehandeld (ter info)
 
-Antwoorden invullen in `src/data/site.ts` (bezorgen) en `src/data/menu.ts` (gerechten), of doorgeven, dan passen wij het aan.
+- Ham is kalkoenham, salami en pepperoni zijn van rundvlees, spare ribs zijn halal kalfsribs, shoarma is lamsvlees.
+- Parmaham, prosciutto, pancetta, bacon en spek zijn varkensvlees en staan op de kaart met het label "Niet halal".
+- Carpaccio Salade is rundercarpaccio.
+- Bezorgkosten, minimumbedragen, bezorgtijden en betaalmethode staan op /bezorgen-amstelveen/.

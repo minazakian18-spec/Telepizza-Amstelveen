@@ -135,7 +135,7 @@ export const wijken: Wijk[] = [
     ],
   },
   {
-    slug: 'zuidas', name: 'Zuidas', pc: '1082–1083',
+    slug: 'zuidas', name: 'Zuidas', pc: '1082',
     intro: 'De Zuidas is het zakendistrict van Amsterdam, rond station Amsterdam Zuid. Duizenden mensen werken hier in kantoren, en steeds meer mensen wonen er ook in nieuwe appartementencomplexen. Telepizza ligt op korte afstand, net over de grens in Amstelveen.',
     sections: [
       ['Lunch, overwerk en borrels', 'Op de Zuidas lopen werkdagen vaak uit. Een overleg dat later klaar is, een deadline die eraan komt of een team dat samen een project afrondt: dan is een paar pizza’s bestellen de snelste manier om iedereen te laten eten. Bestel online voor je kantoor op de Zuidas, of vraag catering aan voor een lunch, borrel of teamavond.'],
