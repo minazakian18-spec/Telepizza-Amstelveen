@@ -5,7 +5,7 @@ export const articles: Article[] = [
   {
     slug: 'beste-pizza-amstelveen',
     title: 'De beste pizza in Amstelveen: waar let je op?',
-    desc: 'Waar vind je de lekkerste pizza in Amstelveen? Zo herken je een goede pizza: het deeg, de saus, de kaas en de oven. Met tips van Telepizza, sinds 1984 aan de Amsterdamseweg.',
+    desc: 'Waar vind je de lekkerste pizza in Amstelveen? Zo herken je een goede pizza aan deeg, saus, kaas en oven. Met tips van Telepizza, sinds 1984.',
     date: '2026-10-30', img: '/images/pizza-groente.webp', imgAlt: 'Pizza met verse groenten en geitenkaas van Telepizza Amstelveen',
     intro: 'Iedereen heeft een mening over pizza. Toch zijn er een paar dingen waaraan je een echt goede pizza herkent. Na ruim veertig jaar pizza bakken in Amstelveen zetten we ze voor je op een rij.',
     body: `
@@ -85,7 +85,7 @@ export const articles: Article[] = [
   {
     slug: 'wat-is-een-kapsalon',
     title: 'Wat is een kapsalon? Het verhaal van een Nederlandse klassieker',
-    desc: 'Wat is een kapsalon en waar komt de naam vandaan? Over het Rotterdamse gerecht met friet, shoarma, kaas en salade, en waar je een halal kapsalon eet in Amstelveen.',
+    desc: 'Wat is een kapsalon en waar komt de naam vandaan? Over het Rotterdamse gerecht met friet, shoarma en kaas, en waar je halal kapsalon eet in Amstelveen.',
     date: '2026-10-16', img: '/images/menu/kapsalon.webp', imgAlt: 'Kapsalon met shoarma, kaas en salade',
     intro: 'Friet, vlees, gesmolten kaas en salade in één bak: de kapsalon is misschien wel het bekendste Nederlandse snackgerecht van deze eeuw. Maar waarom heet het eigenlijk zo?',
     body: `

@@ -15,8 +15,12 @@ import f1 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 import f2 from '@fontsource/archivo/files/archivo-latin-800-normal.woff2?url';
 const fonts = [f1, f2];
 interface Crumb { name: string; path: string }
-interface Props { title: string; description: string; crumbs?: Crumb[]; schema?: object[]; overlay?: boolean; image?: string; lang?: Lang; page?: PageKey; alternates?: { l: Lang; href: string }[]; noindex?: boolean }
-const { title, description, crumbs = [], schema = [], overlay = false, image = '/og.png', lang = 'nl', page } = Astro.props;
+interface Props { title: string; description: string; crumbs?: Crumb[]; schema?: object[]; overlay?: boolean; image?: string; lang?: Lang; page?: PageKey; imageAlt?: string; alternates?: { l: Lang; href: string }[]; noindex?: boolean }
+const { crumbs = [], schema = [], overlay = false, image = '/og.png', lang = 'nl', page } = Astro.props;
+// Overal dezelfde apostrof als in de lopende tekst (pizza’s).
+const title = Astro.props.title.replace(/'/g, '’');
+const description = Astro.props.description.replace(/'/g, '’');
+const imageAlt = Astro.props.imageAlt ?? 'Restaurantzaal van Telepizza aan de Amsterdamseweg 452 in Amstelveen, met neonverlichting en plantenwand';
 const t = ui[lang];
 const nc = nlt(lang);
 const reserveShort: Partial<Record<Lang, string>> = { nl: 'Reserveer', en: 'Book', de: 'Reservieren', fr: 'Réserver', it: 'Prenota', es: 'Reservar' };
@@ -38,7 +42,7 @@ const restaurant: any = {
   url: site.url + '/',
   image: site.url + '/images/restaurant-binnen.webp',
   priceRange: '€€',
-  servesCuisine: ['Italian', 'Pizza', 'Pasta', 'Grill', 'Halal'],
+  servesCuisine: ['Italiaans', 'Pizza', 'Pasta', 'Grill'],
   logo: site.url + '/images/logo-telepizza-2x.webp',
   hasMenu: site.url + '/menu-italiaans-restaurant-amstelveen/',
   address: { '@type': 'PostalAddress', streetAddress: site.street, postalCode: site.postalCode, addressLocality: site.city, addressCountry: site.country },
@@ -69,7 +73,7 @@ const path = Astro.url.pathname;
 const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z';
 ---
 <!doctype html>
-<html lang={lang} dir={info.dir}>
+<html lang={lang === 'en' ? 'en-GB' : lang} dir={info.dir}>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -108,7 +112,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:image" content={new URL(image, site.url).href} />
-<meta property="og:image:alt" content={title} />
+<meta property="og:image:alt" content={imageAlt} />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />

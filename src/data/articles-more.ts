@@ -115,7 +115,7 @@ export const moreArticles: Article[] = [
   {
     slug: 'telepizza-amstelveen-sinds-1984',
     title: 'Telepizza: al ruim veertig jaar in Amstelveen',
-    desc: 'Het verhaal van Telepizza Amstelveen: sinds 1984 aan de Amsterdamseweg, van pizzeria tot sfeervol familierestaurant.',
+    desc: 'Het verhaal van Telepizza Amstelveen: sinds 1984 aan de Amsterdamseweg, van kleine pizzeria tot sfeervol Italiaans familierestaurant met grill en bar.',
     date: '2026-10-13', img: '/images/eigen/gevel-avond.webp', imgAlt: 'Gevel van Telepizza aan de Amsterdamseweg in Amstelveen',
     intro: 'Sommige plekken horen gewoon bij een stad. Telepizza staat al sinds 1984 aan de Amsterdamseweg in Amstelveen.',
     body: `

@@ -16,7 +16,7 @@ const p = Astro.props;
 const faq = p.faq ?? [];
 const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }] : [];
 ---
-<Base title={p.title} description={p.description} crumbs={[{ name: p.crumb, path: p.path }]} schema={[...faqLd, ...(p.schema ?? [])]} image={p.img} page={p.page} alternates={p.alternates}>
+<Base title={p.title} description={p.description} crumbs={[{ name: p.crumb, path: p.path }]} schema={[...faqLd, ...(p.schema ?? [])]} image={p.img} imageAlt={p.imgAlt} page={p.page} alternates={p.alternates}>
   <style>
     .lh{display:grid;gap:48px;align-items:center;padding-top:32px;padding-bottom:88px}
     @media(min-width:900px){.lh{grid-template-columns:1fr 1fr}}
@@ -61,7 +61,7 @@ const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPag
     {p.gallery.map(([src, cap]) => <figure><img src={src} alt={cap} width="900" height="1125" loading="lazy" decoding="async" /><figcaption>{cap}</figcaption></figure>)}
   </div></section>}
   {faq.length > 0 && <section class="sec"><div class="wrap" style="max-width:860px">
-    <div class="center"><p class="eyebrow">Domande</p><h2>Veelgestelde vragen</h2></div>
+    <div class="center"><h2>Veelgestelde vragen</h2></div>
     {faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
   </div></section>}
 </Base>

@@ -8,8 +8,8 @@ import { wijken } from '../data/site';
   path="/pizza-amstelveen/" crumb="Pizza"
   title="Pizza Amstelveen – bestellen, afhalen & bezorgen | Telepizza"
   description="Pizza bestellen in Amstelveen? Ruim 30 pizza's met handgerekt deeg vanaf € 9,50. Bezorgd in Amstelveen en Buitenveldert of afhalen."
-  eyebrow="Sinds 1984 · vers uit de oven" h1="Pizza in Amstelveen: <i>bestellen, afhalen of hier eten</i>"
-  lead="Telepizza is al sinds 1984 de pizzeria in Amstelveen voor handgerekt deeg, huisgemaakte tomatensaus en royale toppings. Van een klassieke margherita voor € 9,50 tot onze pizza met truffel en Parmaham: bestel online, haal af of eet hier."
+  eyebrow="Sinds 1984 · vers uit de oven" h1="Pizza Amstelveen: <i>bestellen, afhalen of hier eten</i>"
+  lead="Pizza in Amstelveen sinds 1984: handgerekt deeg, huisgemaakte tomatensaus en al het vlees halal. Onze pizzeria in Amstelveen is open tot 01:45, op vrijdag en zaterdag tot 03:00, en scoort een 4,7 op Google. Bestel online, haal af of eet hier."
   img="/images/ph/pizza-rozemarijn.webp" imgAlt="Pizza met salami, champignons en paprika uit de oven bij Telepizza Amstelveen"
   dishesTitle="Onze populairste pizza’s"
   dishes={pick('telePizza', 'truffel', 'pepperoni', 'margherita', 'chef', 'carpaccioPizza', 'popeye', 'bbq', 'quattro', 'gamberoniPizza', 'shoarmaPizza', 'calzone')}
@@ -18,7 +18,7 @@ import { wijken } from '../data/site';
     ['Bezorgen jullie in Buitenveldert?', 'Ja. We bezorgen in heel Amstelveen (1181–1188) en in Buitenveldert en de Zuidas (1081–1083). Bestel online via onze bestelwinkel.'],
     ['Hoe lang duurt bezorgen?', 'Dat hangt af van de drukte en de afstand. De verwachte levertijd zie je direct bij het online bestellen.'],
     ['Kan ik ook afhalen?', 'Ja. Bestel online of bel 020-6435287 en haal je pizza op aan de Amsterdamseweg 452.'],
-    ['Wat kost een pizza bij Telepizza?', 'Een pizza margherita kost € 9,50. De meeste pizza’s kosten tussen € 11,95 en € 14,45.'],
+    ['Wat kost een pizza bij Telepizza?', 'Onze pizza’s kosten van € 9,50 (margherita) tot € 14,45. De meeste kosten tussen € 12,95 en € 13,95.'],
     ['Hebben jullie vegetarische pizza’s?', 'Ja, onder andere margherita, funghi, quattro formaggi, parmigiana, vegetariana en de popeye speciale met geitenkaas.'],
     ['Kan ik mijn eigen pizza samenstellen?', 'Ja, kies extra toppings: groente € 1,75, kaas € 2,00, vlees € 2,50 en vis € 2,75 per topping.'],
   ]}>
@@ -42,7 +42,8 @@ import { wijken } from '../data/site';
   </ul>
   <p>Twijfel je? Vraag het onze bediening. We denken graag met je mee, ook als je iets wilt aanpassen of een topping wilt weglaten.</p>
   <DeliveryInfo />
-  <h2>Pizza bezorgen in jouw wijk</h2>
+  <h2>Pizza bezorgen in Amstelveen</h2>
+  <p>Liever thuis eten? Pizza bezorgen in Amstelveen en Buitenveldert doe je via onze eigen bestelwinkel, en pizza afhalen in Amstelveen kan aan de Amsterdamseweg 452. Bekijk hieronder je wijk.</p>
   <p>{wijken.map((w, i) => <>{i > 0 && ' · '}<a href={`/bezorgen-amstelveen/${w.slug}/`}>Pizza bezorgen {w.name}</a></>)}</p>
   {/* TODO-CONTROLEREN: halal-claim (geldt dit voor al het vlees, ook salami/pepperoni?) */}
   <h2>Halal pizza met vlees</h2>

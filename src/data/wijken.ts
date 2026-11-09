@@ -101,7 +101,7 @@ export const wijken: Wijk[] = [
     ],
     faq: [
       ['Bezorgen jullie in Keizer Karelpark?', 'Ja, Keizer Karelpark valt binnen ons bezorggebied. Vul je adres in bij het online bestellen voor de bezorgkosten en levertijd.'],
-      ['Wat kost een pizza bij Telepizza?', 'Een pizza margherita kost € 9,50; de meeste pizza’s kosten tussen € 11,95 en € 14,45.'],
+      ['Wat kost een pizza bij Telepizza?', 'Onze pizza’s kosten van € 9,50 (margherita) tot € 14,45; de meeste tussen € 12,95 en € 13,95.'],
       ['Hebben jullie ook een kapsalon?', 'Ja, de kapsalon staat op onze kaart en is een populaire keuze om te laten bezorgen.'],
     ],
   },

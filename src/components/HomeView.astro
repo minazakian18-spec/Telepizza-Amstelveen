@@ -106,7 +106,7 @@ ${heroAll.map((x, i) => `.hero .slide:nth-of-type(${i + 1}){animation-delay:${i 
 const words = ['Pizza', 'Pasta', 'Grill', 'Cocktails', L.since, 'Amstelveen'];
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: c.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]+>/g, '') } })) };
 ---
-<Base overlay lang={lang} page="home" schema={[faqLd]} image={hp('zaal-neon')} title={c.title} description={c.desc}>
+<Base overlay lang={lang} page="home" schema={[faqLd]} image={hp('zaal-neon')} imageAlt={HA[0]} title={c.title} description={c.desc}>
   <link slot="head" rel="preload" as="image" href={hp('zaal-neon')} imagesrcset={hs('zaal-neon')} imagesizes="100vw" fetchpriority="high" />
   {heroCss && <style slot="head" set:html={heroCss} />}
   <section class="hero" aria-label="Telepizza Amstelveen">

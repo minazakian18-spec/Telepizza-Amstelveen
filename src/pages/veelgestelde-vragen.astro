@@ -14,7 +14,7 @@ const faq = [
 ];
 const ld = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 ---
-<Base title="Veelgestelde vragen | Telepizza Amstelveen" description="Antwoorden op vragen over Telepizza Amstelveen: adres, bezorgen, afhalen, catering, vegetarisch en meer." crumbs={[{ name: 'Veelgestelde vragen', path: '/veelgestelde-vragen/' }]} schema={[ld]}>
+<Base title="Veelgestelde vragen | Telepizza Amstelveen" description="Antwoorden op veelgestelde vragen over Telepizza Amstelveen: adres, openingstijden, bezorgen, afhalen, reserveren, catering, halal en vegetarisch." crumbs={[{ name: 'Veelgestelde vragen', path: '/veelgestelde-vragen/' }]} schema={[ld]}>
 <div class="wrap">
 <h1>Veelgestelde vragen</h1>
 {faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
