@@ -50,7 +50,7 @@ export const articles: Article[] = [
 <h2>Van de grill</h2>
 <p>Liever een stuk vlees? Kies een biefstuk met champignon- of peperroomsaus, een ribeye, entrecote of de ossenhaas dello chef. Ook de spare ribs, sweet of hot, zijn populair. Alles komt met gemengde salade en frites of aardappelschijfjes. Meer op de pagina <a href="/steak-grill-amstelveen/">steaks en grill</a>.</p>
 <h2>Shoarma, döner en kapsalon</h2>
-<p>Naast Italiaanse gerechten serveren we shoarmaschotels, pizza döner en natuurlijk de <a href="/kapsalon-amstelveen/">kapsalon</a>. Ook hier is het vlees halal, met huisgemaakte knoflooksaus en sambal.</p>
+<p>Naast Italiaanse gerechten serveren we shoarmaschotels, pizza shoarma en natuurlijk de <a href="/kapsalon-amstelveen/">kapsalon</a> (ook met döner). Ook hier is het vlees halal, met huisgemaakte knoflooksaus en sambal.</p>
 <h2>Voor gezinnen en groepen</h2>
 <p>Telepizza is een familierestaurant. Grote tafels zijn geen probleem; bel ons vooraf, dan zetten we alles klaar. Ook voor <a href="/catering-italiaans-restaurant-amstelveen/">catering</a> bij feesten en bijeenkomsten kun je bij ons terecht.</p>
 <h2>Openingstijden</h2>

@@ -193,7 +193,6 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
 </div></footer>
 {!noPopup && <Newsletter lang={lang} variant="popup" />}
 <nav class:list={['mbar', { late: overlay }]} aria-label="Snelle acties">
-  <a href={'tel:' + site.phone}><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={phoneIco}/></svg>{t.call}</a>
   <a href={site.orderUrl!} rel="noopener">{t.order}</a>
   <a class="o" href={site.reserveUrl!} rel="noopener">{reserveShort[lang] ?? t.reserve}</a>
 </nav>

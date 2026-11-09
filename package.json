@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "build:preview": "npm run build && node scripts/make-preview.mjs dist dist-preview /Telepizza-Amstelveen",
     "photos": "node scripts/menu-photos.mjs",
-    "check": "node scripts/check-site.cjs dist"
+    "check": "node scripts/check-site.cjs dist && node scripts/check-glued.cjs dist"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

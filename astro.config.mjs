@@ -12,14 +12,16 @@ const track = {
       const kind = href => /sitedish\.shop/.test(href) ? 'click_order' : /thefork\./.test(href) ? 'click_reserve' : /^tel:/.test(href) ? 'click_call' : /google\.[a-z.]+\/maps/.test(href) ? 'click_route' : null;
       for (const f of walk(fileURLToPath(dir)).filter(f => f.endsWith('.html'))) {
         const html = readFileSync(f, 'utf8');
-        const out = html.replace(/<a\b([^>]*?)href="([^"]+)"([^>]*)>/g, (m, a, href, b) => {
+        let out = html.replace(/<a\b([^>]*?)href="([^"]+)"([^>]*)>/g, (m, a, href, b) => {
           const k = kind(href.replace(/&amp;/g, '&'));
           if (!k || /data-track=/.test(m)) return m;
           const isCta = k === 'click_order' || k === 'click_reserve';
           const ext = (isCta && !/target=/.test(m) ? ' target="_blank"' : '') + (isCta && !/rel=/.test(m) ? ' rel="noopener"' : '');
           return `<a${a}href="${href}"${b}${ext} data-track="${k}">`;
         });
-        if (out !== html) writeFileSync(f, out);
+        // Spatie tussen links die direct op elkaar volgen, zodat ze in tekstweergave en schermlezers niet aan elkaar plakken.
+        const spaced = out.split('</a><a ').join('</a> <a ').split('</a><a>').join('</a> <a>');
+        if (spaced !== html) writeFileSync(f, spaced);
       }
     },
   },

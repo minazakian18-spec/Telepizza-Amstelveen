@@ -40,7 +40,11 @@ const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Sp
     .msec{padding:56px 0 8px;scroll-margin-top:140px}
     .msec header{display:grid;gap:20px;align-items:end;margin-bottom:22px}
     @media(min-width:800px){.msec header.ph{grid-template-columns:1fr 320px}}
-    .msec header img{width:100%;aspect-ratio:7/5;object-fit:cover;border-radius:var(--r);background:#f4ede3}
+    .cat-ph{position:relative;margin:0}
+    .cat-ph img{width:100%;aspect-ratio:16/7;object-fit:cover;border-radius:var(--r);background:#f4ede3;filter:saturate(.9)}
+    .cat-ph figcaption{position:absolute;left:12px;bottom:12px;padding:6px 12px;border-radius:999px;background:rgba(20,20,20,.75);color:#fff;font:800 .72rem/1 var(--head);letter-spacing:.08em;text-transform:uppercase}
+    .msec header.ph{margin-bottom:30px;grid-template-columns:1fr!important}
+    .cat-ph img{max-height:260px}
     .msec h2{margin:0}
     .items{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr))}
     .it{display:flex;gap:14px;align-items:center;min-height:92px;padding:14px 0;border-bottom:2px solid var(--ink)}
@@ -63,7 +67,7 @@ const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Sp
       <section class="msec" id={slug(s.name)}>
         <header class:list={{ ph: !!sectionPhoto[s.name] }}>
           <div><h2>{sec(s.name)}</h2>{s.note && <p>{note(s.note)}</p>}</div>
-          {sectionPhoto[s.name] && <img src={`/images/menu/${sectionPhoto[s.name]}.webp`} alt={`${sec(s.name)}, Telepizza Amstelveen`} width="630" height="450" loading="lazy" decoding="async" />}
+          {sectionPhoto[s.name] && <figure class="cat-ph"><img src={`/images/menu/${sectionPhoto[s.name]}.webp`} alt={`Sfeerfoto ${sec(s.name)} bij Telepizza Amstelveen`} width="630" height="450" loading="lazy" decoding="async" /><figcaption>{sec(s.name)}</figcaption></figure>}
         </header>
         <div class="items">
           {s.items.map(i => { const img = photoOf(i.name); return (

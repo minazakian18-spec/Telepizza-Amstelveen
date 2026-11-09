@@ -117,7 +117,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
           {...(i === 0 ? { fetchpriority: 'high' } : { loading: 'lazy', decoding: 'async' })} />
       </>
     ))}
-    <div class="tagline"><span class="neon">{H.ex}</span><span>Ristorante · Pizzeria · Grill</span>
+    <div class="tagline"><span class="neon">{H.ex}</span>{" "}<span>Ristorante · Pizzeria · Grill</span>
       <div class="btns hero-btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">{t.order}</a><a class="btn" href={site.reserveUrl!} rel="noopener">{t.reserve}</a></div>
       <OpenToday lang={lang} />
     </div>
