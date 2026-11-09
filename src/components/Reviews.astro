@@ -1,14 +1,11 @@
 ---
-// Reviewsectie: één uitgelichte review groot in het rood, daarnaast vier kortere reviews als kaarten,
-// en bovenaan de score van Google en TheFork. Reviewteksten zijn letterlijk overgenomen.
+// Reviewsectie: bovenaan de score van Google en TheFork, daaronder alle reviews als kaarten
+// in een rij die vanzelf naar rechts schuift en oneindig doorloopt. Reviewteksten zijn letterlijk overgenomen.
 import { site } from '../data/site';
 import { ui, type Lang } from '../i18n/ui';
 const { lang = 'nl' } = Astro.props as { lang?: Lang };
 const t = ui[lang];
 const ordered = lang === 'nl' ? site.reviews : [...site.reviews].sort((a, b) => Number(b.lang === lang || b.lang === 'en') - Number(a.lang === lang || a.lang === 'en'));
-// Uitgelicht: de review over het familiebedrijf als die er is, anders de eerste.
-const featured = ordered.find(r => r.author === 'René Nobel') ?? ordered[0];
-const rest = ordered.filter(r => r !== featured).slice(0, 4);
 const fmt = (n: number) => n.toLocaleString(lang === 'en' ? 'en-GB' : 'nl-NL');
 const fork = site.platforms.find(p => p.id === 'thefork');
 const score = String(site.rating.value).replace('.', ',');
@@ -34,26 +31,26 @@ const g = (s: number) => `<svg viewBox="0 0 48 48" width="${s}" height="${s}" ar
       </div>
     </header>
 
-    <div class="rv-grid">
-      <figure class="rv-feat">
-        <span class="rv-st big" aria-label="5 / 5">★★★★★</span>
-        <blockquote lang={featured.lang}>{featured.text}</blockquote>
-        <figcaption>
-          <span class="rv-av" style={`--c:${colorOf(featured.author)}`} aria-hidden="true">{featured.author.charAt(0).toUpperCase()}</span>
-          <span><b>{featured.author}</b><small><Fragment set:html={g(13)} /> {t.googleReview}</small></span>
-        </figcaption>
-      </figure>
-      {rest.map(r => (
-        <figure class="rv-card">
+    <ul class="rv-row" aria-label={t.reviewsTitle}>
+      {ordered.map(r => (
+        <li><figure class="rv-card">
           <span class="rv-st" aria-label="5 / 5">★★★★★</span>
           <blockquote lang={r.lang}>{r.text}</blockquote>
           <figcaption>
             <span class="rv-av" style={`--c:${colorOf(r.author)}`} aria-hidden="true">{r.author.charAt(0).toUpperCase()}</span>
             <span><b>{r.author}</b><small><Fragment set:html={g(13)} /> {t.googleReview}</small></span>
           </figcaption>
-        </figure>
+        </figure></li>
       ))}
-    </div>
+    </ul>
+    <script is:inline>(function(){var s=document.currentScript.previousElementSibling;var o=[].slice.call(s.children),n=o.length;
+      o.forEach(function(i){var c=i.cloneNode(true);c.setAttribute('aria-hidden','true');s.appendChild(c)});
+      if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+      var vis=0,hold=0,step=function(){return s.children[1].offsetLeft-s.children[0].offsetLeft};
+      s.addEventListener('scroll',function(){var L=step()*n;if(s.scrollLeft>=L){s.style.scrollBehavior='auto';s.style.scrollSnapType='none';s.scrollLeft-=L;s.offsetWidth;s.style.scrollSnapType='';s.style.scrollBehavior=''}},{passive:true});
+      ['pointerdown','touchstart','mouseenter','focusin'].forEach(function(e){s.addEventListener(e,function(){hold=Date.now()+6000},{passive:true})});
+      new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(s);
+      setInterval(function(){if(!vis||document.hidden||Date.now()<hold)return;s.scrollBy({left:step(),behavior:'smooth'})},4000)})();</script>
     <p class="rv-more"><a class="btn" href={site.googleReviewsUrl} rel="noopener" target="_blank">{t.reviewsAll}</a></p>
   </div>
 </section>
@@ -67,22 +64,16 @@ const g = (s: number) => `<svg viewBox="0 0 48 48" width="${s}" height="${s}" ar
   .rv-scores small{color:#6b5a4a;font-size:.88rem}
   .rv-fk{font:800 .95rem/1 var(--head);color:#00665c}
   .rv-st{color:#f2a900;letter-spacing:2px;font-size:1rem;line-height:1}
-  .rv-grid{display:grid;gap:18px}
-  @media(min-width:900px){.rv-grid{grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:auto auto}.rv-feat{grid-row:span 2}}
-  .rv-grid figure{margin:0;display:flex;flex-direction:column;gap:14px;border-radius:20px}
-  .rv-feat{background:var(--red);color:#fff;padding:36px 34px;justify-content:space-between}
-  .rv-feat .rv-st{color:#ffd166}
-  .rv-st.big{font-size:1.4rem}
-  .rv-feat blockquote{margin:0;font:600 clamp(1.2rem,1.7vw,1.45rem)/1.5 var(--sans)}
+  .rv-row{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;list-style:none;margin:0 -4px;padding:4px 4px 18px}
+  .rv-row::-webkit-scrollbar{display:none}
+  .rv-row li{flex:0 0 min(86%,360px);scroll-snap-align:start;display:flex}
+  .rv-card{margin:0;display:flex;flex-direction:column;gap:14px;border-radius:20px;width:100%}
   .rv-card{background:#fff;padding:24px;box-shadow:0 1px 0 rgba(74,46,30,.08),0 14px 32px rgba(74,46,30,.08)}
   .rv-card blockquote{margin:0;font-size:1rem;line-height:1.6;color:#3b2d24;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;flex:1}
-  .rv-grid figcaption{display:flex;align-items:center;gap:12px}
-  .rv-grid figcaption>span:last-child{display:flex;flex-direction:column;gap:3px}
-  .rv-grid figcaption b{font:700 1rem/1.2 var(--sans)}
-  .rv-grid figcaption small{display:flex;align-items:center;gap:5px;font-size:.8rem;color:#6b5a4a}
-  .rv-feat figcaption small{color:#ffe1dc}
-  .rv-feat figcaption small svg{background:#fff;border-radius:50%;padding:1px}
+  .rv-card figcaption{display:flex;align-items:center;gap:12px}
+  .rv-card figcaption>span:last-child{display:flex;flex-direction:column;gap:3px}
+  .rv-card figcaption b{font:700 1rem/1.2 var(--sans)}
+  .rv-card figcaption small{display:flex;align-items:center;gap:5px;font-size:.8rem;color:#6b5a4a}
   .rv-av{display:grid;place-items:center;width:42px;height:42px;flex:none;border-radius:50%;background:var(--c);color:#fff;font:600 1.1rem/1 var(--sans)}
-  .rv-feat .rv-av{box-shadow:0 0 0 3px rgba(255,255,255,.35)}
   .rv-more{text-align:center;margin:36px 0 0}
 </style>
