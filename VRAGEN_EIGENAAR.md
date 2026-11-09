@@ -43,10 +43,6 @@ Nu staat er alleen "Parkeren kan in de buurt van het restaurant."
 - Tot waar leveren jullie catering (nu staat er: Amstelveen, Buitenveldert en Zuidas, daarbuiten in overleg)?
 - Kunnen klanten een offerte via WhatsApp aanvragen? Zo ja, welk nummer? Nu staan alleen telefoon, mail en het offerteformulier op de site.
 
-## 8. Vertoningen bij de start
-
-De startposities (mei–okt 2026) staan in `SEO-TRACKING.md`. De vertoningen per zoekwoord ontbreken nog; deel die kolom uit dezelfde Search Console-export, dan vullen we hem in.
-
 ## 9. Neonteksten in de zaal
 
 Op de site staan twee neonteksten: "Hotter than your ex" en "Feed me steak and tell me I’m pretty". Hangen ze allebei in het restaurant, en zijn ze zo goed gespeld?
