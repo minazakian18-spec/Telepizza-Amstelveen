@@ -112,7 +112,7 @@ console.log('\nKlaar. Pagina\'s:', html.length);
   }
   const ks = Object.keys(wijkSent);
   for (let i = 0; i < ks.length; i++) for (let j = i + 1; j < ks.length; j++) { const a = wijkSent[ks[i]], b = wijkSent[ks[j]]; const pct = [...a].filter(s => b.has(s)).length / Math.min(a.size, b.size); if (pct > 0.6) addq('wijkpagina’s > 60% gelijk', ks[i] + ' ~ ' + ks[j]); }
-  const robots = fs.readFileSync(path.join(dist, 'robots.txt'), 'utf8'); if (!/Disallow: \/account\//.test(robots)) addq('robots', 'mist Disallow /account/');
+  const robots = fs.readFileSync(path.join(dist, 'robots.txt'), 'utf8'); if (/account/.test(robots)) addq('robots', 'bevat nog account');
   const sm = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8'); if (/\/account\//.test(sm)) addq('sitemap', 'bevat account');
   for (const [k, v] of Object.entries(Q)) { console.log(`\n## ${k} (${v.length})`); [...new Set(v)].slice(0, 12).forEach(x => console.log('  ' + x)); }
   console.log('Extra controles klaar.');

@@ -8,7 +8,7 @@ Statische Astro-site. Gegevens aanpassen: `src/data/site.ts`, menu: `src/data/me
 | Opdracht | Resultaat |
 |---|---|
 | `npm install` | eenmalig, installeert alles |
-| `npm run build` | **productie** in `dist/`: basispad `/`, canonicals naar https://telepizza-amstelveen.nl, robots.txt met `Allow`, `Disallow: /account/` en de sitemap-regel, `CNAME`, `sitemap.xml` |
+| `npm run build` | **productie** in `dist/`: basispad `/`, canonicals naar https://telepizza-amstelveen.nl, robots.txt met `Allow` en de sitemap-regel, `CNAME`, `sitemap.xml` |
 | `npm run build:preview` | **preview** in `dist-preview/`: zelfde site onder `/Telepizza-Amstelveen/` voor GitHub Pages, robots.txt `Disallow: /`, geen `CNAME` |
 | `npm run check` | controleert `dist/`: links, afbeeldingen, titels, beschrijvingen, canonicals, hreflang, JSON-LD, verboden teksten |
 | `npm run photos` | zet nieuwe menufoto's om en werkt `MISSING_PHOTOS.md` bij |

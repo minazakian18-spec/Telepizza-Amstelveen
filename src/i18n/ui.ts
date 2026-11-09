@@ -128,10 +128,10 @@ export const ui: Record<Lang, UI> = {
   },
 };
 
-// Teksten voor nieuwsbrief, account en privacy. NL, EN en DE volledig; andere talen vallen terug op EN.
+// Teksten voor nieuwsbrief en privacy. NL, EN en DE volledig; andere talen vallen terug op EN.
 export interface NewsletterCopy {
   title: string; text: string; email: string; first: string; consent: string; privacy: string; submit: string;
-  thanks: string; close: string; footerTitle: string; account: string;
+  thanks: string; close: string; footerTitle: string;
 }
 const nlCopy: Record<'nl' | 'en' | 'de', NewsletterCopy> = {
   nl: {
@@ -143,7 +143,6 @@ const nlCopy: Record<'nl' | 'en' | 'de', NewsletterCopy> = {
     thanks: 'Bijna klaar! Check je inbox en bevestig je aanmelding.',
     close: 'Sluiten',
     footerTitle: 'Schrijf je in voor de nieuwsbrief',
-    account: 'Mijn account',
   },
   en: {
     title: 'Stay in the loop',
@@ -154,7 +153,6 @@ const nlCopy: Record<'nl' | 'en' | 'de', NewsletterCopy> = {
     thanks: 'Almost done! Check your inbox and confirm your sign-up.',
     close: 'Close',
     footerTitle: 'Sign up for our newsletter',
-    account: 'My account',
   },
   de: {
     title: 'Bleiben Sie auf dem Laufenden',
@@ -165,7 +163,6 @@ const nlCopy: Record<'nl' | 'en' | 'de', NewsletterCopy> = {
     thanks: 'Fast geschafft! Prüfen Sie Ihr Postfach und bestätigen Sie Ihre Anmeldung.',
     close: 'Schließen',
     footerTitle: 'Newsletter abonnieren',
-    account: 'Mein Konto',
   },
 };
 export const nlt = (lang: Lang): NewsletterCopy => nlCopy[lang as 'nl' | 'en' | 'de'] ?? nlCopy.en;

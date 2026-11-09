@@ -13,7 +13,7 @@ for (const f of walk(out).filter(f => f.endsWith('.html'))) {
   const h = readFileSync(f, 'utf8');
   if (/name="robots" content="noindex/.test(h) || /http-equiv="refresh"/.test(h)) continue;
   const loc = (h.match(/<link rel="canonical" href="([^"]+)"/) || [])[1];
-  if (!loc || /\/(404|account)\b/.test(loc)) continue;
+  if (!loc || /\/404\b/.test(loc)) continue;
   const origin = new URL(loc).origin;
   const alts = [...h.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)].map(m => `    <xhtml:link rel="alternate" hreflang="${m[1]}" href="${m[2]}"/>`);
   const srcs = [...h.matchAll(/<img\b[^>]*\bsrc="(\/images\/(?:menu|ph|eigen|hero)\/[^"]+\.webp)"/g)].map(m => m[1]).filter(u => !u.includes('-sm.'));

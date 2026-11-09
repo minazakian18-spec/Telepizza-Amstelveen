@@ -24,9 +24,6 @@ export const site = {
     scrollPercent: 50,
     hideDays: 30,
   },
-  accountUrl: '/account/' as string | null,
-  // Publieke Supabase-gegevens (EU): veilig in de browser, de tabel is afgeschermd met row level security.
-  supabase: { url: 'https://cpvnjlrohtiysukbvcaa.supabase.co', key: 'sb_publishable_G-zPDkAa68g0p44kINsCUg_9fJGWUfH' },
   privacyUrl: '/privacy/',
   adsId: null as string | null,
   // Bezorging. TODO-CONTROLEREN: alleen invullen als het klopt; lege waarden worden niet getoond.

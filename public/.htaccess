@@ -24,6 +24,9 @@ RewriteRule ^(page|tag)/.*$ / [R=301,L]
 RewriteRule ^hello-world/?$ / [R=301,L]
 RewriteRule ^(category|author)/.*$ / [R=301,L]
 RewriteRule ^(sitemap_index|sitemap-index)\.xml$ /sitemap.xml [R=301,L]
+# Accountsysteem is verwijderd: terug naar de home van die taal
+RewriteRule ^account/?$ / [R=301,L]
+RewriteRule ^(en|de|fr|it|es|tr|ar)/account/?$ /$1/ [R=301,L]
 
 # Slash toevoegen aan mappen (bestaande URL's eindigen op /)
 RewriteCond %{REQUEST_FILENAME} !-f
