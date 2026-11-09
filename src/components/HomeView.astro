@@ -177,7 +177,6 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   <section class="sec"><div class="wrap">
     <div class="head"><h2>{c.waysTitle}</h2></div>
     <div class="occ">{c.ways.map(([h, p]) => <div><h3>{h}</h3><p set:html={p} /></div>)}</div>
-    {lang === 'nl' && <p class="dlv-line"><strong>Bezorgen en afhalen.</strong> We bezorgen in Amstelveen (1181–1188) en Buitenveldert (1081–1083); bezorgkosten en minimumbedrag zie je bij het online bestellen. Afhalen kan aan de Amsterdamseweg 452. <a href="/bezorgen-amstelveen/">Meer over bezorgen</a></p>}
   </div></section>
 
   <div id="reviews"><Reviews lang={lang} /></div>
