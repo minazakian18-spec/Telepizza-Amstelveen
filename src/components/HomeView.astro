@@ -59,6 +59,17 @@ const photoAlts: Record<string, Record<string, string>> = {
   es: { 'pizza-rozemarijn': 'Pizza con salami, champiñones y pimientos en Telepizza Amstelveen', 'pasta-penne': 'Penne con salsa de tomate y hierbas frescas en Telepizza Amstelveen', 'pizza-hand': 'Pizza con pollo, pimientos y maíz en Telepizza Amstelveen', 'pizza-rond': 'Pizza con espinacas y queso blanco en Telepizza Amstelveen', 'pasta-vork': 'Espaguetis a la boloñesa con hierbas frescas en Telepizza Amstelveen', neon: 'Mesa oscura con dos cuencos bajo luz de neón roja', bar: 'Cóctel sobre una mesa frente al neón Hotter than your ex', 'zaal-planten': 'Pared de plantas con letras de neón y una bombilla' },
 };
 const PA = photoAlts[lang] ?? photoAlts.en;
+// Aantal jaren sinds de opening, elk jaar automatisch bijgewerkt bij het bouwen.
+const years = new Date().getFullYear() - site.foundingYear;
+const heritage: Record<string, { since: string; years: string; line: string }> = {
+  nl: { since: 'Sinds', years: `${years} jaar`, line: 'Familiebedrijf aan de Amsterdamseweg. Al meer dan veertig jaar gastvrijheid in Amstelveen.' },
+  en: { since: 'Since', years: `${years} years`, line: 'Family business on the Amsterdamseweg. Over forty years of hospitality in Amstelveen.' },
+  de: { since: 'Seit', years: `${years} Jahre`, line: 'Familienbetrieb an der Amsterdamseweg. Seit über vierzig Jahren Gastfreundschaft in Amstelveen.' },
+  fr: { since: 'Depuis', years: `${years} ans`, line: 'Entreprise familiale sur l’Amsterdamseweg. Plus de quarante ans d’hospitalité à Amstelveen.' },
+  it: { since: 'Dal', years: `${years} anni`, line: 'Azienda di famiglia sull’Amsterdamseweg. Da oltre quarant’anni di ospitalità ad Amstelveen.' },
+  es: { since: 'Desde', years: `${years} años`, line: 'Negocio familiar en la Amsterdamseweg. Más de cuarenta años de hospitalidad en Amstelveen.' },
+};
+const HG = heritage[lang] ?? heritage.en;
 // Fotorij naast "Welkom bij ons thuis" (swipen naar rechts): gevel, spaghetti, pizza, penne.
 const polAlts: Record<string, [string, string, string]> = {
   nl: ['Spaghetti bolognese met rucola en Parmezaanse kaas in het restaurant van Telepizza Amstelveen', 'Pizza met spinazie, zongedroogde tomaat, ui en ricotta bij Telepizza Amstelveen', 'Penne in romige saus met spinazie bij Telepizza Amstelveen'],
@@ -111,9 +122,13 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   </section>
 
   <section class="trust"><div class="wrap">
+    <div class="heritage">
+      <div class="seal" aria-hidden="true"><span>{HG.since}</span><b>{site.foundingYear}</b><span>{HG.years}</span></div>
+      <p><strong>{site.foundingYear}–{new Date().getFullYear()}</strong> {HG.line}</p>
+    </div>
     <ReviewBadges lang={lang} />
     {/* TODO-CONTROLEREN: halal-claim */}
-    <p class="facts-line"><span>{L.since}</span><span>100% halal</span>{site.awards.map(a => <span>🏆 {a.label} · {a.by}</span>)}</p>
+    <p class="facts-line">100% halal{site.awards.map(a => <span> · {a.label} ({a.by})</span>)}</p>
   </div></section>
 
   <section class="wrap intro">
@@ -136,7 +151,15 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
       <p>{H.p}</p>
       <p class="sign">— {H.sign}</p>
     </div>
-    <div class="swipe" tabindex="0" aria-label="Foto's van Telepizza Amstelveen">{polSlides.map(([n, alt]) => <img src={ph(n)} srcset={ss(n)} sizes="(min-width:900px) 30vw, 78vw" alt={alt} width="800" height="1000" loading="lazy" decoding="async" />)}</div>
+    <div class="swipe" tabindex="0" aria-roledescription="carrousel" aria-label="Foto's van Telepizza Amstelveen">{polSlides.map(([n, alt]) => <img src={ph(n)} srcset={ss(n)} sizes="(min-width:900px) 30vw, 78vw" alt={alt} width="800" height="1000" loading="lazy" decoding="async" />)}</div>
+    <script is:inline>(function(){var s=document.querySelector('.swipe');if(!s)return;var o=[].slice.call(s.children),n=o.length;
+      o.forEach(function(i){var c=i.cloneNode(true);c.alt='';c.setAttribute('aria-hidden','true');c.loading='lazy';s.appendChild(c)});
+      if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+      var vis=0,hold=0,step=function(){return s.children[1].offsetLeft-s.children[0].offsetLeft},loop=function(){return step()*n};
+      s.addEventListener('scroll',function(){if(s.scrollLeft>=loop()){s.style.scrollBehavior='auto';s.style.scrollSnapType='none';s.scrollLeft-=loop();s.offsetWidth;s.style.scrollSnapType='';s.style.scrollBehavior=''}},{passive:true});
+      ['pointerdown','touchstart','mouseenter','focusin'].forEach(function(e){s.addEventListener(e,function(){hold=Date.now()+6000},{passive:true})});
+      new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(s);
+      setInterval(function(){if(!vis||document.hidden||Date.now()<hold)return;s.scrollBy({left:step(),behavior:'smooth'})},3500)})();</script>
   </div></section>
 
   <section class="overlap"><div class="wrap"><div class="box">
@@ -169,7 +192,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
 
   <section class="sec"><div class="wrap">
     <div class="head"><h2>{c.waysTitle}</h2></div>
-    <div class="occ">{c.ways.map(([h, p], i) => <div><span class="n">0{i + 1}</span><h3>{h}</h3><p set:html={p} /></div>)}</div>
+    <div class="occ">{c.ways.map(([h, p]) => <div><h3>{h}</h3><p set:html={p} /></div>)}</div>
   </div></section>
 
   <div id="reviews"><Reviews lang={lang} /></div>

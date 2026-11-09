@@ -3,13 +3,13 @@
 import { site } from '../data/site';
 import type { Lang } from '../i18n/ui';
 const { lang = 'nl' } = Astro.props as { lang?: Lang };
-const T: Record<string, { title: string; reviews: string; read: string; outOf: string }> = {
-  nl: { title: 'Beoordeeld door onze gasten', reviews: 'reviews', read: 'Lees de reviews', outOf: 'van' },
-  en: { title: 'Rated by our guests', reviews: 'reviews', read: 'Read the reviews', outOf: 'out of' },
-  de: { title: 'Bewertet von unseren Gästen', reviews: 'Bewertungen', read: 'Bewertungen lesen', outOf: 'von' },
-  fr: { title: 'Notés par nos clients', reviews: 'avis', read: 'Lire les avis', outOf: 'sur' },
-  it: { title: 'Valutati dai nostri ospiti', reviews: 'recensioni', read: 'Leggi le recensioni', outOf: 'su' },
-  es: { title: 'Valorados por nuestros clientes', reviews: 'reseñas', read: 'Leer las reseñas', outOf: 'de' },
+const T: Record<string, { title: string; reviews: string; outOf: string }> = {
+  nl: { title: 'Beoordeeld door onze gasten', reviews: 'reviews', outOf: 'van' },
+  en: { title: 'Rated by our guests', reviews: 'reviews', outOf: 'out of' },
+  de: { title: 'Bewertet von unseren Gästen', reviews: 'Bewertungen', outOf: 'von' },
+  fr: { title: 'Notés par nos clients', reviews: 'avis', outOf: 'sur' },
+  it: { title: 'Valutati dai nostri ospiti', reviews: 'recensioni', outOf: 'su' },
+  es: { title: 'Valorados por nuestros clientes', reviews: 'reseñas', outOf: 'de' },
 };
 const t = T[lang] ?? T.en;
 const fmt = (n: number) => n.toLocaleString(lang === 'en' ? 'en-GB' : 'nl-NL');
@@ -29,7 +29,6 @@ const pct = (p: { score: string; max: string }) => Math.round(parseFloat(p.score
         <span class="rb-s"><strong dir="ltr">{p.score}</strong><span>/{p.max}</span></span>
         <span class="rb-st" style={`--p:${pct(p)}%`} role="img" aria-label={`${p.score} ${t.outOf} ${p.max}`}>★★★★★</span>
         <span class="rb-n">{fmt(p.count)} {t.reviews}</span>
-        <span class="rb-l">{t.read} →</span>
       </a></li>
     ))}
   </ul>
@@ -38,17 +37,17 @@ const pct = (p: { score: string; max: string }) => Math.round(parseFloat(p.score
   .rb{max-width:720px;margin:0 auto;color:#fff}
   .rb-t{text-align:center;margin:0 0 14px;font:800 .75rem/1 var(--head);letter-spacing:.18em;text-transform:uppercase;color:#f1e3cf}
   .rb ul{display:grid;grid-template-columns:1fr 1fr;gap:12px;list-style:none;margin:0;padding:0}
-  .rb-c{display:flex;flex-direction:column;align-items:flex-start;gap:6px;height:100%;padding:16px;border-radius:16px;background:#fffaf2;color:var(--ink);text-decoration:none;border-top:5px solid var(--c);transition:transform .15s,box-shadow .15s}
-  .rb-google{--c:#1a73e8}.rb-thefork{--c:#00665C}
+    .rb-c{display:flex;flex-direction:column;align-items:flex-start;gap:6px;height:100%;padding:18px 16px 16px;border-radius:16px;background:var(--bg);color:var(--fg);text-decoration:none;position:relative;overflow:hidden;transition:transform .15s,box-shadow .15s}
+  .rb-google{--bg:#fff;--fg:#202124;--mut:#5f6368;--star:#fbbc04;--off:#dadce0}.rb-thefork{--bg:#8ee05f;--fg:#00473c;--mut:#00473c;--star:#00473c;--off:rgba(0,71,60,.25)}
+  .rb-google::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,#4285f4 0 25%,#ea4335 0 50%,#fbbc05 0 75%,#34a853 0)}
   .rb-c:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.25)}
   .rb-h{display:flex;align-items:center;gap:8px}
   .rb-h svg{width:24px;height:24px;flex:none}
-  .rb .rb-h b{font:800 .95rem/1 var(--head);color:var(--ink);text-transform:none;margin:0}
+  .rb .rb-h b{font:800 .95rem/1 var(--head);color:var(--fg);text-transform:none;margin:0}
   .rb-s{display:flex;align-items:baseline;gap:2px;margin-top:4px}
   .rb-s strong{font:900 2.6rem/1 var(--head);letter-spacing:-.02em}
-  .rb-s span{font:800 1rem/1 var(--head);color:var(--muted)}
-  .rb-st{font-size:1.1rem;letter-spacing:2px;line-height:1;background:linear-gradient(90deg,#e8a200 var(--p),#d9cfc2 var(--p));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .rb-n{font-size:.85rem;color:var(--muted)}
-  .rb-l{margin-top:auto;padding-top:8px;font:800 .72rem/1 var(--head);letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+  .rb-s span{font:800 1rem/1 var(--head);color:var(--mut)}
+  .rb-st{font-size:1.1rem;letter-spacing:2px;line-height:1;background:linear-gradient(90deg,var(--star) var(--p),var(--off) var(--p));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .rb-n{font-size:.85rem;color:var(--mut);font-weight:600}
   @media(min-width:700px){.rb-c{padding:20px 22px}.rb-s strong{font-size:3.2rem}}
 </style>

@@ -162,7 +162,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
       <a href={'mailto:' + site.email}>{site.email}</a><br />
       <a href={site.mapsUrl}>{t.route}</a></p></div>
     <div><h2>{t.hours}</h2><p>{t.closedMon}<br />{site.hours.map(h => <span>{t.days[h.day as keyof typeof t.days]}: {h.open}–{h.close}<br /></span>)}</p></div>
-    {lang === 'nl' && <div><h2>Lees ook</h2><ul class="one">{articles.slice(0, 8).map(a => <li><a href={`/blog/${a.slug}/`}>{a.title}</a></li>)}<li><a href="/blog/">Alle artikelen →</a></li></ul></div>}
+    {lang === 'nl' && <div><h2>Lees ook</h2><ul class="one">{articles.slice(0, 8).map(a => <li><a href={`/blog/${a.slug}/`}>{a.title}</a></li>)}<li><a href="/blog/">Alle artikelen</a></li></ul></div>}
     <div><h2>{t.discover}</h2>{lang !== 'nl' ? <ul>{(['home', 'menu', 'catering', 'about', 'contact'] as PageKey[]).map(k => <li><a href={pathFor(lang, k)}>{t.nav[k]}</a></li>)}</ul> : <ul>
       <li><a href="/menu-italiaans-restaurant-amstelveen/">Menu</a></li>
       <li><a href="/pizza-amstelveen/">Pizza</a></li>
