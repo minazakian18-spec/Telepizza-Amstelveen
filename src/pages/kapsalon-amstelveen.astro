@@ -4,13 +4,13 @@ import HalalInfo from '../components/HalalInfo.astro';
 import { pick } from '../data/dishes';
 ---
 <Landing first="order"
-  path="/kapsalon-amstelveen/" crumb="Kapsalon & shoarma"
-  title="Kapsalon Amstelveen | Kapsalon & shoarma – Telepizza"
-  description="Kapsalon in Amstelveen? Kapsalon shoarma, kip shoarma of döner voor € 11,95. Halal lamsshoarma en kip. Afhalen tot laat, bezorgen tot 21:00."
-  eyebrow="Halal · vers van de spies" h1="Kapsalon & shoarma <i>in Amstelveen</i>"
+  path="/kapsalon-amstelveen/" crumb="Kapsalon"
+  title="Kapsalon Amstelveen € 11,95 | Halal, tot laat | Telepizza"
+  description="Kapsalon in Amstelveen voor € 11,95: shoarma, kip shoarma of döner, halal vlees. Afhalen tot 03:00 in het weekend. Bestel direct online of bel ons."
+  eyebrow="Halal · vers van de spies" h1="Kapsalon <i>in Amstelveen</i>"
   lead="Krokante friet, sappige shoarma, gesmolten kaas en frisse salade met huisgemaakte saus. Onze kapsalon is een vaste favoriet, met halal lamsshoarma of kip."
   img="/images/menu/kapsalon.webp" imgAlt="Kapsalon met shoarma, kaas en salade van Telepizza Amstelveen"
-  dishesTitle="Kapsalon, schotels en shoarmapizza"
+  dishesTitle="Kapsalon en meer van de spies"
   dishes={pick('kapsalon', 'shoarmaSchotel', 'kipSchotel', 'shoarmaPizza')}
   faq={[
     ['Wat kost een kapsalon bij Telepizza?', 'Een kapsalon shoarma, kip shoarma of döner kost € 11,95.'],
@@ -23,8 +23,8 @@ import { pick } from '../data/dishes';
   <h2>Halal vlees</h2>
   <p><HalalInfo /></p>
   <p>Ons vlees is halal. Dat geldt voor de shoarma en kipshoarma op de kapsalon, maar ook voor onze shoarmaschotels, pizza shoarma en alle burgers behalve de Bacon Burger en de steaks van de grill. Zo kan iedereen zonder twijfel bij ons bestellen.</p>
-  <h2>Shoarmaschotels en meer</h2>
-  <p>Liever een bord? Kies dan een shoarmaschotel of kip shoarma schotel met friet, salade en twee sauzen, of de speciale variant met champignons en uien. Vegetariër? Probeer de schotel falafel. En voor wie twijfelt tussen pizza en shoarma: onze pizza shoarma en calzone shoarma combineren het beste van twee werelden.</p>
+  <h2>Liever een schotel?</h2>
+  <p>Liever een bord? Op onze pagina over <a href="/shoarma-amstelveen/">shoarma in Amstelveen</a> vind je alles over de shoarmaschotel of kip shoarma schotel met friet, salade en twee sauzen, of de speciale variant met champignons en uien. Vegetariër? Probeer de schotel falafel. En voor wie twijfelt tussen pizza en shoarma: onze pizza shoarma en calzone shoarma combineren het beste van twee werelden.</p>
   <h2>Kapsalon bestellen in Amstelveen</h2>
   <p>Je bestelt je kapsalon eenvoudig online of telefonisch. Haal hem warm af aan de Amsterdamseweg 452 of laat hem <a href="/bezorgen-amstelveen/">bezorgen in Amstelveen</a> (1181–1188) en Buitenveldert, van Westwijk tot Randwijck en het Stadshart. Omdat we <a href="/laat-open-amstelveen/">laat open</a> zijn, is Telepizza ook dé plek voor een kapsalon na het stappen.</p>
 </Landing>

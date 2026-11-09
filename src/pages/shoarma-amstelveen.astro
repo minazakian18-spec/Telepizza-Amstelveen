@@ -1,0 +1,49 @@
+---
+import Landing from '../layouts/Landing.astro';
+import HalalInfo from '../components/HalalInfo.astro';
+import { pick } from '../data/dishes';
+---
+<Landing first="order"
+  path="/shoarma-amstelveen/" crumb="Shoarma"
+  title="Shoarma Amstelveen | Halal lamsshoarma tot laat | Telepizza"
+  description="Shoarma in Amstelveen: halal lamsshoarma en kipshoarma van de spies, als schotel, pizza of kapsalon vanaf € 11,95. Bestel direct online of haal af."
+  eyebrow="Halal · vers van de spies" h1="Shoarma <i>in Amstelveen</i>"
+  lead="Sappige lamsshoarma en kipshoarma, dun gesneden van de spies, met knoflooksaus, sambal en frisse salade. Als schotel met friet, op een pizza, in een calzone of op een kapsalon. Eet hier, haal af of laat bezorgen."
+  img="/images/menu/shoarma-schotel.webp" imgAlt="Shoarmaschotel met friet, salade en saus van Telepizza Amstelveen"
+  dishesTitle="Shoarma op de kaart"
+  dishes={pick('shoarmaSchotel', 'kipSchotel', 'kapsalon', 'shoarmaPizza')}
+  faq={[
+    ['Is de shoarma halal?', 'Ja. Onze shoarma is lamsvlees en halal, net als de kipshoarma.'],
+    ['Van welk vlees is jullie shoarma?', 'De gewone shoarma is van lamsvlees. Daarnaast hebben we kipshoarma.'],
+    ['Wat kost shoarma bij Telepizza?', 'Een kapsalon shoarma kost € 11,95, een pizza of calzone shoarma € 13,95, een shoarmaschotel € 16,95 en de shoarma speciaal € 17,95.'],
+    ['Kan ik shoarma laten bezorgen in Amstelveen?', 'Ja, bestel online in onze bestelwinkel. We bezorgen in Amstelveen, Buitenveldert en op de Zuidas, en je kunt ook afhalen aan de Amsterdamseweg 452.'],
+    ['Tot hoe laat kan ik shoarma halen?', 'Afhalen en hier eten kan tot 01:45, op vrijdag en zaterdag tot 03:00. Bezorgen kan dinsdag t/m donderdag tot 21:00, vrijdag en zaterdag tot 21:30 en zondag tot 20:30.'],
+    ['Hebben jullie ook een vegetarisch alternatief?', 'Ja, de schotel falafel met friet, salade en saus.'],
+  ]}>
+  <h2>Shoarma van Telepizza</h2>
+  <p>Telepizza staat al sinds 1984 aan de Amsterdamseweg en is bij veel mensen bekend om de pizza. Maar wie bij ons in de zaak komt, ziet ook de shoarma van de spies voorbijkomen. Voor veel vaste gasten is een shoarmaschotel of een kapsalon net zo’n klassieker als een margherita. We snijden het vlees dun van de spies en bakken het kort op de plaat, zodat het randje krokant wordt en de binnenkant sappig blijft.</p>
+  <h2>Lamsshoarma en kipshoarma</h2>
+  <p>Onze gewone shoarma is van lamsvlees, gekruid zoals het hoort: met een warme, licht pittige smaak. Wie het wat milder wil, kiest de kipshoarma. Beide zijn halal. Je kunt ze bestellen in bijna elke vorm die we op de kaart hebben, van een volle schotel tot een pizza.</p>
+  <h2>Halal vlees</h2>
+  <p><HalalInfo /></p>
+  <p>Shoarma en kipshoarma zijn bij ons altijd halal. Gerechten met varkensvlees, zoals pizza’s met Parmaham of de Bacon Burger, staan op de kaart met het label ‘Niet halal’. Zo zie je meteen wat je bestelt. Meer uitleg vind je op de pagina over <a href="/halal-restaurant-amstelveen/">halal eten in Amstelveen</a>.</p>
+  <h2>Zo kun je shoarma bij ons bestellen</h2>
+  <ul>
+    <li><strong>Shoarma schotel</strong> (€ 16,95): lamsshoarma met friet, salade en twee sauzen naar keuze.</li>
+    <li><strong>Shoarma speciaal</strong> (€ 17,95): de schotel met gebakken champignons en uien erdoor.</li>
+    <li><strong>Kip shoarma schotel</strong> (€ 16,95): dezelfde schotel met kipshoarma.</li>
+    <li><strong>Kapsalon shoarma of kip shoarma</strong> (€ 11,95): friet, shoarma, gesmolten kaas en salade in één bak.</li>
+    <li><strong>Pizza shoarma of kip shoarma</strong> (€ 13,95): onze handgerekte pizzabodem met shoarma, kaas en knoflooksaus.</li>
+    <li><strong>Calzone shoarma</strong> (€ 13,95): de dichtgevouwen pizza, gevuld met shoarma.</li>
+  </ul>
+  <h2>Sauzen en bijgerechten</h2>
+  <p>Shoarma zonder saus is maar half af. Kies knoflooksaus voor de klassieke smaak, sambal voor wat pit, of combineer ze allebei. Bij een schotel horen friet en een frisse salade met sla, tomaat en komkommer. Heb je extra honger, neem er dan een portie friet of een salade naast.</p>
+  <h2>Shoarmaschotel of kapsalon?</h2>
+  <p>Twijfel je tussen een shoarmaschotel en een <a href="/kapsalon-amstelveen/">kapsalon in Amstelveen</a>? Bij de schotel liggen vlees, friet en salade los naast elkaar op het bord, met de sauzen apart. Bij de kapsalon gaat alles in één bak, met een laag gesmolten kaas uit de oven. De schotel is wat groter en luxer, de kapsalon is ideaal om mee te nemen of te laten bezorgen.</p>
+  <h2>Shoarma op een pizza</h2>
+  <p>Voor wie niet kan kiezen tussen pizza en shoarma hebben we de pizza shoarma en de pizza kip shoarma. De basis is dezelfde als bij al onze <a href="/pizza-amstelveen/">pizza’s in Amstelveen</a>: handgerekt deeg en een hete oven. Daarop komt kaas, de shoarma en een streep knoflooksaus. Liever dubbelgevouwen? Neem dan de calzone shoarma.</p>
+  <h2>Laat nog trek in shoarma?</h2>
+  <p>We zijn open tot 01:45, en op vrijdag en zaterdag zelfs tot 03:00. Na het stappen, een late dienst of een avond voetbal kun je dus nog bij ons terecht voor shoarma om af te halen of om hier op te eten. Bezorgen doen we tot 21:00 (vrijdag en zaterdag 21:30, zondag 20:30). Lees meer over <a href="/laat-open-amstelveen/">laat open in Amstelveen</a>.</p>
+  <h2>Afhalen, bezorgen of hier eten</h2>
+  <p>Bestel je shoarma online in onze eigen bestelwinkel of bel 020-6435287. Afhalen doe je aan de Amsterdamseweg 452, vlak bij Randwijck en Buitenveldert. Wil je liever thuis eten, dan bezorgen we in Amstelveen, Buitenveldert en op de Zuidas. Bezorgkosten en minimumbedragen per postcode vind je op <a href="/bezorgen-amstelveen/">eten bestellen in Amstelveen</a>. En wil je aan tafel zitten? Schuif aan in ons <a href="/restaurant-amstelveen/">restaurant in Amstelveen</a>.</p>
+</Landing>

@@ -5,21 +5,22 @@ import QuoteForm from '../components/QuoteForm.astro';
 ---
 <Landing page="catering"
   path="/catering-italiaans-restaurant-amstelveen/" crumb="Catering"
-  title="Catering Amstelveen | Italiaanse catering – Telepizza"
-  description="Italiaanse catering in Amstelveen voor feesten, verjaardagen en bedrijven: pizza, pasta, salades en desserts, met mobiele bar. Vraag een offerte aan."
-  eyebrow="Catering & eventi" h1="Italiaanse catering <i>in Amstelveen</i>"
+  title="Catering Amstelveen | Pizza & pasta sinds 1984 | Telepizza"
+  description="Catering in Amstelveen voor feesten en bedrijven: pizza, pasta en salades, halal vlees, ★ 4,7 op Google. Vraag direct een vrijblijvende offerte aan."
+  eyebrow="Catering & eventi" h1="Catering <i>Amstelveen</i>"
   lead="Laat ons jouw volgende feest, borrel of bedrijfsevent verzorgen. Warme en koude Italiaanse gerechten, vers bereid, en desgewenst een complete bar met personeel."
   img="/images/eigen/pizzas-tonno-en-bbq-op-tafel.webp" imgAlt="Meerdere pizza’s op tafel, Italiaanse catering van Telepizza Amstelveen"
   dishesTitle="Populair op feesten en borrels" dishes={pick('telePizza', 'margherita', 'popeye', 'lasagna', 'caprese', 'tiramisu')}
   gallery={[["/images/ph/pizza-salami-champignons-paprika.webp", "Pizza vers uit de oven"], ["/images/eigen/pasta-tafel.webp", "Pasta, pizza en salade op tafel"], ["/images/ph/proosten.webp", "Cocktails onder de neon"]]}
   faq={[
     ['Hoe vraag ik catering aan?', 'Bel 020-6435287 of mail contact.telepizza@gmail.com met de datum, het aantal gasten en de locatie. We sturen een voorstel op maat.'],
+    ['In welk gebied verzorgen jullie catering?', 'In Amstelveen, Buitenveldert en op de Zuidas. Daarbuiten in overleg, en ophalen bij ons restaurant kan altijd.'],
     ['Voor hoeveel personen verzorgen jullie catering?', 'Van een verjaardag thuis tot een groot bedrijfsfeest. Vertel ons het aantal gasten, dan stemmen we de hoeveelheden af.'],
     ['Leveren jullie ook op kantoor?', 'Ja, voor bedrijven in Amstelveen, Buitenveldert en de Zuidas verzorgen we lunches, borrels en teamavonden op locatie.'],
     ['Kunnen jullie ook drankjes verzorgen?', 'Ja, met onze mobiele barservice: cocktails, mocktails, speciaalbier en frisdrank, met ervaren personeel.'],
     ['Is er rekening te houden met dieetwensen?', 'Ja. We hebben vegetarische gerechten en halal vlees. Geef allergieën vooraf door.'],
   ]}>
-  <h2>Authentieke smaak, vers uit de oven</h2>
+  <h2>Italiaanse catering in Amstelveen</h2>
   <p>Bij Telepizza Amstelveen bieden we veel meer dan alleen pizza. Ons cateringmenu bestaat uit warme en koude gerechten: pizza’s, pasta’s en lasagne, salades, fingerfood en desserts zoals tiramisu. Alles wordt vers bereid met aandacht voor smaak en presentatie, zodat het past bij elke gelegenheid en elk type gast.</p>
   <h2>Wat staat er op het cateringmenu?</h2>
   <p>We stellen het menu samen met jou, maar de meeste gasten kiezen uit deze onderdelen:</p>
@@ -31,6 +32,9 @@ import QuoteForm from '../components/QuoteForm.astro';
     <li><strong>Dranken</strong>, eventueel met onze mobiele bar en personeel.</li>
   </ul>
   <p>Zo maak je een buffet dat warm en koud combineert, met keuze voor vleeseters, vegetariërs en kinderen.</p>
+  <h2>Voor wie is onze catering?</h2>
+  <p>Onze catering is voor particulieren die thuis of op een eigen locatie iets te vieren hebben, voor bedrijven die een lunch, borrel of teamavond organiseren, en voor verenigingen, scholen en sportclubs. Je hoeft geen grote partij te zijn: vertel ons met hoeveel mensen je bent, dan kijken we wat past.</p>
+  {/* TODO-CONTROLEREN: minimum aantal personen of minimumbedrag voor catering */}
   <h2>Voor welke gelegenheden?</h2>
   <p>Een verjaardag thuis of in de tuin, een communiefeest, een jubileum, een open huis, een bruiloftsreceptie of een sportclubavond: Italiaans eten valt bij bijna iedereen in de smaak en is makkelijk te delen. Omdat we in Amstelveen zitten, kennen we de buurt en de locaties, van woonhuizen in Westwijk tot kantoren op de Zuidas.</p>
   <h2 id="bedrijven">Catering voor bedrijven (Zuidas, Amstelveen)</h2>
@@ -42,9 +46,11 @@ import QuoteForm from '../components/QuoteForm.astro';
   <p>Als familiebedrijf hechten we veel waarde aan persoonlijk contact. We denken mee over het menu, zijn flexibel en betrouwbaar. Van planning tot uitvoering zorgen we dat alles soepel verloopt en dat jouw gasten tevreden naar huis gaan.</p>
   <h2>Liever bij ons vieren?</h2>
   <p>Je kunt je feest ook in ons <a href="/restaurant-amstelveen/">restaurant aan de Amsterdamseweg</a> vieren, met een gezellige zaal; we zijn open tot 01:45, op vrijdag en zaterdag tot 03:00.</p>
+  <h2>Cateringgebied</h2>
+  <p>We verzorgen catering in heel Amstelveen, in Buitenveldert en op de Zuidas. Ligt je locatie daarbuiten, bijvoorbeeld elders in Amsterdam? Neem contact op, dan kijken we samen of het kan. Je kunt de catering ook zelf ophalen bij ons restaurant aan de Amsterdamseweg 452.</p>
   <h2>Hoe ver vooruit moet ik boeken?</h2>
   <p>Hoe eerder, hoe beter, zeker in het weekend en rond de feestdagen. Een kleine bestelling voor kantoor kan soms op korte termijn; voor een groot feest met barservice adviseren we een paar weken van tevoren contact op te nemen. Bel ons gerust om de mogelijkheden te bespreken.</p>
-  <h2>Zo werkt het</h2>
+  <h2>Hoe bestel je catering?</h2>
   <ol><li>Neem contact op via <a href="tel:+31206435287">020-6435287</a> of <a href="mailto:contact.telepizza@gmail.com">contact.telepizza@gmail.com</a> en vertel ons datum, aantal gasten en locatie.</li><li>Samen kiezen we de gerechten en eventueel de barservice.</li><li>We leveren alles vers op de afgesproken tijd, of je haalt het op bij ons restaurant.</li></ol>
   <QuoteForm />
 </Landing>

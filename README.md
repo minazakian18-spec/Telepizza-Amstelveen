@@ -42,3 +42,16 @@ Let op: GitHub Pages leest geen `.htaccess`. Oude WordPress-adressen krijgen daa
 3. Zet het in `public/images/menu-upload/`.
 4. `npm run photos` maakt er `public/images/menu/<naam>.webp` van (800×600, WebP).
 5. `npm run build`: de foto staat automatisch bij het juiste gerecht, met alt-tekst "<gerecht> bij Telepizza Amstelveen", lazy loading en in de image-sitemap.
+
+## Zoekwoordposities bijwerken (maandelijks)
+
+De zoekwoordkaart staat in `KEYWORDS.md` (en `scripts/keywords.json`, die `npm run check` gebruikt). Werk elke maand `SEO-TRACKING.md` bij:
+
+1. Open Google Search Console voor de website.
+2. Ga naar **Prestaties › Zoekresultaten** en kies het tabblad **Zoekopdrachten**.
+3. Zet de periode op **Laatste 28 dagen**.
+4. Klik op **Exporteren** (Google Spreadsheets of CSV).
+5. Zoek per zoekwoord uit `SEO-TRACKING.md` de kolom **Positie** op en vul die in bij de kolom van deze maand (één decimaal, bijvoorbeeld 3,8).
+6. Staat een zoekwoord niet in de export, vul dan "–" in (geen vertoningen).
+
+Zakt een zoekwoord, kijk dan of de doelpagina nog klopt: staat de term in de title of H1, en linken andere pagina's ernaar? `npm run check` controleert dat automatisch.

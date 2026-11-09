@@ -1,5 +1,6 @@
 ---
 // Homepage in de Telepizza-huisstijl; gedeeld door alle talen. Restaurant voorop, bestellen als tweede.
+import KeywordLinks from './KeywordLinks.astro';
 // Foto's in /images/ph/ zijn eigen foto's van Telepizza (bron: C:\Documents\Telepizza\Afbeeldingen).
 import Base from '../layouts/Base.astro';
 import Dishes from './Dishes.astro';
@@ -210,6 +211,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
     <h2>{lang === 'nl' ? 'Veelgestelde vragen' : 'FAQ'}</h2>
     {c.faq.map(([q, a]) => <details><summary><h3 class="faq-q">{q}</h3></summary><p set:html={a} /></details>)}
     <slot name="faqmore" />
+    {lang === 'nl' && <KeywordLinks current="/" />}
   </div></section>
   <script is:inline>
     // Extra slides pas na het laden van de pagina; de video pas als hij in beeld komt. Zo laadt de hoofdfoto als eerste.

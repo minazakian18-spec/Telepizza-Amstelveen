@@ -28,6 +28,25 @@ De bolognese (pasta, lasagne, tortellini en de topping "bolognese") is volgens d
 - De bestelwinkel toont 100 ml voor € 4,50 en 465 ml voor **€ 8,50**; de website zegt € 8,95 voor de grote beker. Welke prijs klopt?
 - In de bestelwinkel staat ook **Cookie Dough**; die staat niet op de website. Toevoegen?
 
+## 6. Restaurant: zitplaatsen, groepen en parkeren
+
+Voor de pagina /restaurant-amstelveen/:
+- Hoeveel zitplaatsen heeft het restaurant? Is er een aparte ruimte of terras?
+- Tot hoeveel personen kan een groep reserveren?
+- Waar kunnen gasten parkeren (eigen plekken, straat, betaald of gratis)? En welke bus stopt in de buurt?
+
+Nu staat er alleen "Parkeren kan in de buurt van het restaurant."
+
+## 7. Catering: minimum, gebied en WhatsApp
+
+- Is er een minimum aantal personen of een minimumbedrag voor catering?
+- Tot waar leveren jullie catering (nu staat er: Amstelveen, Buitenveldert en Zuidas, daarbuiten in overleg)?
+- Kunnen klanten een offerte via WhatsApp aanvragen? Zo ja, welk nummer? Nu staan alleen telefoon, mail en het offerteformulier op de site.
+
+## 8. Startposities zoekwoorden
+
+Voor `SEO-TRACKING.md` is alleen de startpositie van "shoarma amstelveen" (3,8) bekend. Wil je de export uit Search Console van oktober 2026 delen, dan vullen we de rest in.
+
 ## Afgehandeld (ter info)
 
 - Ham is kalkoenham, salami en pepperoni zijn van rundvlees, spare ribs zijn halal kalfsribs, shoarma is lamsvlees.

@@ -13,6 +13,9 @@ const full = `${a.title} | Telepizza`;
 const short = a.title.split(/[:?]/)[0].trim();
 const seoTitle = full.length <= 60 ? full : a.title.length <= 60 ? a.title : `${short} | Telepizza`;
 const seoDesc = a.desc;
+const mains: [RegExp, string, string][] = [[/pizza/, '/pizza-amstelveen/', 'pizza in Amstelveen'], [/pasta/, '/pasta-amstelveen/', 'pasta in Amstelveen'], [/bezorg|bestel|afhal/, '/bezorgen-amstelveen/', 'eten bestellen in Amstelveen'], [/catering|feest|bedrij/, '/catering-italiaans-restaurant-amstelveen/', 'catering in Amstelveen'], [/shoarma/, '/shoarma-amstelveen/', 'shoarma in Amstelveen'], [/kapsalon/, '/kapsalon-amstelveen/', 'kapsalon in Amstelveen'], [/uit-eten|restaurant|date|verjaardag|laat|cocktail/, '/restaurant-amstelveen/', 'uit eten in ons restaurant in Amstelveen']];
+const m0 = mains.find(([re]) => re.test(a.slug));
+const main: [string, string] = m0 ? [m0[1], m0[2]] : ['/', 'ons Italiaans restaurant in Amstelveen'];
 ---
 <Base title={seoTitle} description={seoDesc} image={a.img} imageAlt={a.imgAlt} crumbs={[{ name: 'Blog', path: '/blog/' }, { name: a.title, path: `/blog/${a.slug}/` }]} schema={[ld]}>
   <style>
@@ -38,7 +41,7 @@ const seoDesc = a.desc;
     <div class="prose" set:html={withHalalInfo(a.body)} />
     <div class="cta">
       <h2>Proef het zelf</h2>
-      <p class="center">Kom langs bij onze <a href="/pizza-amstelveen/">pizzeria in Amstelveen</a> aan de Amsterdamseweg 452. Dinsdag t/m zondag open vanaf 15:00.</p>
+      <p class="center">Meer weten? Lees over <a href={main[0]}>{main[1]}</a>, of kom langs aan de Amsterdamseweg 452. Dinsdag t/m zondag open vanaf 15:00.</p>
       <div class="btns" style="justify-content:center"><a class="btn primary" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a><a class="btn" href="/menu-italiaans-restaurant-amstelveen/">Bekijk de kaart</a></div>
     </div>
   </article>

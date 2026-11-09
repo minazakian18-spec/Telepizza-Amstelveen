@@ -1,35 +1,42 @@
 ---
 import Landing from '../layouts/Landing.astro';
-import { pick } from '../data/dishes';
+import { pick, eur } from '../data/dishes';
+import { menu } from '../data/menu';
+const pastas = menu.find(s => /^Pasta/.test(s.name))!.items;
 ---
-<Landing
+<Landing first="order"
   path="/pasta-amstelveen/" crumb="Pasta"
-  title="Pasta Amstelveen – vers bereid | Telepizza"
-  description="Pasta in Amstelveen: carbonara, bolognese, truffelpasta, frutti di mare en lasagna, vers bereid vanaf € 11,45. Bestel online of reserveer bij Telepizza."
-  eyebrow="Italiaanse klassiekers" h1="Verse pasta <i>in Amstelveen</i>"
-  lead="Romige carbonara, huisgemaakte bolognese, truffelpasta en pasta met verse zeevruchten. Kies spaghetti of penne en geniet van echt Italiaans comfortfood."
+  title="Pasta Amstelveen | Verse pasta vanaf € 11,45 | Telepizza"
+  description="Pasta in Amstelveen: 19 pasta’s en ovengerechten, vers bereid vanaf € 11,45. ★ 4,7 op Google, sinds 1984. Bestel direct online of reserveer een tafel."
+  eyebrow="Italiaanse klassiekers" h1="Pasta in Amstelveen: <i>vers bereid</i>"
+  lead="Romige carbonara, huisgemaakte bolognese, truffelpasta en pasta met zeevruchten. Kies spaghetti of penne en eet je pasta bij ons aan tafel, of bestel hem voor afhalen en bezorgen."
   img="/images/ph/pasta-penne.webp" gallery={[["/images/eigen/pasta-bolognese.webp", "Penne bolognese met brood"], ["/images/ph/pasta-vork.webp", "Spaghetti bolognese met Parmezaanse kaas"], ["/images/eigen/pasta-tafel.webp", "Pasta en pizza samen op tafel"]]} imgAlt="Penne arrabbiata met basilicum bij Telepizza Amstelveen"
-  dishesTitle="Onze populairste pasta’s"
-  dishes={pick('carbonara', 'tartufo', 'bolognese', 'salmone', 'gamberoniPasta', 'pollo', 'lasagna')}
+  dishesTitle="Onze top 5 pasta’s"
+  dishes={pick('carbonara', 'tartufo', 'bolognese', 'salmone', 'lasagna')}
   faq={[
-    ['Welke pasta’s hebben jullie?', 'Onder andere napoletana, pesto, arrabbiata, puttanesca, bolognese, carbonara, quattro formaggi, pollo, tartufo zucchine, salmone, gamberoni en frutti di mare. Uit de oven: lasagna, cannelloni, ravioli en tortellini.'],
-    ['Kan ik kiezen tussen spaghetti en penne?', 'Ja, bij alle pasta’s kies je zelf spaghetti of penne.'],
-    ['Wat kost een pasta?', 'Onze pasta’s kosten van € 11,45 tot € 14,45.'],
+    ['Welke pasta’s hebben jullie?', 'Negentien in totaal: van napoletana, pesto en arrabbiata tot carbonara, tartufo zucchine, salmone en frutti di mare. Uit de oven: lasagne, cannelloni, ravioli en tortellini.'],
+    ['Kan ik kiezen tussen spaghetti en penne?', 'Ja, bij de pasta’s kies je zelf spaghetti of penne.'],
+    ['Wat kost een pasta?', 'Onze pasta’s kosten van € 11,45 (napoletana) tot € 14,45 (gamberoni, salmone en frutti di mare).'],
+    ['Welke pasta’s zijn vegetarisch?', 'Onder andere napoletana, pesto, arrabbiata, quattro formaggi, vegetariana, tartufo zucchine en ravioli met spinazie en ricotta.'],
+    ['Kan ik pasta laten bezorgen in Amstelveen?', 'Ja. Bestel online in onze bestelwinkel en kies bezorgen of afhalen aan de Amsterdamseweg 452.'],
   ]}>
-  <h2>Echte Italiaanse pasta</h2>
-  <p>Onze pasta’s worden vers bereid met huisgemaakte sauzen. De bolognese maken we met rundergehakt en tomaat, de carbonara met spek, ei, room en Parmezaanse kaas, en onze tartufo zucchine combineert truffel met champignons en courgette.</p>
+  <h2>Echte Italiaanse pasta in Amstelveen</h2>
+  <p>Onze pasta’s worden vers bereid met huisgemaakte sauzen. De bolognese maken we met rundergehakt en tomaat, de carbonara met spek, ei, room en Parmezaanse kaas, en onze tartufo zucchine combineert truffel met champignons en courgette. Al sinds 1984 staan pasta’s naast onze <a href="/pizza-amstelveen/">pizza in Amstelveen</a> op de kaart.</p>
+  <h2>Alle pasta’s en prijzen</h2>
+  <ul>{pastas.map(i => <li><strong>{i.name}</strong> – {eur(i.price, 'nl')}{i.notHalal ? ' (niet halal)' : ''}</li>)}</ul>
+  <p>Ingrediënten en allergenen per gerecht staan op de <a href="/menu-italiaans-restaurant-amstelveen/">menukaart</a>.</p>
   <h2>Spaghetti of penne?</h2>
-  <p>Bij al onze pasta’s kies je zelf tussen spaghetti en penne. Spaghetti is de klassieke keuze bij olie- en tomatensauzen, omdat de saus zich mooi om de lange slierten wikkelt. Penne heeft holle buisjes met ribbels, die juist dikkere en romige sauzen goed vasthouden. Er is geen goed of fout: kies gewoon wat jij het lekkerst vindt.</p>
+  <p>Bij onze pasta’s kies je zelf tussen spaghetti en penne. Spaghetti is de klassieke keuze bij olie- en tomatensauzen, omdat de saus zich mooi om de lange slierten wikkelt. Penne heeft holle buisjes met ribbels, die juist dikkere en romige sauzen goed vasthouden. Er is geen goed of fout: kies gewoon wat jij het lekkerst vindt.</p>
   <h2>Vegetarische pasta</h2>
-  <p>Wie geen vlees eet, heeft volop keuze. Pasta napoletana met tomatensaus, pasta pesto, de pittige arrabbiata, quattro formaggi met vier kazen en de tartufo zucchine met truffel, champignons en courgette zijn allemaal vegetarisch. Uit de oven is de cannelloni met spinazie en ricotta een aanrader.</p>
+  <p>Wie geen vlees eet, heeft volop keuze. Pasta napoletana met tomatensaus, pasta pesto, de pittige arrabbiata, quattro formaggi met vier kazen, de vegetariana en de tartufo zucchine met truffel, champignons en courgette. Uit de oven zijn de ravioli met spinazie en ricotta een aanrader.</p>
   <h2>Pasta met vis en zeevruchten</h2>
-  <p>Visliefhebbers kiezen pasta salmone met zalm en mosterd-roomsaus, pasta gamberoni met garnalen in rosésaus, of pasta frutti di mare met zeevruchten en knoflook.</p>
+  <p>Visliefhebbers kiezen pasta salmone met zalm en mosterd-roomsaus, pasta gamberoni met garnalen in rosésaus, pasta tonno ansjovis of pasta frutti di mare met zeevruchten en knoflook.</p>
   <h2>Uit de oven</h2>
-  <p>Voor wie houdt van gegratineerd: lasagna al forno, cannelloni met spinazie en ricotta, ravioli en tortellini bolognese. Perfect voor een koude avond. Deze ovengerechten komen bubbelend en goudbruin op tafel, met een korstje gesmolten kaas erover.</p>
+  <p>Voor wie houdt van gegratineerd: lasagne al forno, cannelloni, ravioli en tortellini bolognese. Deze ovengerechten komen bubbelend en goudbruin op tafel, met een korstje gesmolten kaas erover.</p>
   <h2>Pasta voor thuis</h2>
-  <p>Ook onze pasta’s kun je laten bezorgen of afhalen. Ze worden vers bereid op het moment dat je bestelt en goed verpakt, zodat ze warm bij je aankomen. Een ovenschotel zoals lasagna of cannelloni blijft extra lang warm en is ideaal als je met een groep bestelt. Combineer een pasta met een pizza om te delen, en iedereen aan tafel kan van alles proeven.</p>
+  <p>Ook onze pasta’s kun je laten bezorgen of afhalen. Ze worden bereid op het moment dat je bestelt en goed verpakt. Een ovenschotel zoals lasagne blijft extra lang warm en is ideaal als je met een groep bestelt. Combineer een pasta met een pizza om te delen. Alles over bezorgen lees je op <a href="/bezorgen-amstelveen/">eten bestellen in Amstelveen</a>.</p>
   <h2>Wat drink je bij pasta?</h2>
-  <p>Bij tomatensauzen zoals bolognese en arrabbiata past een soepele rode wijn. Bij romige pasta’s zoals carbonara of salmone kies je eerder een frisse witte wijn. Drink je geen alcohol? Vraag dan naar onze mocktails of kies een frisdrank. Onze bediening helpt je graag met een keuze.</p>
-  <h2>Pasta bestellen of reserveren</h2>
-  <p>Eet je pasta in ons <a href="/restaurant-amstelveen/">restaurant in Amstelveen</a>, of bestel online voor afhalen en <a href="/bezorgen-amstelveen/">bezorgen</a>. Bekijk alle prijzen op het <a href="/menu-italiaans-restaurant-amstelveen/">menu</a>.</p>
+  <p>Bij tomatensauzen zoals bolognese en arrabbiata past een soepele rode wijn. Bij romige pasta’s zoals carbonara of salmone kies je eerder een frisse witte wijn. Drink je geen alcohol? Vraag dan naar onze mocktails.</p>
+  <h2>Pasta eten of bestellen</h2>
+  <p>Eet je pasta in ons <a href="/restaurant-amstelveen/">restaurant in Amstelveen</a>, of bestel online voor afhalen en bezorgen.</p>
 </Landing>

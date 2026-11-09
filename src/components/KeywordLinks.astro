@@ -1,0 +1,23 @@
+---
+// Interne links met het zoekwoord als ankertekst (zie KEYWORDS.md). De huidige pagina wordt overgeslagen.
+const { current = '' } = Astro.props as { current?: string };
+const links: [string, string][] = [
+  ['/', 'Italiaans restaurant Amstelveen'],
+  ['/restaurant-amstelveen/', 'Restaurant Amstelveen'],
+  ['/pizza-amstelveen/', 'Pizza Amstelveen'],
+  ['/pasta-amstelveen/', 'Pasta Amstelveen'],
+  ['/bezorgen-amstelveen/', 'Eten bestellen Amstelveen'],
+  ['/catering-italiaans-restaurant-amstelveen/', 'Catering Amstelveen'],
+  ['/shoarma-amstelveen/', 'Shoarma Amstelveen'],
+  ['/kapsalon-amstelveen/', 'Kapsalon Amstelveen'],
+];
+---
+<nav class="kwl" aria-label="Meer van Telepizza in Amstelveen">
+  <p class="eyebrow">Meer van Telepizza</p>
+  <ul>{links.filter(([h]) => h !== current).map(([h, t]) => <li><a href={h}>{t}</a></li>)}</ul>
+</nav>
+<style>
+  .kwl{margin-top:40px}
+  .kwl ul{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px}
+  .kwl a{font-weight:600}
+</style>

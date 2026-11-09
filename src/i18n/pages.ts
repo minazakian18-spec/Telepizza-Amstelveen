@@ -15,9 +15,9 @@ export interface SimpleCopy { title: string; desc: string; h1: string; lead: str
 export const home: Record<F, HomeCopy> = {
   en: {
     salaTitle: "A table full of atmosphere",
-    title: 'Italian restaurant & pizza in Amstelveen | Telepizza',
+    title: 'Pizza Amstelveen ★ 4.7 | Italian since 1984 | Telepizza',
     desc: 'Family-run Italian restaurant in Amstelveen since 1984. Fresh hand-stretched pizza, pasta and grill. ★ 4.7 on Google. Book or order online.',
-    h1: 'Italian restaurant & pizzeria <i>in Amstelveen</i>',
+    h1: 'Pizza and Italian food <i>in Amstelveen</i>',
     lead: 'The Italian restaurant on the Amsterdamseweg since 1984. Fresh dough, fair prices, halal meat, and open until 1:45 am (Friday and Saturday until 3 am). Dine in, take away or have it delivered.',
     facts: [['Since 1984', '40+ years in Amstelveen'], ['Halal meat', 'except labelled dishes'], ['Until 3 am', 'Friday & Saturday'], ['3 ways', 'dine in, take away, delivery']],
     menuEyebrow: 'Our menu', menuTitle: 'What are you craving?',
