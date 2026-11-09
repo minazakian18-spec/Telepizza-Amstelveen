@@ -26,8 +26,8 @@ const pct = (p: { score: string; max: string }) => Math.round(parseFloat(p.score
           {p.id === 'thefork' && <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#00665C"/><path d="M17 11v12a4 4 0 0 0 3 3.9V37h3V26.9a4 4 0 0 0 3-3.9V11h-2.5v10h-1.5V11h-2v10H18.5V11z" fill="#fff"/><path d="M30 11c3 1 4 5 4 9s-1 6-2.5 6.5V37h-3V11z" fill="#fff"/></svg>}
           <b>{p.name}</b>
         </span>
-        <span class="rb-s"><strong dir="ltr">{lang === 'en' ? p.score.replace(',', '.') : p.score}</strong><span>/{p.max}</span></span>
-        {p.id === 'google' && <span class="rb-st" style={`--p:${pct(p)}%`} role="img" aria-label={`${p.score} ${t.outOf} ${p.max}`}>★★★★★</span>}
+        <span class="rb-s"><strong dir="ltr">{lang === 'en' ? p.score.replace(',', '.') : p.score}</strong><span>/{p.max}</span></span>{" "}
+        {p.id === 'google' && <span class="rb-st" style={`--p:${pct(p)}%`} role="img" aria-label={`${p.score} ${t.outOf} ${p.max}`}>★★★★★</span>}{" "}
         <span class="rb-n">{fmt(p.count)} {t.reviews}</span>
       </a></li>
     ))}

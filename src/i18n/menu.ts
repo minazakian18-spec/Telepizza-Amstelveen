@@ -92,7 +92,6 @@ export const descEn: Record<string, string> = {
   'Rauwe ossenhaas met Parmezaanse kaas en pijnboompitten': 'Raw beef tenderloin with Parmesan and pine nuts',
   'Scheutjes tomatensaus, runder carpaccio, basilicum pesto, pijnboompitten, basilicum, rucola en Parmezaanse kaas': 'A touch of tomato sauce, beef carpaccio, basil pesto, pine nuts, basil, rocket and Parmesan',
   'Scheutjes tomatensaus, spinazie, geitenkaas, gekarameliseerde uien, zongedroogde tomaten, gegrilde courgette getopped met honing': 'A touch of tomato sauce, spinach, goat’s cheese, caramelised onions, sun-dried tomatoes and grilled courgette, topped with honey',
-  'Schnitzel in champignon roomsaus of peperroomsaus': 'Schnitzel in creamy mushroom or pepper sauce',
   'Speciaal dessert van het huis': 'Special house dessert',
   'Tomatensaus en kaas': 'Tomato sauce and cheese',
   'Tomatensaus met vier soorten kaas': 'Tomato sauce with four cheeses',

@@ -453,16 +453,6 @@ export const menu: Section[] = [
         "description": "Haasbiefstuk in champignon roomsaus of peperroomsaus"
       },
       {
-        "name": "Scaloppina",
-        "price": 24.95,
-        "description": "Schnitzel in champignon roomsaus of peperroomsaus"
-      },
-      {
-        "name": "Varkenshaas",
-        "price": 23.95,
-        "description": "in champignon roomsaus of peperroomsaus"
-      },
-      {
         "name": "Spare Ribs",
         "price": 19.95,
         "description": "Overgoten in een heerlijke marinade sweet of hot"

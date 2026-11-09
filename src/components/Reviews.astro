@@ -21,8 +21,8 @@ const g = (s: number) => `<svg viewBox="0 0 48 48" width="${s}" height="${s}" ar
       <p class="eyebrow">{t.reviewsEyebrow}</p>
       <h2 id="rv-t">{t.reviewsTitle}</h2>
       <div class="rv-scores">
-        <a href={site.googleReviewsUrl} rel="noopener" target="_blank"><Fragment set:html={g(22)} /><b>{score}</b><span class="rv-st" aria-hidden="true">★★★★★</span><small>{fmt(site.rating.count)} {l.reviews}</small></a>
-        {fork && <a href={fork.url} rel="noopener" target="_blank"><span class="rv-fk">TheFork</span><b>{fork.score}/{fork.max}</b><small>{fmt(fork.count)} {l.reviews}</small></a>}
+        <a href={site.googleReviewsUrl} rel="noopener" target="_blank"><Fragment set:html={g(22)} /><b>{score}</b>{" "}<span class="rv-st" aria-hidden="true">★★★★★</span>{" "}<small>{fmt(site.rating.count)} {l.reviews}</small></a>
+        {fork && <a href={fork.url} rel="noopener" target="_blank"><span class="rv-fk">TheFork</span>{" "}<b>{fork.score}/{fork.max}</b>{" "}<small>{fmt(fork.count)} {l.reviews}</small></a>}
       </div>
     </header>
 
