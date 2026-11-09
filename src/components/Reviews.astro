@@ -1,63 +1,91 @@
 ---
+// Reviewsectie: links de totaalscore (Google en TheFork), rechts echte Google-reviews in een rustige rij om door te swipen.
 import { site } from '../data/site';
 import { ui, type Lang } from '../i18n/ui';
 const { lang = 'nl' } = Astro.props as { lang?: Lang };
 const t = ui[lang];
-const stars = '★★★★★';
-const flags: Record<string, string> = { nl: '🇳🇱 NL', en: '🇬🇧 EN', de: '🇩🇪 DE' };
 const ordered = lang === 'nl' ? site.reviews : [...site.reviews].sort((a, b) => Number(b.lang === lang || b.lang === 'en') - Number(a.lang === lang || a.lang === 'en'));
-const row = ordered;
+const fmt = (n: number) => n.toLocaleString(lang === 'en' ? 'en-GB' : 'nl-NL');
+const google = site.platforms.find(p => p.id === 'google')!;
+const fork = site.platforms.find(p => p.id === 'thefork');
+const pct = Math.round(site.rating.value / 5 * 100);
+const L: Record<string, { avg: string; prev: string; next: string; langs: Record<string, string> }> = {
+  nl: { avg: 'Gemiddelde score op Google', prev: 'Vorige reviews', next: 'Volgende reviews', langs: { nl: 'Nederlands', en: 'Engels', de: 'Duits' } },
+  en: { avg: 'Average rating on Google', prev: 'Previous reviews', next: 'Next reviews', langs: { nl: 'Dutch', en: 'English', de: 'German' } },
+  de: { avg: 'Durchschnitt auf Google', prev: 'Vorherige Bewertungen', next: 'Weitere Bewertungen', langs: { nl: 'Niederländisch', en: 'Englisch', de: 'Deutsch' } },
+};
+const l = L[lang] ?? L.en;
 const ld = {
   '@context': 'https://schema.org', '@type': 'Restaurant', '@id': site.url + '/#restaurant',
   review: site.reviews.map(r => ({ '@type': 'Review', author: { '@type': 'Person', name: r.author }, reviewBody: r.text, reviewRating: { '@type': 'Rating', ratingValue: 5, bestRating: 5 } })),
 };
+const gLogo = '<svg viewBox="0 0 48 48" width="22" height="22" aria-hidden="true"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8a10 10 0 0 1-4.4 6.6v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.1z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.4l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.6-3.9-12.3-9H4.4v5.7A22 22 0 0 0 24 46z"/><path fill="#FBBC05" d="M11.7 28.2a13.2 13.2 0 0 1 0-8.4v-5.7H4.4a22 22 0 0 0 0 19.8l7.3-5.7z"/><path fill="#EA4335" d="M24 10.8c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3A22 22 0 0 0 4.4 14.1l7.3 5.7c1.7-5.1 6.6-9 12.3-9z"/></svg>';
 ---
 <section class="sec light rvs" aria-labelledby="rv-t">
   <script type="application/ld+json" set:html={JSON.stringify(ld)} />
-  <div class="wrap center">
-    <p class="eyebrow">{t.reviewsEyebrow}</p>
-    <h2 id="rv-t">{t.reviewsTitle}</h2>
-    <a class="score" href={site.googleReviewsUrl} rel="noopener" target="_blank">
-      <span class="g" aria-hidden="true"><svg viewBox="0 0 48 48" width="34" height="34"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8a10 10 0 0 1-4.4 6.6v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.1z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.4l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.6-3.9-12.3-9H4.4v5.7A22 22 0 0 0 24 46z"/><path fill="#FBBC05" d="M11.7 28.2a13.2 13.2 0 0 1 0-8.4v-5.7H4.4a22 22 0 0 0 0 19.8l7.3-5.7z"/><path fill="#EA4335" d="M24 10.8c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3A22 22 0 0 0 4.4 14.1l7.3 5.7c1.7-5.1 6.6-9 12.3-9z"/></svg></span>
-      <strong>{String(site.rating.value).replace('.', ',')}</strong>
-      <span class="st" aria-hidden="true">{stars}</span>
-      <span><b>{site.rating.count} {t.reviewsBased}</b></span>
-    </a>
-  </div>
-  <div class="marquee" aria-label={t.reviewsTitle}>
-    <ul class="track">
-      {row.map(r => (
-        <li>
-          <figure>
-            <div class="hd"><span class="av" aria-hidden="true">{r.author.charAt(0).toUpperCase()}</span><figcaption>{r.author}<small><a class="src" href={site.googleReviewsUrl} rel="noopener" target="_blank">{t.googleReview}</a> · {flags[r.lang] ?? r.lang.toUpperCase()}</small></figcaption></div>
-            <span class="st" aria-label="5 van 5 sterren">{stars}</span>
+  <div class="wrap rv-grid">
+    <div class="rv-sum">
+      <p class="eyebrow">{t.reviewsEyebrow}</p>
+      <h2 id="rv-t">{t.reviewsTitle}</h2>
+      <a class="rv-score" href={site.googleReviewsUrl} rel="noopener" target="_blank">
+        <span class="rv-src"><Fragment set:html={gLogo} />Google</span>
+        <span class="rv-big"><strong>{String(site.rating.value).replace('.', ',')}</strong><span>/5</span></span>
+        <span class="rv-st" style={`--p:${pct}%`} role="img" aria-label={`${String(site.rating.value).replace('.', ',')} / 5`}>★★★★★</span>
+        <span class="rv-n">{l.avg} · <b>{fmt(site.rating.count)}</b> {t.reviewsBased}</span>
+      </a>
+      {fork && <a class="rv-fork" href={fork.url} rel="noopener" target="_blank"><b>TheFork</b> {fork.score}/{fork.max} · {fmt(fork.count)} reviews</a>}
+      <a class="btn rv-all" href={site.googleReviewsUrl} rel="noopener" target="_blank">{t.reviewsAll}</a>
+    </div>
+    <div class="rv-list">
+      <ul class="rv-row" tabindex="0" aria-label={t.reviewsTitle}>
+        {ordered.map(r => (
+          <li><figure>
+            <div class="rv-hd">
+              <span class="rv-av" aria-hidden="true">{r.author.charAt(0).toUpperCase()}</span>
+              <figcaption><b>{r.author}</b><small>Google · {l.langs[r.lang] ?? r.lang.toUpperCase()}</small></figcaption>
+            </div>
+            <span class="rv-st sm" aria-label="5/5">★★★★★</span>
             <blockquote lang={r.lang}>{r.text}</blockquote>
-          </figure>
-        </li>
-      ))}
-    </ul>
+          </figure></li>
+        ))}
+      </ul>
+      <div class="rv-nav">
+        <button type="button" data-dir="-1" aria-label={l.prev}>‹</button>
+        <button type="button" data-dir="1" aria-label={l.next}>›</button>
+      </div>
+    </div>
   </div>
-  <script is:inline>(function(){var m=document.currentScript.previousElementSibling,t=m.querySelector('.track');if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;[].slice.call(t.children).forEach(function(l){var c=l.cloneNode(true);c.setAttribute('aria-hidden','true');c.querySelectorAll('a').forEach(function(a){a.tabIndex=-1});t.appendChild(c)});m.classList.add('loop')})();</script>
-  <div class="wrap center"><div class="btns"><a class="btn" href={site.googleReviewsUrl} rel="noopener" target="_blank">{t.reviewsAll}</a></div></div>
+  <script is:inline>(function(){var w=document.currentScript.parentElement,r=w.querySelector('.rv-row');w.querySelectorAll('.rv-nav button').forEach(function(b){b.onclick=function(){var c=r.querySelector('li');r.scrollBy({left:(+b.dataset.dir)*(c.offsetWidth+16),behavior:'smooth'})}})})();</script>
 </section>
 <style>
-  .score{display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 14px;background:#fff;padding:14px 26px;border-radius:999px;box-shadow:0 10px 30px rgba(60,30,10,.08);color:var(--dark)}
-  .score{text-decoration:none;transition:transform .15s}.score:hover{transform:translateY(-2px)}
-  .src{color:inherit;text-decoration:underline;text-underline-offset:2px}.src:hover{color:var(--red)}
-  .score strong{font:600 2rem/1 var(--serif)}
-  .st{color:#c27c00;letter-spacing:2px;font-size:1.15rem}
-  .marquee{direction:ltr;overflow-x:auto;margin-top:40px;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-  .track{display:flex;gap:18px;width:max-content;list-style:none;margin:0;padding:6px 0 10px}
-  .marquee.loop{overflow:hidden}
-  .marquee.loop .track{animation:scroll 55s linear infinite}
-  .marquee:hover .track,.marquee:focus-within .track{animation-play-state:paused}
-  @keyframes scroll{to{transform:translateX(calc(-50% - 9px))}}
-  .track li{width:340px;flex:none;padding:10px 0}
-  figure{margin:0;height:100%;background:#fffaf2;border-radius:4px;padding:24px 22px;box-shadow:0 10px 24px rgba(74,46,30,.14);text-align:start;transform:rotate(-1.2deg)}
-  li:nth-child(even) figure{transform:rotate(1.2deg);background:#fff6e6}
-  .hd{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-  .av{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#a5300f;color:#fff;font-weight:600}
-  figcaption{font:400 1.5rem/1 var(--script);color:var(--dark)}
-  figcaption small{display:block;font-weight:400;color:var(--dmuted);font-size:.8rem}
-  blockquote{margin:10px 0 0;color:#3b2d24;font-size:1rem;line-height:1.55}
-  </style>
+  .rv-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:36px;align-items:start}
+  .rv-sum,.rv-list{min-width:0}
+  @media(min-width:960px){.rv-grid{grid-template-columns:330px minmax(0,1fr);gap:56px}}
+  .rv-sum h2{margin-bottom:20px;font-size:clamp(2.1rem,3vw,2.7rem)}
+  .rv-score{display:flex;flex-direction:column;gap:8px;padding:22px 24px;background:#fff;border:1px solid #e6dccd;border-radius:18px;color:#202124;text-decoration:none}
+  .rv-src{display:flex;align-items:center;gap:8px;font:800 .95rem/1 var(--head)}
+  .rv-big{display:flex;align-items:baseline;gap:4px}
+  .rv-big strong{font:900 4.4rem/.9 var(--head);letter-spacing:-.03em}
+  .rv-big span{font:800 1.2rem/1 var(--head);color:#5f6368}
+  .rv-st{font-size:1.35rem;letter-spacing:3px;line-height:1;background:linear-gradient(90deg,#fbbc04 var(--p,100%),#dadce0 var(--p,100%));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .rv-st.sm{font-size:.95rem;letter-spacing:2px}
+  .rv-n{font-size:.9rem;color:#5f6368}
+  .rv-n b{color:#202124}
+  .rv-fork{display:block;margin-top:12px;font-size:.9rem;color:var(--ink);text-decoration:none}
+  .rv-fork b{color:#00665c}
+  .rv-all{margin-top:20px}
+  .rv-row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;list-style:none;margin:0;padding:2px 2px 6px}
+  .rv-row::-webkit-scrollbar{display:none}
+  .rv-row li{flex:0 0 min(86%,340px);scroll-snap-align:start}
+  .rv-row figure{margin:0;height:100%;display:flex;flex-direction:column;gap:10px;padding:22px;background:#fff;border:1px solid #e6dccd;border-radius:16px;text-align:start}
+  .rv-hd{display:flex;align-items:center;gap:12px}
+  .rv-av{display:grid;place-items:center;width:40px;height:40px;flex:none;border-radius:50%;background:var(--ink);color:#fff;font:800 1rem/1 var(--head)}
+  .rv-hd figcaption{display:flex;flex-direction:column;gap:3px}
+  .rv-hd b{font:700 1rem/1.2 var(--sans);color:var(--ink)}
+  .rv-hd small{font-size:.8rem;color:#5f6368}
+  .rv-row blockquote{margin:0;color:#3b2d24;font-size:.98rem;line-height:1.55;display:-webkit-box;-webkit-line-clamp:7;-webkit-box-orient:vertical;overflow:hidden}
+  .rv-nav{display:none;gap:10px;margin-top:18px}
+  @media(min-width:960px){.rv-nav{display:flex}}
+  .rv-nav button{width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);background:transparent;color:var(--ink);font:800 1.4rem/1 var(--head);cursor:pointer}
+  .rv-nav button:hover{background:var(--ink);color:#fff}
+</style>
