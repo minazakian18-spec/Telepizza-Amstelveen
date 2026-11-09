@@ -23,8 +23,7 @@ RewriteRule ^wp-content/uploads/2026/04/Het-Menu-van-Telepizza\.pdf$ /menu-itali
 RewriteRule ^(page|tag)/.*$ / [R=301,L]
 RewriteRule ^hello-world/?$ / [R=301,L]
 RewriteRule ^(category|author)/.*$ / [R=301,L]
-RewriteRule ^sitemap\.xml$ /sitemap-index.xml [R=301,L]
-RewriteRule ^sitemap_index\.xml$ /sitemap-index.xml [R=301,L]
+RewriteRule ^(sitemap_index|sitemap-index)\.xml$ /sitemap.xml [R=301,L]
 
 # Slash toevoegen aan mappen (bestaande URL's eindigen op /)
 RewriteCond %{REQUEST_FILENAME} !-f

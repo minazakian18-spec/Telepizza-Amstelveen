@@ -12,7 +12,7 @@ const faq: [string, string][] = [
 ];
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 ---
-<Base lang="en" title="Italian restaurant Amstelveen | Telepizza since 1984" description="Family-run Italian restaurant in Amstelveen since 1984: pizza, fresh pasta, grill and cocktails. Rated 4.7 on Google. Book a table online or order for delivery." crumbs={[{ name: 'Italian restaurant', path: '/en/italian-restaurant-amstelveen/' }]} schema={[faqLd]}
+<Base lang="en" title="Italian restaurant Amstelveen | Telepizza since 1984" description="Family-run Italian restaurant in Amstelveen since 1984: pizza, fresh pasta, grill and cocktails. Rated 4.7 on Google. Book a table or order online." crumbs={[{ name: 'Italian restaurant', path: '/en/italian-restaurant-amstelveen/' }]} schema={[faqLd]}
   alternates={[{ l: 'nl', href: '/restaurant-amstelveen/' }, { l: 'en', href: '/en/italian-restaurant-amstelveen/' }]}>
 <div class="wrap" style="padding-top:24px;padding-bottom:72px;max-width:860px">
 <p class="eyebrow">Ristorante dal 1984</p>
@@ -27,7 +27,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity
 <p>After a recent renovation, the dining room has a green plant wall, warm lighting and our neon sign: <em>Hotter than your ex</em>. It is cosy and lively without being formal. You can drop in after work or come to celebrate something special. Our staff speak English and are happy to guide you through the menu.</p>
 
 <h2>On the menu</h2>
-<p>More than 35 pizzas, from a classic margherita to truffle prosciutto and the chef’s special with Parma ham and rocket. Fresh pasta such as carbonara, bolognese and pasta with seafood, with spaghetti or penne. From the grill: sirloin, ribeye and spare ribs with salad and fries. Starters like carpaccio and bruschetta, salads, and desserts such as tiramisu. See the full <a href={pathFor('en', 'menu')}>menu with prices</a>.</p>
+<p>More than 30 pizzas, from a classic margherita to truffle prosciutto and the chef’s special with Parma ham and rocket. Fresh pasta such as carbonara, bolognese and pasta with seafood, with spaghetti or penne. From the grill: sirloin, ribeye and spare ribs with salad and fries. Starters like carpaccio and bruschetta, salads, and desserts such as tiramisu. See the full <a href={pathFor('en', 'menu')}>menu with prices</a>.</p>
 
 <h2>Cocktails, wine and the bar</h2>
 <p>At the bar we mix cocktails and mocktails, and serve wine, beer and soft drinks. Start your evening with an aperitivo, or end your dinner with a cocktail. It turns a simple meal into a proper night out.</p>

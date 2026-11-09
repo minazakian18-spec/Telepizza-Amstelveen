@@ -16,7 +16,7 @@ const tag = (x: string) => (lang === 'nl' ? x : tags[x]?.[lang] ?? x);
 <div class="carta">
   {items.map(d => (
     <article class="ci">
-      <div class="hd"><h3>{d.name}{d.tag && <span class="tag">{tag(d.tag)}</span>}</h3><span class="dots" aria-hidden="true"></span><span class="price" dir="ltr">{eur(d.price)}</span></div>
+      <div class="hd"><h3>{d.name}{d.tag && <><span class="sr-only"> – </span><span class="tag">{tag(d.tag)}</span></>}</h3><span class="dots" aria-hidden="true"></span><span class="price" dir="ltr">{eur(d.price)}</span></div>
       <p lang={lang === 'nl' ? undefined : 'en'}>{lang === 'nl' ? d.text : d.en ?? d.text}</p>
     </article>
   ))}

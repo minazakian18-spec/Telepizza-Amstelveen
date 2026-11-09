@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
 import { readdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,10 +14,36 @@ const track = {
         const html = readFileSync(f, 'utf8');
         const out = html.replace(/<a\b([^>]*?)href="([^"]+)"([^>]*)>/g, (m, a, href, b) => {
           const k = kind(href.replace(/&amp;/g, '&'));
-          return k && !/data-track=/.test(m) ? `<a${a}href="${href}"${b} data-track="${k}">` : m;
+          if (!k || /data-track=/.test(m)) return m;
+          const isCta = k === 'click_order' || k === 'click_reserve';
+          const ext = (isCta && !/target=/.test(m) ? ' target="_blank"' : '') + (isCta && !/rel=/.test(m) ? ' rel="noopener"' : '');
+          return `<a${a}href="${href}"${b}${ext} data-track="${k}">`;
         });
         if (out !== html) writeFileSync(f, out);
       }
+    },
+  },
+};
+
+// sitemap.xml: alle indexeerbare pagina's met hreflang-alternates uit de <head> van elke pagina.
+const sitemapXml = {
+  name: 'sitemap-xml',
+  hooks: {
+    'astro:build:done': ({ dir }) => {
+      const out = fileURLToPath(dir);
+      const walk = d => readdirSync(d).flatMap(n => { const p = join(d, n); return statSync(p).isDirectory() ? walk(p) : [p]; });
+      const today = new Date().toISOString().slice(0, 10);
+      const urls = [];
+      for (const f of walk(out).filter(f => f.endsWith('.html'))) {
+        const h = readFileSync(f, 'utf8');
+        if (/name="robots" content="noindex/.test(h) || /http-equiv="refresh"/.test(h)) continue;
+        const loc = (h.match(/<link rel="canonical" href="([^"]+)"/) || [])[1];
+        if (!loc || loc.endsWith('/404/') || loc.endsWith('/404.html')) continue;
+        const alts = [...h.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)].map(m => `    <xhtml:link rel="alternate" hreflang="${m[1]}" href="${m[2]}"/>`);
+        urls.push(`  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n${alts.join('\n')}${alts.length ? '\n' : ''}  </url>`);
+      }
+      urls.sort();
+      writeFileSync(join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`);
     },
   },
 };
@@ -38,5 +63,5 @@ export default defineConfig({
     '/bezorgen-amstelveen/groenelaan/': '/bezorgen-amstelveen/',
     '/bezorgen-amstelveen/waardhuizen/': '/bezorgen-amstelveen/',
   },
-  integrations: [sitemap({ filter: (p) => !p.includes('404') && !p.includes('/account/') && !/\/(tr|ar)\//.test(p) }), track],
+  integrations: [track, sitemapXml],
 });

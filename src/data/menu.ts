@@ -330,7 +330,7 @@ export const menu: Section[] = [
       {
         "name": "Pizza Frutti di Mare",
         "price": 14.45,
-        "description": "Tomatensaus, kaas, tonijn, en diverse zeevruchten, knoflook en ansjovis"
+        "description": "Tomatensaus, kaas, tonijn en diverse zeevruchten, knoflook en ansjovis"
       }
     ]
   },
@@ -405,12 +405,12 @@ export const menu: Section[] = [
       {
         "name": "Groenten (per topping)",
         "price": 1.75,
-        "description": "Gegrilde aubergine, courgette, verse tomaat, cherrytomaat, ananas, kappertjes, broccoli, rucola, erwten, Spaanse pepper, mais, pijnboompitten, paprika, rode uien, champignons, olijven, artisjok, spinazie"
+        "description": "Gegrilde aubergine, courgette, verse tomaat, cherrytomaat, ananas, kappertjes, broccoli, rucola, erwten, Spaanse peper, mais, pijnboompitten, paprika, rode uien, champignons, olijven, artisjok, spinazie"
       },
       {
         "name": "Kaas (per topping)",
         "price": 2.0,
-        "description": "Geraspte kaas, Parmezaanse kaas, geiten kaas, mozzarella, gorgonzola"
+        "description": "Geraspte kaas, Parmezaanse kaas, geitenkaas, mozzarella, gorgonzola"
       },
       {
         "name": "Vlees (per topping)",
@@ -642,7 +642,7 @@ export const menu: Section[] = [
       {
         "name": "Gelato Misto con Advocaat",
         "price": 8.45,
-        "description": "Gemengde ijs met advocaat en slagroom"
+        "description": "Gemengd ijs met advocaat en slagroom"
       },
       {
         "name": "Tartufo",

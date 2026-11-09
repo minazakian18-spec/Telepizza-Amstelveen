@@ -10,7 +10,7 @@ export const moreArticles: Article[] = [
     intro: 'Een avond uit eten begint met de juiste plek. Of je nu met z’n tweeën gaat, met vrienden of met de hele familie: met deze tips wordt het een avond om te onthouden.',
     body: `
 <h2>Kies een restaurant dat bij je gezelschap past</h2>
-<p>Met een groep is het fijn als iedereen iets lekkers kan vinden. Een Italiaans restaurant is daarom vaak een veilige keuze: pizza, pasta, salades, vlees en vis staan allemaal op de kaart. Bij Telepizza aan de Amsterdamseweg kies je uit ruim 35 pizza’s, verse pasta’s, steaks van de grill en desserts. Al het vlees is halal, zodat niemand hoeft te twijfelen.</p>
+<p>Met een groep is het fijn als iedereen iets lekkers kan vinden. Een Italiaans restaurant is daarom vaak een veilige keuze: pizza, pasta, salades, vlees en vis staan allemaal op de kaart. Bij Telepizza aan de Amsterdamseweg kies je uit ruim 30 pizza’s, verse pasta’s, steaks van de grill en desserts. Al het vlees is halal, zodat niemand hoeft te twijfelen.</p>
 <h2>Reserveer op tijd</h2>
 <p>Op vrijdag- en zaterdagavond zijn de leukste restaurants in Amstelveen snel vol. Reserveer daarom een paar dagen van tevoren. Bij Telepizza kan dat online via TheFork of telefonisch op 020-6435287.</p>
 <h2>Deel om te beginnen</h2>

@@ -27,7 +27,7 @@ const pct = (p: { score: string; max: string }) => Math.round(parseFloat(p.score
           <b>{p.name}</b>
         </span>
         <span class="rb-s"><strong dir="ltr">{p.score}</strong><span>/{p.max}</span></span>
-        <span class="rb-st" style={`--p:${pct(p)}%`} role="img" aria-label={`${p.score} ${t.outOf} ${p.max}`}>★★★★★</span>
+        {p.id === 'google' && <span class="rb-st" style={`--p:${pct(p)}%`} role="img" aria-label={`${p.score} ${t.outOf} ${p.max}`}>★★★★★</span>}
         <span class="rb-n">{fmt(p.count)} {t.reviews}</span>
       </a></li>
     ))}

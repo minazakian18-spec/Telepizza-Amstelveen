@@ -5,6 +5,7 @@ import Base from '../layouts/Base.astro';
 import Dishes from './Dishes.astro';
 import Reviews from './Reviews.astro';
 import ReviewBadges from './ReviewBadges.astro';
+import DeliveryFacts from './DeliveryFacts.astro';
 import { site } from '../data/site';
 import { pick } from '../data/dishes';
 import { media } from '../lib/media';
@@ -141,7 +142,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
       </div>
     </div>
     <div class="stamps" aria-hidden="true">
-      {c.facts.map(([b, s]) => <div class="stamp"><span>{b}<small>{s}</small></span></div>)}
+      {c.facts.map(([b, s]) => <div class="stamp"><span>{b}{" "}<small>{s}</small></span></div>)}
     </div>
   </section>
 
@@ -194,6 +195,8 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
     <div class="head"><h2>{c.waysTitle}</h2></div>
     <div class="occ">{c.ways.map(([h, p]) => <div><h3>{h}</h3><p set:html={p} /></div>)}</div>
   </div></section>
+
+  {lang === 'nl' && <DeliveryFacts />}
 
   <div id="reviews"><Reviews lang={lang} /></div>
 

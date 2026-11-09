@@ -49,7 +49,7 @@ export const site = {
   },
   // Scores op reviewplatforms (Google gecontroleerd 9 november 2026; TheFork 1 november 2026). Bijwerken als de cijfers veranderen.
   platforms: [
-    { id: 'google', name: 'Google', score: '4,7', max: '5', count: 1426, url: 'https://www.google.com/maps/place/Restaurant+Telepizza/@52.3169572,4.857271,17z' },
+    { id: 'google', name: 'Google', score: '4,7', max: '5', count: 0, url: 'https://www.google.com/maps/place/Restaurant+Telepizza/@52.3169572,4.857271,17z' },
     { id: 'thefork', name: 'TheFork', score: '9', max: '10', count: 149, url: 'https://widget.thefork.com/d10a03f4-2fab-4cc5-a1a6-ca3b826a931b' },
   ],
   // Prijzen/vermeldingen die bovenaan de site getoond worden. Alleen invullen als ze echt zijn toegekend.
@@ -90,3 +90,7 @@ export const site = {
 export const fullAddress = `${site.street}, ${site.postalCode} ${site.city}`;
 
 export { wijken } from './wijken';
+
+// Google-score en -aantal staan op één plek (rating); de platformkaart neemt ze over.
+const g = site.platforms.find(p => p.id === 'google');
+if (g) { g.count = site.rating.count; g.score = String(site.rating.value).replace('.', ','); }

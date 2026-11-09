@@ -11,7 +11,7 @@ const faq: [string, string][] = [
 ];
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 ---
-<Base lang="en" title="Pizza delivery Amstelveen & Buitenveldert | Telepizza" description="Order pizza, pasta and grill dishes for delivery in Amstelveen, Buitenveldert and the Zuidas. Order directly from Telepizza, an Italian restaurant since 1984." crumbs={[{ name: 'Pizza delivery', path: '/en/pizza-delivery-amstelveen/' }]} schema={[faqLd]}
+<Base lang="en" title="Pizza delivery Amstelveen & Buitenveldert | Telepizza" description="Order pizza, pasta and grill dishes for delivery in Amstelveen, Buitenveldert and the Zuidas. Order direct from Telepizza, since 1984." crumbs={[{ name: 'Pizza delivery', path: '/en/pizza-delivery-amstelveen/' }]} schema={[faqLd]}
   alternates={[{ l: 'nl', href: '/bezorgen-amstelveen/' }, { l: 'en', href: '/en/pizza-delivery-amstelveen/' }]}>
 <div class="wrap" style="padding-top:24px;padding-bottom:72px;max-width:860px">
 <p class="eyebrow">Delivery &amp; pick-up</p>
@@ -23,7 +23,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity
 <p>Telepizza has been part of Amstelveen since 1984. What started as a pizzeria is now a family-run Italian restaurant with a grill and a cocktail bar, but pizza is still at the heart of our kitchen. When you order through our own online shop, you order directly from us: no middleman, and if you have a question you speak to the people who actually cook your food.</p>
 
 <h2>What can you order?</h2>
-<p>More than 35 pizzas, from a classic margherita at € 9.50 to our Telepizza, truffle prosciutto and the chef’s special with Parma ham and rocket. There is also fresh pasta such as carbonara, bolognese and pasta with seafood, oven dishes like lasagna, steaks and spare ribs from the grill, the Dutch favourite kapsalon, salads and desserts like tiramisu. See the full <a href={pathFor('en', 'menu')}>menu with prices</a>.</p>
+<p>More than 30 pizzas, from a classic margherita at € 9.50 to our Telepizza, truffle prosciutto and the chef’s special with Parma ham and rocket. There is also fresh pasta such as carbonara, bolognese and pasta with seafood, oven dishes like lasagna, steaks and spare ribs from the grill, the Dutch favourite kapsalon, salads and desserts like tiramisu. See the full <a href={pathFor('en', 'menu')}>menu with prices</a>.</p>
 
 <h2>How to order</h2>
 <ol>

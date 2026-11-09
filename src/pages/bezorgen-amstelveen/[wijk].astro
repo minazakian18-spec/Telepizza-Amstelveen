@@ -17,7 +17,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity
 <Cta first="order" />
 {w.sections.map(([h, p]) => <><h2>{h}</h2><p set:html={p} /></>)}
 <h2>Wat kun je bestellen?</h2>
-<p>Ruim 35 <a href="/pizza-amstelveen/">pizza’s met handgerekt deeg</a>, verse <a href="/pasta-amstelveen/">pasta</a>, steaks en spare ribs van de grill, salades en desserts. Bezorgkosten, minimumbedrag en levertijd voor {w.name}{w.pc && ` (${w.pc})`} zie je direct bij het online bestellen. Bekijk de volledige <a href="/menu-italiaans-restaurant-amstelveen/">menukaart met prijzen</a>.</p>
+<p>Ruim 30 <a href="/pizza-amstelveen/">pizza’s met handgerekt deeg</a>, verse <a href="/pasta-amstelveen/">pasta</a>, steaks en spare ribs van de grill, salades en desserts. Bezorgkosten, minimumbedrag en levertijd voor {w.name}{w.pc && ` (${w.pc})`} zie je direct bij het online bestellen. Bekijk de volledige <a href="/menu-italiaans-restaurant-amstelveen/">menukaart met prijzen</a>.</p>
 <h2>Veelgestelde vragen over {w.name}</h2>
 {w.faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
 <h2>Andere wijken</h2>

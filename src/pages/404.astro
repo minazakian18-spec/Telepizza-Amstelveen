@@ -1,11 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
+import { site } from '../data/site';
 ---
-<Base title="Pagina niet gevonden | Telepizza Amstelveen" description="Deze pagina bestaat niet. Ga naar de homepage of het menu van Telepizza Amstelveen.">
-<div class="wrap center" style="padding-top:48px;padding-bottom:72px">
-  <div style="display:flex;justify-content:center;margin-bottom:32px"><Logo variant="full" href="/" since="Amstelveen · sinds 1984" /></div>
+<Base title="Pagina niet gevonden | Telepizza Amstelveen" description="Deze pagina bestaat niet (meer). Bekijk het menu, bestel online of reserveer een tafel bij Telepizza Amstelveen." noindex>
+<div class="wrap center" style="padding-top:48px;padding-bottom:72px;max-width:640px">
+  <div style="display:flex;justify-content:center;margin-bottom:32px"><Logo variant="full" href="/" /></div>
   <h1>Pagina niet gevonden</h1>
-  <p>Ga naar de <a href="/">homepage</a> of het <a href="/menu-italiaans-restaurant-amstelveen/">menu</a>.</p>
+  <p>Deze pagina bestaat niet (meer). Misschien zoek je een van deze:</p>
+  <div class="btns" style="justify-content:center">
+    <a class="btn primary" href={site.orderUrl!} rel="noopener">Bestel online</a>
+    <a class="btn" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a>
+  </div>
+  <p style="margin-top:24px"><a href="/menu-italiaans-restaurant-amstelveen/">Menukaart met prijzen</a> · <a href="/">Homepage</a> · <a href="/contact-route/">Contact en route</a></p>
 </div>
 </Base>

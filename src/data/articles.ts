@@ -25,7 +25,7 @@ export const articles: Article[] = [
   {
     slug: 'halal-uit-eten-amstelveen',
     title: 'Halal uit eten in Amstelveen: Italiaans, grill en meer',
-    desc: 'Halal uit eten in Amstelveen? Bij Telepizza is al het vlees halal: pizza, pasta, steaks, shoarma en kapsalon. Lees wat je kunt verwachten en wat we serveren.',
+    desc: 'Halal uit eten in Amstelveen? Bij Telepizza is al het vlees halal: pizza, pasta, steaks, shoarma en kapsalon. Lees wat we serveren.',
     date: '2026-10-28', img: '/images/eigen/steak-grill.webp', imgAlt: 'Steak van de grill bij Telepizza Amstelveen',
     intro: 'Een restaurant vinden waar je zonder twijfel vlees kunt bestellen is niet altijd makkelijk. Bij Telepizza Amstelveen is al ons vlees halal. Zo kan iedereen aan tafel kiezen wat hij of zij wil.',
     body: `
@@ -45,7 +45,7 @@ export const articles: Article[] = [
   {
     slug: 'verjaardag-vieren-restaurant-amstelveen',
     title: 'Je verjaardag vieren in een restaurant in Amstelveen',
-    desc: 'Op zoek naar een restaurant in Amstelveen om je verjaardag te vieren? Tips voor een etentje met familie of vrienden, met grote tafels, pizza, pasta en desserts.',
+    desc: 'Op zoek naar een restaurant in Amstelveen om je verjaardag te vieren? Tips voor een etentje met familie of vrienden, met pizza, pasta en desserts.',
     date: '2026-10-24', img: '/images/ph/gasten.webp', imgAlt: 'Neon in de zaal van Telepizza Amstelveen',
     intro: 'Een verjaardag vier je het liefst samen, aan een lange tafel met goed eten. Italiaans eten is daarvoor ideaal: er is voor iedereen iets, van kinderen tot opa en oma. Zo organiseer je het.',
     body: `
@@ -67,7 +67,7 @@ export const articles: Article[] = [
   {
     slug: 'pasta-carbonara-romeins-of-romig',
     title: 'Pasta carbonara: Romeins of romig?',
-    desc: 'Hoort er room in carbonara? Over de Romeinse klassieker met ei, pecorino en guanciale, en waarom wij in Amstelveen kiezen voor een romige versie met spek en Parmezaanse kaas.',
+    desc: 'Hoort er room in carbonara? De Romeinse klassieker met ei, pecorino en guanciale, en waarom wij kiezen voor een romige versie met spek.',
     date: '2026-10-20', img: '/images/ph/pasta-penne.webp', imgAlt: 'Pasta uit de keuken van Telepizza Amstelveen',
     intro: 'Weinig gerechten zorgen voor zoveel discussie als carbonara. Puristen zeggen: nooit room. Toch is de romige variant in Nederland enorm populair. Wat is het verschil, en hoe maken wij hem?',
     body: `

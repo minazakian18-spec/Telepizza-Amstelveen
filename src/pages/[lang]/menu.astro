@@ -63,7 +63,7 @@ const sectionPhoto: Record<string, string> = { 'Pasta’s': 'pasta-tartufo', 'Sp
         <div class="items">
           {s.items.map(i => { const img = photos.get(norm(i.name)); return (
             <article class="it">
-              {img && <img src={`/images/menu/${img}.webp`} alt="" width="84" height="64" loading="lazy" decoding="async" />}
+              {img && <img src={`/images/menu/${img}.webp`} alt={i.name} width="84" height="64" loading="lazy" decoding="async" />}
               <div><h3>{i.name}</h3>{i.description && <p lang="en">{desc(i.description)}</p>}</div>
               <span class="price" dir="ltr">{i.priceText ?? (i.price != null ? eur(i.price) : '')}</span>
             </article>); })}
