@@ -3,6 +3,7 @@
 import Base from './Base.astro';
 import Dishes from '../components/Dishes.astro';
 import Cta from '../components/Cta.astro';
+import OpenToday from '../components/OpenToday.astro';
 import { site } from '../data/site';
 import type { Dish } from '../data/dishes';
 import type { PageKey } from '../i18n/ui';
@@ -38,6 +39,7 @@ const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPag
       <h1 set:html={p.h1} />
       <p class="lead">{p.lead}</p>
       <Cta first={p.first ?? 'reserve'} />
+      {p.path === '/pizza-amstelveen/' && <OpenToday />}
       <p style="margin-top:18px"><a class="lnk" href="/menu-italiaans-restaurant-amstelveen/">Bekijk de menukaart</a></p>
     </div>
     <figure><img src={p.img} alt={p.imgAlt} width="900" height="1125" fetchpriority="high" /></figure>
@@ -58,7 +60,7 @@ const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPag
     </aside>
   </div></section>
   {p.gallery && <section class="sec alt"><div class="wrap gal">
-    {p.gallery.map(([src, cap]) => <figure><img src={src} alt={cap} width="900" height="1125" loading="lazy" decoding="async" /><figcaption>{cap}</figcaption></figure>)}
+    {p.gallery.map(([src, cap]) => <figure><img src={src} alt={/telepizza/i.test(cap) ? cap : `${cap}, Telepizza Amstelveen`} width="900" height="1125" loading="lazy" decoding="async" /><figcaption>{cap.replace(/ (bij|van|in het restaurant van) Telepizza( Amstelveen)?$/i, "")}</figcaption></figure>)}
   </div></section>}
   {faq.length > 0 && <section class="sec"><div class="wrap" style="max-width:860px">
     <div class="center"><h2>Veelgestelde vragen</h2></div>

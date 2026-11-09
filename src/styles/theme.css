@@ -258,3 +258,5 @@ body:has(.burger[open]) .mbar,body:has(.burger[open]) #nlpop{display:none}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* Onderbalk op mobiel: Bel, Bestel online, Reserveer; de pagina krijgt ruimte zodat niets wordt afgedekt */
 @media(max-width:767px){.mbar{left:12px;right:12px;inset-inline-end:12px}.mbar a{flex:1;padding:0 10px}body{padding-bottom:78px}}
+@supports(bottom:env(safe-area-inset-bottom)){@media(max-width:767px){.mbar{bottom:calc(12px + env(safe-area-inset-bottom))}body{padding-bottom:calc(78px + env(safe-area-inset-bottom))}}}
+.hero .open-today{color:#fff}

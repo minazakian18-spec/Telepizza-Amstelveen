@@ -8,7 +8,7 @@ const t = ui[lang];
 const ordered = lang === 'nl' ? site.reviews : [...site.reviews].sort((a, b) => Number(b.lang === lang || b.lang === 'en') - Number(a.lang === lang || a.lang === 'en'));
 const fmt = (n: number) => n.toLocaleString(lang === 'en' ? 'en-GB' : 'nl-NL');
 const fork = site.platforms.find(p => p.id === 'thefork');
-const score = String(site.rating.value).replace('.', ',');
+const score = lang === 'en' ? String(site.rating.value) : String(site.rating.value).replace('.', ',');
 const L: Record<string, { reviews: string }> = { nl: { reviews: 'reviews' }, en: { reviews: 'reviews' }, de: { reviews: 'Bewertungen' }, fr: { reviews: 'avis' }, it: { reviews: 'recensioni' }, es: { reviews: 'reseñas' } };
 const l = L[lang] ?? L.en;
 const colors = ['#1a73e8', '#d93025', '#188038', '#e37400', '#9334e6', '#12b5cb', '#c5221f', '#5f6368'];

@@ -46,7 +46,7 @@ const restaurant: any = {
   logo: site.url + '/images/logo-telepizza-2x.webp',
   hasMenu: site.url + '/menu-italiaans-restaurant-amstelveen/',
   address: { '@type': 'PostalAddress', streetAddress: site.street, postalCode: site.postalCode, addressLocality: site.city, addressCountry: site.country },
-  areaServed: ['Amstelveen', 'Buitenveldert', 'Zuidas', 'Randwijck', 'Elsrijk', 'Westwijk', 'Bankras-Kostverloren', 'Middenhoven', 'Waardhuizen', 'Groenelaan', 'Keizer Karelpark', 'Stadshart', 'Oude Dorp', 'Bovenkerk'].map(n => ({ '@type': 'Place', name: n })),
+  areaServed: ['Amstelveen', 'Buitenveldert', 'Zuidas', 'Randwijck', 'Elsrijk', 'Westwijk', 'Bankras-Kostverloren', 'Keizer Karelpark', 'Stadshart', 'Oude Dorp', 'Bovenkerk'].map(n => ({ '@type': 'Place', name: n })),
   menu: site.url + '/menu-italiaans-restaurant-amstelveen/',
   potentialAction: [{ '@type': 'OrderAction', target: site.orderUrl }, { '@type': 'ReserveAction', target: site.reserveUrl }],
 };
@@ -185,7 +185,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
       <li><a href="/catering-italiaans-restaurant-amstelveen/">Catering</a></li>
       <li><a href="/reviews/">Reviews</a></li>
       <li><a href="/blog/">Blog</a></li>
-      <li><a href="/veelgestelde-vragen/">FAQ</a></li>
+      <li><a href="/veelgestelde-vragen/">Veelgestelde vragen</a></li>
     </ul>}</div>
   </div>
   <Newsletter lang={lang} variant="footer" />

@@ -1,6 +1,7 @@
 // Wijkpagina's /bezorgen-amstelveen/<slug>/. Elke wijk heeft eigen tekst en eigen FAQ's.
 // Geen minutenbeloftes over route of levertijd; levertijd staat in de bestelwinkel.
-// Middenhoven, Groenelaan en Waardhuizen hebben geen eigen pagina meer (301 naar /bezorgen-amstelveen/).
+// Middenhoven, Groenelaan en Waardhuizen hebben geen eigen pagina (301 naar /bezorgen-amstelveen/): zonder
+// controleerbare kennis van die wijken zou de tekst verzonnen of gekopieerd zijn.
 export interface Wijk {
   slug: string; name: string; pc?: string; todo?: boolean;
   intro: string; sections: [string, string][]; faq: [string, string][];

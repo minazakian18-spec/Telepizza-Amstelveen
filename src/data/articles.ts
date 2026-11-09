@@ -1,26 +1,40 @@
 // Blogartikelen. body is HTML; houd feiten controleerbaar en link naar relevante pagina's.
-export interface Article { slug: string; title: string; desc: string; date: string; img: string; imgAlt: string; intro: string; body: string }
+export interface Article { slug: string; title: string; desc: string; date: string; updated?: string; img: string; imgAlt: string; intro: string; body: string }
 
 export const articles: Article[] = [
   {
     slug: 'beste-pizza-amstelveen',
-    title: 'De beste pizza in Amstelveen: waar let je op?',
-    desc: 'Waar vind je de lekkerste pizza in Amstelveen? Zo herken je een goede pizza aan deeg, saus, kaas en oven. Met tips van Telepizza, sinds 1984.',
-    date: '2026-10-30', img: '/images/pizza-groente.webp', imgAlt: 'Pizza met verse groenten en geitenkaas van Telepizza Amstelveen',
-    intro: 'Iedereen heeft een mening over pizza. Toch zijn er een paar dingen waaraan je een echt goede pizza herkent. Na ruim veertig jaar pizza bakken in Amstelveen zetten we ze voor je op een rij.',
+    title: 'Waar herken je een goede pizza aan? Tips uit onze keuken',
+    desc: 'Waaraan herken je een goede pizza? Over deeg, rijstijd, saus, kaas, toppings en de oven, met tips uit de keuken van Telepizza, pizza bakken sinds 1984.',
+    date: '2026-10-30', updated: '2026-11-09', img: '/images/pizza-groente.webp', imgAlt: 'Pizza met verse groenten en geitenkaas van Telepizza Amstelveen',
+    intro: 'Iedereen heeft een mening over pizza, maar over een paar dingen zijn pizzabakkers het eens. Na ruim veertig jaar pizza bakken aan de Amsterdamseweg zetten we op een rij waaraan je een goede pizza herkent, of je hem nu bij ons eet of ergens anders.',
     body: `
-<h2>1. Het deeg maakt het verschil</h2>
-<p>Een goede pizza begint bij het deeg. Het moet de tijd krijgen om te rijzen, zodat het luchtig wordt en smaak ontwikkelt. Bij Telepizza rekken we het deeg met de hand uit in plaats van het plat te rollen. Daardoor blijft er lucht in de rand, en krijg je die herkenbare, licht krokante korst met een zachte binnenkant.</p>
-<h2>2. Een eerlijke tomatensaus</h2>
-<p>De saus hoort de pizza te ondersteunen, niet te overheersen. Wij maken onze tomatensaus zelf, met tomaat, kruiden en een beetje knoflook. Niet te zoet en niet te dik, zodat de smaak van de toppings goed tot zijn recht komt.</p>
-<h2>3. Kaas en toppings in balans</h2>
-<p>Meer is niet altijd beter. Een pizza met te veel beleg wordt zwaar en de bodem wordt slap. Kijk liever naar de kwaliteit: goede mozzarella, echte Parmezaanse kaas, verse groenten en vlees van een betrouwbare leverancier. Onze <a href="/menu-italiaans-restaurant-amstelveen/#pizza">speciale pizza’s</a> zoals de Truffel Prosciutto en de Popeye Speciale met geitenkaas en honing laten zien hoe een paar goede ingrediënten samen een heel gerecht maken.</p>
-<h2>4. Heet bakken</h2>
-<p>Een pizza moet kort en heet gebakken worden. Zo bakt de bodem knapperig af terwijl de kaas net smelt. Een pizza die lang op lage temperatuur in de oven staat, wordt droog. Bij ons gaat de pizza direct na het beleggen de oven in.</p>
-<h2>5. Vers is beter: eet hem aan tafel</h2>
-<p>Pizza is op zijn best in de eerste minuten na de oven. Daarom proef je het verschil het meest als je in het restaurant eet. <a href="/restaurant-amstelveen/">Schuif aan in ons restaurant</a> aan de Amsterdamseweg, met een glas wijn erbij. Thuis eten kan natuurlijk ook: haal je pizza zelf af, dan is hij het snelst bij je op tafel.</p>
-<h2>Welke pizza moet je proberen?</h2>
-<p>Ben je voor het eerst bij Telepizza? Begin met een klassieker, zoals de margherita of de pepperoni, om het deeg en de saus te proeven. Durf je meer? Kies dan de Telepizza, onze huisspecialiteit met ham, salami, champignons, paprika, ui, artisjok en spinazie, of de Specialiteit van de Chef met Parmaham, rucola en pijnboompitten. Bekijk alle <a href="/pizza-amstelveen/">pizza’s in Amstelveen</a> of het volledige <a href="/menu-italiaans-restaurant-amstelveen/">menu</a>.</p>`,
+<h2>Het deeg: de basis van alles</h2>
+<p>Een pizza is zo goed als zijn deeg. Bloem, water, gist, zout en een beetje olijfolie: meer is er niet nodig, maar de verhouding en de tijd maken het verschil. Goed deeg krijgt de tijd om te rijzen. Tijdens het rijzen ontwikkelt het smaak en wordt het soepel, waardoor het later licht verteerbaar is. Deeg dat te snel gemaakt wordt, smaakt vlak en wordt taai.</p>
+<p>Je ziet het verschil al aan de rand. Een goede pizza heeft een rand met luchtbellen, die van buiten knapperig is en van binnen zacht. Dat krijg je alleen als het deeg met de hand wordt uitgerekt. Een deegroller drukt de lucht eruit; met je handen duw je de lucht juist naar de rand. Daarom rekken wij elke bodem met de hand uit, al sinds de eerste pizza die we in 1984 bakten.</p>
+
+<h2>Hoe dik moet een pizza zijn?</h2>
+<p>Dat is een kwestie van smaak. Een Napolitaanse pizza heeft een dunne bodem en een dikke, luchtige rand. Een Romeinse pizza is juist dun en krokant tot aan de rand. Een goede pizza is in elk geval niet zo dun dat hij scheurt onder het beleg, en niet zo dik dat je vooral brood eet. Pak een punt op: zakt de punt helemaal door, dan is de bodem te nat of te dun. Blijft hij stijf als een cracker, dan is hij te lang gebakken.</p>
+
+<h2>De tomatensaus</h2>
+<p>De saus hoort de pizza te dragen, niet te overheersen. Een goede tomatensaus is eenvoudig: tomaat, een beetje knoflook, olijfolie en kruiden zoals oregano of basilicum. Hij is niet zoet en niet waterig. Te veel saus maakt de bodem slap, te weinig maakt de pizza droog. Wij maken onze tomatensaus zelf, zodat we de smaak en de dikte precies goed kunnen houden.</p>
+
+<h2>Kaas en toppings in balans</h2>
+<p>Meer is niet altijd beter. Een pizza met een berg beleg wordt zwaar, en het vocht uit groenten en vlees maakt de bodem slap. Kijk liever naar de kwaliteit en de combinatie. Een paar goede ingrediënten die bij elkaar passen, zeggen meer dan tien halve. Denk aan Parmaham met rucola en Parmezaanse kaas, of geitenkaas met spinazie en een beetje honing, zoals op onze Popeye Speciale.</p>
+<p>Let ook op wanneer toppings op de pizza gaan. Rucola, Parmaham en verse basilicum horen er pas na het bakken op; in de oven verliezen ze hun frisheid. Kaas moet net gesmolten zijn en licht bruin op de plekken waar hij bubbelt, niet olieachtig of verbrand.</p>
+
+<h2>De oven: kort en heet</h2>
+<p>Een pizza hoort kort en heet gebakken te worden. Bij een hoge temperatuur bakt de bodem knapperig af terwijl de kaas net smelt en de rand mooi kleurt. Bak je te lang op een lage temperatuur, dan droogt de pizza uit voordat hij goed gebakken is. Een paar donkere plekjes op de rand zijn geen fout maar een teken van een hete oven.</p>
+
+<h2>Wat ervaring je leert</h2>
+<p>Pizza bakken lijkt eenvoudig, maar het verschil zit in de details. Hoe het deeg voelt op een warme zomerdag of een vochtige herfstavond. Hoeveel saus een bodem kan hebben. Wanneer een pizza uit de oven moet. Dat leer je niet uit een recept, maar door het elke dag te doen. Sinds 1984 bakken we pizza’s voor gasten in Amstelveen, Buitenveldert en verder, en nog steeds proeven we elke dag of het goed is.</p>
+
+<h2>Eet hem vers</h2>
+<p>Pizza is op zijn best in de eerste minuten na de oven. Daarom proef je het verschil het meest als je aan tafel eet. Laat je hem bezorgen, eet hem dan meteen, en warm een koude punt op in de oven in plaats van in de magnetron. Zo blijft de bodem knapperig.</p>
+
+<h2>Proef het zelf</h2>
+<p>Ben je voor het eerst bij ons? Begin met een klassieker zoals de margherita of de pepperoni, zodat je het deeg en de saus goed proeft. Durf je meer, kies dan de Telepizza, onze huisspecialiteit, of de Specialiteit van de Chef met Parmaham en rucola. Alles over onze pizza’s, prijzen en bezorging lees je op de pagina <a href="/pizza-amstelveen/">pizza Amstelveen</a>. Liever aan tafel? <a href="/restaurant-amstelveen/">Reserveer in ons restaurant</a> aan de Amsterdamseweg.</p>
+`,
   },
   {
     slug: 'halal-uit-eten-amstelveen',

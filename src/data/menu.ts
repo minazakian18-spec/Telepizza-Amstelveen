@@ -182,7 +182,7 @@ export const menu: Section[] = [
         "description": "Deeg rollen gevuld met wilde spinazie, ricotta kaas, tomatensaus uit de oven en getopped met rucola"
       },
       {
-        "name": "Lasagna al Forno",
+        "name": "Lasagne al Forno",
         "price": 13.45,
         "description": "Met huisgemaakte bolognesesaus en kaas uit de oven"
       }

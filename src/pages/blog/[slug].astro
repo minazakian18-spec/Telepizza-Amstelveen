@@ -6,7 +6,7 @@ export const getStaticPaths = () => articles.map(a => ({ params: { slug: a.slug 
 const { a } = Astro.props;
 const fmt = (d: string) => new Date(d).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
 const url = new URL(`/blog/${a.slug}/`, site.url).href;
-const ld = { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: a.title, description: a.desc, image: new URL(a.img, site.url).href, datePublished: a.date, dateModified: a.date, inLanguage: 'nl', mainEntityOfPage: url, author: { '@type': 'Organization', name: site.name }, publisher: { '@id': site.url + '/#restaurant' } };
+const ld = { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: a.title, description: a.desc, image: new URL(a.img, site.url).href, datePublished: a.date, dateModified: a.updated ?? a.date, inLanguage: 'nl', mainEntityOfPage: url, author: { '@type': 'Organization', name: site.name }, publisher: { '@id': site.url + '/#restaurant' } };
 const more = articles.filter(x => x.slug !== a.slug).slice(0, 3);
 const full = `${a.title} | Telepizza`;
 const short = a.title.split(/[:?]/)[0].trim();
@@ -30,14 +30,14 @@ const seoDesc = a.desc;
     .more h3{font-size:1.4rem;margin-top:12px}
   </style>
   <article class="wrap art">
-    <p class="meta">Door {site.name} · <time datetime={a.date}>{fmt(a.date)}</time></p>
+    <p class="meta">Door {site.name} · <time datetime={a.date}>{fmt(a.date)}</time>{a.updated && <> · bijgewerkt <time datetime={a.updated}>{fmt(a.updated)}</time></>}</p>
     <h1>{a.title}</h1>
     <p class="lead">{a.intro}</p>
     <figure><img src={a.img} alt={a.imgAlt} width="1200" height="750" fetchpriority="high" /></figure>
     <div class="prose" set:html={a.body} />
     <div class="cta">
       <h2>Proef het zelf</h2>
-      <p class="center">Telepizza Amstelveen, Amsterdamseweg 452. Dinsdag t/m zondag open vanaf 15:00.</p>
+      <p class="center">Kom langs bij onze <a href="/pizza-amstelveen/">pizzeria in Amstelveen</a> aan de Amsterdamseweg 452. Dinsdag t/m zondag open vanaf 15:00.</p>
       <div class="btns" style="justify-content:center"><a class="btn primary" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a><a class="btn" href="/menu-italiaans-restaurant-amstelveen/">Bekijk de kaart</a></div>
     </div>
   </article>

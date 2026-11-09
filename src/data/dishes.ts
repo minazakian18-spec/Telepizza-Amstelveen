@@ -20,7 +20,7 @@ export const dishes: Record<string, Dish> = {
   salmone: { name: 'Pasta Salmone', img: 'pasta-salmone', price: 14.45, text: 'Zalm, spinazie, rode ui en mosterd-roomsaus.', en: "Salmon, spinach, red onion and creamy mustard sauce." },
   gamberoniPasta: { name: 'Pasta Gamberoni', img: 'pasta-gamberoni', price: 14.45, text: 'Garnalen in rosésaus met knoflook en rucola.', en: "Prawns in rosé sauce with garlic and rocket." },
   pollo: { name: 'Pasta Pollo', img: 'pasta-pollo', price: 13.45, text: 'Gegrilde kip, champignons, broccoli en roomsaus.', en: "Grilled chicken, mushrooms, broccoli and cream sauce." },
-  lasagna: { name: 'Lasagna al Forno', img: 'lasagna', price: 13.45, text: 'Huisgemaakte bolognesesaus en kaas uit de oven.', en: "Homemade bolognese and cheese from the oven." },
+  lasagna: { name: 'Lasagne al Forno', img: 'lasagna', price: 13.45, text: 'Huisgemaakte bolognesesaus en kaas uit de oven.', en: "Homemade bolognese and cheese from the oven." },
   kapsalon: { name: 'Kapsalon Shoarma', img: 'kapsalon', price: 11.95, text: 'Friet, shoarma, gesmolten kaas, frisse salade en saus.', tag: 'Halal', en: "Fries, shawarma, melted cheese, fresh salad and sauce." },
   shoarmaSchotel: { name: 'Shoarma Schotel', img: 'shoarma-schotel', price: 16.95, text: 'Verse shoarma van de spies met salade en frites.', tag: 'Halal', en: "Fresh shawarma from the spit with salad and fries." },
   kipSchotel: { name: 'Kip Shoarma Schotel', img: 'kip-shoarma-schotel', price: 16.95, text: 'Kipshoarma met salade, friet en twee sauzen.', tag: 'Halal', en: "Chicken shawarma with salad, fries and two sauces." },
@@ -32,4 +32,13 @@ export const dishes: Record<string, Dish> = {
 };
 
 export const pick = (...keys: (keyof typeof dishes)[]) => keys.map(k => dishes[k]);
-export const eur = (p: number) => '€ ' + p.toFixed(2).replace('.', ',');
+export const eur = (p: number, lang = 'nl') => lang === 'en' ? '€' + p.toFixed(2) : lang === 'nl' ? '€ ' + p.toFixed(2).replace('.', ',') : p.toFixed(2).replace('.', ',') + ' €';
+// Gerechtnamen die in andere talen anders heten (de rest is Italiaans en blijft gelijk).
+export const dishName: Record<string, Record<string, string>> = {
+  'Specialiteit van de Chef': { en: 'Chef’s Speciality', de: 'Spezialität des Küchenchefs', fr: 'Spécialité du chef', it: 'Specialità dello chef', es: 'Especialidad del chef', tr: 'Şefin Spesiyali', ar: 'طبق الشيف الخاص' },
+  'Pizza Truffel Prosciutto': { en: 'Truffle Prosciutto Pizza', de: 'Pizza Trüffel Prosciutto', fr: 'Pizza Truffe Prosciutto', it: 'Pizza Tartufo e Prosciutto', es: 'Pizza Trufa y Prosciutto', tr: 'Trüflü Prosciutto Pizza', ar: 'بيتزا الكمأة والبروشوتو' },
+  'Kapsalon Shoarma': { en: 'Kapsalon Shawarma', de: 'Kapsalon Schawarma' },
+  'Shoarma Schotel': { en: 'Shawarma Platter', de: 'Schawarma-Teller' },
+  'Kip Shoarma Schotel': { en: 'Chicken Shawarma Platter', de: 'Hähnchen-Schawarma-Teller' },
+  'Caprese Salade': { en: 'Caprese Salad', de: 'Caprese-Salat', fr: 'Salade Caprese', it: 'Insalata Caprese', es: 'Ensalada Caprese' },
+};

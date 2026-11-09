@@ -4,11 +4,9 @@ import { site, wijken } from '../data/site';
 interface Props { heading?: string }
 const { heading = 'Bezorgen en afhalen' } = Astro.props;
 const d = site.delivery;
-const facts = [
-  d.fee && ['Bezorgkosten', d.fee],
-  d.minimum && ['Minimumbedrag', d.minimum],
-  d.time && ['Indicatieve levertijd', d.time],
-].filter(Boolean) as [string, string][];
+// TODO eigenaar invullen: bezorgkosten, minimumbedrag en levertijd in src/data/site.ts (delivery). Geen bedragen verzinnen.
+const shop = 'Zie de bestelwinkel';
+const facts: [string, string][] = [['Bezorgkosten', d.fee ?? shop], ['Minimumbedrag', d.minimum ?? shop], ['Levertijd', d.time ?? shop]];
 ---
 <section class="delivery">
   <h2>{heading}</h2>
@@ -16,6 +14,7 @@ const facts = [
   <h3>Bezorggebied</h3>
   <p>We bezorgen in Amstelveen en Buitenveldert: postcodes {d.postcodes}.</p>
   <ul class="wijken">{wijken.map(w => <li><a href={`/bezorgen-amstelveen/${w.slug}/`}>{w.name}</a>{w.pc && <span> ({w.pc})</span>}</li>)}</ul>
+  {/* TODO eigenaar invullen: bezorgkosten, minimumbedrag en levertijd (src/data/site.ts) */}
   {facts.length > 0 && <dl class="dfacts">{facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>}
   <p>Bezorgkosten, minimumbedrag en de verwachte levertijd zie je ook direct in onze <a href={site.orderUrl!} rel="noopener">online bestelwinkel</a>.</p>
   <h3>Afhalen</h3>

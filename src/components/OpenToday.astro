@@ -1,0 +1,29 @@
+---
+// "Vandaag open tot …" of "Vandaag gesloten", berekend met de tijdzone Europe/Amsterdam.
+// Zonder JavaScript staat er de vaste tekst met openingstijden. Na middernacht telt de nacht nog bij de vorige dag.
+import { site } from '../data/site';
+import type { Lang } from '../i18n/ui';
+const { lang = 'nl' } = Astro.props as { lang?: Lang };
+const T: Record<string, { open: string; closed: string; fallback: string }> = {
+  nl: { open: 'Vandaag open tot', closed: 'Vandaag gesloten', fallback: 'Di–zo open vanaf 15:00 · maandag gesloten' },
+  en: { open: 'Open today until', closed: 'Closed today', fallback: 'Open Tue–Sun from 15:00 · closed Mondays' },
+  de: { open: 'Heute geöffnet bis', closed: 'Heute geschlossen', fallback: 'Di–So ab 15:00 geöffnet · montags geschlossen' },
+  fr: { open: 'Ouvert aujourd’hui jusqu’à', closed: 'Fermé aujourd’hui', fallback: 'Ouvert du mar. au dim. dès 15:00 · fermé le lundi' },
+  it: { open: 'Aperto oggi fino alle', closed: 'Oggi chiuso', fallback: 'Aperto mar–dom dalle 15:00 · lunedì chiuso' },
+  es: { open: 'Abierto hoy hasta las', closed: 'Hoy cerrado', fallback: 'Abierto mar–dom desde las 15:00 · lunes cerrado' },
+};
+const t = T[lang] ?? T.en;
+const close = Object.fromEntries(site.hours.map(h => [h.schema, h.close]));
+---
+<p class="open-today" data-open={t.open} data-closed={t.closed} data-close={JSON.stringify(close)}><span class="dot" aria-hidden="true"></span><span class="ot">{t.fallback}</span></p>
+<script is:inline>(function(){document.querySelectorAll('.open-today').forEach(function(p){
+  var c=JSON.parse(p.dataset.close),now=new Date(),f=function(o){return new Intl.DateTimeFormat('en-GB',Object.assign({timeZone:'Europe/Amsterdam'},o)).format(now)};
+  var day=f({weekday:'long'}),hm=f({hour:'2-digit',minute:'2-digit',hour12:false});
+  var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  if(hm<'06:00'){var prev=days[(days.indexOf(day)+6)%7];if(c[prev]&&hm<c[prev]){day=prev}}
+  var t=c[day];p.querySelector('.ot').textContent=t?p.dataset.open+' '+t:p.dataset.closed;p.classList.toggle('closed',!t)})})();</script>
+<style>
+  .open-today{display:inline-flex;align-items:center;gap:8px;margin:14px 0 0;font:700 .9rem/1.2 var(--sans)}
+  .open-today .dot{width:9px;height:9px;border-radius:50%;background:#2fb55d;box-shadow:0 0 0 3px rgba(47,181,93,.25)}
+  .open-today.closed .dot{background:#c0392b;box-shadow:0 0 0 3px rgba(192,57,43,.25)}
+</style>

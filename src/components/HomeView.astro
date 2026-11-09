@@ -5,6 +5,7 @@ import Base from '../layouts/Base.astro';
 import Dishes from './Dishes.astro';
 import Reviews from './Reviews.astro';
 import ReviewBadges from './ReviewBadges.astro';
+import OpenToday from './OpenToday.astro';
 import { site } from '../data/site';
 import { pick } from '../data/dishes';
 import { media } from '../lib/media';
@@ -51,12 +52,12 @@ const alts: Record<string, { hall: string; front: string }> = {
 };
 const A = alts[lang] ?? alts.en;
 const photoAlts: Record<string, Record<string, string>> = {
-  nl: { 'pizza-rozemarijn': 'Pizza met salami, champignons en paprika bij Telepizza Amstelveen', 'pasta-penne': 'Penne in tomatensaus met verse kruiden bij Telepizza Amstelveen', 'pizza-hand': 'Pizza met kip, paprika en maïs bij Telepizza Amstelveen', 'pizza-rond': 'Pizza met spinazie en witte kaas bij Telepizza Amstelveen', 'pasta-vork': 'Spaghetti bolognese met verse kruiden bij Telepizza Amstelveen', neon: 'Donkere tafel met twee schaaltjes onder rood neonlicht', bar: 'Cocktail op een tafel voor de neon Hotter than your ex', 'zaal-planten': 'Groene plantenwand met neonletters en een gloeilamp' },
-  en: { 'pizza-rozemarijn': 'Pizza with salami, mushrooms and peppers at Telepizza Amstelveen', 'pasta-penne': 'Penne in tomato sauce with fresh herbs at Telepizza Amstelveen', 'pizza-hand': 'Pizza with chicken, peppers and sweetcorn at Telepizza Amstelveen', 'pizza-rond': 'Pizza with spinach and white cheese at Telepizza Amstelveen', 'pasta-vork': 'Spaghetti bolognese with fresh herbs at Telepizza Amstelveen', neon: 'Dark table with two small dishes under red neon light', bar: 'Cocktail on a table in front of the Hotter than your ex neon', 'zaal-planten': 'Green plant wall with neon lettering and a light bulb' },
-  de: { 'pizza-rozemarijn': 'Pizza mit Salami, Champignons und Paprika bei Telepizza Amstelveen', 'pasta-penne': 'Penne in Tomatensauce mit frischen Kräutern bei Telepizza Amstelveen', 'pizza-hand': 'Pizza mit Hähnchen, Paprika und Mais bei Telepizza Amstelveen', 'pizza-rond': 'Pizza mit Spinat und weißem Käse bei Telepizza Amstelveen', 'pasta-vork': 'Spaghetti Bolognese mit frischen Kräutern bei Telepizza Amstelveen', neon: 'Dunkler Tisch mit zwei Schälchen unter rotem Neonlicht', bar: 'Cocktail auf einem Tisch vor dem Neonschriftzug Hotter than your ex', 'zaal-planten': 'Grüne Pflanzenwand mit Neonschrift und Glühbirne' },
-  fr: { 'pizza-rozemarijn': 'Pizza au salami, champignons et poivrons chez Telepizza Amstelveen', 'pasta-penne': 'Penne à la sauce tomate et herbes fraîches chez Telepizza Amstelveen', 'pizza-hand': 'Pizza au poulet, poivrons et maïs chez Telepizza Amstelveen', 'pizza-rond': 'Pizza aux épinards et fromage blanc chez Telepizza Amstelveen', 'pasta-vork': 'Spaghetti bolognaise aux herbes fraîches chez Telepizza Amstelveen', neon: 'Table sombre avec deux coupelles sous un néon rouge', bar: 'Cocktail sur une table devant le néon Hotter than your ex', 'zaal-planten': 'Mur végétal avec lettres au néon et ampoule' },
-  it: { 'pizza-rozemarijn': 'Pizza con salame, funghi e peperoni da Telepizza Amstelveen', 'pasta-penne': 'Penne al pomodoro con erbe fresche da Telepizza Amstelveen', 'pizza-hand': 'Pizza con pollo, peperoni e mais da Telepizza Amstelveen', 'pizza-rond': 'Pizza con spinaci e formaggio bianco da Telepizza Amstelveen', 'pasta-vork': 'Spaghetti alla bolognese con erbe fresche da Telepizza Amstelveen', neon: 'Tavolo scuro con due ciotoline sotto una luce al neon rossa', bar: 'Cocktail su un tavolo davanti al neon Hotter than your ex', 'zaal-planten': 'Parete verde con scritte al neon e una lampadina' },
-  es: { 'pizza-rozemarijn': 'Pizza con salami, champiñones y pimientos en Telepizza Amstelveen', 'pasta-penne': 'Penne con salsa de tomate y hierbas frescas en Telepizza Amstelveen', 'pizza-hand': 'Pizza con pollo, pimientos y maíz en Telepizza Amstelveen', 'pizza-rond': 'Pizza con espinacas y queso blanco en Telepizza Amstelveen', 'pasta-vork': 'Espaguetis a la boloñesa con hierbas frescas en Telepizza Amstelveen', neon: 'Mesa oscura con dos cuencos bajo luz de neón roja', bar: 'Cóctel sobre una mesa frente al neón Hotter than your ex', 'zaal-planten': 'Pared de plantas con letras de neón y una bombilla' },
+  nl: { 'pizza-salami-champignons-paprika': 'Pizza met salami, champignons en paprika bij Telepizza Amstelveen', 'pasta-penne': 'Penne in tomatensaus met verse kruiden bij Telepizza Amstelveen', 'pizza-hand': 'Pizza met kip, paprika en maïs bij Telepizza Amstelveen', 'pizza-rond': 'Pizza met spinazie en witte kaas bij Telepizza Amstelveen', 'pasta-vork': 'Spaghetti bolognese met verse kruiden bij Telepizza Amstelveen', neon: 'Donkere tafel met twee schaaltjes onder rood neonlicht', bar: 'Cocktail op een tafel voor de neon Hotter than your ex', 'zaal-planten': 'Groene plantenwand met neonletters en een gloeilamp' },
+  en: { 'pizza-salami-champignons-paprika': 'Pizza with salami, mushrooms and peppers at Telepizza Amstelveen', 'pasta-penne': 'Penne in tomato sauce with fresh herbs at Telepizza Amstelveen', 'pizza-hand': 'Pizza with chicken, peppers and sweetcorn at Telepizza Amstelveen', 'pizza-rond': 'Pizza with spinach and white cheese at Telepizza Amstelveen', 'pasta-vork': 'Spaghetti bolognese with fresh herbs at Telepizza Amstelveen', neon: 'Dark table with two small dishes under red neon light', bar: 'Cocktail on a table in front of the Hotter than your ex neon', 'zaal-planten': 'Green plant wall with neon lettering and a light bulb' },
+  de: { 'pizza-salami-champignons-paprika': 'Pizza mit Salami, Champignons und Paprika bei Telepizza Amstelveen', 'pasta-penne': 'Penne in Tomatensauce mit frischen Kräutern bei Telepizza Amstelveen', 'pizza-hand': 'Pizza mit Hähnchen, Paprika und Mais bei Telepizza Amstelveen', 'pizza-rond': 'Pizza mit Spinat und weißem Käse bei Telepizza Amstelveen', 'pasta-vork': 'Spaghetti Bolognese mit frischen Kräutern bei Telepizza Amstelveen', neon: 'Dunkler Tisch mit zwei Schälchen unter rotem Neonlicht', bar: 'Cocktail auf einem Tisch vor dem Neonschriftzug Hotter than your ex', 'zaal-planten': 'Grüne Pflanzenwand mit Neonschrift und Glühbirne' },
+  fr: { 'pizza-salami-champignons-paprika': 'Pizza au salami, champignons et poivrons chez Telepizza Amstelveen', 'pasta-penne': 'Penne à la sauce tomate et herbes fraîches chez Telepizza Amstelveen', 'pizza-hand': 'Pizza au poulet, poivrons et maïs chez Telepizza Amstelveen', 'pizza-rond': 'Pizza aux épinards et fromage blanc chez Telepizza Amstelveen', 'pasta-vork': 'Spaghetti bolognaise aux herbes fraîches chez Telepizza Amstelveen', neon: 'Table sombre avec deux coupelles sous un néon rouge', bar: 'Cocktail sur une table devant le néon Hotter than your ex', 'zaal-planten': 'Mur végétal avec lettres au néon et ampoule' },
+  it: { 'pizza-salami-champignons-paprika': 'Pizza con salame, funghi e peperoni da Telepizza Amstelveen', 'pasta-penne': 'Penne al pomodoro con erbe fresche da Telepizza Amstelveen', 'pizza-hand': 'Pizza con pollo, peperoni e mais da Telepizza Amstelveen', 'pizza-rond': 'Pizza con spinaci e formaggio bianco da Telepizza Amstelveen', 'pasta-vork': 'Spaghetti alla bolognese con erbe fresche da Telepizza Amstelveen', neon: 'Tavolo scuro con due ciotoline sotto una luce al neon rossa', bar: 'Cocktail su un tavolo davanti al neon Hotter than your ex', 'zaal-planten': 'Parete verde con scritte al neon e una lampadina' },
+  es: { 'pizza-salami-champignons-paprika': 'Pizza con salami, champiñones y pimientos en Telepizza Amstelveen', 'pasta-penne': 'Penne con salsa de tomate y hierbas frescas en Telepizza Amstelveen', 'pizza-hand': 'Pizza con pollo, pimientos y maíz en Telepizza Amstelveen', 'pizza-rond': 'Pizza con espinacas y queso blanco en Telepizza Amstelveen', 'pasta-vork': 'Espaguetis a la boloñesa con hierbas frescas en Telepizza Amstelveen', neon: 'Mesa oscura con dos cuencos bajo luz de neón roja', bar: 'Cóctel sobre una mesa frente al neón Hotter than your ex', 'zaal-planten': 'Pared de plantas con letras de neón y una bombilla' },
 };
 const PA = photoAlts[lang] ?? photoAlts.en;
 // Aantal jaren sinds de opening, elk jaar automatisch bijgewerkt bij het bouwen.
@@ -118,6 +119,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
     ))}
     <div class="tagline"><span class="neon">{H.ex}</span><span>Ristorante · Pizzeria · Grill</span>
       <div class="btns hero-btns"><a class="btn primary" href={site.orderUrl!} rel="noopener">{t.order}</a><a class="btn" href={site.reserveUrl!} rel="noopener">{t.reserve}</a></div>
+      <OpenToday lang={lang} />
     </div>
   </section>
 
@@ -187,7 +189,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
         {site.social.tiktok && <a class="btn sm" href={site.social.tiktok} rel="noopener">TikTok</a>}
         {site.social.facebook && <a class="btn sm" href={site.social.facebook} rel="noopener">Facebook</a>}
       </div></div>
-    <div class="insta">{['neon', 'pizza-rozemarijn', 'bar', 'pizza-rond', 'pasta-vork', 'zaal-planten'].map(n => <a href="https://www.instagram.com/telepizza_nl/" rel="noopener" aria-label="Instagram"><img src={ph(n + '-sm')} alt={PA[n]} width="400" height="400" loading="lazy" decoding="async" /></a>)}</div>
+    <div class="insta">{['neon', 'pizza-salami-champignons-paprika', 'bar', 'pizza-rond', 'pasta-vork', 'zaal-planten'].map(n => <a href="https://www.instagram.com/telepizza_nl/" rel="noopener" aria-label="Instagram"><img src={ph(n + '-sm')} alt={PA[n]} width="400" height="400" loading="lazy" decoding="async" /></a>)}</div>
     {/* TODO-CONTROLEREN: bron/link voor "300.000 views" en het krantenartikel */}
     <p style="margin-top:28px">{c.press}</p>
   </div></section>
@@ -203,7 +205,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   </div></section>
 
   <section class="sec"><div class="wrap" style="max-width:900px">
-    <h2>FAQ</h2>
+    <h2>{lang === 'nl' ? 'Veelgestelde vragen' : 'FAQ'}</h2>
     {c.faq.map(([q, a]) => <details><summary><h3 class="faq-q">{q}</h3></summary><p set:html={a} /></details>)}
     <slot name="faqmore" />
   </div></section>
