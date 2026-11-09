@@ -111,7 +111,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   </section>
 
   <section class="trust"><div class="wrap">
-    <ReviewBadges />
+    <ReviewBadges lang={lang} />
     {/* TODO-CONTROLEREN: halal-claim */}
     <p class="facts-line"><span>{L.since}</span><span>100% halal</span>{site.awards.map(a => <span>🏆 {a.label} · {a.by}</span>)}</p>
   </div></section>

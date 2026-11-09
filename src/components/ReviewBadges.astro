@@ -1,27 +1,54 @@
 ---
-// Scores van Google en TheFork met herkenbaar logo, vooral voor toeristen.
+// Beoordelingen van Google en TheFork als twee duidelijke kaarten: logo, groot cijfer, sterren en aantal reviews.
 import { site } from '../data/site';
-interface Props { dark?: boolean }
-const { dark = false } = Astro.props;
+import type { Lang } from '../i18n/ui';
+const { lang = 'nl' } = Astro.props as { lang?: Lang };
+const T: Record<string, { title: string; reviews: string; read: string; outOf: string }> = {
+  nl: { title: 'Beoordeeld door onze gasten', reviews: 'reviews', read: 'Lees de reviews', outOf: 'van' },
+  en: { title: 'Rated by our guests', reviews: 'reviews', read: 'Read the reviews', outOf: 'out of' },
+  de: { title: 'Bewertet von unseren Gästen', reviews: 'Bewertungen', read: 'Bewertungen lesen', outOf: 'von' },
+  fr: { title: 'Notés par nos clients', reviews: 'avis', read: 'Lire les avis', outOf: 'sur' },
+  it: { title: 'Valutati dai nostri ospiti', reviews: 'recensioni', read: 'Leggi le recensioni', outOf: 'su' },
+  es: { title: 'Valorados por nuestros clientes', reviews: 'reseñas', read: 'Leer las reseñas', outOf: 'de' },
+};
+const t = T[lang] ?? T.en;
+const fmt = (n: number) => n.toLocaleString(lang === 'en' ? 'en-GB' : 'nl-NL');
+// Sterren gevuld naar verhouding: 4,7 van 5 en 9 van 10 worden 94% en 90%.
+const pct = (p: { score: string; max: string }) => Math.round(parseFloat(p.score.replace(',', '.')) / parseFloat(p.max) * 100);
 ---
-<ul class:list={['badges', { dark }]}>
-  {site.platforms.map(p => (
-    <li><a href={p.url} rel="noopener" target="_blank" aria-label={`${p.name}: ${p.score} van ${p.max}, ${p.count} reviews`}>
-      <span class="logo" aria-hidden="true">
-        {p.id === 'google' && <svg viewBox="0 0 48 48"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8a10 10 0 0 1-4.4 6.6v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.1z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.4l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.6-3.9-12.3-9H4.4v5.7A22 22 0 0 0 24 46z"/><path fill="#FBBC05" d="M11.7 28.2a13.2 13.2 0 0 1 0-8.4v-5.7H4.4a22 22 0 0 0 0 19.8l7.3-5.7z"/><path fill="#EA4335" d="M24 10.8c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3A22 22 0 0 0 4.4 14.1l7.3 5.7c1.7-5.1 6.6-9 12.3-9z"/></svg>}
-        {p.id === 'thefork' && <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="23" fill="#00665C"/><path d="M17 11v12a4 4 0 0 0 3 3.9V37h3V26.9a4 4 0 0 0 3-3.9V11h-2.5v10h-1.5V11h-2v10H18.5V11z" fill="#fff"/><path d="M30 11c3 1 4 5 4 9s-1 6-2.5 6.5V37h-3V11z" fill="#fff"/></svg>}
-      </span>
-      <span class="txt"><b><span dir="ltr">{p.score}</span><small>/{p.max}</small></b><span>{p.name} · {p.count.toLocaleString('nl-NL')}</span></span>
-    </a></li>
-  ))}
-</ul>
+<div class="rb">
+  <p class="rb-t">{t.title}</p>
+  <ul>
+    {site.platforms.map(p => (
+      <li><a href={p.url} rel="noopener" target="_blank" class:list={['rb-c', `rb-${p.id}`]}>
+        <span class="rb-h">
+          {p.id === 'google' && <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8a10 10 0 0 1-4.4 6.6v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.1z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.4l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.6-3.9-12.3-9H4.4v5.7A22 22 0 0 0 24 46z"/><path fill="#FBBC05" d="M11.7 28.2a13.2 13.2 0 0 1 0-8.4v-5.7H4.4a22 22 0 0 0 0 19.8l7.3-5.7z"/><path fill="#EA4335" d="M24 10.8c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3A22 22 0 0 0 4.4 14.1l7.3 5.7c1.7-5.1 6.6-9 12.3-9z"/></svg>}
+          {p.id === 'thefork' && <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#00665C"/><path d="M17 11v12a4 4 0 0 0 3 3.9V37h3V26.9a4 4 0 0 0 3-3.9V11h-2.5v10h-1.5V11h-2v10H18.5V11z" fill="#fff"/><path d="M30 11c3 1 4 5 4 9s-1 6-2.5 6.5V37h-3V11z" fill="#fff"/></svg>}
+          <b>{p.name}</b>
+        </span>
+        <span class="rb-s"><strong dir="ltr">{p.score}</strong><span>/{p.max}</span></span>
+        <span class="rb-st" style={`--p:${pct(p)}%`} role="img" aria-label={`${p.score} ${t.outOf} ${p.max}`}>★★★★★</span>
+        <span class="rb-n">{fmt(p.count)} {t.reviews}</span>
+        <span class="rb-l">{t.read} →</span>
+      </a></li>
+    ))}
+  </ul>
+</div>
 <style>
-  .badges{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;list-style:none;margin:0;padding:0}
-  .badges a{display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fffaf2;color:var(--ink);border-radius:14px;text-decoration:none;box-shadow:0 6px 18px rgba(74,46,30,.12);transition:transform .15s}
-  .badges a:hover{transform:translateY(-2px)}
-  .logo svg,.logo img{width:34px;height:34px;display:block;border-radius:8px}
-  .txt{display:flex;flex-direction:column;line-height:1.15}
-  .txt b{font:900 1.35rem/1 var(--head);color:var(--ink)}
-  .txt b small{font-size:.75rem;opacity:.6;margin-inline-start:2px}
-  .txt>span{font-size:.78rem;color:var(--muted);margin-top:3px}
+  .rb{max-width:720px;margin:0 auto;color:#fff}
+  .rb-t{text-align:center;margin:0 0 14px;font:800 .75rem/1 var(--head);letter-spacing:.18em;text-transform:uppercase;color:#f1e3cf}
+  .rb ul{display:grid;grid-template-columns:1fr 1fr;gap:12px;list-style:none;margin:0;padding:0}
+  .rb-c{display:flex;flex-direction:column;align-items:flex-start;gap:6px;height:100%;padding:16px;border-radius:16px;background:#fffaf2;color:var(--ink);text-decoration:none;border-top:5px solid var(--c);transition:transform .15s,box-shadow .15s}
+  .rb-google{--c:#1a73e8}.rb-thefork{--c:#00665C}
+  .rb-c:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.25)}
+  .rb-h{display:flex;align-items:center;gap:8px}
+  .rb-h svg{width:24px;height:24px;flex:none}
+  .rb .rb-h b{font:800 .95rem/1 var(--head);color:var(--ink);text-transform:none;margin:0}
+  .rb-s{display:flex;align-items:baseline;gap:2px;margin-top:4px}
+  .rb-s strong{font:900 2.6rem/1 var(--head);letter-spacing:-.02em}
+  .rb-s span{font:800 1rem/1 var(--head);color:var(--muted)}
+  .rb-st{font-size:1.1rem;letter-spacing:2px;line-height:1;background:linear-gradient(90deg,#e8a200 var(--p),#d9cfc2 var(--p));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .rb-n{font-size:.85rem;color:var(--muted)}
+  .rb-l{margin-top:auto;padding-top:8px;font:800 .72rem/1 var(--head);letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+  @media(min-width:700px){.rb-c{padding:20px 22px}.rb-s strong{font-size:3.2rem}}
 </style>

@@ -229,3 +229,22 @@ footer .logo.logo--full{align-items:center}
 /* Actiebalk verdwijnt zodra dezelfde knoppen onderaan de pagina in beeld zijn */
 .mbar.away{opacity:0!important;visibility:hidden;pointer-events:none!important}
 .faq-q{display:inline;font:inherit;margin:0;color:inherit;letter-spacing:inherit;text-transform:inherit}
+/* Logo-letter zoals het officiële logo (Montserrat) */
+.logo b{font-family:Montserrat,var(--head);font-weight:600;letter-spacing:.12em;margin-inline-end:-.12em}
+.logo small{font-family:Montserrat,var(--head);font-weight:600;letter-spacing:.28em;margin-inline-end:-.28em}
+/* Logo echt in het midden: zijkolommen even breed, ook als de knoppen rechts breder zijn */
+.top .wrap{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+/* Menu zonder haperen: balk dicht, pagina eronder vast, rustig infaden, actiebalk en pop-up weg, hamburger wordt een kruis */
+.top:has(.burger[open]){background:var(--bg);color:var(--ink);border-color:var(--ink)}
+html:has(.burger[open]){overflow:hidden}
+body:has(.burger[open]) .mbar,body:has(.burger[open]) #nlpop{display:none}
+.burger[open] .panel{animation:panelIn .18s ease-out}
+@keyframes panelIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.burger summary span{transition:background .15s}
+.burger summary span::before,.burger summary span::after{transition:transform .2s,top .2s}
+.burger[open] summary span{background:transparent}
+.burger[open] summary span::before{top:0;transform:rotate(45deg)}
+.burger[open] summary span::after{top:0;transform:rotate(-45deg)}
+.burger summary{-webkit-tap-highlight-color:transparent}
+@media(prefers-reduced-motion:reduce){.burger[open] .panel{animation:none}}
+.lng summary::after,.burger summary::after,.lng[open] summary::after,.burger[open] summary::after{content:none!important}
