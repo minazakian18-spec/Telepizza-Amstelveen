@@ -14,19 +14,19 @@ import f1 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 import f2 from '@fontsource/archivo/files/archivo-latin-800-normal.woff2?url';
 const fonts = [f1, f2];
 interface Crumb { name: string; path: string }
-interface Props { title: string; description: string; crumbs?: Crumb[]; schema?: object[]; overlay?: boolean; image?: string; lang?: Lang; page?: PageKey; alternates?: { l: Lang; href: string }[] }
+interface Props { title: string; description: string; crumbs?: Crumb[]; schema?: object[]; overlay?: boolean; image?: string; lang?: Lang; page?: PageKey; alternates?: { l: Lang; href: string }[]; noindex?: boolean }
 const { title, description, crumbs = [], schema = [], overlay = false, image = '/og.png', lang = 'nl', page } = Astro.props;
 const t = ui[lang];
 const nc = nlt(lang);
 // Nieuwsbrief-pop-up niet op catering-, contact- en privacypagina's.
-const noPopup = /catering|contact|privacy/.test(Astro.url.pathname);
+const noPopup = /catering|contact|privacy|account/.test(Astro.url.pathname);
 const userIco = 'M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v3h16v-3c0-2.8-3.6-5-8-5z';
 const info = langInfo[lang];
 // Pagina's die in alle talen bestaan linken naar hun vertaling; andere pagina's naar de homepage van die taal.
 // Turks en Arabisch: nog niet door een moedertaalspreker gecontroleerd (TODO-CONTROLEREN), dus noindex en niet in de taalkeuze.
 const unreviewed: Lang[] = ['tr', 'ar'];
 const alternates = Astro.props.alternates ?? langs.filter(l => !unreviewed.includes(l)).map(l => ({ l, href: pathFor(l, page ?? 'home') }));
-const noindex = unreviewed.includes(lang);
+const noindex = unreviewed.includes(lang) || !!Astro.props.noindex;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 
 const restaurant: any = {
@@ -121,7 +121,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
       <ul>{alternates.map(a => <li><a href={a.href} hreflang={a.l} lang={a.l} aria-current={a.l === lang ? 'true' : undefined}>{langInfo[a.l].name}</a></li>)}</ul>
     </details>
     <a class="tel" href={'tel:' + site.phone} aria-label={`${t.call} ${site.phoneDisplay}`}><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={phoneIco}/></svg></a>
-    {site.accountUrl && <a class="tel acc" href={site.accountUrl} rel="noopener" aria-label={nc.account} data-track="click_account"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={userIco}/></svg><span class="acc-l">{nc.account}</span></a>}
+    {site.accountUrl && <a class="tel acc" href={site.accountUrl} aria-label={nc.account} data-track="click_account"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d={userIco}/></svg><span class="acc-l">{nc.account}</span></a>}
     <a class="btn primary sm hide-s" href={site.reserveUrl!} rel="noopener">{t.reserve}</a>
     <details class="burger"><summary aria-label="Menu openen"><span></span></summary>
       <nav class="panel" aria-label="Mobiel menu">

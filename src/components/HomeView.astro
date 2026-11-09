@@ -59,6 +59,17 @@ const photoAlts: Record<string, Record<string, string>> = {
   es: { 'pizza-rozemarijn': 'Pizza con salami, champiñones y pimientos en Telepizza Amstelveen', 'pasta-penne': 'Penne con salsa de tomate y hierbas frescas en Telepizza Amstelveen', 'pizza-hand': 'Pizza con pollo, pimientos y maíz en Telepizza Amstelveen', 'pizza-rond': 'Pizza con espinacas y queso blanco en Telepizza Amstelveen', 'pasta-vork': 'Espaguetis a la boloñesa con hierbas frescas en Telepizza Amstelveen', neon: 'Mesa oscura con dos cuencos bajo luz de neón roja', bar: 'Cóctel sobre una mesa frente al neón Hotter than your ex', 'zaal-planten': 'Pared de plantas con letras de neón y una bombilla' },
 };
 const PA = photoAlts[lang] ?? photoAlts.en;
+// Fotoslideshow in de polaroid naast "Welkom bij ons thuis": gevel, spaghetti, pizza, penne.
+const polAlts: Record<string, [string, string, string]> = {
+  nl: ['Spaghetti bolognese met rucola en Parmezaanse kaas in het restaurant van Telepizza Amstelveen', 'Pizza met spinazie, zongedroogde tomaat, ui en ricotta bij Telepizza Amstelveen', 'Penne in romige saus met spinazie bij Telepizza Amstelveen'],
+  en: ['Spaghetti bolognese with rocket and Parmesan in the Telepizza Amstelveen dining room', 'Pizza with spinach, sun-dried tomato, onion and ricotta at Telepizza Amstelveen', 'Penne in a creamy sauce with spinach at Telepizza Amstelveen'],
+  de: ['Spaghetti Bolognese mit Rucola und Parmesan im Restaurant von Telepizza Amstelveen', 'Pizza mit Spinat, getrockneten Tomaten, Zwiebeln und Ricotta bei Telepizza Amstelveen', 'Penne in cremiger Sauce mit Spinat bei Telepizza Amstelveen'],
+  fr: ['Spaghetti bolognaise à la roquette et au parmesan chez Telepizza Amstelveen', 'Pizza aux épinards, tomates séchées, oignons et ricotta chez Telepizza Amstelveen', 'Penne à la sauce crémeuse et aux épinards chez Telepizza Amstelveen'],
+  it: ['Spaghetti alla bolognese con rucola e parmigiano da Telepizza Amstelveen', 'Pizza con spinaci, pomodori secchi, cipolla e ricotta da Telepizza Amstelveen', 'Penne in salsa cremosa con spinaci da Telepizza Amstelveen'],
+  es: ['Espaguetis a la boloñesa con rúcula y parmesano en Telepizza Amstelveen', 'Pizza con espinacas, tomate seco, cebolla y ricotta en Telepizza Amstelveen', 'Penne en salsa cremosa con espinacas en Telepizza Amstelveen'],
+};
+const PL = polAlts[lang] ?? polAlts.en;
+const polSlides: [string, string][] = [['pol-gevel', A.front], ['pol-spaghetti', PL[0]], ['pol-pizza', PL[1]], ['pol-penne', PL[2]]];
 // Hero-slides. Een slide verschijnt alleen als het bestand in public/images/hero/ bestaat.
 const heroAlt: Record<string, [string, string, string, string]> = {
   nl: ['Restaurantzaal van Telepizza Amstelveen met neon "Hotter than your ex" en plantenwand', 'Volle restaurantzaal van Telepizza Amstelveen met gasten aan lange tafels', 'Gasten eten pizza en pasta aan een lange tafel bij Telepizza Amstelveen', 'Eigenaren van Telepizza voor het restaurant aan de Amsterdamseweg 452 in Amstelveen'],
@@ -125,7 +136,8 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
       <p>{H.p}</p>
       <p class="sign">— {H.sign}</p>
     </div>
-    <figure class="pol"><img src={ph('gevel')} srcset={ss('gevel')} sizes="(min-width:900px) 40vw, 100vw" alt={A.front} width="1200" height="900" loading="lazy" decoding="async" /><figcaption>Amsterdamseweg 452</figcaption></figure>
+    <figure class="pol"><div class="pol-show">{polSlides.map(([n, alt], i) => <img src={ph(n)} srcset={ss(n)} sizes="(min-width:900px) 40vw, 100vw" alt={alt} width="800" height="1000" loading="lazy" decoding="async" class:list={{ on: i === 0 }} />)}</div><figcaption>Amsterdamseweg 452</figcaption></figure>
+    <script is:inline>(function(){var b=document.querySelector('.pol-show');if(!b||matchMedia('(prefers-reduced-motion:reduce)').matches)return;var im=b.querySelectorAll('img'),k=0,v=0;new IntersectionObserver(function(e){v=e[0].isIntersecting}).observe(b);setInterval(function(){if(!v||document.hidden)return;im[k].classList.remove('on');k=(k+1)%im.length;im[k].classList.add('on')},4000)})();</script>
   </div></section>
 
   <section class="overlap"><div class="wrap"><div class="box">

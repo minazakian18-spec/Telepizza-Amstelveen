@@ -38,5 +38,5 @@ export default defineConfig({
     '/bezorgen-amstelveen/groenelaan/': '/bezorgen-amstelveen/',
     '/bezorgen-amstelveen/waardhuizen/': '/bezorgen-amstelveen/',
   },
-  integrations: [sitemap({ filter: (p) => !p.includes('404') && !/\/(tr|ar)\//.test(p) }), track],
+  integrations: [sitemap({ filter: (p) => !p.includes('404') && !p.includes('/account/') && !/\/(tr|ar)\//.test(p) }), track],
 });
