@@ -30,7 +30,7 @@ export const moreArticles: Article[] = [
 <h2>Vegetarische pizza’s</h2>
 <p>Onze vegetarische pizza’s zijn allesbehalve saai. Kies een klassieke margherita, pizza funghi met champignons, quattro formaggi met vier soorten kaas of de parmigiana met gegrilde aubergine. Een favoriet is de Popeye Speciale met spinazie, geitenkaas, gekarameliseerde ui, zongedroogde tomaten en een vleugje honing.</p>
 <h2>Pasta zonder vlees</h2>
-<p>Ook bij de pasta’s is genoeg te kiezen: napolitana, pesto, arrabbiata, quattro formaggi, vegetariana met verse groenten en de tartufo zucchine met truffel en courgette. Uit de oven komen ravioli en cannelloni met spinazie en ricotta.</p>
+<p>Ook bij de pasta’s is genoeg te kiezen: napoletana, pesto, arrabbiata, quattro formaggi, vegetariana met verse groenten en de tartufo zucchine met truffel en courgette. Uit de oven komen ravioli en cannelloni met spinazie en ricotta.</p>
 <h2>Salades, soepen en meer</h2>
 <p>Begin met een caprese salade met buffelmozzarella, een Griekse salade of een verse tomatensoep. Liever iets stevigers? Probeer de calzone caponata met gebakken groenten of de schotel falafel.</p>
 <h2>Bekijk de kaart</h2>

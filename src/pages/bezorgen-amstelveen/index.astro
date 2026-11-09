@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Cta from '../../components/Cta.astro';
 import DeliveryInfo from '../../components/DeliveryInfo.astro';
+import HalalInfo from '../../components/HalalInfo.astro';
 import { site } from '../../data/site';
 const faq: [string, string][] = [
   ['In welke postcodes bezorgen jullie?', `We bezorgen in Amstelveen en Buitenveldert: postcodes ${site.delivery.postcodes}. Twijfel je of jouw adres erbij hoort? Vul je postcode in bij het online bestellen of bel ons.`],
@@ -38,7 +39,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity
 <h2>Populair om te laten bezorgen</h2>
 <p>De meeste gasten bestellen een pizza van onze <a href="/pizza-amstelveen/">pizzeria in Amstelveen</a>, zoals de margherita, pepperoni of onze Telepizza, of een <a href="/pasta-amstelveen/">pasta</a> zoals carbonara of bolognese. Ook de <a href="/kapsalon-amstelveen/">kapsalon</a> en gerechten van de <a href="/steak-grill-amstelveen/">grill</a> doen het goed thuis op de bank. Bekijk alles op de <a href="/menu-italiaans-restaurant-amstelveen/">menukaart</a>.</p>
 <p>Bestel je voor een groep? Combineer een paar pizza’s met een grote salade en een pasta uit de oven, dan heeft iedereen keuze. Vergeet het dessert niet: tiramisu is ook thuis een goede afsluiter.</p>
-<p>Heb je een allergie of een dieetwens? Zet het bij je bestelling of bel ons even, dan kijken we samen wat mogelijk is. We hebben vegetarische pizza’s en pasta’s, en ons vlees is halal.</p>
+<p>Heb je een allergie of een dieetwens? Zet het bij je bestelling of bel ons even, dan kijken we samen wat mogelijk is. We hebben vegetarische pizza’s en pasta’s. <HalalInfo /></p>
 
 <h2>Tips voor de lekkerste pizza thuis</h2>
 <ul>

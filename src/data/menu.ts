@@ -92,9 +92,9 @@ export const menu: Section[] = [
     "name": "Pasta’s",
     "items": [
       {
-        "name": "Pasta Napolitana",
+        "name": "Pasta Napoletana",
         "price": 11.45,
-        "description": "Met huisgemaakte Napolitana saus, cherrytomaten, rucola en Parmezaanse kaas"
+        "description": "Met huisgemaakte napoletanasaus, cherrytomaten, rucola en Parmezaanse kaas"
       },
       {
         "name": "Pasta Pesto",
@@ -114,7 +114,7 @@ export const menu: Section[] = [
       {
         "name": "Pasta Bolognese",
         "price": 12.95,
-        "description": "Met huisgemaakte rundergehakt saus en Parmezaanse kaas"
+        "description": "Met huisgemaakte rundergehaktsaus en Parmezaanse kaas"
       },
       {
         "name": "Pasta Carbonara",
@@ -145,7 +145,7 @@ export const menu: Section[] = [
       {
         "name": "Pasta Milanese",
         "price": 13.45,
-        "description": "Met huisgemaakte rundergehakt saus, champignons, uien en Parmezaanse kaas"
+        "description": "Met huisgemaakte rundergehaktsaus, champignons, uien en Parmezaanse kaas"
       },
       {
         "name": "Pasta Tonno Ansjovis",
@@ -155,7 +155,7 @@ export const menu: Section[] = [
       {
         "name": "Pasta Gamberoni",
         "price": 14.45,
-        "description": "Met garnalen, rosesaus, knoflook, rode uien, bleekselderij, rucola en Parmezaanse kaas"
+        "description": "Met garnalen, rosésaus, knoflook, rode uien, bleekselderij, rucola en Parmezaanse kaas"
       },
       {
         "name": "Pasta Salmone",
@@ -369,7 +369,7 @@ export const menu: Section[] = [
       {
         "name": "Pizza Carpaccio",
         "price": 13.95,
-        "description": "Scheutjes tomatensaus, runder carpaccio, basilicum pesto, pijnboompitten, basilicum, rucola en Parmezaanse kaas"
+        "description": "Scheutjes tomatensaus, rundercarpaccio, basilicum pesto, pijnboompitten, basilicum, rucola en Parmezaanse kaas"
       },
       {
         "name": "Pizza Popeye Speciale",
@@ -409,7 +409,12 @@ export const menu: Section[] = [
       {
         "name": "Groenten (per topping)",
         "price": 1.75,
-        "description": "Gegrilde aubergine, courgette, verse tomaat, cherrytomaat, ananas, kappertjes, broccoli, rucola, erwten, Spaanse peper, mais, pijnboompitten, paprika, rode uien, champignons, olijven, artisjok, spinazie"
+        "description": "Gegrilde aubergine, courgette, verse tomaat, cherrytomaat, ananas, kappertjes, broccoli, rucola, erwten, Spaanse peper, mais, paprika, rode uien, champignons, olijven, artisjok, spinazie"
+      },
+      {
+        "name": "Overig (per topping)",
+        "price": 1.75,
+        "description": "Pijnboompitten"
       },
       {
         "name": "Kaas (per topping)",
@@ -494,6 +499,11 @@ export const menu: Section[] = [
     "name": "Schotels",
     "items": [
       {
+        "name": "Schotel Falafel",
+        "price": 15.95,
+        "description": "Vegetarisch: friet, falafel, salade en 2 sauzen"
+      },
+      {
         "name": "Shoarma",
         "price": 16.95,
         "description": "Verse lamsshoarma van de spies"
@@ -528,11 +538,6 @@ export const menu: Section[] = [
         "name": "Kapsalon Döner",
         "price": 11.95,
         "description": "Friet, döner, gesmolten kaas, salade en saus"
-      },
-      {
-        "name": "Schotel Falafel",
-        "price": 15.95,
-        "description": "Vegetarisch: friet, falafel, salade en 2 sauzen"
       }
     ],
     "note": "Prijzen zoals in onze bestelwinkel."
@@ -543,12 +548,12 @@ export const menu: Section[] = [
       {
         "name": "Klassieke Burger",
         "price": 10.45,
-        "description": "sla, zoet zure augurk, rode uien, ketchup en tomaat"
+        "description": "sla, zoetzure augurk, rode uien, ketchup en tomaat"
       },
       {
         "name": "Cheese Burger",
         "price": 11.45,
-        "description": "sla, zoet zure augurk, rode uien, cheddar kaas, ketchup en tomaat"
+        "description": "sla, zoetzure augurk, rode uien, cheddar kaas, ketchup en tomaat"
       },
       {
         "name": "Bacon Burger",
@@ -621,13 +626,13 @@ export const menu: Section[] = [
       {
         "name": "Ben & Jerry’s Strawberry Cheesecake",
         "price": 4.5,
-        "priceText": "€ 4,50 / € 8,95",
+        "priceText": "100 ml € 4,50 / 465 ml € 8,95",
         "description": "Aardbeiencheesecake-roomijs met aardbei & havermoutkoekjes chunks"
       },
       {
         "name": "Ben & Jerry’s Chocolate Fudge Brownie",
         "price": 4.5,
-        "priceText": "€ 4,50 / € 8,95",
+        "priceText": "100 ml € 4,50 / 465 ml € 8,95",
         "description": "Chocoladeroomijs met chocolate fudge brownie chunks"
       },
       {

@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import { withHalalInfo } from '../../lib/halalInfo';
 import { site } from '../../data/site';
 import { articles } from '../../data/articles';
 export const getStaticPaths = () => articles.map(a => ({ params: { slug: a.slug }, props: { a } }));
@@ -34,7 +35,7 @@ const seoDesc = a.desc;
     <h1>{a.title}</h1>
     <p class="lead">{a.intro}</p>
     <figure><img src={a.img} alt={a.imgAlt} width="1200" height="750" fetchpriority="high" /></figure>
-    <div class="prose" set:html={a.body} />
+    <div class="prose" set:html={withHalalInfo(a.body)} />
     <div class="cta">
       <h2>Proef het zelf</h2>
       <p class="center">Kom langs bij onze <a href="/pizza-amstelveen/">pizzeria in Amstelveen</a> aan de Amsterdamseweg 452. Dinsdag t/m zondag open vanaf 15:00.</p>

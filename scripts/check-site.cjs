@@ -77,8 +77,12 @@ console.log('\nKlaar. Pagina\'s:', html.length);
     if (!/halal-restaurant-amstelveen/.test(rel)) {
       const body = glued.replace(/[\s\S]*?(?=)/, '');
       const outsideFaq = h.replace(/<details[\s\S]*?<\/details>/g, ' ').replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<span class="hi-pop"[\s\S]*?<\/span><\/span>/g, ' ');
-      const claim = /vlees is halal|meat is halal|Fleisch ist halal|viande est halal|carne (è|es) halal|etlerimiz helal|لحوم[^<]{0,12}حلال/i.test(outsideFaq.replace(/<[^>]+>/g, ' '));
-      if (claim && !h.includes('class="hi"')) addq('halalclaim zonder ⓘ-component', rel);
+      // Per sectie: een claim moet in dezelfde <section>/<footer> een ⓘ-component hebben (een ⓘ elders op de pagina telt niet).
+      const claimRe = /vlees is halal|meat is halal|Fleisch ist halal|viande est halal|carne (è|es) halal|etlerimiz helal|لحومنا حلال|اللحوم لدينا حلال/i;
+      for (const chunk of outsideFaq.split(/(?=<section\b|<footer\b|<header\b)/)) {
+        const text = chunk.replace(/<span class="hi"[\s\S]*?<\/span><\/span>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+        if (claimRe.test(text) && !chunk.includes('class="hi"')) addq('halalclaim zonder ⓘ-component', rel + ' :: ' + (text.match(new RegExp('.{0,40}(' + claimRe.source + ').{0,20}', 'i')) || [''])[0].trim());
+      }
       if (/behalve gerechten met het label|except dishes labelled|außer bei Gerichten/.test(outsideFaq.replace(/<[^>]+>/g, ' '))) addq('lange halalzin buiten FAQ', rel);
     }
     // Gerechten met varkensvlees moeten het label "Niet halal" hebben en mogen nooit het label "Halal" dragen.

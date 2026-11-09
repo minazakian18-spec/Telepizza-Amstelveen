@@ -1,23 +1,10 @@
 ---
-// "Halal vlees ⓘ": korte halalvermelding met een uitlegpopover.
-// Zonder JavaScript is ⓘ een gewone link naar de halalpagina; het script in Base maakt er een knop met popover van.
+// "Halal vlees ⓘ": korte halalvermelding met een uitlegpopover (zelfde HTML als halalInfoHtml in src/lib/halalInfo.ts).
 import type { Lang } from '../i18n/ui';
+import { halalInfoHtml } from '../lib/halalInfo';
 const { lang = 'nl', label } = Astro.props as { lang?: Lang; label?: string };
-const T: Record<string, { label: string; aria: string; text: string; except: string; more: string }> = {
-  nl: { label: 'Halal vlees', aria: 'Meer info over halal', text: 'Al ons vlees is halal: kalkoenham, rundersalami, runderpepperoni, kip, lamsshoarma en kalfsribs.', except: 'Uitzondering: gerechten met het label ‘Niet halal’ bevatten varkensvlees (Parmaham, bacon, pancetta, spek).', more: 'Meer over halal bij Telepizza' },
-  en: { label: 'Halal meat', aria: 'More about halal', text: 'Our meat is halal: turkey ham, beef salami, beef pepperoni, chicken, lamb shawarma and veal ribs.', except: 'Exception: dishes labelled ‘Not halal’ contain pork (Parma ham, bacon, pancetta).', more: 'More about halal at Telepizza' },
-  de: { label: 'Halal-Fleisch', aria: 'Mehr zu halal', text: 'Unser Fleisch ist halal: Putenschinken, Rindersalami, Rinderpepperoni, Hähnchen, Lammschawarma und Kalbsrippchen.', except: 'Ausnahme: Gerichte mit dem Hinweis ‘Nicht halal’ enthalten Schweinefleisch (Parmaschinken, Bacon, Pancetta).', more: 'Mehr über halal bei Telepizza' },
-  fr: { label: 'Viande halal', aria: 'En savoir plus sur le halal', text: 'Notre viande est halal : jambon de dinde, salami et pepperoni de bœuf, poulet, chawarma d’agneau et travers de veau.', except: 'Exception : les plats marqués ‘Non halal’ contiennent du porc (jambon de Parme, bacon, pancetta).', more: 'En savoir plus sur le halal chez Telepizza' },
-  it: { label: 'Carne halal', aria: 'Più informazioni sull’halal', text: 'La nostra carne è halal: prosciutto di tacchino, salame e pepperoni di manzo, pollo, shawarma di agnello e costine di vitello.', except: 'Eccezione: i piatti con l’etichetta ‘Non halal’ contengono maiale (prosciutto di Parma, bacon, pancetta).', more: 'Di più sull’halal da Telepizza' },
-  es: { label: 'Carne halal', aria: 'Más información sobre halal', text: 'Nuestra carne es halal: jamón de pavo, salami y pepperoni de ternera, pollo, shawarma de cordero y costillas de ternera.', except: 'Excepción: los platos marcados ‘No halal’ contienen cerdo (jamón de Parma, bacon, panceta).', more: 'Más sobre halal en Telepizza' },
-  tr: { label: 'Helal et', aria: 'Helal hakkında bilgi', text: 'Etlerimiz helaldir: hindi jambonu, dana salam, dana pepperoni, tavuk, kuzu döner ve dana kaburga.', except: 'İstisna: ‘Helal değil’ etiketli yemekler domuz eti içerir (Parma jambonu, bacon, pancetta).', more: 'Telepizza’da helal hakkında' },
-  ar: { label: 'لحوم حلال', aria: 'معلومات عن الحلال', text: 'لحومنا حلال: لحم ديك رومي، سلامي وبيبروني بقري، دجاج، شاورما لحم ضأن وأضلاع عجل.', except: 'استثناء: الأطباق المميزة بعبارة ‘غير حلال’ تحتوي على لحم الخنزير.', more: 'المزيد عن الحلال' },
-};
-const t = T[lang] ?? T.en;
-const url = '/halal-restaurant-amstelveen/';
-const id = 'hi-' + Math.random().toString(36).slice(2, 8);
 ---
-<span class="hi"><span class="hi-l">{label ?? t.label}</span>{' '}<a class="hi-btn" href={url} aria-label={t.aria} data-pop={id}><span aria-hidden="true">i</span></a><span class="hi-pop" id={id} role="dialog" aria-label={t.aria} hidden><span>{t.text}</span> <span>{t.except}</span> <a href={url}>→ {t.more}</a></span></span>
+<Fragment set:html={halalInfoHtml(lang, label)} />
 <style is:global>
   .hi{position:relative;display:inline-flex;align-items:center;gap:2px;vertical-align:baseline}
   .hi-btn{display:inline-grid;place-items:center;width:32px;height:32px;margin:-8px -6px -8px -4px;border:0;background:none;padding:0;cursor:pointer;color:inherit;text-decoration:none;font:inherit}

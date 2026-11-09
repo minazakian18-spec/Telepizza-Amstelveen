@@ -15,6 +15,19 @@ Welke tijden kloppen? De website is nog niet aangepast. Google kijkt ook naar je
 
 De bestelwinkel toont voor 1181 (Elsrijk-West) en 1182 (Karselaankwartier en Bos) "gratis vanaf € 0,00". Is bezorgen daar altijd gratis, of is dit een instelling die niet klopt? Op de website staat nu "zie bestelwinkel".
 
+## 3. Zijn de steaks halal?
+
+Biefstuk, ribeye, entrecote en ossenhaas: is dit halal rundvlees? Tot je dit bevestigt, staat er op de website "Steaks van de grill" zonder halalvermelding.
+
+## 4. Bolognese: welk vlees, en is het halal?
+
+De bolognese (pasta, lasagne, tortellini en de topping "bolognese") is volgens de kaart van rundergehakt. Is dat halal?
+
+## 5. Ben & Jerry's: prijs en smaken
+
+- De bestelwinkel toont 100 ml voor € 4,50 en 465 ml voor **€ 8,50**; de website zegt € 8,95 voor de grote beker. Welke prijs klopt?
+- In de bestelwinkel staat ook **Cookie Dough**; die staat niet op de website. Toevoegen?
+
 ## Afgehandeld (ter info)
 
 - Ham is kalkoenham, salami en pepperoni zijn van rundvlees, spare ribs zijn halal kalfsribs, shoarma is lamsvlees.
