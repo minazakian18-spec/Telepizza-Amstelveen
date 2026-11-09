@@ -5,7 +5,6 @@ import Base from '../layouts/Base.astro';
 import Dishes from './Dishes.astro';
 import Reviews from './Reviews.astro';
 import ReviewBadges from './ReviewBadges.astro';
-import DeliveryFacts from './DeliveryFacts.astro';
 import { site } from '../data/site';
 import { pick } from '../data/dishes';
 import { media } from '../lib/media';
@@ -141,10 +140,12 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
         <div class="links"><a class="lnk" href={menu}>{t.viewMenu}</a><a class="lnk" href={pathFor(lang, 'catering')}>{t.nav.catering}</a></div>
       </div>
     </div>
-    <div class="stamps" aria-hidden="true">
-      {c.facts.map(([b, s]) => <div class="stamp"><span>{b}{" "}<small>{s}</small></span></div>)}
-    </div>
   </section>
+
+  <section class="sec green"><div class="wrap">
+    <div class="head"><div><p class="eyebrow">{c.favEyebrow}</p><h2>{c.favTitle}</h2></div><a class="btn" href={menu}>{t.fullMenu}</a></div>
+    <Dishes lang={lang} items={pick('telePizza', 'truffel', 'chef', 'carbonara', 'tartufo', 'salmone', 'ribs', 'lasagna', 'popeye', 'kapsalon')} />
+  </div></section>
 
   <section class="hello"><div class="wrap">
     <div class="note">
@@ -163,24 +164,6 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
       setInterval(function(){if(!vis||document.hidden||Date.now()<hold)return;s.scrollBy({left:step(),behavior:'smooth'})},3500)})();</script>
   </div></section>
 
-  <section class="overlap"><div class="wrap"><div class="box">
-    <h2 set:html={c.storyTitle} />
-    <p>{c.story[0]}</p>
-    <div class="links"><a class="lnk" href={pathFor(lang, 'about')}>{t.nav.about}</a></div>
-  </div></div></section>
-
-  <section class="marq" aria-hidden="true">
-    <img src={ph('pizza-rozemarijn')} srcset={ss('pizza-rozemarijn')} sizes="(min-width:700px) 33vw, 100vw" alt={PA['pizza-rozemarijn']} width="800" height="1000" loading="lazy" decoding="async" />
-    <img src={ph('pasta-penne')} srcset={ss('pasta-penne')} sizes="(min-width:700px) 33vw, 100vw" alt={PA['pasta-penne']} width="800" height="1000" loading="lazy" decoding="async" />
-    <img src={ph('pizza-hand')} srcset={ss('pizza-hand')} sizes="(min-width:700px) 33vw, 100vw" alt={PA['pizza-hand']} width="800" height="1000" loading="lazy" decoding="async" />
-    <div class="words">{[...words, ...words].map(w => <span>{w} ·</span>)}</div>
-  </section>
-
-  <section class="sec green"><div class="wrap">
-    <div class="head"><div><p class="eyebrow">{c.favEyebrow}</p><h2>{c.favTitle}</h2></div><a class="btn" href={menu}>{t.fullMenu}</a></div>
-    <Dishes lang={lang} items={pick('telePizza', 'truffel', 'chef', 'carbonara', 'tartufo', 'salmone', 'ribs', 'lasagna', 'popeye', 'kapsalon')} />
-  </div></section>
-
   <section class="welcome">
     <video class="full" data-src="/images/hero-video.mp4" poster={ph('neon-sm')} muted loop playsinline preload="none" aria-hidden="true"></video>
     <div class="card2">
@@ -194,16 +177,10 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   <section class="sec"><div class="wrap">
     <div class="head"><h2>{c.waysTitle}</h2></div>
     <div class="occ">{c.ways.map(([h, p]) => <div><h3>{h}</h3><p set:html={p} /></div>)}</div>
+    {lang === 'nl' && <p class="dlv-line"><strong>Bezorgen en afhalen.</strong> We bezorgen in Amstelveen (1181–1188) en Buitenveldert (1081–1083); bezorgkosten en minimumbedrag zie je bij het online bestellen. Afhalen kan aan de Amsterdamseweg 452. <a href="/bezorgen-amstelveen/">Meer over bezorgen</a></p>}
   </div></section>
 
-  {lang === 'nl' && <DeliveryFacts />}
-
   <div id="reviews"><Reviews lang={lang} /></div>
-
-  {lang === 'nl' && <section class="sec alt"><div class="wrap">
-    <div class="head"><div><p class="eyebrow">Uit de keuken</p><h2>{L.stories}</h2></div><a class="btn" href="/blog/">{L.all}</a></div>
-    <div class="journal">{articles.slice(0, 3).map(a => <a href={`/blog/${a.slug}/`}><img src={a.img} alt={a.imgAlt} width="800" height="800" loading="lazy" decoding="async" /><small>Blog · {new Date(a.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</small><h3>{a.title}</h3></a>)}</div>
-  </div></section>}
 
   <section class="sec"><div class="wrap">
     <div class="head"><div><p class="eyebrow">{L.follow}</p><h2>@telepizza_nl</h2></div><div class="btns" style="margin-top:0">
@@ -215,6 +192,11 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
     {/* TODO-CONTROLEREN: bron/link voor "300.000 views" en het krantenartikel */}
     <p style="margin-top:28px">{c.press}</p>
   </div></section>
+
+  {lang === 'nl' && <section class="sec alt"><div class="wrap">
+    <div class="head"><div><p class="eyebrow">Uit de keuken</p><h2>{L.stories}</h2></div><a class="btn" href="/blog/">{L.all}</a></div>
+    <div class="journal">{articles.slice(0, 3).map(a => <a href={`/blog/${a.slug}/`}><img src={a.img} alt={a.imgAlt} width="800" height="800" loading="lazy" decoding="async" /><small>Blog · {new Date(a.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</small><h3>{a.title}</h3></a>)}</div>
+  </div></section>}
 
   <section class="sec alt"><div class="wrap">
     <h2>{c.seoTitle}</h2>

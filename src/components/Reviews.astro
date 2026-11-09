@@ -1,25 +1,19 @@
 ---
-// Reviewsectie in de stijl van Google: donkere band, score van Google en TheFork, kaarten met gekleurde initiaal-avatar
-// (zoals Google toont als iemand geen profielfoto heeft) en een klein Google-logo. Reviewteksten zijn letterlijk overgenomen.
+// Reviewsectie: één uitgelichte review groot in het rood, daarnaast vier kortere reviews als kaarten,
+// en bovenaan de score van Google en TheFork. Reviewteksten zijn letterlijk overgenomen.
 import { site } from '../data/site';
 import { ui, type Lang } from '../i18n/ui';
 const { lang = 'nl' } = Astro.props as { lang?: Lang };
 const t = ui[lang];
 const ordered = lang === 'nl' ? site.reviews : [...site.reviews].sort((a, b) => Number(b.lang === lang || b.lang === 'en') - Number(a.lang === lang || a.lang === 'en'));
+// Uitgelicht: de review over het familiebedrijf als die er is, anders de eerste.
+const featured = ordered.find(r => r.author === 'René Nobel') ?? ordered[0];
+const rest = ordered.filter(r => r !== featured).slice(0, 4);
 const fmt = (n: number) => n.toLocaleString(lang === 'en' ? 'en-GB' : 'nl-NL');
 const fork = site.platforms.find(p => p.id === 'thefork');
 const score = String(site.rating.value).replace('.', ',');
-const pct = Math.round(site.rating.value / 5 * 100);
-const L: Record<string, { reviews: string; prev: string; next: string; more: string }> = {
-  nl: { reviews: 'reviews', prev: 'Vorige reviews', next: 'Volgende reviews', more: 'Lees meer' },
-  en: { reviews: 'reviews', prev: 'Previous reviews', next: 'Next reviews', more: 'Read more' },
-  de: { reviews: 'Bewertungen', prev: 'Vorherige Bewertungen', next: 'Weitere Bewertungen', more: 'Weiterlesen' },
-  fr: { reviews: 'avis', prev: 'Avis précédents', next: 'Avis suivants', more: 'Lire plus' },
-  it: { reviews: 'recensioni', prev: 'Recensioni precedenti', next: 'Recensioni successive', more: 'Leggi tutto' },
-  es: { reviews: 'reseñas', prev: 'Reseñas anteriores', next: 'Reseñas siguientes', more: 'Leer más' },
-};
+const L: Record<string, { reviews: string }> = { nl: { reviews: 'reviews' }, en: { reviews: 'reviews' }, de: { reviews: 'Bewertungen' }, fr: { reviews: 'avis' }, it: { reviews: 'recensioni' }, es: { reviews: 'reseñas' } };
 const l = L[lang] ?? L.en;
-// Vaste kleur per naam, uit het palet dat Google voor initiaal-avatars gebruikt.
 const colors = ['#1a73e8', '#d93025', '#188038', '#e37400', '#9334e6', '#12b5cb', '#c5221f', '#5f6368'];
 const colorOf = (n: string) => colors[[...n].reduce((a, c) => a + c.charCodeAt(0), 0) % colors.length];
 const ld = {
@@ -31,79 +25,64 @@ const g = (s: number) => `<svg viewBox="0 0 48 48" width="${s}" height="${s}" ar
 <section class="rvs" aria-labelledby="rv-t">
   <script type="application/ld+json" set:html={JSON.stringify(ld)} />
   <div class="wrap">
-    <div class="rv-top">
-      <div>
-        <p class="rv-eye">{t.reviewsEyebrow}</p>
-        <h2 id="rv-t">{t.reviewsTitle}</h2>
+    <header class="rv-top">
+      <p class="eyebrow">{t.reviewsEyebrow}</p>
+      <h2 id="rv-t">{t.reviewsTitle}</h2>
+      <div class="rv-scores">
+        <a href={site.googleReviewsUrl} rel="noopener" target="_blank"><Fragment set:html={g(22)} /><b>{score}</b><span class="rv-st" aria-hidden="true">★★★★★</span><small>{fmt(site.rating.count)} {l.reviews}</small></a>
+        {fork && <a href={fork.url} rel="noopener" target="_blank"><span class="rv-fk">TheFork</span><b>{fork.score}/{fork.max}</b><small>{fmt(fork.count)} {l.reviews}</small></a>}
       </div>
-      <div class="rv-badges">
-        <a class="rv-b rv-g" href={site.googleReviewsUrl} rel="noopener" target="_blank">
-          <Fragment set:html={g(30)} />
-          <span><strong>{score}</strong><span class="rv-st" style={`--p:${pct}%`} role="img" aria-label={`${score} / 5`}>★★★★★</span><small>{fmt(site.rating.count)} Google-{l.reviews}</small></span>
-        </a>
-        {fork && <a class="rv-b rv-f" href={fork.url} rel="noopener" target="_blank">
-          <svg viewBox="0 0 48 48" width="30" height="30" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#00473c"/><path d="M17 11v12a4 4 0 0 0 3 3.9V37h3V26.9a4 4 0 0 0 3-3.9V11h-2.5v10h-1.5V11h-2v10H18.5V11z" fill="#fff"/><path d="M30 11c3 1 4 5 4 9s-1 6-2.5 6.5V37h-3V11z" fill="#fff"/></svg>
-          <span><strong>{fork.score}<em>/{fork.max}</em></strong><small>{fmt(fork.count)} TheFork-{l.reviews}</small></span>
-        </a>}
-      </div>
-    </div>
+    </header>
 
-    <ul class="rv-row" tabindex="0" aria-label={t.reviewsTitle}>
-      {ordered.map(r => (
-        <li><figure>
-          <div class="rv-hd">
-            <span class="rv-av" style={`--c:${colorOf(r.author)}`} aria-hidden="true">{r.author.charAt(0).toUpperCase()}<i set:html={g(14)} /></span>
-            <figcaption><b>{r.author}</b><small>{t.googleReview}</small></figcaption>
-            <span class="rv-glogo" set:html={g(20)} />
-          </div>
-          <span class="rv-st sm" aria-label="5 / 5">★★★★★</span>
+    <div class="rv-grid">
+      <figure class="rv-feat">
+        <span class="rv-st big" aria-label="5 / 5">★★★★★</span>
+        <blockquote lang={featured.lang}>{featured.text}</blockquote>
+        <figcaption>
+          <span class="rv-av" style={`--c:${colorOf(featured.author)}`} aria-hidden="true">{featured.author.charAt(0).toUpperCase()}</span>
+          <span><b>{featured.author}</b><small><Fragment set:html={g(13)} /> {t.googleReview}</small></span>
+        </figcaption>
+      </figure>
+      {rest.map(r => (
+        <figure class="rv-card">
+          <span class="rv-st" aria-label="5 / 5">★★★★★</span>
           <blockquote lang={r.lang}>{r.text}</blockquote>
-        </figure></li>
+          <figcaption>
+            <span class="rv-av" style={`--c:${colorOf(r.author)}`} aria-hidden="true">{r.author.charAt(0).toUpperCase()}</span>
+            <span><b>{r.author}</b><small><Fragment set:html={g(13)} /> {t.googleReview}</small></span>
+          </figcaption>
+        </figure>
       ))}
-    </ul>
-    <div class="rv-foot">
-      <div class="rv-nav">
-        <button type="button" data-dir="-1" aria-label={l.prev}>‹</button>
-        <button type="button" data-dir="1" aria-label={l.next}>›</button>
-      </div>
-      <a class="rv-all" href={site.googleReviewsUrl} rel="noopener" target="_blank">{t.reviewsAll} ↗</a>
     </div>
+    <p class="rv-more"><a class="btn" href={site.googleReviewsUrl} rel="noopener" target="_blank">{t.reviewsAll}</a></p>
   </div>
-  <script is:inline>(function(){var s=document.currentScript.parentElement,r=s.querySelector('.rv-row');s.querySelectorAll('.rv-nav button').forEach(function(b){b.onclick=function(){var c=r.querySelector('li');r.scrollBy({left:(+b.dataset.dir)*(c.offsetWidth+16),behavior:'smooth'})}})})();</script>
 </section>
 <style>
-  .rvs{background:#141414;color:#f4ece1;padding:88px 0 96px;overflow:hidden}
-  .rv-top{display:grid;gap:24px;align-items:end;margin-bottom:36px}
-  @media(min-width:900px){.rv-top{grid-template-columns:1fr auto}}
-  .rv-eye{margin:0 0 10px;font:800 .75rem/1 var(--head);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-  .rvs h2{margin:0;color:#fff;font-size:clamp(2.2rem,5vw,3.6rem)}
-  .rv-badges{display:flex;flex-wrap:wrap;gap:12px}
-  .rv-b{display:flex;align-items:center;gap:12px;padding:12px 18px 12px 14px;border-radius:14px;text-decoration:none;transition:transform .15s}
-  .rv-b:hover{transform:translateY(-2px)}
-  .rv-b>span{display:grid;grid-template-columns:auto auto;align-items:center;column-gap:8px;row-gap:2px}
-  .rv-b strong{font:900 1.9rem/1 var(--head)}
-  .rv-b strong em{font-style:normal;font-size:1rem;opacity:.7}
-  .rv-b small{grid-column:1/-1;font-size:.78rem;font-weight:600}
-  .rv-g{background:#fff;color:#202124}.rv-g small{color:#5f6368}
-  .rv-f{background:#8ee05f;color:#00473c}
-  .rv-st{font-size:1.05rem;letter-spacing:2px;line-height:1;background:linear-gradient(90deg,#fbbc04 var(--p,100%),#dadce0 var(--p,100%));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .rv-st.sm{font-size:.95rem}
-  @media(max-width:899px){.rv-badges{display:grid;grid-template-columns:1fr 1fr;gap:10px}.rv-b{padding:12px;gap:10px;align-items:flex-start}.rv-b>span{grid-template-columns:auto}.rv-b strong{font-size:1.6rem}.rv-b svg{width:26px;height:26px;flex:none}}
-  .rv-row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;list-style:none;margin:0 -4px;padding:4px 4px 8px}
-  .rv-row::-webkit-scrollbar{display:none}
-  .rv-row li{flex:0 0 min(86%,360px);scroll-snap-align:start}
-  .rv-row figure{margin:0;height:100%;display:flex;flex-direction:column;gap:12px;padding:22px 22px 24px;background:#fff;color:#202124;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
-  .rv-hd{display:flex;align-items:center;gap:12px}
-  .rv-av{position:relative;display:grid;place-items:center;width:44px;height:44px;flex:none;border-radius:50%;background:var(--c);color:#fff;font:600 1.15rem/1 var(--sans)}
-  .rv-av i{position:absolute;right:-3px;bottom:-3px;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)}
-  .rv-hd figcaption{display:flex;flex-direction:column;gap:2px;min-width:0}
-  .rv-hd b{font:600 1rem/1.25 var(--sans);color:#202124;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .rv-hd small{font-size:.8rem;color:#5f6368}
-  .rv-glogo{margin-left:auto;display:flex}
-  .rv-row blockquote{margin:0;font-size:.98rem;line-height:1.6;color:#3c4043;display:-webkit-box;-webkit-line-clamp:7;-webkit-box-orient:vertical;overflow:hidden}
-  .rv-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px;flex-wrap:wrap}
-  .rv-nav{display:flex;gap:10px}
-  .rv-nav button{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);background:transparent;color:#fff;font:700 1.5rem/1 var(--sans);cursor:pointer}
-  .rv-nav button:hover{background:#fff;color:#141414}
-  .rv-all{color:#fff;font:800 .82rem/1 var(--head);letter-spacing:.08em;text-transform:uppercase;text-underline-offset:5px}
+  .rvs{padding:96px 0;background:#f3e6d3}
+  .rv-top{text-align:center;margin-bottom:44px}
+  .rv-top h2{margin:6px 0 22px}
+  .rv-scores{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px}
+  .rv-scores a{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-size:.95rem}
+  .rv-scores b{font:900 1.5rem/1 var(--head)}
+  .rv-scores small{color:#6b5a4a;font-size:.88rem}
+  .rv-fk{font:800 .95rem/1 var(--head);color:#00665c}
+  .rv-st{color:#f2a900;letter-spacing:2px;font-size:1rem;line-height:1}
+  .rv-grid{display:grid;gap:18px}
+  @media(min-width:900px){.rv-grid{grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:auto auto}.rv-feat{grid-row:span 2}}
+  .rv-grid figure{margin:0;display:flex;flex-direction:column;gap:14px;border-radius:20px}
+  .rv-feat{background:var(--red);color:#fff;padding:36px 34px;justify-content:space-between}
+  .rv-feat .rv-st{color:#ffd166}
+  .rv-st.big{font-size:1.4rem}
+  .rv-feat blockquote{margin:0;font:600 clamp(1.2rem,1.7vw,1.45rem)/1.5 var(--sans)}
+  .rv-card{background:#fff;padding:24px;box-shadow:0 1px 0 rgba(74,46,30,.08),0 14px 32px rgba(74,46,30,.08)}
+  .rv-card blockquote{margin:0;font-size:1rem;line-height:1.6;color:#3b2d24;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+  .rv-grid figcaption{display:flex;align-items:center;gap:12px}
+  .rv-grid figcaption>span:last-child{display:flex;flex-direction:column;gap:3px}
+  .rv-grid figcaption b{font:700 1rem/1.2 var(--sans)}
+  .rv-grid figcaption small{display:flex;align-items:center;gap:5px;font-size:.8rem;color:#6b5a4a}
+  .rv-feat figcaption small{color:#ffe1dc}
+  .rv-feat figcaption small svg{background:#fff;border-radius:50%;padding:1px}
+  .rv-av{display:grid;place-items:center;width:42px;height:42px;flex:none;border-radius:50%;background:var(--c);color:#fff;font:600 1.1rem/1 var(--sans)}
+  .rv-feat .rv-av{box-shadow:0 0 0 3px rgba(255,255,255,.35)}
+  .rv-more{text-align:center;margin:36px 0 0}
 </style>
