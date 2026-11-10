@@ -22,18 +22,13 @@ De preview staat op de branch `preview` en GitHub Pages serveert die branch (Set
 1. `npm run build:preview`
 2. Kopieer de inhoud van `dist-preview/` naar de branch `preview` en push.
 
-## Van preview naar productie (eigen domein)
+## Productie (Hostinger)
 
-Pas doen als de eigenaar akkoord geeft.
+De productiesite draait op Hostinger (Apache); DNS blijft ongewijzigd. De branch `production` bevat alleen de inhoud van `dist/` (index.html in de root, zonder CNAME), inclusief `.htaccess` met https/www-doorverwijzing, 301's voor oude WordPress-adressen, 404-pagina, caching en compressie.
 
-1. Voeg `redesign-telepizza` samen met `main`.
-2. `npm run build` en zet de inhoud van `dist/` op de branch die Pages serveert (of laat een workflow dat doen). `dist/` bevat al `CNAME` met `telepizza-amstelveen.nl`.
-3. DNS bij de domeinbeheerder:
-   - A-records voor `telepizza-amstelveen.nl`: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
-   - CNAME-record `www` → `minazakian18-spec.github.io`
-4. GitHub › Settings › Pages: Custom domain `telepizza-amstelveen.nl`, daarna "Enforce HTTPS" aanzetten.
-
-Let op: GitHub Pages leest geen `.htaccess`. Oude WordPress-adressen krijgen daar een doorverwijspagina in plaats van een echte 301. Op Hostinger werkt `.htaccess` wel.
+1. `npm run build` en `npm run check` (0 fouten).
+2. Kopieer de inhoud van `dist/` (zonder `CNAME`) naar de branch `production` en push.
+3. Hostinger haalt de branch op via Git (hPanel › Geavanceerd › Git) of je uploadt de bestanden naar `public_html`.
 
 ## Menufoto's toevoegen
 
