@@ -13,7 +13,7 @@ const full = `${a.title} | Telepizza`;
 const short = a.title.split(/[:?]/)[0].trim();
 const seoTitle = full.length <= 60 ? full : a.title.length <= 60 ? a.title : `${short} | Telepizza`;
 const seoDesc = a.desc;
-const mains: [RegExp, string, string][] = [[/pizza/, '/pizza-amstelveen/', 'pizza in Amstelveen'], [/pasta/, '/pasta-amstelveen/', 'pasta in Amstelveen'], [/bezorg|bestel|afhal/, '/bezorgen-amstelveen/', 'eten bestellen in Amstelveen'], [/catering|feest|bedrij/, '/catering-italiaans-restaurant-amstelveen/', 'catering in Amstelveen'], [/shoarma/, '/shoarma-amstelveen/', 'shoarma in Amstelveen'], [/kapsalon/, '/kapsalon-amstelveen/', 'kapsalon in Amstelveen'], [/uit-eten|restaurant|date|verjaardag|laat|cocktail/, '/restaurant-amstelveen/', 'uit eten in ons restaurant in Amstelveen']];
+const mains: [RegExp, string, string][] = [[/pizza/, '/pizza-amstelveen/', 'pizza in Amstelveen'], [/pasta/, '/pasta-amstelveen/', 'pasta in Amstelveen'], [/bezorg|bestel|afhal/, '/bezorgen-amstelveen/', 'eten bestellen in Amstelveen'], [/catering|feest|bedrij/, '/catering-italiaans-restaurant-amstelveen/', 'catering in Amstelveen'], [/shoarma/, '/shoarma-amstelveen/', 'shoarma in Amstelveen'], [/uit-eten|restaurant|date|verjaardag|laat|cocktail/, '/restaurant-amstelveen/', 'uit eten in ons restaurant in Amstelveen']];
 const m0 = mains.find(([re]) => re.test(a.slug));
 const main: [string, string] = m0 ? [m0[1], m0[2]] : ['/', 'ons Italiaans restaurant in Amstelveen'];
 ---

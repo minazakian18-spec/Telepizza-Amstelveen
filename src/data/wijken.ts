@@ -97,13 +97,12 @@ export const wijken: Wijk[] = [
     intro: 'Keizer Karelpark ligt in het noorden van Amstelveen en is een groene, gevarieerde wijk. Er wonen gezinnen, ouderen, starters en studenten door elkaar, en het Amsterdamse Bos en de stad Amsterdam liggen allebei dichtbij.',
     sections: [
       ['Een wijk vol variatie', 'In Keizer Karelpark staan eengezinswoningen, flats en appartementen naast elkaar. Je vindt er scholen, sportvelden en winkels in de buurt. Die mix maakt de wijk levendig: overdag is het rustig, ’s avonds komt iedereen thuis en wordt er gekookt, of juist besteld.'],
-      ['Betaalbaar eten voor huisgenoten en gezinnen', 'Een avond met huisgenoten, een verjaardag met familie of gewoon een doordeweekse maaltijd: met een pizza vanaf € 9,50 eet je goed voor een eerlijke prijs. Deel een paar pizza’s, voeg een kapsalon of een schaal pasta toe, en iedereen is blij. Bestel online en laat het bezorgen in Keizer Karelpark.'],
+      ['Betaalbaar eten voor huisgenoten en gezinnen', 'Een avond met huisgenoten, een verjaardag met familie of gewoon een doordeweekse maaltijd: met een pizza vanaf € 9,50 eet je goed voor een eerlijke prijs. Deel een paar pizza’s, voeg een schaal pasta toe, en iedereen is blij. Bestel online en laat het bezorgen in Keizer Karelpark.'],
       ['Vlak bij ons restaurant', 'Omdat Keizer Karelpark net als ons restaurant in het noorden van Amstelveen ligt, ben je vanuit de wijk snel bij de Amsterdamseweg. Afhalen is dus goed te doen. Kom je liever eten? Ons restaurant is tot laat open en je kunt online een tafel reserveren.'],
     ],
     faq: [
       ['Bezorgen jullie in Keizer Karelpark?', 'Ja, Keizer Karelpark valt binnen ons bezorggebied. Vul je adres in bij het online bestellen voor de bezorgkosten en levertijd.'],
       ['Wat kost een pizza bij Telepizza?', 'Onze pizza’s kosten van € 9,50 (margherita) tot € 14,45; de meeste tussen € 12,95 en € 13,95.'],
-      ['Hebben jullie ook een kapsalon?', 'Ja, de kapsalon staat op onze kaart en is een populaire keuze om te laten bezorgen.'],
     ],
   },
   {

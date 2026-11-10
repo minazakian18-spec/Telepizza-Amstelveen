@@ -21,7 +21,6 @@ export const dishes: Record<string, Dish> = {
   gamberoniPasta: { name: 'Pasta Gamberoni', img: 'pasta-gamberoni', price: 14.45, text: 'Garnalen in rosésaus met knoflook en rucola.', en: "Prawns in rosé sauce with garlic and rocket." },
   pollo: { name: 'Pasta Pollo', img: 'pasta-pollo', price: 13.45, text: 'Gegrilde kip, champignons, broccoli en roomsaus.', en: "Grilled chicken, mushrooms, broccoli and cream sauce." },
   lasagna: { name: 'Lasagne al Forno', img: 'lasagna', price: 13.45, text: 'Huisgemaakte bolognesesaus en kaas uit de oven.', en: "Homemade bolognese and cheese from the oven." },
-  kapsalon: { name: 'Kapsalon Shoarma', img: 'kapsalon', price: 11.95, text: 'Friet, lamsshoarma, gesmolten kaas, frisse salade en saus.', tag: 'Halal', en: "Fries, lamb shawarma, melted cheese, fresh salad and sauce." },
   shoarmaSchotel: { name: 'Shoarma Schotel', img: 'shoarma-schotel', price: 16.95, text: 'Verse lamsshoarma van de spies met salade en frites.', tag: 'Halal', en: "Fresh lamb shawarma from the spit with salad and fries." },
   kipSchotel: { name: 'Kip Shoarma Schotel', img: 'kip-shoarma-schotel', price: 16.95, text: 'Kipshoarma met salade, friet en twee sauzen.', tag: 'Halal', en: "Chicken shawarma with salad, fries and two sauces." },
   ribs: { name: 'Spare Ribs', img: 'spare-ribs', price: 19.95, text: 'Halal kalfsribs in een huisgemaakte marinade, sweet of hot.', tag: 'Grill', en: "Halal veal ribs in a homemade marinade, sweet or hot." },
@@ -37,7 +36,6 @@ export const eur = (p: number, lang = 'nl') => lang === 'en' ? '€' + p.toFixed
 export const dishName: Record<string, Record<string, string>> = {
   'Specialiteit van de Chef': { en: 'Chef’s Speciality', de: 'Spezialität des Küchenchefs', fr: 'Spécialité du chef', it: 'Specialità dello chef', es: 'Especialidad del chef', tr: 'Şefin Spesiyali', ar: 'طبق الشيف الخاص' },
   'Pizza Truffel Prosciutto': { en: 'Truffle Prosciutto Pizza', de: 'Pizza Trüffel Prosciutto', fr: 'Pizza Truffe Prosciutto', it: 'Pizza Tartufo e Prosciutto', es: 'Pizza Trufa y Prosciutto', tr: 'Trüflü Prosciutto Pizza', ar: 'بيتزا الكمأة والبروشوتو' },
-  'Kapsalon Shoarma': { en: 'Kapsalon Shawarma', de: 'Kapsalon Schawarma' },
   'Shoarma Schotel': { en: 'Shawarma Platter', de: 'Schawarma-Teller' },
   'Kip Shoarma Schotel': { en: 'Chicken Shawarma Platter', de: 'Hähnchen-Schawarma-Teller' },
   'Vlees (per topping)': { en: 'Meat (per topping)', de: 'Fleisch (pro Belag)', fr: 'Viande (par garniture)', it: 'Carne (per condimento)', es: 'Carne (por ingrediente)', tr: 'Et (malzeme başına)', ar: 'لحم (لكل إضافة)' },

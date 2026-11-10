@@ -21,7 +21,6 @@ Elk zoekwoord heeft **één** doelpagina. Andere pagina's linken met het zoekwoo
 | 2 | pizza bezorgen amstelveen | `/bezorgen-amstelveen/` | idem | idem |
 | 2 | pasta amstelveen | `/pasta-amstelveen/` | Pasta Amstelveen \| Verse pasta vanaf € 11,45 \| Telepizza | Pasta in Amstelveen: vers bereid |
 | 2 | shoarma amstelveen | `/shoarma-amstelveen/` (nieuw) | Shoarma Amstelveen \| Halal lamsshoarma, afhalen tot laat | Shoarma in Amstelveen |
-| 2 | kapsalon amstelveen | `/kapsalon-amstelveen/` | Kapsalon Amstelveen € 11,95 \| Halal, afhalen tot laat | Kapsalon in Amstelveen |
 | 3 | pizza amstelveen (Engels) | `/en/` | Pizza Amstelveen ★ 4.7 \| Italian since 1984 \| Telepizza | Pizza and Italian food in Amstelveen |
 | 3 | italian restaurant amstelveen | `/en/italian-restaurant-amstelveen/` | Italian restaurant Amstelveen ★ 4.7 \| Since 1984 \| Telepizza | Italian restaurant in Amstelveen |
 | 3 | food delivery amstelveen | `/en/pizza-delivery-amstelveen/` | Food delivery Amstelveen \| Pizza & pasta \| Telepizza | Food delivery in Amstelveen: pizza, pasta and grill |

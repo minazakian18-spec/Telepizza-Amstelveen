@@ -522,27 +522,6 @@ export const menu: Section[] = [
     "note": "Met gemengde salade en frites of aardappelschijfjes"
   },
   {
-    "name": "Kapsalon",
-    "items": [
-      {
-        "name": "Kapsalon Shoarma",
-        "price": 11.95,
-        "description": "Friet, lamsshoarma, gesmolten kaas, salade en saus"
-      },
-      {
-        "name": "Kapsalon Kip Shoarma",
-        "price": 11.95,
-        "description": "Friet, kipshoarma, gesmolten kaas, salade en saus"
-      },
-      {
-        "name": "Kapsalon Döner",
-        "price": 11.95,
-        "description": "Friet, döner, gesmolten kaas, salade en saus"
-      }
-    ],
-    "note": "Prijzen zoals in onze bestelwinkel."
-  },
-  {
     "name": "Burgers",
     "items": [
       {

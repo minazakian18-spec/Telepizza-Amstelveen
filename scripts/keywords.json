@@ -16,7 +16,6 @@
   { "kw": "pizza bezorgen amstelveen", "page": "/bezorgen-amstelveen/", "prio": 2 },
   { "kw": "pasta amstelveen", "page": "/pasta-amstelveen/", "prio": 2 },
   { "kw": "shoarma amstelveen", "page": "/shoarma-amstelveen/", "prio": 2, "start": "3,8", "new": true },
-  { "kw": "kapsalon amstelveen", "page": "/kapsalon-amstelveen/", "prio": 2 },
   { "kw": "pizza amstelveen (EN)", "page": "/en/", "prio": 3 },
   { "kw": "italian restaurant amstelveen", "page": "/en/italian-restaurant-amstelveen/", "prio": 3 },
   { "kw": "food delivery amstelveen", "page": "/en/pizza-delivery-amstelveen/", "prio": 3 }

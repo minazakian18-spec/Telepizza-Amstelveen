@@ -49,8 +49,8 @@ export const articles: Article[] = [
 <p>Juist bij Italiaans eten is halal vlees niet vanzelfsprekend. Denk aan pizza salami, pizza pepperoni, pasta bolognese met rundergehakt of lasagne. Bij ons kun je die klassiekers gewoon bestellen. Kijk voor alle opties op onze pagina over <a href="/halal-restaurant-amstelveen/">halal eten in Amstelveen</a>.</p>
 <h2>Van de grill</h2>
 <p>Liever een stuk vlees? Kies een biefstuk met champignon- of peperroomsaus, een ribeye, entrecote of de ossenhaas dello chef. Ook de spare ribs, sweet of hot, zijn populair. Alles komt met gemengde salade en frites of aardappelschijfjes. Meer op de pagina <a href="/steak-grill-amstelveen/">steaks en grill</a>.</p>
-<h2>Shoarma, döner en kapsalon</h2>
-<p>Naast Italiaanse gerechten serveren we shoarmaschotels, pizza shoarma en natuurlijk de <a href="/kapsalon-amstelveen/">kapsalon</a> (ook met döner). Ook hier is het vlees halal (de shoarma is lamsvlees), met huisgemaakte knoflooksaus en sambal.</p>
+<h2>Shoarma</h2>
+<p>Naast Italiaanse gerechten serveren we <a href="/shoarma-amstelveen/">shoarma</a>: als schotel, op een pizza of in een calzone. Ook hier is het vlees halal (de shoarma is lamsvlees), met huisgemaakte knoflooksaus en sambal.</p>
 <h2>Voor gezinnen en groepen</h2>
 <p>Telepizza is een familierestaurant. Grote tafels zijn geen probleem; bel ons vooraf, dan zetten we alles klaar. Ook voor <a href="/catering-italiaans-restaurant-amstelveen/">catering</a> bij feesten en bijeenkomsten kun je bij ons terecht.</p>
 <h2>Openingstijden</h2>
@@ -95,24 +95,6 @@ export const articles: Article[] = [
 <p>Hou je van romig? Probeer dan ook de Pasta Tartufo Zucchine met truffel, champignons en courgette, of de Pasta Salmone met zalm en mosterd-roomsaus. Liever iets met tomaat? Kies arrabbiata, puttanesca of onze huisgemaakte bolognese. Alle opties staan op de pagina <a href="/pasta-amstelveen/">pasta in Amstelveen</a>.</p>
 <h2>Proef het zelf</h2>
 <p>Carbonara is het lekkerst direct uit de pan. <a href="/restaurant-amstelveen/">Kom bij ons eten</a> aan de Amsterdamseweg en bestel er een frisse salade of een stokbroodje met kruidenboter bij.</p>`,
-  },
-  {
-    slug: 'wat-is-een-kapsalon',
-    title: 'Wat is een kapsalon? Het verhaal van een Nederlandse klassieker',
-    desc: 'Wat is een kapsalon en waar komt de naam vandaan? Over het Rotterdamse gerecht met friet, shoarma en kaas, en waar je halal kapsalon eet in Amstelveen.',
-    date: '2026-10-16', img: '/images/menu/kapsalon.webp', imgAlt: 'Kapsalon met shoarma, kaas en salade',
-    intro: 'Friet, vlees, gesmolten kaas en salade in één bak: de kapsalon is misschien wel het bekendste Nederlandse snackgerecht van deze eeuw. Maar waarom heet het eigenlijk zo?',
-    body: `
-<h2>Waar komt de naam vandaan?</h2>
-<p>De kapsalon komt uit Rotterdam en is ontstaan in de jaren 2000. Volgens het bekende verhaal vroeg een kapper bij een shoarmazaak in de buurt steeds om dezelfde combinatie: friet met shoarma, kaas uit de oven en salade erop. Het gerecht werd naar zijn zaak vernoemd. Daarna verspreidde de kapsalon zich snel door heel Nederland en zelfs daarbuiten.</p>
-<h2>Wat zit erin?</h2>
-<p>Een kapsalon bestaat uit lagen. Onderin ligt friet, daarop shoarma of ander vlees, dan een laag kaas die in de oven smelt. Bovenop komt een frisse salade met sla, tomaat en komkommer, en daarover saus: meestal knoflooksaus en sambal.</p>
-<h2>De kapsalon bij Telepizza</h2>
-<p>Bij Telepizza kies je uit drie varianten: kapsalon shoarma, kapsalon kip shoarma en kapsalon döner, elk voor € 11,95. Ons vlees is halal en onze knoflooksaus en sambal maken we zelf. Liever vegetarisch? Dan is de schotel falafel een goed alternatief.</p>
-<h2>Kapsalon en pizza aan één tafel</h2>
-<p>Het mooie aan Telepizza is dat iedereen aan tafel iets anders kan kiezen. De een neemt een pizza of pasta, de ander een kapsalon of shoarmaschotel. Zo is er altijd iets voor iedereen, zeker met een groep.</p>
-<h2>Laat op de avond</h2>
-<p>De kapsalon is bij uitstek een gerecht voor na een avond uit. Wij zijn <a href="/laat-open-amstelveen/">open tot 02:00</a>, op vrijdag en zaterdag tot 03:20. Lees meer over onze <a href="/kapsalon-amstelveen/">kapsalon in Amstelveen</a> of bekijk het <a href="/menu-italiaans-restaurant-amstelveen/#kapsalon">menu</a>.</p>`,
   },
 ];
 

@@ -108,10 +108,7 @@ Gebruik alleen echte foto's van het gerecht zelf: geen stockfoto's, geen AI-beel
 - Shoarma Speciaal: `shoarma-speciaal.jpg`
 - Kipfilet: `kipfilet.jpg`
 
-## Kapsalon
 
-- Kapsalon Kip Shoarma: `kapsalon-kip-shoarma.jpg`
-- Kapsalon Döner: `kapsalon-do-ner.jpg`
 - Schotel Falafel: `schotel-falafel.jpg`
 
 ## Burgers
@@ -162,7 +159,6 @@ Gebruik alleen echte foto's van het gerecht zelf: geen stockfoto's, geen AI-beel
 | Vleesgerechten | 1 | 5 |
 | Visgerechten | 0 | 3 |
 | Schotels | 0 | 3 |
-| Kapsalon | 1 | 3 |
 | Burgers | 2 | 2 |
 | Snacks | 0 | 4 |
 | Bijgerechten | 0 | 2 |

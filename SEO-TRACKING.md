@@ -25,7 +25,6 @@ Gemiddelde positie uit Google Search Console. **Start** = mei–okt 2026, oude w
 | pizza bezorgen amstelveen | /bezorgen-amstelveen/ | 3,6 | 279 | top 3 | | | | | | | | | | | | |
 | pasta amstelveen | /pasta-amstelveen/ | 6,1 | 103 | top 3 | | | | | | | | | | | | |
 | shoarma amstelveen | /shoarma-amstelveen/ | 3,8 | 158 | top 3 | | | | | | | | | | | | |
-| kapsalon amstelveen | /kapsalon-amstelveen/ | n.v.t. (geen data) | n.v.t. | top 5 | | | | | | | | | | | | |
 | pizza amstelveen (EN) | /en/ | n.v.t. (geen data) | n.v.t. | top 5 | | | | | | | | | | | | |
 | italian restaurant amstelveen | /en/italian-restaurant-amstelveen/ | 11,1 | 104 | top 3 | | | | | | | | | | | | |
 | food delivery amstelveen | /en/pizza-delivery-amstelveen/ | n.v.t. (geen data) | n.v.t. | top 5 | | | | | | | | | | | | |
