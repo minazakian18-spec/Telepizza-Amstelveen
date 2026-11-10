@@ -77,7 +77,6 @@
     <image:image><image:loc>https://telepizza-amstelveen.nl/images/ph/pasta-penne.webp</image:loc></image:image>
     <image:image><image:loc>https://telepizza-amstelveen.nl/images/eigen/calzone.webp</image:loc></image:image>
     <image:image><image:loc>https://telepizza-amstelveen.nl/images/ph/pizza-rond.webp</image:loc></image:image>
-    <image:image><image:loc>https://telepizza-amstelveen.nl/images/menu/kapsalon.webp</image:loc></image:image>
     <image:image><image:loc>https://telepizza-amstelveen.nl/images/eigen/gevel-avond.webp</image:loc></image:image>
   </url>
   <url>
@@ -148,12 +147,6 @@
     <loc>https://telepizza-amstelveen.nl/blog/verschil-pizza-calzone/</loc>
     <lastmod>2026-11-10</lastmod>
     <image:image><image:loc>https://telepizza-amstelveen.nl/images/eigen/calzone.webp</image:loc></image:image>
-    <image:image><image:loc>https://telepizza-amstelveen.nl/images/eigen/steak-grill.webp</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://telepizza-amstelveen.nl/blog/wat-is-een-kapsalon/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <image:image><image:loc>https://telepizza-amstelveen.nl/images/menu/kapsalon.webp</image:loc></image:image>
     <image:image><image:loc>https://telepizza-amstelveen.nl/images/eigen/steak-grill.webp</image:loc></image:image>
   </url>
   <url>
@@ -628,11 +621,6 @@
     <image:image><image:loc>https://telepizza-amstelveen.nl/images/menu/pizza-bbq.webp</image:loc></image:image>
     <image:image><image:loc>https://telepizza-amstelveen.nl/images/menu/pizza-carpaccio.webp</image:loc></image:image>
     <image:image><image:loc>https://telepizza-amstelveen.nl/images/menu/pizza-popeye.webp</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://telepizza-amstelveen.nl/kapsalon-amstelveen/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <image:image><image:loc>https://telepizza-amstelveen.nl/images/menu/kapsalon.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://telepizza-amstelveen.nl/laat-open-amstelveen/</loc>
