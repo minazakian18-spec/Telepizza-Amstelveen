@@ -103,9 +103,14 @@ const hs = (n: string) => `/images/hero/${n}-sm.webp 640w, /images/hero/${n}.web
 const slideSec = 6;
 const cycle = heroAll.length * slideSec;
 const showPct = (100 / heroAll.length).toFixed(2);
+// De eerste slide is direct zichtbaar (LCP). De wisseling start pas na window.load + 3 s (klasse .run),
+// en nooit bij prefers-reduced-motion. Slide 1 begint de cyclus al volledig zichtbaar (negatieve vertraging = fade-tijd).
+const fadeSec = +(cycle * 0.04).toFixed(2);
 const heroCss = heroAll.length > 1 ? `@keyframes heroFade{0%{opacity:0}4%{opacity:1}${showPct}%{opacity:1}${(+showPct + 4).toFixed(2)}%{opacity:0}100%{opacity:0}}
-.hero .slide{animation:heroFade ${cycle}s infinite}
-${heroAll.map((x, i) => `.hero .slide:nth-of-type(${i + 1}){animation-delay:${i * slideSec}s}`).join('\n')}` : '';
+@media (prefers-reduced-motion: no-preference){
+.hero.run .slide{animation:heroFade ${cycle}s infinite}
+${heroAll.map((x, i) => `.hero.run .slide:nth-of-type(${i + 1}){animation-delay:${(i * slideSec - fadeSec).toFixed(2)}s}`).join('\n')}
+}` : '';
 
 const words = ['Pizza', 'Pasta', 'Grill', 'Cocktails', L.since, 'Amstelveen'];
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: c.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]+>/g, '') } })) };
@@ -116,8 +121,9 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   <section class="hero" aria-label="Telepizza Amstelveen">
     {heroAll.map((x, i) => (
       <>
-        <img class:list={['slide', { small: x.small }]} src={hp(x.n)} srcset={x.small ? undefined : hs(x.n)} sizes="100vw" alt={x.alt} width={x.w} height={x.h} style={`object-position:${x.pos}`}
-          {...(i === 0 ? { fetchpriority: 'high' } : { loading: 'lazy', decoding: 'async' })} />
+        {i === 0
+          ? <img class:list={['slide', { small: x.small }]} src={hp(x.n)} srcset={x.small ? undefined : hs(x.n)} sizes="100vw" alt={x.alt} width={x.w} height={x.h} style={`object-position:${x.pos}`} fetchpriority="high" decoding="async" />
+          : <img class:list={['slide', { small: x.small }]} data-src={hp(x.n)} data-srcset={x.small ? undefined : hs(x.n)} sizes="100vw" alt={x.alt} width={x.w} height={x.h} style={`object-position:${x.pos}`} decoding="async" />}
       </>
     ))}
     <div class="tagline"><span class="neon">{H.ex}</span>{" "}<span>Ristorante · Pizzeria · Grill</span>
@@ -214,6 +220,11 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
     {lang === 'nl' && <KeywordLinks current="/" />}
   </div></section>
   <script is:inline>
+    // Slides 2+ pas na window.load laden; de wisseling start 3 s later (niet bij prefers-reduced-motion).
+    (function () { var h = document.querySelector('.hero'); if (!h || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var s = h.querySelectorAll('img[data-src]'); if (!s.length) return;
+      addEventListener('load', function () { s.forEach(function (i) { if (i.dataset.srcset) i.srcset = i.dataset.srcset; i.src = i.dataset.src; });
+        setTimeout(function () { h.classList.add('run'); }, 3000); }); })();
     // Extra slides pas na het laden van de pagina; de video pas als hij in beeld komt. Zo laadt de hoofdfoto als eerste.
     (function () { var v = document.querySelector('.welcome video'); if (!v || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { v.src = v.dataset.src; v.play().catch(function () {}); o.disconnect(); } }, { rootMargin: '200px' }).observe(v); })();
