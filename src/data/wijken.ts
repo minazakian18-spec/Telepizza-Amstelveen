@@ -45,7 +45,7 @@ export const wijken: Wijk[] = [
       ['Even de stad uit', 'Het Stadshart is druk en gezellig, maar soms is het fijn om ergens rustig te zitten. Ons restaurant aan de Amsterdamseweg ligt in het noorden van Amstelveen, buiten de drukte van het centrum. Je zit er aan gedekte tafels onder de neon, met bediening die tijd voor je neemt.'],
     ],
     faq: [
-      ['Kan ik na een voorstelling nog bij jullie eten?', 'Ja, we zijn open tot 01:45, op vrijdag en zaterdag tot 03:00. Bekijk de actuele openingstijden op de contactpagina en reserveer gerust vooraf.'],
+      ['Kan ik na een voorstelling nog bij jullie eten?', 'Ja, we zijn open tot 02:00, op vrijdag en zaterdag tot 03:20. Bekijk de actuele openingstijden op de contactpagina en reserveer gerust vooraf.'],
       ['Bezorgen jullie ook in appartementencomplexen?', 'Ja. Zet je huisnummer, toevoeging en eventueel de verdieping duidelijk in je bestelling, dan bellen we aan bij de juiste deur.'],
       ['Bezorgen jullie op kantoor in het centrum?', 'Ja, ook kantoren in het Stadshart kunnen bestellen. Voor grote groepen kun je catering aanvragen.'],
     ],
@@ -140,7 +140,7 @@ export const wijken: Wijk[] = [
     sections: [
       ['Lunch, overwerk en borrels', 'Op de Zuidas lopen werkdagen vaak uit. Een overleg dat later klaar is, een deadline die eraan komt of een team dat samen een project afrondt: dan is een paar pizza’s bestellen de snelste manier om iedereen te laten eten. Bestel online voor je kantoor op de Zuidas, of vraag catering aan voor een lunch, borrel of teamavond.'],
       ['Catering voor bedrijven', 'Voor bedrijven verzorgen we Italiaanse catering met pizza’s, pasta’s, salades en desserts, desgewenst met een mobiele bar met personeel. Eén aanspreekpunt, één bestelling en vegetarische opties voor wie geen vlees eet. Lees meer over <a href="/catering-italiaans-restaurant-amstelveen/#bedrijven">catering voor bedrijven</a> of vraag direct een offerte aan.'],
-      ['Wonen op de Zuidas', 'Woon je op de Zuidas? Na een lange dag heb je misschien geen zin meer om te koken. Bestel dan een pizza, een romige carbonara of een steak van de grill en laat het thuis bezorgen. Liever er even uit? Ons restaurant aan de Amsterdamseweg ligt dichtbij, met cocktails, een levendige zaal, open tot 01:45 (vrijdag en zaterdag tot 03:00).'],
+      ['Wonen op de Zuidas', 'Woon je op de Zuidas? Na een lange dag heb je misschien geen zin meer om te koken. Bestel dan een pizza, een romige carbonara of een steak van de grill en laat het thuis bezorgen. Liever er even uit? Ons restaurant aan de Amsterdamseweg ligt dichtbij, met cocktails, een levendige zaal, open tot 02:00 (vrijdag en zaterdag tot 03:20).'],
     ],
     faq: [
       ['Bezorgen jullie op kantoren op de Zuidas?', 'Ja, de Zuidas valt binnen ons bezorggebied. Zet bedrijfsnaam, verdieping en een telefoonnummer bij je bestelling.'],

@@ -54,7 +54,7 @@ export const articles: Article[] = [
 <h2>Voor gezinnen en groepen</h2>
 <p>Telepizza is een familierestaurant. Grote tafels zijn geen probleem; bel ons vooraf, dan zetten we alles klaar. Ook voor <a href="/catering-italiaans-restaurant-amstelveen/">catering</a> bij feesten en bijeenkomsten kun je bij ons terecht.</p>
 <h2>Openingstijden</h2>
-<p>We zijn open van dinsdag tot en met zondag vanaf 15:00, tot 01:45 en op vrijdag en zaterdag tot 03:00. <a href="/contact-route/">Plan je route</a> of reserveer direct een tafel.</p>`,
+<p>We zijn open van dinsdag tot en met zondag vanaf 14:45: tot 02:00, op vrijdag en zaterdag tot 03:20 en op zondag tot 02:15. <a href="/contact-route/">Plan je route</a> of reserveer direct een tafel.</p>`,
   },
   {
     slug: 'verjaardag-vieren-restaurant-amstelveen',
@@ -112,7 +112,7 @@ export const articles: Article[] = [
 <h2>Kapsalon en pizza aan één tafel</h2>
 <p>Het mooie aan Telepizza is dat iedereen aan tafel iets anders kan kiezen. De een neemt een pizza of pasta, de ander een kapsalon of shoarmaschotel. Zo is er altijd iets voor iedereen, zeker met een groep.</p>
 <h2>Laat op de avond</h2>
-<p>De kapsalon is bij uitstek een gerecht voor na een avond uit. Wij zijn <a href="/laat-open-amstelveen/">open tot 01:45</a>, op vrijdag en zaterdag tot 03:00. Lees meer over onze <a href="/kapsalon-amstelveen/">kapsalon in Amstelveen</a> of bekijk het <a href="/menu-italiaans-restaurant-amstelveen/#kapsalon">menu</a>.</p>`,
+<p>De kapsalon is bij uitstek een gerecht voor na een avond uit. Wij zijn <a href="/laat-open-amstelveen/">open tot 02:00</a>, op vrijdag en zaterdag tot 03:20. Lees meer over onze <a href="/kapsalon-amstelveen/">kapsalon in Amstelveen</a> of bekijk het <a href="/menu-italiaans-restaurant-amstelveen/#kapsalon">menu</a>.</p>`,
   },
 ];
 

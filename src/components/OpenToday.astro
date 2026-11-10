@@ -5,12 +5,12 @@ import { site } from '../data/site';
 import type { Lang } from '../i18n/ui';
 const { lang = 'nl' } = Astro.props as { lang?: Lang };
 const T: Record<string, { open: string; closed: string; fallback: string }> = {
-  nl: { open: 'Vandaag open tot', closed: 'Vandaag gesloten', fallback: 'Di–zo open vanaf 15:00 · maandag gesloten' },
-  en: { open: 'Open today until', closed: 'Closed today', fallback: 'Open Tue–Sun from 15:00 · closed Mondays' },
-  de: { open: 'Heute geöffnet bis', closed: 'Heute geschlossen', fallback: 'Di–So ab 15:00 geöffnet · montags geschlossen' },
-  fr: { open: 'Ouvert aujourd’hui jusqu’à', closed: 'Fermé aujourd’hui', fallback: 'Ouvert du mar. au dim. dès 15:00 · fermé le lundi' },
-  it: { open: 'Aperto oggi fino alle', closed: 'Oggi chiuso', fallback: 'Aperto mar–dom dalle 15:00 · lunedì chiuso' },
-  es: { open: 'Abierto hoy hasta las', closed: 'Hoy cerrado', fallback: 'Abierto mar–dom desde las 15:00 · lunes cerrado' },
+  nl: { open: 'Vandaag open tot', closed: 'Vandaag gesloten', fallback: 'Di–zo open vanaf 14:45 · maandag gesloten' },
+  en: { open: 'Open today until', closed: 'Closed today', fallback: 'Open Tue–Sun from 14:45 · closed Mondays' },
+  de: { open: 'Heute geöffnet bis', closed: 'Heute geschlossen', fallback: 'Di–So ab 14:45 geöffnet · montags geschlossen' },
+  fr: { open: 'Ouvert aujourd’hui jusqu’à', closed: 'Fermé aujourd’hui', fallback: 'Ouvert du mar. au dim. dès 14:45 · fermé le lundi' },
+  it: { open: 'Aperto oggi fino alle', closed: 'Oggi chiuso', fallback: 'Aperto mar–dom dalle 14:45 · lunedì chiuso' },
+  es: { open: 'Abierto hoy hasta las', closed: 'Hoy cerrado', fallback: 'Abierto mar–dom desde las 14:45 · lunes cerrado' },
 };
 const t = T[lang] ?? T.en;
 const close = Object.fromEntries(site.hours.map(h => [h.schema, h.close]));

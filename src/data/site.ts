@@ -72,12 +72,12 @@ export const site = {
     foundingYear: 1984,
   // Maandag gesloten. Sluitingstijd na middernacht valt op de volgende dag.
   hours: [
-    { day: 'Dinsdag', schema: 'Tuesday', open: '15:00', close: '01:45' },
-    { day: 'Woensdag', schema: 'Wednesday', open: '15:00', close: '01:45' },
-    { day: 'Donderdag', schema: 'Thursday', open: '15:00', close: '01:45' },
-    { day: 'Vrijdag', schema: 'Friday', open: '15:00', close: '03:00' },
-    { day: 'Zaterdag', schema: 'Saturday', open: '15:00', close: '03:00' },
-    { day: 'Zondag', schema: 'Sunday', open: '15:00', close: '01:45' },
+    { day: 'Dinsdag', schema: 'Tuesday', open: '14:45', close: '02:00' },
+    { day: 'Woensdag', schema: 'Wednesday', open: '14:45', close: '02:00' },
+    { day: 'Donderdag', schema: 'Thursday', open: '14:45', close: '02:00' },
+    { day: 'Vrijdag', schema: 'Friday', open: '14:45', close: '03:20' },
+    { day: 'Zaterdag', schema: 'Saturday', open: '14:45', close: '03:20' },
+    { day: 'Zondag', schema: 'Sunday', open: '14:45', close: '02:15' },
   ] as { day: string; schema: string; open: string; close: string }[],
   // Google-score volgens het Google Bedrijfsprofiel (9 november 2026: 4,7 uit 1.426).
   // TODO-CONTROLEREN: actuele aantal reviews. Dit getal wordt overal op de site gebruikt.
