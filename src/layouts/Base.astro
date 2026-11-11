@@ -77,6 +77,17 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
 <html lang={lang === 'en' ? 'en-GB' : lang} dir={info.dir}>
 <head>
 <meta charset="utf-8" />
+{site.gtmId && <script is:inline>
+  // Google consent mode v2: standaard geweigerd, tot de bezoeker toestemming geeft in de cookiemelding.
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500 });
+  try { if (localStorage.getItem('tp-consent') === 'yes') { gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' }); window.__tpGa = 1; } } catch (e) {}
+  window.__tpLoadGa = window.__tpLoadGa || function () { if (window.__tpGa) return; window.__tpGa = 1; gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' }); };
+  gtag('js', new Date());
+</script>}
+{site.gtmId && <script is:inline async src={`https://www.googletagmanager.com/gtm.js?id=${site.gtmId}`}></script>}
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{title}</title>
 <meta name="description" content={description} />
@@ -195,7 +206,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
   <a href={site.orderUrl!} rel="noopener">{t.order}</a>
   <a class="o" href={site.reserveUrl!} rel="noopener">{reserveShort[lang] ?? t.reserve}</a>
 </nav>
-{site.ga4Id && <div class="consent" id="consent" hidden>
+{(site.ga4Id || site.gtmId) && <div class="consent" id="consent" hidden>
   <p>{lang === 'nl' ? 'We gebruiken cookies om te meten hoe onze website wordt gebruikt. Mag dat?' : 'We use cookies to measure how our website is used. Is that okay?'}</p>
   <div class="btns" style="margin-top:10px"><button class="btn primary sm" data-consent="yes">{lang === 'nl' ? 'Akkoord' : 'Accept'}</button><button class="btn sm" data-consent="no">{lang === 'nl' ? 'Weigeren' : 'Decline'}</button></div>
 </div>}
