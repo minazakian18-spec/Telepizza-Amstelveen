@@ -1,4 +1,5 @@
 ---
+import { wijken } from '../data/wijken';
 import { site, fullAddress } from '../data/site';
 import Newsletter from '../components/Newsletter.astro';
 import HalalInfo from '../components/HalalInfo.astro';
@@ -56,7 +57,7 @@ if (site.email) restaurant.email = site.email;
 if (site.geo) restaurant.geo = { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng };
 if (site.foundingYear) restaurant.foundingDate = String(site.foundingYear);
 restaurant.acceptsReservations = true;
-restaurant.sameAs = [...site.sameAs, site.googleReviewsUrl];
+restaurant.sameAs = [...site.sameAs, site.googleReviewsUrl, site.orderUrl, site.social.facebook].filter(Boolean);
 // TODO-CONTROLEREN: paymentAccepted en currenciesAccepted alleen toevoegen als bekend.
 if (site.hours.length) restaurant.openingHoursSpecification = site.hours.map(h => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.schema, opens: h.open, closes: h.close }));
 
@@ -198,6 +199,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
       <li><a href="/veelgestelde-vragen/">Veelgestelde vragen</a></li>
     </ul>}</div>
   </div>
+  {lang === 'nl' && <p class="legal wijk-links">Wij bezorgen in: {['stadshart', 'zuidas', 'buitenveldert', 'westwijk', 'elsrijk', 'randwijck', 'oude-dorp', 'keizer-karelpark', 'bankras-kostverloren', 'bovenkerk'].map((s, i) => { const w = wijken.find(x => x.slug === s)!; return <>{i > 0 && ' · '}<a href={`/bezorgen-amstelveen/${s}/`}>{w.name}</a></>; })}</p>}
   <Newsletter lang={lang} variant="footer" />
   <p class="legal">© {new Date().getFullYear()} {site.name} · <a href={site.social.instagram} rel="noopener">Instagram</a> · <a href={site.social.tiktok} rel="noopener">TikTok</a>{site.social.facebook && <> · <a href={site.social.facebook} rel="noopener">Facebook</a></>} · <a href={lang === 'nl' ? site.privacyUrl : '/en/privacy/'}>{lang === 'nl' ? 'Privacy' : lang === 'de' ? 'Datenschutz' : 'Privacy'}</a></p>
 </div></footer>

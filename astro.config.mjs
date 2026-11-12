@@ -41,6 +41,13 @@ export default defineConfig({
     '/bezorgen-amstelveen/middenhoven/': '/bezorgen-amstelveen/',
     '/bezorgen-amstelveen/groenelaan/': '/bezorgen-amstelveen/',
     '/bezorgen-amstelveen/waardhuizen/': '/bezorgen-amstelveen/',
+    // Adressen die mensen zelf intypen
+    '/menu/': '/menu-italiaans-restaurant-amstelveen/',
+    '/over-ons/': '/over-ons-italiaans-restaurant-amstelveen/',
+    '/bestellen/': 'https://telepizza.sitedish.shop/',
+    '/reserveren/': 'https://widget.thefork.com/d10a03f4-2fab-4cc5-a1a6-ca3b826a931b',
+    '/catering/': '/catering-italiaans-restaurant-amstelveen/',
+    '/bezorgen/': '/bezorgen-amstelveen/',
   },
   integrations: [track],
 });

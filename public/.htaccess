@@ -30,6 +30,13 @@ RewriteRule ^(page|tag)/.*$ / [R=301,L]
 RewriteRule ^hello-world/?$ / [R=301,L]
 RewriteRule ^(category|author)/.*$ / [R=301,L]
 RewriteRule ^(sitemap_index|sitemap-index)\.xml$ /sitemap.xml [R=301,L]
+# Adressen die mensen zelf intypen
+RewriteRule ^menu/?$ /menu-italiaans-restaurant-amstelveen/ [R=301,L]
+RewriteRule ^over-ons/?$ /over-ons-italiaans-restaurant-amstelveen/ [R=301,L]
+RewriteRule ^bestellen/?$ https://telepizza.sitedish.shop/ [R=301,L]
+RewriteRule ^reserveren/?$ https://widget.thefork.com/d10a03f4-2fab-4cc5-a1a6-ca3b826a931b [R=301,L]
+RewriteRule ^catering/?$ /catering-italiaans-restaurant-amstelveen/ [R=301,L]
+RewriteRule ^bezorgen/?$ /bezorgen-amstelveen/ [R=301,L]
 # Kapsalon staat niet meer op de kaart
 RewriteRule ^kapsalon-amstelveen/?$ /shoarma-amstelveen/ [R=301,L]
 RewriteRule ^blog/wat-is-een-kapsalon/?$ /shoarma-amstelveen/ [R=301,L]
