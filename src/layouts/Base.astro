@@ -101,7 +101,7 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
   window.gtag = gtag;
   gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
   window.__tpLoadGa = function () {
-    if (window.__tpGa) return; window.__tpGa = 1;
+    if (window.__tpGaLoaded) return; window.__tpGaLoaded = 1; window.__tpGa = 1;
     gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' });
     var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + ga4; document.head.appendChild(s);
     gtag('js', new Date());
