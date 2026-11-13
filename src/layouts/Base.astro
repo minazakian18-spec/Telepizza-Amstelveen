@@ -88,7 +88,15 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
   window.__tpLoadGa = window.__tpLoadGa || function () { if (window.__tpGa) return; window.__tpGa = 1; gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' }); };
   gtag('js', new Date());
 </script>}
-{site.gtmId && <script is:inline async src={`https://www.googletagmanager.com/gtm.js?id=${site.gtmId}`}></script>}
+{site.gtmId && <script is:inline define:vars={{ gtm: site.gtmId }}>
+  // Snelheid: Google Tag Manager (±440 KB JavaScript) pas laden na de eerste interactie of 4 s na het laden van de pagina.
+  (function () {
+    var done = 0;
+    function load() { if (done) return; done = 1; dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' }); var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtm; document.head.appendChild(s); }
+    ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (e) { addEventListener(e, load, { once: true, passive: true }); });
+    addEventListener('load', function () { setTimeout(load, 4000); });
+  })();
+</script>}
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{title}</title>
 <meta name="description" content={description} />
