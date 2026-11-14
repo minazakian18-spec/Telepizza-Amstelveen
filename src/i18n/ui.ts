@@ -40,7 +40,7 @@ type UI = {
 export const ui: Record<Lang, UI> = {
   nl: {
     nav: { home: 'Home', menu: 'Menu', catering: 'Catering', about: 'Over ons', contact: 'Contact', delivery: 'Bezorgen' },
-    order: 'Bestel online', reserve: 'Reserveer een tafel', call: 'Bel', viewMenu: 'Bekijk het menu', fullMenu: 'Volledig menu met prijzen', orderNow: 'Direct bestellen', orderShort: 'Bestel',
+    order: 'Bezorgen / afhalen', reserve: 'Reserveer een tafel', call: 'Bel', viewMenu: 'Bekijk het menu', fullMenu: 'Volledig menu met prijzen', orderNow: 'Direct bestellen', orderShort: 'Bestel',
     since: 'Amstelveen · sinds 1984', tagline: 'Italiaans restaurant in Amstelveen', language: 'Taal', home: 'Home',
     bandEyebrow: 'Reserveren bij de beste', bandTitle: 'Jouw tafel staat klaar', bandText: 'Italiaans restaurant in Amstelveen, al sinds 1984. Reserveer online, bel ons of bestel direct voor afhalen en bezorgen.',
     footerAbout: 'Italiaans restaurant, pizzeria en grill aan de Amsterdamseweg. Eten in het restaurant, afhalen of bezorgen.',
@@ -51,7 +51,7 @@ export const ui: Record<Lang, UI> = {
   },
   en: {
     nav: { home: 'Home', menu: 'Menu', catering: 'Catering', about: 'About us', contact: 'Contact', delivery: 'Delivery' },
-    order: 'Order online', reserve: 'Book a table', call: 'Call', viewMenu: 'View the menu', fullMenu: 'Full menu with prices', orderNow: 'Order now', orderShort: 'Order',
+    order: 'Delivery / pick-up', reserve: 'Book a table', call: 'Call', viewMenu: 'View the menu', fullMenu: 'Full menu with prices', orderNow: 'Order now', orderShort: 'Order',
     since: 'Amstelveen · since 1984', tagline: 'Italian restaurant in Amstelveen', language: 'Language', home: 'Home',
     bandEyebrow: 'Book with the best', bandTitle: 'Your table is ready', bandText: 'Italian restaurant in Amstelveen since 1984. Book online, give us a call or order for pick-up and delivery.',
     footerAbout: 'Italian restaurant, pizzeria and grill on the Amsterdamseweg. Dine in, take away or delivery.',
@@ -62,7 +62,7 @@ export const ui: Record<Lang, UI> = {
   },
   de: {
     nav: { home: 'Start', menu: 'Speisekarte', catering: 'Catering', about: 'Über uns', contact: 'Kontakt', delivery: 'Lieferung' },
-    order: 'Online bestellen', reserve: 'Tisch reservieren', call: 'Anrufen', viewMenu: 'Speisekarte ansehen', fullMenu: 'Komplette Karte mit Preisen', orderNow: 'Jetzt bestellen', orderShort: 'Bestellen',
+    order: 'Liefern / Abholen', reserve: 'Tisch reservieren', call: 'Anrufen', viewMenu: 'Speisekarte ansehen', fullMenu: 'Komplette Karte mit Preisen', orderNow: 'Jetzt bestellen', orderShort: 'Bestellen',
     since: 'Amstelveen · seit 1984', tagline: 'Italienisches Restaurant in Amstelveen', language: 'Sprache', home: 'Start',
     bandEyebrow: 'Reservieren beim Besten', bandTitle: 'Ihr Tisch wartet', bandText: 'Italienisches Restaurant in Amstelveen seit 1984. Reservieren Sie online, rufen Sie uns an oder bestellen Sie zum Abholen und Liefern.',
     footerAbout: 'Italienisches Restaurant, Pizzeria und Grill an der Amsterdamseweg. Im Restaurant essen, abholen oder liefern lassen.',
@@ -73,7 +73,7 @@ export const ui: Record<Lang, UI> = {
   },
   tr: {
     nav: { home: 'Ana sayfa', menu: 'Menü', catering: 'Catering', about: 'Hakkımızda', contact: 'İletişim', delivery: 'Teslimat' },
-    order: 'Online sipariş', reserve: 'Masa ayırt', call: 'Ara', viewMenu: 'Menüyü gör', fullMenu: 'Fiyatlarıyla tüm menü', orderNow: 'Hemen sipariş ver', orderShort: 'Sipariş',
+    order: 'Paket / gel-al', reserve: 'Masa ayırt', call: 'Ara', viewMenu: 'Menüyü gör', fullMenu: 'Fiyatlarıyla tüm menü', orderNow: 'Hemen sipariş ver', orderShort: 'Sipariş',
     since: 'Amstelveen · 1984’ten beri', tagline: 'Amstelveen’de İtalyan restoranı', language: 'Dil', home: 'Ana sayfa',
     bandEyebrow: 'En iyisinde rezervasyon', bandTitle: 'Masanız hazır', bandText: '1984’ten beri Amstelveen’de İtalyan restoranı. Online rezervasyon yapın, bizi arayın veya gel-al ve teslimat için sipariş verin.',
     footerAbout: 'Amsterdamseweg’de İtalyan restoranı, pizzacı ve ızgara. Restoranda yiyin, gel-al veya eve teslimat.',
@@ -84,7 +84,7 @@ export const ui: Record<Lang, UI> = {
   },
   ar: {
     nav: { home: 'الرئيسية', menu: 'قائمة الطعام', catering: 'تقديم الطعام', about: 'من نحن', contact: 'اتصل بنا', delivery: 'التوصيل' },
-    order: 'اطلب أونلاين', reserve: 'احجز طاولة', call: 'اتصل', viewMenu: 'عرض القائمة', fullMenu: 'القائمة الكاملة بالأسعار', orderNow: 'اطلب الآن', orderShort: 'اطلب',
+    order: 'توصيل / استلام', reserve: 'احجز طاولة', call: 'اتصل', viewMenu: 'عرض القائمة', fullMenu: 'القائمة الكاملة بالأسعار', orderNow: 'اطلب الآن', orderShort: 'اطلب',
     since: 'أمستلفين · منذ 1984', tagline: 'مطعم إيطالي في أمستلفين', language: 'اللغة', home: 'الرئيسية',
     bandEyebrow: 'احجز لدى الأفضل', bandTitle: 'طاولتك جاهزة', bandText: 'مطعم إيطالي في أمستلفين منذ 1984. احجز أونلاين، اتصل بنا أو اطلب للاستلام والتوصيل.',
     footerAbout: 'مطعم إيطالي وبيتزا ومشويات في شارع Amsterdamseweg. تناول الطعام في المطعم أو الاستلام أو التوصيل.',
@@ -95,7 +95,7 @@ export const ui: Record<Lang, UI> = {
   },
   fr: {
     nav: { home: 'Accueil', menu: 'Menu', catering: 'Traiteur', about: 'À propos', contact: 'Contact', delivery: 'Livraison' },
-    order: 'Commander en ligne', reserve: 'Réserver une table', call: 'Appeler', viewMenu: 'Voir le menu', fullMenu: 'Menu complet avec prix', orderNow: 'Commander', orderShort: 'Commander',
+    order: 'Livraison / à emporter', reserve: 'Réserver une table', call: 'Appeler', viewMenu: 'Voir le menu', fullMenu: 'Menu complet avec prix', orderNow: 'Commander', orderShort: 'Commander',
     since: 'Amstelveen · depuis 1984', tagline: 'Restaurant italien à Amstelveen', language: 'Langue', home: 'Accueil',
     bandEyebrow: 'Réservez chez les meilleurs', bandTitle: 'Votre table vous attend', bandText: 'Restaurant italien à Amstelveen depuis 1984. Réservez en ligne, appelez-nous ou commandez à emporter ou en livraison.',
     footerAbout: 'Restaurant italien, pizzeria et grill sur l’Amsterdamseweg. Sur place, à emporter ou en livraison.',
@@ -106,7 +106,7 @@ export const ui: Record<Lang, UI> = {
   },
   it: {
     nav: { home: 'Home', menu: 'Menù', catering: 'Catering', about: 'Chi siamo', contact: 'Contatti', delivery: 'Consegna' },
-    order: 'Ordina online', reserve: 'Prenota un tavolo', call: 'Chiama', viewMenu: 'Vedi il menù', fullMenu: 'Menù completo con prezzi', orderNow: 'Ordina ora', orderShort: 'Ordina',
+    order: 'Consegna / asporto', reserve: 'Prenota un tavolo', call: 'Chiama', viewMenu: 'Vedi il menù', fullMenu: 'Menù completo con prezzi', orderNow: 'Ordina ora', orderShort: 'Ordina',
     since: 'Amstelveen · dal 1984', tagline: 'Ristorante italiano ad Amstelveen', language: 'Lingua', home: 'Home',
     bandEyebrow: 'Prenota dai migliori', bandTitle: 'Il tuo tavolo ti aspetta', bandText: 'Ristorante italiano ad Amstelveen dal 1984. Prenota online, chiamaci o ordina da asporto e a domicilio.',
     footerAbout: 'Ristorante italiano, pizzeria e grill sull’Amsterdamseweg. Al tavolo, da asporto o a domicilio.',
@@ -117,7 +117,7 @@ export const ui: Record<Lang, UI> = {
   },
   es: {
     nav: { home: 'Inicio', menu: 'Carta', catering: 'Catering', about: 'Nosotros', contact: 'Contacto', delivery: 'Entrega' },
-    order: 'Pedir online', reserve: 'Reservar mesa', call: 'Llamar', viewMenu: 'Ver la carta', fullMenu: 'Carta completa con precios', orderNow: 'Pedir ahora', orderShort: 'Pedir',
+    order: 'Domicilio / recoger', reserve: 'Reservar mesa', call: 'Llamar', viewMenu: 'Ver la carta', fullMenu: 'Carta completa con precios', orderNow: 'Pedir ahora', orderShort: 'Pedir',
     since: 'Amstelveen · desde 1984', tagline: 'Restaurante italiano en Amstelveen', language: 'Idioma', home: 'Inicio',
     bandEyebrow: 'Reserva con los mejores', bandTitle: 'Tu mesa te espera', bandText: 'Restaurante italiano en Amstelveen desde 1984. Reserva online, llámanos o pide para recoger o a domicilio.',
     footerAbout: 'Restaurante italiano, pizzería y parrilla en la Amsterdamseweg. Comer en el local, para llevar o a domicilio.',

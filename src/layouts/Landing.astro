@@ -60,7 +60,7 @@ const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPag
       <h3>Telepizza Amstelveen</h3>
       <p>{site.street}<br />{site.postalCode} {site.city}<br /><a href={'tel:' + site.phone}>{site.phoneDisplay}</a></p>
       <ul>{site.hours.map(h => <li>{h.day}: {h.open}–{h.close}</li>)}<li>Maandag: gesloten</li></ul>
-      {p.first === 'order' ? <a class="btn primary sm" href={site.orderUrl!} rel="noopener">Bestel online</a> : <a class="btn primary sm" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a>}
+      {p.first === 'order' ? <a class="btn primary sm" href={site.orderUrl!} rel="noopener">Bezorgen / afhalen</a> : <a class="btn primary sm" href={site.reserveUrl!} rel="noopener">Reserveer een tafel</a>}
     </aside>
   </div></section>
   {p.gallery && <section class="sec alt"><div class="wrap gal">
