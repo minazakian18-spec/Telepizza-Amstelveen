@@ -239,6 +239,14 @@ const phoneIco = 'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.
     });
   })();
 </script>
+<script is:inline>
+  // Na het laden: foto's onder de vouw, videoposter en achtergrond laden, en scroll-snap aanzetten (snap bij de eerste weergave blokkeert de LCP-meting).
+  addEventListener('load', function () { setTimeout(function () {
+    document.querySelectorAll('img[data-defer-src]').forEach(function (i) { if (i.dataset.deferSrcset) i.srcset = i.dataset.deferSrcset; i.src = i.dataset.deferSrc; });
+    document.querySelectorAll('video[data-poster]').forEach(function (v) { v.poster = v.dataset.poster; });
+    document.documentElement.classList.add('snap');
+  }, 1000); });
+</script>
 <script is:inline>(function(){var m=document.querySelector('.mbar'),b=document.querySelector('.band');if(!b||!window.IntersectionObserver)return;new IntersectionObserver(function(e){m.classList.toggle('away',e[0].isIntersecting||e[0].boundingClientRect.top<0)}).observe(b)})();</script>
 {overlay && <script is:inline>(function(){var h=document.getElementById('top');var m=document.querySelector('.mbar');function f(){h.classList.toggle('solid',scrollY>40);if(m)m.classList.toggle('show',scrollY>innerHeight*.7)}addEventListener('scroll',f,{passive:true});f();})();</script>}
 <script is:inline>

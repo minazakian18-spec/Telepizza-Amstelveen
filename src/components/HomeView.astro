@@ -98,7 +98,7 @@ const heroAll = [
   { n: 'gevel-eigenaren', w: 1200, h: 630, pos: '45% 40%', alt: HA[3], small: true }, // TODO-CONTROLEREN: gevelfoto in hogere resolutie (min. 1600 px breed, mét logo) aanleveren
 ].filter(x => media(`hero/${x.n}.webp`));
 const hp = (n: string) => `/images/hero/${n}.webp`;
-const hs = (n: string) => `/images/hero/${n}-sm.webp 640w, /images/hero/${n}.webp 1600w`;
+const hs = (n: string) => `/images/hero/${n}-sm.webp 640w, /images/hero/${n}-md.webp 828w, /images/hero/${n}-lg.webp 1200w, /images/hero/${n}.webp 1600w`;
 // Timing: elke slide 6 seconden, ongeacht het aantal slides.
 const slideSec = 6;
 const cycle = heroAll.length * slideSec;
@@ -164,7 +164,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
       <p>{H.p}</p>
       <p class="sign">— {H.sign}</p>
     </div>
-    <div class="swipe" tabindex="0" aria-roledescription="carrousel" aria-label="Foto's van Telepizza Amstelveen">{polSlides.map(([n, alt]) => <img src={ph(n)} srcset={ss(n)} sizes="(min-width:900px) 30vw, 78vw" alt={alt} width="800" height="1000" loading="lazy" decoding="async" />)}</div>
+    <div class="swipe" tabindex="0" aria-roledescription="carrousel" aria-label="Foto's van Telepizza Amstelveen">{polSlides.map(([n, alt]) => <img data-defer-src={ph(n)} data-defer-srcset={ss(n)} sizes="(min-width:900px) 30vw, 78vw" alt={alt} width="800" height="1000" decoding="async" />)}</div>
     <script is:inline>(function(){var s=document.querySelector('.swipe');if(!s)return;var o=[].slice.call(s.children),n=o.length;
       o.forEach(function(i){var c=i.cloneNode(true);c.alt='';c.setAttribute('aria-hidden','true');c.loading='lazy';s.appendChild(c)});
       if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
@@ -176,7 +176,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
   </div></section>
 
   <section class="welcome">
-    <video class="full" data-src="/images/hero-video.mp4" poster={ph('neon-sm')} muted loop playsinline preload="none" aria-hidden="true"></video>
+    <video class="full" data-src="/images/hero-video.mp4" data-poster={ph('neon-sm')} muted loop playsinline preload="none" aria-hidden="true"></video>
     <div class="card2">
       <p class="eyebrow">Benvenuti a Telepizza</p>
       <h2>{c.salaTitle}</h2>
@@ -220,11 +220,11 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
     {lang === 'nl' && <KeywordLinks current="/" />}
   </div></section>
   <script is:inline>
-    // Slides 2+ pas na window.load laden; de wisseling start 3 s later (niet bij prefers-reduced-motion).
+    // Slides 2+ pas 2,5 s na window.load laden; de wisseling start 4 s na load (niet bij prefers-reduced-motion).
     (function () { var h = document.querySelector('.hero'); if (!h || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       var s = h.querySelectorAll('img[data-src]'); if (!s.length) return;
-      addEventListener('load', function () { s.forEach(function (i) { if (i.dataset.srcset) i.srcset = i.dataset.srcset; i.src = i.dataset.src; });
-        setTimeout(function () { h.classList.add('run'); }, 3000); }); })();
+      addEventListener('load', function () { setTimeout(function () { s.forEach(function (i) { if (i.dataset.srcset) i.srcset = i.dataset.srcset; i.src = i.dataset.src; }); }, 2500);
+        setTimeout(function () { h.classList.add('run'); }, 4000); }); })();
     // Extra slides pas na het laden van de pagina; de video pas als hij in beeld komt. Zo laadt de hoofdfoto als eerste.
     (function () { var v = document.querySelector('.welcome video'); if (!v || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { v.src = v.dataset.src; v.play().catch(function () {}); o.disconnect(); } }, { rootMargin: '200px' }).observe(v); })();

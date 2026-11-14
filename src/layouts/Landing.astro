@@ -6,6 +6,7 @@ import Cta from '../components/Cta.astro';
 import OpenToday from '../components/OpenToday.astro';
 import KeywordLinks from '../components/KeywordLinks.astro';
 import { site } from '../data/site';
+import { media } from '../lib/media';
 import type { Dish } from '../data/dishes';
 import type { PageKey } from '../i18n/ui';
 interface Props {
@@ -15,6 +16,8 @@ interface Props {
   gallery?: [string, string][]; page?: PageKey; schema?: object[]; first?: 'order' | 'reserve'; alternates?: { l: 'nl' | 'en'; href: string }[];
 }
 const p = Astro.props;
+// Mobiele versie (760 px) van de hero-foto, gemaakt met scripts/landing-sizes.mjs.
+const mob = media(p.img.replace('/images/', '').replace(/\.webp$/, '-m.webp'));
 const faq = p.faq ?? [];
 const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }] : [];
 ---
@@ -43,7 +46,7 @@ const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPag
       {p.path === '/pizza-amstelveen/' && <OpenToday />}
       <p style="margin-top:18px"><a class="lnk" href="/menu-italiaans-restaurant-amstelveen/">Bekijk de menukaart</a></p>
     </div>
-    <figure><img src={p.img} alt={p.imgAlt} width="900" height="1125" fetchpriority="high" /></figure>
+    <figure><img src={p.img} srcset={mob ? `${mob} 760w, ${p.img} 900w` : undefined} sizes={mob ? "(min-width:900px) 50vw, 100vw" : undefined} alt={p.imgAlt} width="900" height="1125" fetchpriority="high" /></figure>
   </div>
   {p.dishes && p.dishes.length > 0 && <section class="sec green"><div class="wrap">
     <p class="eyebrow">Onze kaart</p>

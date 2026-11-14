@@ -101,8 +101,10 @@ video.full{background:var(--ink)}
 .note .script{font:400 clamp(2.2rem,5vw,3.2rem)/1.05 var(--script);color:var(--red);margin:0 0 16px}
 .note p{color:var(--ink);font-size:1.08rem}
 .note .sign{font:400 1.8rem/1 var(--script);color:var(--ink);margin-top:18px}
-.swipe{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0;padding:6px 2px 18px;-webkit-mask:linear-gradient(90deg,#000 88%,transparent);mask:linear-gradient(90deg,#000 88%,transparent)}
+.swipe{display:flex;gap:14px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0;padding:6px 2px 18px;-webkit-mask:linear-gradient(90deg,#000 88%,transparent);mask:linear-gradient(90deg,#000 88%,transparent)}
 .swipe::-webkit-scrollbar{display:none}
+/* Scroll-snap pas na het laden (klasse .snap op html): snap bij de eerste weergave telt in Chrome als scrollen en blokkeert de LCP-meting. */
+html.snap .swipe{scroll-snap-type:x mandatory}
 .swipe img{flex:0 0 78%;aspect-ratio:4/5;height:auto;object-fit:cover;border-radius:18px;scroll-snap-align:start;box-shadow:0 14px 30px rgba(74,46,30,.18)}
 @media(min-width:900px){.swipe img{flex-basis:72%}}
 

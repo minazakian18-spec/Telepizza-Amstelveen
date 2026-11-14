@@ -116,7 +116,8 @@ main>.wrap{padding-bottom:80px}
 .sec.green .btn{color:var(--bg)}
 .sec.green .btn:hover{background:var(--bg);color:var(--ink)}
 /* reserveer-band + footer */
-.band{position:relative;text-align:center;padding:140px 0;color:#fff;background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.55)),url(/images/ph/proosten.webp) center/cover}
+.band{position:relative;text-align:center;padding:140px 0;color:#fff;background:#2b1d16}
+html.snap .band{background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.55)),url(/images/ph/proosten.webp) center/cover}
 .band h2{font-size:clamp(3rem,8vw,6.5rem)}
 .band p{color:#f1e7da}
 .band .eyebrow{color:var(--gold)}
