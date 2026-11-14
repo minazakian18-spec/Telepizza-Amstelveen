@@ -127,3 +127,4 @@ html.snap .swipe{scroll-snap-type:x mandatory}
 @media(max-width:520px){.heritage{gap:14px}.heritage .seal{width:82px;height:82px}.heritage .seal b{font-size:1.4rem}.heritage p{font-size:.88rem}}
 /* Intro zonder stempels: één kolom, compacter */
 @media(min-width:1000px){.intro{grid-template-columns:1fr;padding-bottom:80px}}
+.heritage-band{padding:34px 0 18px}

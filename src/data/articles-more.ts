@@ -122,7 +122,7 @@ export const moreArticles: Article[] = [
 <h2>Begonnen als pizzeria</h2>
 <p>Telepizza begon als pizzeria aan de Amsterdamseweg 452. Bewoners van Amstelveen en Amsterdam-Zuid kenden ons als de vertrouwde pizzeria om de hoek.</p>
 <h2>Een vernieuwd restaurant</h2>
-<p>De zaak is vernieuwd tot een sfeervol restaurant met een groene wand, warme lampen en de bekende neon “Hotter than your ex”. De lokale krant schreef over deze stap van pizzeria naar volwaardig restaurant.</p>
+<p>De zaak is vernieuwd tot een sfeervol restaurant met een groene wand, warme lampen en neonletters aan de muur. De lokale krant schreef over deze stap van pizzeria naar volwaardig restaurant.</p>
 <h2>Een familiebedrijf</h2>
 <p>Telepizza is een familiebedrijf. Chef Mario staat in de keuken en Thomas zorgt op de vloer dat elke gast zich welkom voelt. Gasten noemen in hun reviews vaak de gastvrijheid, en Thomas wordt regelmatig bij naam genoemd.</p>
 <h2>Geliefd bij gasten</h2>
