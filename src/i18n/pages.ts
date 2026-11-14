@@ -18,7 +18,7 @@ export const home: Record<F, HomeCopy> = {
     title: 'Pizza Amstelveen ★ 4.7 | Italian since 1984 | Telepizza',
     desc: 'Family-run Italian restaurant in Amstelveen since 1984. Fresh hand-stretched pizza, pasta and grill. ★ 4.7 on Google. Book or order online.',
     h1: 'Pizza and Italian food <i>in Amstelveen</i>',
-    lead: 'Crispy pizzas from the oven, pasta with creamy or spicy sauces, steaks and spare ribs from the grill, shawarma and homemade tiramisu for dessert. At Telepizza, the Italian restaurant in Amstelveen on the Amsterdamseweg, you can dine in, take away or have it delivered.',
+    lead: '<strong>Crispy pizzas</strong> from the oven, pasta with <strong>creamy or spicy sauces</strong>, <strong>steaks and spare ribs from the grill</strong>, shawarma and <strong>homemade tiramisu</strong> for dessert. At Telepizza, the Italian restaurant in Amstelveen on the Amsterdamseweg, you can dine in, take away or have it delivered.',
     facts: [['Since 1984', '40+ years in Amstelveen'], ['Halal meat', 'except labelled dishes'], ['Until 3:20 am', 'Friday & Saturday'], ['3 ways', 'dine in, take away, delivery']],
     menuEyebrow: 'Our menu', menuTitle: 'What are you craving?',
     cats: [['Pizza', 'Over 35 kinds, fresh from the oven'], ['Pasta', 'Carbonara, truffle, frutti di mare'], ['Shawarma', 'Halal, fresh from the spit'], ['Steaks & grill', 'Tenderloin, ribeye, spare ribs'], ['Burgers', 'Bacon, cheese and burger meal'], ['Desserts', 'Tiramisu, dame blanche, Ben & Jerry’s']],

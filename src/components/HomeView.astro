@@ -142,7 +142,7 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage
     <div>
       <h1 set:html={c.h1} />
       <div class="txt">
-        <p>{c.lead}</p>
+        <p class="lead-eat" set:html={c.lead} />
         <div class="btns"><a class="btn primary" href={site.reserveUrl!} rel="noopener">{t.reserve}</a><a class="btn" href={site.orderUrl!} rel="noopener">{t.order}</a></div>
         <div class="links"><a class="lnk" href={menu}>{t.viewMenu}</a><a class="lnk" href={pathFor(lang, 'catering')}>{t.nav.catering}</a></div>
       </div>
