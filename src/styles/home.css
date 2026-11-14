@@ -84,7 +84,7 @@
 .trust .g b{color:#fff}
 @media(max-width:600px){.trust{justify-content:flex-start;gap:6px 16px;font-size:.8rem}.trust .g{flex-basis:100%;font-size:.95rem}}
 video.full{background:var(--ink)}
-@media(max-width:600px){.hero{height:64svh;min-height:380px}}
+@media(max-width:600px){.hero{height:82svh;min-height:520px}}
 
 /* reviewlogo's direct onder de slideshow */
 .trust{display:block;padding:18px 0 20px;background:var(--ink)}
