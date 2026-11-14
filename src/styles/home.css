@@ -128,4 +128,4 @@ html.snap .swipe{scroll-snap-type:x mandatory}
 /* Intro zonder stempels: één kolom, compacter */
 @media(min-width:1000px){.intro{grid-template-columns:1fr;padding-bottom:80px}}
 .heritage-band{padding:34px 0 18px}
-.lead-eat strong{color:var(--red);font-weight:800}
+.lead-eat strong{font:400 1.45em/1 var(--script);color:var(--red);letter-spacing:0;padding:0 .08em;text-shadow:0 0 1px rgba(255,75,43,.6),0 0 10px rgba(255,75,43,.35)}
