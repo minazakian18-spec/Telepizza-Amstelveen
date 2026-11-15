@@ -16,6 +16,7 @@ export const site = {
   // Meting. TODO-CONTROLEREN: vul het GA4-meet-ID (G-XXXXXXX) en eventueel het Google Ads-ID (AW-XXXXXXX) in.
   // Zolang deze op null staan, wordt er niets gemeten en verschijnt er geen cookiebanner.
   ga4Id: 'G-K7G8XYQZY4' as string | null,
+  adsId: 'AW-11227720219' as string | null,
   // Google Tag Manager-container. GA4/Ads-tags worden in GTM zelf beheerd; consent mode staat standaard op "geweigerd".
   gtmId: 'GTM-KQH36VC6' as string | null,
   // Nieuwsbrief via Brevo (double opt-in). Zonder formAction worden pop-up en inschrijfformulieren niet getoond.
