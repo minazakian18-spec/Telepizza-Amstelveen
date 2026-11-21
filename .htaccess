@@ -1,0 +1,79 @@
+# Hostinger (Apache) instellingen voor de statische Astro-site
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+# Altijd https en zonder www
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^(.*)$ https://telepizza-amstelveen.nl/$1 [R=301,L]
+
+# Oude WordPress-adressen doorsturen
+RewriteRule ^wp-admin/?.*$ / [R=301,L]
+RewriteRule ^wp-login\.php$ / [R=301,L]
+RewriteRule ^(xmlrpc\.php|wp-json/?.*|wp-includes/.*|wp-cron\.php)$ / [R=301,L]
+RewriteRule ^(feed|comments/feed)/?$ /blog/ [R=301,L]
+RewriteRule ^.+/feed/?$ /blog/ [R=301,L]
+# WordPress-links met ?p=123 of ?page_id=123
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id|cat|author)=[0-9]+ [NC]
+RewriteRule ^$ /? [R=301,L]
+RewriteRule ^contact/?$ /contact-route/ [R=301,L]
+RewriteRule ^testimonial/?$ /reviews/ [R=301,L]
+RewriteRule ^catering-bedrijven-amstelveen/?$ /catering-italiaans-restaurant-amstelveen/#bedrijven [R=301,NE,L]
+RewriteRule ^pizza-soorten/?$ /menu-italiaans-restaurant-amstelveen/#pizza [R=301,NE,L]
+RewriteRule ^blog/laat-eten-amstelveen/?$ /laat-open-amstelveen/ [R=301,L]
+RewriteRule ^bezorgen-amstelveen/(middenhoven|groenelaan|waardhuizen)/?$ /bezorgen-amstelveen/ [R=301,L]
+RewriteRule ^wp-content/uploads/2026/04/Het-Menu-van-Telepizza\.pdf$ /menu-italiaans-restaurant-amstelveen/ [R=301,L]
+RewriteRule ^wp-content/.*$ / [R=301,L]
+RewriteRule ^(page|tag)/.*$ / [R=301,L]
+RewriteRule ^hello-world/?$ / [R=301,L]
+RewriteRule ^(category|author)/.*$ / [R=301,L]
+RewriteRule ^(sitemap_index|sitemap-index)\.xml$ /sitemap.xml [R=301,L]
+# Adressen die mensen zelf intypen
+RewriteRule ^menu/?$ /menu-italiaans-restaurant-amstelveen/ [R=301,L]
+RewriteRule ^over-ons/?$ /over-ons-italiaans-restaurant-amstelveen/ [R=301,L]
+RewriteRule ^bestellen/?$ https://telepizza.sitedish.shop/ [R=301,L]
+RewriteRule ^reserveren/?$ https://widget.thefork.com/d10a03f4-2fab-4cc5-a1a6-ca3b826a931b [R=301,L]
+RewriteRule ^catering/?$ /catering-italiaans-restaurant-amstelveen/ [R=301,L]
+RewriteRule ^bezorgen/?$ /bezorgen-amstelveen/ [R=301,L]
+# Kapsalon staat niet meer op de kaart
+RewriteRule ^kapsalon-amstelveen/?$ /shoarma-amstelveen/ [R=301,L]
+RewriteRule ^blog/wat-is-een-kapsalon/?$ /shoarma-amstelveen/ [R=301,L]
+# Accountsysteem is verwijderd: terug naar de home van die taal
+RewriteRule ^account/?$ / [R=301,L]
+RewriteRule ^(en|de|fr|it|es|tr|ar)/account/?$ /$1/ [R=301,L]
+
+# Slash toevoegen aan mappen (bestaande URL's eindigen op /)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.html -f
+RewriteRule ^(.*)$ /$1/ [R=301,L]
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json image/svg+xml text/xml application/xml
+</IfModule>
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/xml "access plus 1 day"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(webp|avif|png|jpe?g|gif|svg|ico|woff2|css|js)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
