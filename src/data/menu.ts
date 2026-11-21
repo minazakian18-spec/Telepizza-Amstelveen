@@ -85,6 +85,16 @@ export const menu: Section[] = [
         "name": "Carpaccio Salade",
         "price": 11.95,
         "description": "met rundercarpaccio"
+      },
+      {
+        "name": "Insalata Mista",
+        "price": 5.95,
+        "description": "Gemengde salade met tomaat, komkommer, rode ui en wortel"
+      },
+      {
+        "name": "Carpaccio di Salmone",
+        "price": 10.95,
+        "description": "Flinterdunne zalm met rucola, kappertjes, rode ui en Parmezaanse kaas"
       }
     ]
   },

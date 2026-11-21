@@ -128,6 +128,8 @@ export const descEn: Record<string, string> = {
   'Verse lamsshoarma van de spies': 'Fresh lamb shawarma from the spit',
   'in champignon roomsaus of peperroomsaus': 'In creamy mushroom or pepper sauce',
   'met rundercarpaccio': 'with beef carpaccio',
+  'Gemengde salade met tomaat, komkommer, rode ui en wortel': 'Mixed salad with tomato, cucumber, red onion and carrot',
+  'Flinterdunne zalm met rucola, kappertjes, rode ui en Parmezaanse kaas': 'Wafer-thin salmon with rocket, capers, red onion and Parmesan',
   'sla, zoetzure augurk, rode uien, cheddar kaas, ketchup en tomaat': 'Lettuce, sweet pickle, red onion, cheddar, ketchup and tomato',
   'sla, zoetzure augurk, rode uien, crispy bacon (varkensvlees), ketchup en tomaat': 'lettuce, sweet and sour pickle, red onion, crispy bacon (pork), ketchup and tomato',
   'sla, zoetzure augurk, rode uien, ketchup en tomaat': 'Lettuce, sweet pickle, red onion, ketchup and tomato',

@@ -5,6 +5,7 @@ import Base from '../layouts/Base.astro';
 import { menu } from '../data/menu';
 import { site } from '../data/site';
 import { dishes, notHalalLabel } from '../data/dishes';
+import { sitedishPhoto } from '../data/sitedish-photos';
 const menuLd = {
   '@context': 'https://schema.org', '@type': 'Menu', name: 'Menu Telepizza Amstelveen', url: site.url + '/menu-italiaans-restaurant-amstelveen/', inLanguage: 'nl',
   hasMenuSection: menu.map(s => ({ '@type': 'MenuSection', name: s.name,
@@ -17,7 +18,9 @@ const norm = (n: string) => n.toLowerCase().replace(/[^a-z]/g, '');
 // Foto bij een gerecht als we die hebben (zelfde naam, met of zonder "Pizza"/"Pasta").
 const photos = new Map(Object.values(dishes).map(d => [norm(d.name), d.img]));
 // Eigen foto via de upload-workflow (npm run photos): public/images/menu/<slug>.webp gaat voor op de vaste koppeling.
-const photoOf = (n: string) => existsSync(`public/images/menu/${slug(n)}.webp`) ? slug(n) : photos.get(norm(n));
+const local = (n: string) => existsSync(`public/images/menu/${slug(n)}.webp`) ? slug(n) : photos.get(norm(n));
+// Volgorde: eigen bestand / vaste koppeling, anders de foto uit de Sitedish-bestelwinkel.
+const photoOf = (n: string) => { const l = local(n); return l ? '/images/menu/' + l + '.webp' : sitedishPhoto(slug(n)); };
 ---
 <Base page="menu" title="Menukaart & prijzen | Telepizza Amstelveen" description="Bekijk de volledige menukaart met prijzen: 30+ pizza's, verse pasta, steaks, shoarma, burgers en desserts. Bestel online of reserveer een tafel." crumbs={[{ name: 'Menu', path: '/menu-italiaans-restaurant-amstelveen/' }]} schema={[menuLd]}>
   <style>
@@ -64,7 +67,7 @@ const photoOf = (n: string) => existsSync(`public/images/menu/${slug(n)}.webp`) 
         <div class="items">
           {s.items.map(i => { const img = photoOf(i.name); return (
             <article class="it">
-              {img && <img src={'/images/menu/' + img + '.webp'} alt={i.name + ' bij Telepizza Amstelveen'} width="104" height="104" loading="lazy" decoding="async" />}
+              {img && <img src={img} alt={i.name + ' bij Telepizza Amstelveen'} width="104" height="104" loading="lazy" decoding="async" />}
               <div><h3>{i.name}{i.notHalal && <><span class="sr-only"> – </span><span class="nh">{notHalalLabel['nl'] ?? notHalalLabel.en}</span></>}</h3>{i.description && <p>{i.description}</p>}</div>{" "}
               <span class="price">{i.priceText ?? (i.price != null ? eur(i.price) : '')}</span>
             </article>); })}
